@@ -4,5 +4,5 @@ let
 in
 {
   videoDrivers = if nvidia then [ nvidia ] else [ ];
-  packages = if nvidia then [ nvtop ] else [ ];
+  packages = if nvidia then [ nvtop ] else [ btop ];
 }
