@@ -89,6 +89,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     # import modules
     fzf = import ./modules/fzf.nix;
+    nvidia = import ./modules/nvidia.nix;
     userPackages = [
       firefox
       kate
@@ -101,7 +102,7 @@
       cargo
       vimPlugins.vim-nix
     ];
-    packages = with pkgs; userPackages ++ fzf.packages;
+    packages = with pkgs; userPackages ++ fzf.packages ++ nvidia.packages;
   };
 
   # Allow unfree packages
