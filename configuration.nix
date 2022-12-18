@@ -89,18 +89,6 @@
     # import modules
     fzf = import ./modules/fzf.nix;
     nvidia = import ./modules/nvidia.nix;
-    userPackages = with pkgs ;[
-      firefox
-      kate
-      neovim
-      fish
-      kitty
-      git
-      coreutils
-      rnix-lsp
-      cargo
-      vimPlugins.vim-nix
-    ];
     packages = with pkgs ;[
       firefox
       kate
@@ -111,7 +99,6 @@
       coreutils
       rnix-lsp
       cargo
-      vimPlugins.vim-nix
     ];
   };
 
