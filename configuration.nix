@@ -10,7 +10,6 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./modules/fzf.nix
-      ./modules/test.nix
     ];
 
   # Bootloader.
@@ -102,7 +101,18 @@
       cargo
       vimPlugins.vim-nix
     ];
-    packages = userPackages ++ fzf.packages ++ nvidia.packages;
+    packages = with pkgs ;[
+      firefox
+      kate
+      neovim
+      fish
+      kitty
+      git
+      coreutils
+      rnix-lsp
+      cargo
+      vimPlugins.vim-nix
+    ];
   };
 
   # Allow unfree packages
