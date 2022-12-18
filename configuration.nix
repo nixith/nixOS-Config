@@ -6,8 +6,11 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/fzf.nix
+      ./modules/test.nix
     ];
 
   # Bootloader.
@@ -84,7 +87,9 @@
     isNormalUser = true;
     description = "ryan";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
+    # import modules
+    fzf = import ./modules/fzf.nix;
+    userPackages = [
       firefox
       kate
       neovim
@@ -94,10 +99,9 @@
       coreutils
       rnix-lsp
       cargo
-      vimPlugins.vim-nix 
-
-    #  thunderbird
+      vimPlugins.vim-nix
     ];
+    packages = with pkgs; userPackages ++ fzf.packages;
   };
 
   # Allow unfree packages
@@ -106,8 +110,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
