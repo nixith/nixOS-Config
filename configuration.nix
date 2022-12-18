@@ -90,7 +90,7 @@
     # import modules
     fzf = import ./modules/fzf.nix;
     nvidia = import ./modules/nvidia.nix;
-    userPackages = [
+    userPackages = with pkgs ;[
       firefox
       kate
       neovim
@@ -102,7 +102,7 @@
       cargo
       vimPlugins.vim-nix
     ];
-    packages = with pkgs; userPackages ++ fzf.packages ++ nvidia.packages;
+    packages = userPackages ++ fzf.packages ++ nvidia.packages;
   };
 
   # Allow unfree packages

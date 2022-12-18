@@ -1,5 +1,5 @@
 {
-  packages = [ fzf ];
+  packages = with pkgs; [ fzf ];
 }
 
 
