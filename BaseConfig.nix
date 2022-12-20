@@ -5,7 +5,8 @@
 { config, pkgs, ... }:
 let
 user = "Ryan"
-in
+
+in;
 {
   imports =
     [
