@@ -18,7 +18,7 @@ in
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest
 
-    loader.grub - {
+    loader.grub = {
   enable = true;
   device = [ "nodev" ];
   useOSProber = true; # enables dual boot;
