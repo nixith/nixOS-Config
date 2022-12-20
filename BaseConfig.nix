@@ -4,9 +4,8 @@
 
 { config, pkgs, ... }:
 let
-user = "Ryan"
-
-in;
+user = "Ryan";
+in
 {
   imports =
     [
