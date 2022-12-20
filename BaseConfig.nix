@@ -21,7 +21,7 @@ in
 
     loader.grub = {
   enable = true;
-  device = [ /dev/vda ];
+  device =  "nodev" ;
   useOSProber = true; # enables dual boot;
     };
 
