@@ -4,7 +4,7 @@
 
 { config, pkgs, ... }:
 let
-user = "Ryan";
+user = "ryan";
 in
 {
   imports =
@@ -62,6 +62,9 @@ in
   services.xserver = {
     layout = "us";
     xkbVariant = "";
+    displayManager = {
+    defaultSession = "none"
+    }
   };
 
   # Enable CUPS to print documents.

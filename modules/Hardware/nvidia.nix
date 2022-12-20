@@ -1,9 +1,7 @@
 {config, ...}:
 {
 
-let
-  nvidia = builtins.getEnv "NVIDIA" != "";
-in gpuConfig : {
+gpuConfig : {
   hardware.nvidia.modesetting.enable = true;
   boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia-uvm" "nvidia_drm" ];
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -16,5 +14,6 @@ in gpuConfig : {
     modesetting.enable = true;
   }
   
-  packages = with pkgs ; if nvidia then gpuConfig  else [];
+  nvidia = builtins.getEnv "NVIDIA" != "";
+  packages = with pkgs ; if nvidia then gpuConfig  else nvidia = false;
 } 
