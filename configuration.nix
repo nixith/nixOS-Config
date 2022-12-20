@@ -63,7 +63,7 @@ in
     layout = "us";
     xkbVariant = "";
     displayManager.defaultSession = "none";
-  }
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
