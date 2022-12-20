@@ -85,7 +85,6 @@
     isNormalUser = true;
     description = "ryan";
     extraGroups = [ "networkmanager" "wheel" ];
-    passwd = "pass";
     # import modules
     packages = with pkgs ;[
       firefox
