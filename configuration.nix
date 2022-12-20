@@ -9,7 +9,6 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./modules/fzf.nix
     ];
 
   # Bootloader.
@@ -87,8 +86,6 @@
     description = "My Account";
     extraGroups = [ "networkmanager" "wheel" ];
     # import modules
-    fzf = import ./modules/fzf.nix;
-    nvidia = import ./modules/nvidia.nix;
     packages = with pkgs ;[
       firefox
       kate
