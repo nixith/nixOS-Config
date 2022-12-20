@@ -82,9 +82,9 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ryan = {
+  users.users.bromine = {
     isNormalUser = true;
-    description = "ryan";
+    description = "My Account";
     extraGroups = [ "networkmanager" "wheel" ];
     # import modules
     fzf = import ./modules/fzf.nix;
