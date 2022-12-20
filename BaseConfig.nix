@@ -16,7 +16,7 @@ in
 
   # Bootloader.
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
     loader.grub = {
   enable = true;
