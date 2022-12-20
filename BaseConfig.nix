@@ -21,7 +21,7 @@ in
     loader.grub - {
   enable = true;
   device = [ "nodev" ];
-  useOSProber = true; # enables dual boot
+  useOSProber = true; # enables dual boot;
     }
 
   }
@@ -94,7 +94,7 @@ in
     # import modules
     packages = with pkgs ;[
     ];
-    initialPassword = "password" # TODO fix later with sops-nix
+    initialPassword = "password"; # TODO fix later with sops-nix
 
   };
 
