@@ -2,3 +2,4 @@ hardware-configuration.nix
 ./hardware-configuration.nix
 configuration.nix
 ./configuration.nix
+./imports.nix

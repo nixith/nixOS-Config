@@ -3,12 +3,15 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
+let
+user = "Ryan"
+in
 {
   imports =
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./imports.nix
     ];
 
   # Bootloader.
@@ -51,12 +54,8 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
+  # Enable the X11 windowing system (For xwayland, I think).
   services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -88,22 +87,15 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ryan = {
+  users.users.${user} = {
     isNormalUser = true;
-    description = "ryan";
-    extraGroups = [ "networkmanager" "wheel" ];
+    description = "Me!";
+    extraGroups = [ "networkmanager" "wheel" "video" "audio"];
     # import modules
     packages = with pkgs ;[
-      firefox
-      kate
-      neovim
-      fish
-      kitty
-      git
-      coreutils
-      rnix-lsp
-      cargo
     ];
+    initialPassword = "password" # TODO fix later with sops-nix
+
   };
 
   # Allow unfree packages
@@ -113,7 +105,14 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
+    wget
+    neovim
+    fish
+    git
+    coreutils
+    fzf
+    gh
+    btop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -127,7 +126,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
