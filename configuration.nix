@@ -62,7 +62,7 @@ in
   services.xserver = {
     layout = "us";
     xkbVariant = "";
-    displayManager.defaultSession = "none";
+    displayManager.startx.enable = true;
   };
 
   # Enable CUPS to print documents.
