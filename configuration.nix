@@ -11,7 +11,6 @@ in
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
       ./imports.nix
       ./modules/packages.nix
     ];
