@@ -25,14 +25,8 @@
       lib = nixpkgs.lib;
       user = "ryan" ;
     in {
-
-      nixos = lib.nixosSystem;
-      nixosConfigurations = (
-          import ./hosts; {
-            inherit (nixpkgs) lib;
-            inherit inputs user system home-manager;
-          };
-        );
-      };
-    };
+# Stop here for the day. Revisit later with more
+# videos, and maybe redo hyprland section
+# and revisit if this is how you want
+# the config structured
 
