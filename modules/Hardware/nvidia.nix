@@ -14,6 +14,4 @@ gpuConfig : {
     modesetting.enable = true;
   }
   
-  nvidia = builtins.getEnv "NVIDIA" != "";
-  packages = with pkgs ; if nvidia then gpuConfig  else nvidia = false;
 } 
