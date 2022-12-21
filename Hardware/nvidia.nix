@@ -14,4 +14,5 @@ gpuConfig : {
     modesetting.enable = true;
   }
   
+  #nvidia = builtins.getEnv "NVIDIA" != "";
 } 

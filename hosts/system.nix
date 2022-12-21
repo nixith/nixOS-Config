@@ -5,6 +5,7 @@
 { config, pkgs, ... }:
 let
 user = "ryan";
+nvidia = builtins.getEnv "NVIDIA" != "";
 in
 {
   imports =
@@ -15,17 +16,9 @@ in
       ./modules/packages.nix
     ];
 
+  #Hopefully catch nvidia issues
+
   # Bootloader.
-  boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
-
-    loader.grub = {
-  enable = true;
-  device =  "nodev" ;
-  useOSProber = true; # enables dual boot;
-    };
-
-  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -131,10 +124,27 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11"; # Did you read the comment?
+#  system.stateVersion = "22.11"; # Did you read the comment?
+
+
+  system = {
+    autoUpgrade = {
+      enable = true;
+      channel = "https://nixos.org/channels/nixos-unstable";
+    };
+    stateVersion = "22.11";
+  };
 
 nix = {
-package = pkgs.nixFlakes;
-extraOptions = "experimental-features = nix-command flakes";
+  settings = {
+      auto-optimise-store = true; # Optimise syslinks
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 5d";
+    };
+  package = pkgs.nixFlakes;
+  extraOptions = "experimental-features = nix-command flakes";
   };
 }

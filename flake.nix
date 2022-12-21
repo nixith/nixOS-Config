@@ -25,17 +25,13 @@
       lib = nixpkgs.lib;
       user = ryan;
     in {
-      nvidia = builtins.getEnv "NVIDIA" != "";
 
       nixosConfigurations = {
         nixos = lib.nixosSystem {
-          inherit system;
-          inherit nvidia;
-          modules = [
-            ./configuration.nix
-            ./modules/Hardware/nvidia.nix
-            ];
-          if nvidia then gpuConfig else [ ];
+          import ./hosts/{
+            inherit (nixpkgs) lib;
+            inherit inputs user system home-manager;
+          };
         };
       };
     };
