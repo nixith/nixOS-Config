@@ -16,39 +16,31 @@
 
 
   outputs = { self, nixpkgs, hyprland, home-manager, ... }: {
-  let
+    let
     
-    pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-    };
+      pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+      };
 
-    system = "x86_64-linux";
+      system = "x86_64-linux";
 
-    lib = nixpkgs.lib;
-  in {
+      lib = nixpkgs.lib;
+    in {
 
-  nvidia = builtins.getEnv "NVIDIA" != "";
+      nvidia = builtins.getEnv "NVIDIA" != "";
 
-  nixosConfigurations = {
-    nixos = lib.nixosSystem {
-      inherit system;
-      inherit nvidia;
-      modules = [
-        ./configuration.nix
-        ./modules/Hardware/nvidia.nix
-        ]
-      if nvidia then gpuConfig else [ ];
-    }
-  }
-    homeConfigurations."ryan@nixos" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-
-      modules = [
-        hyprland.homeManagerModules.default
-          {wayland.windowManager.hyprland.enable = true;} 
-          ]
+      nixosConfigurations = {
+        nixos = lib.nixosSystem {
+          inherit system;
+          inherit nvidia;
+          modules = [
+            ./configuration.nix
+            ./modules/Hardware/nvidia.nix
+            ];
+          if nvidia then gpuConfig else [ ];
         };
       };
+    };
+  };
 }
-
