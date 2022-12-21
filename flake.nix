@@ -15,20 +15,16 @@
 
 
 
-  outputs = { self, nixpkgs, hyprland, home-manager, ... }: {
+  outputs = @inputs{ self, nixpkgs, hyprland, home-manager, ... }: {
     let
-    
       pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
       };
-
       system = "x86_64-linux";
-
       lib = nixpkgs.lib;
     in {
-
-      nvidia = builtins.getEnv "NVIDIA" != "";
+        nvidia = builtins.getEnv "NVIDIA" != "";
 
       nixosConfigurations = {
         nixos = lib.nixosSystem {
