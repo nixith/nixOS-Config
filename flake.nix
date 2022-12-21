@@ -1,11 +1,54 @@
-{
-  description = "A very basic flake";
+{  description = "A useful config";
+  inputs = {
+    nixpkgs.url = "nixpkgs/nixos-unstable";
 
-  outputs = { self, nixpkgs }: {
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
-
-    packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
-
+    hyprland = {
+    url = "github:hyprwm/Hyprland";
+    inputs.nixpkgs.follows = "nixpkgs";
+    }:
   };
+
+
+
+  outputs = { self, nixpkgs, hyprland, home-manager }: {
+  let
+    
+    pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+    };
+
+    system = "x86_64-linux";
+
+    lib - nixpkgs.lib;
+  in {
+
+  nvidia = builtins.getEnv "NVIDIA" != "";
+
+  nixosConfigurations = {
+    nixos = lib.nixosSystem {
+      inherit system;
+      inherit nvidia;
+      modules = [
+        ./configuration.nix
+        ./modules/Hardware/nvidia.nix
+        ]
+      if nvidia then gpuConfig else [ ];
+    }
+  }
+    homeConfigurations."ryan@nixos" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
+      modules = [
+        hyprland.homeManagerModules.default
+          {wayland.windowManager.hyprland.enable = true;} 
+          ]
+        };
+      };
 }
+
