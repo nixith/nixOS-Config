@@ -15,7 +15,7 @@
 
 
 
-  outputs = { self, nixpkgs, hyprland, home-manager }: {
+  outputs = { self, nixpkgs, hyprland, home-manager, ... }: {
   let
     
     pkgs = import nixpkgs {
@@ -25,7 +25,7 @@
 
     system = "x86_64-linux";
 
-    lib - nixpkgs.lib;
+    lib = nixpkgs.lib;
   in {
 
   nvidia = builtins.getEnv "NVIDIA" != "";
