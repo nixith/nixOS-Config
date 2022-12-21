@@ -28,7 +28,7 @@
 
       nixosConfigurations = {
         nixos = lib.nixosSystem {
-          import ./hosts/{
+          import = ./hosts {
             inherit (nixpkgs) lib;
             inherit inputs user system home-manager;
           };
