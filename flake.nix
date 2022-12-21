@@ -26,7 +26,7 @@
       user = "ryan" ;
     in {
 
-      nixos = lib.nixosSystem
+      nixos = lib.nixosSystem;
       nixosConfigurations = (
           import ./hosts; {
             inherit (nixpkgs) lib;
