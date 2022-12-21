@@ -26,8 +26,8 @@
       user = "ryan" ;
     in {
 
+      nixos = lib.nixosSystem
       nixosConfigurations = (
-        nixos = lib.nixosSystem {
           import ./hosts; {
             inherit (nixpkgs) lib;
             inherit inputs user system home-manager;
@@ -35,4 +35,4 @@
         );
       };
     };
-}
+
