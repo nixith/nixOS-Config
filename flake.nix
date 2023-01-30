@@ -1,4 +1,5 @@
-{  description = "A useful config";
+{
+  description = "A useful config";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
@@ -8,25 +9,63 @@
     };
 
     hyprland = {
-    url = "github:hyprwm/Hyprland";
-    inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    Hyprland-Desktop-Portal = {
+      url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    };
+
+    Hyprland-Waybar = {
+      url = "github:r-clifford/Waybar-Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+    };
+
+    nix-colors = {
+      url = "github:misterio77/nix-colors";
     };
   };
 
 
 
-  outputs = inputs @ { self, nixpkgs, hyprland, home-manager, ... }:
-    let
-      pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-      };
-      system = "x86_64-linux";
-      lib = nixpkgs.lib;
-      user = "ryan" ;
-    in {
-# Stop here for the day. Revisit later with more
-# videos, and maybe redo hyprland section
-# and revisit if this is how you want
-# the config structured
+  outputs = { self, nixpkgs, hyprland, home-manager, nixos-hardware, nix-colors, ... } @ inputs:
 
+    let
+      system = "x86_64-linux";
+      #nixpkgs.config.allowUnfree = true;
+      pkgs = nixpkgs.legacyPackages.${system};
+      user = "ryan";
+    in
+    {
+      nixosConfigurations = import ./hosts {
+        inherit (nixpkgs) lib;
+        inherit inputs nixpkgs hyprland nixos-hardware user self;
+      }; # Imports ./hosts/default.nix
+
+
+      homeConfigurations = {
+
+        ryan = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+
+
+          modules = [
+            hyprland.homeManagerModules.default
+            ./home/home.nix
+          ];
+
+          extraSpecialArgs = { inherit nix-colors; };
+
+        };
+      };
+
+    };
+}
