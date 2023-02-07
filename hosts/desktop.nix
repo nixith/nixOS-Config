@@ -7,8 +7,16 @@
   # Graphical Necesities
   programs.dconf.enable = true;
   security.polkit.enable = true;
-  environment.systemPackages = [
+  qt = {
+    platformTheme = "gtk2";
+    enable = true;
+    style = "gtk2";
+  };
+  environment.systemPackages = with pkgs; [
   ];
+
+  # steam has to be done here
+  programs.steam.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -56,14 +64,15 @@
     # import modules
     packages = with pkgs ;[
     ];
+    shell = pkgs.bashInteractive;
     initialPassword = "password"; # TODO fix later with sops-nix
   };
 
   # Install Fonts
   fonts = {
-  enableDefaultFonts = true;
-  fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
-   ];
+    enableDefaultFonts = true;
+    fonts = with pkgs; [
+      (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    ];
   };
 }

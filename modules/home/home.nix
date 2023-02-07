@@ -12,7 +12,6 @@
       gh
       neovim
       git
-      steam
       bat
       exa
       zellij

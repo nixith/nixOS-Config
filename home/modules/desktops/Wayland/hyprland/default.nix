@@ -1,6 +1,15 @@
-{ inputs, self, user, hyprland, home-manager, config, pkgs, ... }:
+{ inputs, self, user, hyprland, home-manager, config, pkgs, computer, ... }:
 let
   user = user;
+
+  monitors =
+    if computer == "Galaxia" then
+      (import ./snippets/DesktopMonitors.nix { })
+    else
+      ''
+        monitor=,preferred,auto,auto
+      ''
+  ;
 in
 
 {
@@ -23,16 +32,22 @@ in
   wayland.windowManager.hyprland =
     {
       enable = true;
-      extraConfig = (import ./config.nix {
-        inherit pkgs;
-      });
+      extraConfig =
+        (import ./config.nix {
+          inherit pkgs;
+          inherit monitors;
+        });
+      recommendedEnvironment = true;
     };
 
-  home.packages = with pkgs; [
-    swaybg
-    polkit_gnome
-    wl-clipboard
-  ];
+  home.packages = with pkgs;
+    [
+      swaybg
+      polkit_gnome
+      wl-clipboard
+      swaylock-fancy
+      swayidle
+    ];
 
   services.wlsunset =
     {

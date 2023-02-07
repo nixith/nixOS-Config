@@ -50,7 +50,7 @@
 
       homeConfigurations = {
 
-        ryan = home-manager.lib.homeManagerConfiguration {
+        Nebula = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
@@ -63,6 +63,24 @@
           ];
 
           extraSpecialArgs = { inherit nix-colors; };
+
+        };
+
+        Galaxia = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+
+          modules = [
+            hyprland.homeManagerModules.default
+            ./home/home.nix
+          ];
+
+          extraSpecialArgs = {
+            inherit nix-colors;
+            computer = "Galaxia";
+          };
 
         };
       };

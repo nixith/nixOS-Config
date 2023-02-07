@@ -4,5 +4,4 @@
     nvidiaPatches = true;
   };
   import = [ ./Hyprland.nix ];
-
 }

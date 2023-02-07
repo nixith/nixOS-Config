@@ -32,5 +32,6 @@
     unzip
     gzip
     _7zz
+    dash
   ];
 }

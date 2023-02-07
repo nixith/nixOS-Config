@@ -1,8 +1,8 @@
 { inputs, self, user, nvidia, ... }:
 {
-  wayland.windowManager.hyprland.hyprland = {
+  wayland.windowManager.hyprland = {
     nvidiaPatches = true;
   };
-  import = [ ./Hyprland.nix ];
+  imports = [ ./default.nix ];
 
 }

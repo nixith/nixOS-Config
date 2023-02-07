@@ -1,5 +1,6 @@
-{ pkgs, ... }: ''
-  monitor=,preferred,auto,1
+{ pkgs, monitors, ... }: ''
+  exec= systemctl --user import-environment
+  ${monitors}
 
   $rosewater = 0xfff5e0dc
   $flamingo  = 0xfff2cdcd
@@ -47,6 +48,9 @@
       }
   }
 
+  device:hanvon-ugee-deco-lw-pen {
+        output = DP-2
+    }
   general {
       sensitivity=1.0 # for mouse cursor
 
@@ -158,7 +162,7 @@
   exec-once="${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
   exec-once=wlsunset -l 35.6 -L -78.8 # Screen dimmer/oranger based on sunrise and sunset
   exec-once=waybar # -c ~/.config/hypr/waybar/config.json -s ~/.config/hypr/waybar/style.css
-  exec=swaybg -i ~/Pictures/wallpapers/tropic_island_night.jpg -m stretch
+  exec=swaybg -i ~/Pictures/wallpapers/tropic_island_night.jpg -m fill
   exec=export XDG_CURRENT_DESKTOP="Sway"
-  exec-once= wezterm
+  #exec-once= wezterm
 ''    

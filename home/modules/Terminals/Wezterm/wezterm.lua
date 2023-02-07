@@ -2,14 +2,17 @@ local wezterm = require("wezterm")
 return {
 	-- Appearance
 	-- Colors, Opacity, and Fonts
-	font = wezterm.font("JetBrains Mono"),
+	font = wezterm.font("JetBrainsMono Nerd Font Mono"),
 	color_scheme = "Catppuccin Mocha",
-	window_background_opacity = 0.4,
+	window_background_opacity = 0.6,
   selection_bg = 'rgba(50% 50% 50% 50%)',
   selection_fg = 'none',
 
 	-- Tab Bar
 	hide_tab_bar_if_only_one_tab = true,
+
+	-- shell to run
+	default_prog = { 'fish', '-l' },
 
 	-- Keybinds
 	leader = {

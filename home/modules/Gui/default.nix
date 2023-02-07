@@ -9,7 +9,8 @@
     logseq
 
     # Gaming
-    steam
+    steamcmd
+    steam-tui
     gamescope
     gamemode
     mesa
@@ -18,7 +19,7 @@
     prismlauncher
 
     # Utilities
-    cinnamon.nemo
+    cinnamon.nemo-with-extensions
     flameshot
     carla
     noisetorch
@@ -40,5 +41,11 @@
     # Media
     mpv
     imv
+
+    #art
+    pixelorama
+
+    #Libs
+    xorg.libxcb
   ];
 }

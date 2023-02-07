@@ -13,7 +13,7 @@
 "string.regexp" = "peach"
 "string.special" = "pink"
 
-"comment" = { fg = "overlay1", modifiers = ["italic"] }
+"comment" = { fg = "subtext1", modifiers = ["italic"] }
 
 "variable" = "text"
 "variable.parameter" = { fg = "maroon", modifiers = ["italic"] }
@@ -61,7 +61,7 @@
 # --------------
 "ui.background" = { fg = "text" }
 
-"ui.linenr" = { fg = "surface1" }
+"ui.linenr" = { fg = "subtext1" }
 "ui.linenr.selected" = { fg = "lavender" }
 
 "ui.statusline" = { fg = "overlay1", bg = "surface0" }
