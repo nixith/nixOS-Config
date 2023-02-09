@@ -60,6 +60,7 @@
 
           modules = [
             hyprland.homeManagerModules.default
+            nix-doom-emacs.hmModule
             ./home/home.nix
           ];
 

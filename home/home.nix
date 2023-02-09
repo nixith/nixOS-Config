@@ -80,7 +80,13 @@ in
     ./modules/editors/helix
     ./modules/editors/emacs
     ./modules/Terminals/Wezterm
+    <<<<<<< HEAD
 
+    =======
+    ./modules/languages/python
+    >>>>>>> 06
+    c4ad7
+    (rename doom folder)
     nix-colors.homeManagerModule
 
   ] ++ [ ./NvidiaHome.nix ];

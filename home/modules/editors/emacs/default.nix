@@ -1,35 +1,35 @@
 { pkgs, nix-doom-emacs, ... }:
 {
-  imports = [ nix-doom-emacs.hmModule ];
+  #imports = [ nix-doom-emacs.hmModule ];
 
   programs.doom-emacs = {
-    enable = true
-      doomPrivateDir = ./.doom.d
-    };
-    home.packages = with pkgs; [
-      # Latex
-      texlab #lsp
-      tectonic #Latex compiler
-      pkgs.texlive.combined.scheme-medium #tex itself
+    enable = true;
+    doomPrivateDir = ./doom.d;
+  };
+  home.packages = with pkgs; [
+    # Latex
+    texlab #lsp
+    tectonic #Latex compiler
+    pkgs.texlive.combined.scheme-medium #tex itself
 
-      # Nix
-      nixfmt
+    # Nix
+    nixfmt
 
-      # org
-      gnuplot
+    # org
+    gnuplot
 
-      #python
-      nodePackages_latest.pyright #lsp
+    #python
+    nodePackages_latest.pyright #lsp
 
-      # Shell
-      nodePackages_latest.bash-language-server
+    # Shell
+    nodePackages_latest.bash-language-server
 
-      #rust
-      rust-analyzer-unwrapped
+    #rust
+    rust-analyzer-unwrapped
 
-      #json
-      nodePackages_latest.vscode-json-languageserver
+    #json
+    nodePackages_latest.vscode-json-languageserver
 
 
-    ];
-  }
+  ];
+}
