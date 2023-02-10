@@ -29,11 +29,12 @@
     nix-colors = {
       url = "github:misterio77/nix-colors";
     };
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
 
 
 
-  outputs = { self, nixpkgs, hyprland, home-manager, nixos-hardware, nix-colors, ... } @ inputs:
+  outputs = { self, nixpkgs, hyprland, home-manager, nixos-hardware, nix-colors, nix-doom-emacs, ... } @ inputs:
 
     let
       system = "x86_64-linux";

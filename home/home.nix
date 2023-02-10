@@ -78,7 +78,7 @@ in
     ./modules/Gui
     ./modules/Gui/xournalpp
     ./modules/editors/helix
-    ./modules/editors/neovim
+    ./modules/editors/emacs
     ./modules/Terminals/Wezterm
 
     nix-colors.homeManagerModule
