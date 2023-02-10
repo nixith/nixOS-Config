@@ -69,7 +69,10 @@
             ./home/home.nix
           ];
 
-          extraSpecialArgs = { inherit nix-colors self; };
+          extraSpecialArgs = {
+            inherit nix-colors self;
+            computer = "Nebula";
+          };
 
         };
 

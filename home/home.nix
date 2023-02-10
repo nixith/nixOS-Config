@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, inputs, nix-colors, systemType, nix-doom-emacs ... }:
+{ config, lib, pkgs, user, inputs, nix-colors, systemType, nix-doom-emacs, ... }:
 
 
 let
@@ -76,18 +76,8 @@ in
     ./modules/editors/helix
     ./modules/editors/emacs
     ./modules/Terminals/Wezterm
-    <<<<<<< HEAD
-
-    =======
-    ./modules/languages/python
-    <<<<<<< HEAD
-    >>>>>>> 06
-    c4ad7
-    (rename doom folder)
-    =======
-    ./modules/Meta/cachix.nix
-    >>>>>>> e65d7f4
-    (add doom emacs and a potential caching system)
+    #./modules/languages/python
+    #./modules/Meta/cachix.nix
     nix-colors.homeManagerModule
 
   ] ++ [ ./NvidiaHome.nix ];
