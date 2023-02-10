@@ -22,19 +22,26 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-hardware = {
-      url = "github:NixOS/nixos-hardware/master";
-    };
+    nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; };
 
-    nix-colors = {
-      url = "github:misterio77/nix-colors";
-    };
+    nix-colors = { url = "github:misterio77/nix-colors"; };
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    #emacs-overlay = {
+    #  url = "github:nix-community/emacs-overlay";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
   };
 
-
-
-  outputs = { self, nixpkgs, hyprland, home-manager, nixos-hardware, nix-colors, nix-doom-emacs, ... } @ inputs:
+  outputs =
+    { self
+    , nixpkgs
+    , hyprland
+    , home-manager
+    , nixos-hardware
+    , nix-colors
+    , nix-doom-emacs
+    , ...
+    }@inputs:
 
     let
       system = "x86_64-linux";
@@ -48,7 +55,6 @@
         inherit inputs nixpkgs hyprland nixos-hardware user self;
       }; # Imports ./hosts/default.nix
 
-
       homeConfigurations = {
 
         Nebula = home-manager.lib.homeManagerConfiguration {
@@ -57,14 +63,13 @@
             config.allowUnfree = true;
           };
 
-
           modules = [
             hyprland.homeManagerModules.default
             nix-doom-emacs.hmModule
             ./home/home.nix
           ];
 
-          extraSpecialArgs = { inherit nix-colors; };
+          extraSpecialArgs = { inherit nix-colors self; };
 
         };
 

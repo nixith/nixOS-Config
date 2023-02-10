@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name ""
-      user-mail-address "")
+;;(setq user-full-name ""
+;;      user-mail-address "")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -32,11 +32,13 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
-
+(setq doom-theme 'catppuccin)
+(load-theme 'catppuccin t t)
+(setq catppuccin-flavor 'frappe) ;; or 'latte, 'macchiato, or 'mocha
+(catppuccin-reload)
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type relative)
+(setq display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -74,3 +76,8 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;;; code
+
+; fragtog (Latex previews)
+(add-hook 'org-mode-hook 'org-fragtog-mode)

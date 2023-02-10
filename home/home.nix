@@ -1,15 +1,11 @@
-{ config, lib, pkgs, user, inputs, nix-colors, systemType, ... }:
+{ config, lib, pkgs, user, inputs, nix-colors, systemType, nix-doom-emacs ... }:
 
 
 let
   nvidia = builtins.hasAttr "nvidia" config.hardware;
 in
 {
-
   nixpkgs.config.allowUnfree = true;
-
-
-
   #cachic  
 
   #nix.settings = {
@@ -17,12 +13,12 @@ in
   #  trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   #};
 
-
   home.stateVersion = "22.11";
-  programs.home-manager.enable = true; #enable home manager and allow it to manage itself
+  programs.home-manager.enable =
+    true; # enable home manager and allow it to manage itself
 
-  systemd.user.startServices = "sd-switch"; # reload systemd units on config reload
-
+  systemd.user.startServices =
+    "sd-switch"; # reload systemd units on config reload
 
   home = {
     username = "ryan";
@@ -84,13 +80,19 @@ in
 
     =======
     ./modules/languages/python
+    <<<<<<< HEAD
     >>>>>>> 06
     c4ad7
     (rename doom folder)
+    =======
+    ./modules/Meta/cachix.nix
+    >>>>>>> e65d7f4
+    (add doom emacs and a potential caching system)
     nix-colors.homeManagerModule
 
   ] ++ [ ./NvidiaHome.nix ];
 
+  #caches.cachix = [ "nix-community" "hyprland" ];
 
   fonts.fontconfig.enable = true;
 
