@@ -32,24 +32,15 @@
     #};
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , hyprland
-    , home-manager
-    , nixos-hardware
-    , nix-colors
-    , nix-doom-emacs
-    , ...
-    }@inputs:
+  outputs = { self, nixpkgs, hyprland, home-manager, nixos-hardware, nix-colors
+    , nix-doom-emacs, ... }@inputs:
 
     let
       system = "x86_64-linux";
       #nixpkgs.config.allowUnfree = true;
       pkgs = nixpkgs.legacyPackages.${system};
       user = "ryan";
-    in
-    {
+    in {
       nixosConfigurations = import ./hosts {
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs hyprland nixos-hardware user self;
@@ -84,6 +75,7 @@
 
           modules = [
             hyprland.homeManagerModules.default
+            nix-doom-emacs.hmModule
             ./home/home.nix
           ];
 

@@ -73,6 +73,7 @@ in
     ./modules/shells/Starship
     ./modules/Gui
     ./modules/Gui/xournalpp
+    ./modules/Gui/newsboat
     ./modules/editors/helix
     ./modules/editors/emacs
     ./modules/Terminals/Wezterm
