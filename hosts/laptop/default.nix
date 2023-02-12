@@ -6,12 +6,23 @@
   ];
 
   boot = {
+    #initrd.kernelModules = [ "nvidia" "nvidia_modset" "nvidia_uvm" "nvidia_drm" ];
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
+
+    loader.efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/EFI";
+    };
 
     loader.grub = {
       enable = true;
       device = "nodev";
+      efiSupport = true;
       #useOSProber = true; # enables dual boot;
+    };
+
+    loader.systemd-boot = {
+      enable = false;
     };
   };
 
