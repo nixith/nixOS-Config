@@ -27,6 +27,7 @@ in
 
     loader.efi = {
       canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/EFI";
     };
 
     loader.grub = {
