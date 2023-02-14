@@ -10,46 +10,43 @@ let
   };
 
   lib = nixpkgs.lib;
-in
-{
+in {
 
-  laptop = nixpkgs.lib.nixosSystem
-    {
-      # Laptop profile
-      inherit system;
+  laptop = nixpkgs.lib.nixosSystem {
+    # Laptop profile
+    inherit system;
 
-      modules = [
+    modules = [
 
-        ./laptop
-        ./system.nix #Default shared options - mostly nix configurationa nd making sure I always have git
-        ./desktop.nix #Default for graphical desktops
+      ./laptop
+      ./system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
+      ./desktop.nix # Default for graphical desktops
 
-        hyprland.nixosModules.default
-        { programs.hyprland.enable = true; }
-        nixos-hardware.nixosModules.lenovo-thinkpad-l13
-      ];
-      specialArgs = { inherit inputs user; };
-    };
-  desktop = nixpkgs.lib.nixosSystem
-    {
-      # Laptop profile
-      inherit system;
+      hyprland.nixosModules.default
+      { programs.hyprland.enable = true; }
+      nixos-hardware.nixosModules.lenovo-thinkpad-l13
+    ];
+    specialArgs = { inherit inputs user; };
+  };
+  desktop = nixpkgs.lib.nixosSystem {
+    # Laptop profile
+    inherit system;
 
-      modules = [
+    modules = [
 
-        ./desktop
-        ./system.nix #Default shared options - mostly nix configurationa nd making sure I always have git
-        ./desktop.nix #Default for graphical desktops
+      ./desktop
+      ./system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
+      ./desktop.nix # Default for graphical desktops
 
-        hyprland.nixosModules.default
-        {
-          programs.hyprland = {
-            enable = true;
-            nvidiaPatches = true;
-          };
-        }
-        #nixos-hardware.nixosModules.lenovo-thinkpad-l13
-      ];
-      specialArgs = { inherit inputs user; };
-    };
+      hyprland.nixosModules.default
+      {
+        programs.hyprland = {
+          enable = true;
+          nvidiaPatches = true;
+        };
+      }
+      #nixos-hardware.nixosModules.lenovo-thinkpad-l13
+    ];
+    specialArgs = { inherit inputs user; };
+  };
 }

@@ -7,8 +7,6 @@
     target = "./.doom.d/themes";
   };
 
-
-
   # Get a newer version of emacs
   services.emacs = { enable = true; };
   nixpkgs.overlays = [ (import ./overlays/python) ];
@@ -74,5 +72,9 @@
     #nix
     nil
 
+    #vterm
+    cmake
+    libvterm
+    libtool
   ];
 }

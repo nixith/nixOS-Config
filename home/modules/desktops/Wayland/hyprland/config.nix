@@ -106,7 +106,7 @@
   bind=SUPER,D,exec,rofi -show drun
   bind=SUPER,C,exec, rofi -show calc
   bind=SUPER,P,pseudo,
-  bind=SUPER,Return,exec,wezterm
+  bind=SUPER,Return,exec,kitty
   bind=SUPER,F,fullscreen,
   bind=SUPER,W,exec,firefox
   bind=SUPER,X,exec, systemctl suspend
@@ -165,4 +165,4 @@
   exec=swaybg -i ~/Pictures/wallpapers/tropic_island_night.jpg -m fill
   exec=export XDG_CURRENT_DESKTOP="Sway"
   #exec-once= wezterm
-''    
+''

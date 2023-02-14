@@ -4,10 +4,10 @@ return {
 	-- Colors, Opacity, and Fonts
 	font = wezterm.font("JetBrainsMono Nerd Font Mono"),
 	color_scheme = "Catppuccin Mocha",
-	--window_background_opacity = 0.2,
+	window_background_opacity = 0.2,
 	colors = {
-  	--selection_bg = 'rgba(50% 50% 50% 50%)',
-  	--selection_fg = 'none',
+  	selection_bg = 'rgba(50% 50% 50% 50%)',
+  	selection_fg = 'none',
 },
 	-- Tab Bar
 	hide_tab_bar_if_only_one_tab = true,

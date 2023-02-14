@@ -1,10 +1,8 @@
-{ config, lib, pkgs, user, inputs, nix-colors, systemType, nix-doom-emacs, ... }:
+{ config, lib, pkgs, user, inputs, nix-colors, systemType, nix-doom-emacs, ...
+}:
 
-
-let
-  nvidia = builtins.hasAttr "nvidia" config.hardware;
-in
-{
+let nvidia = builtins.hasAttr "nvidia" config.hardware;
+in {
   nixpkgs.config.allowUnfree = true;
   #cachic  
 
@@ -77,6 +75,7 @@ in
     ./modules/editors/helix
     ./modules/editors/emacs
     ./modules/Terminals/Wezterm
+    ./modules/Terminals/Kitty
     #./modules/languages/python
     #./modules/Meta/cachix.nix
     nix-colors.homeManagerModule
