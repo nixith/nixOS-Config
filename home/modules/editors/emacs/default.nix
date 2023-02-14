@@ -54,6 +54,7 @@
 
     # org
     gnuplot
+    python3
 
     #python
     nodePackages_latest.pyright # lsp
