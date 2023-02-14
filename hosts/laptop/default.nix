@@ -11,7 +11,7 @@
 
     loader.efi = {
       canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/EFI";
+      efiSysMountPoint = "/boot/efi";
     };
 
     loader.grub = {
@@ -53,6 +53,10 @@
     ];
     initialPassword = "password"; # TODO fix later with sops-nix
 
+  };
+
+  hardware.bluetooth = {
+    enable = true;
   };
 
   # Allow unfree packages
