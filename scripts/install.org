@@ -1,0 +1,54 @@
+#+title: Install nixOS
+
+Literate guide on installing my nixOS setup
+
+* Overview
+This is a literate shell script/guide for installing my nixOS config
+* Manual steps
+** Flake setup
+*** Home-manager Setup
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+the home-manager flake section needs some extra stuff. As of now, everything is set up in the flake, later it'll be in =home/default.nix=, while names will be passed as usual (Similar to how ==home/hosts== is managed)
+**** what needs to happen
+1. Define name
+2. add common nixpkgs line:
+
+   #+begin_src nix
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+   #+end_src
+
+3. add together any special modules along with the common modules
+
+   #+begin_src nix
+    let
+      commonModules = [ ... ]
+    in
+
+   {
+     ...
+     modules = [ ... ] ++ commonModules
+   ...
+   }
+   #+end_src
+
+4. add the ==extraSpecialArgs== (imports for home-manager)
+
+   #+begin_src nix
+
+   #+end_src
+
+*** NixOS
+:PROPERTIES:
+:header-args:nix: :tangle no
+:header-args:bash: :tangle install.sh
+:header-args:bash: :shebang "#!/usr/bin/env sh"
+:END:
+NixOS config needs a good deal less work than home-manager for a new machine.
+**** what needs to happen
+1. Create system
+2. copy template from laptop.nix and adjust [[https://nixos.wiki/wiki/Btrfs][Btrfs settings]] as needed
