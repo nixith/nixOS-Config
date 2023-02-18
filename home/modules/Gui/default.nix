@@ -32,7 +32,7 @@
     blueberry
 
     # Productivity
-    #libreoffice
+    libreoffice
     calibre
 
     # Web
