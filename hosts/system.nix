@@ -4,18 +4,13 @@
 
 { config, pkgs, ... }:
 let
-in
 
-
-
-{
+in {
 
   # NTFS Support
   boot.supportedFilesystems = [ "ntfs" ];
 
-
-  imports = [
-  ];
+  imports = [ ];
 
   time.timeZone = "America/New_York";
 
@@ -38,20 +33,19 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs;
-    [
-      # To manage the actual user configuration
-      nix
-      thermald
-      auto-cpufreq
-    ];
+  environment.systemPackages = with pkgs; [
+    # To manage the actual user configuration
+    nix
+    thermald
+    auto-cpufreq
+    cachix
+  ];
 
   # Systemd packages to enable (Enable when out of VM)
   services = {
     auto-cpufreq.enable = true;
     thermald.enable = true;
   };
-
 
   nix = {
     settings.auto-optimise-store = true; # Optimise syslinks

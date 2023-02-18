@@ -3,7 +3,6 @@
 
 {
 
-
   # Graphical Necesities
   programs.dconf.enable = true;
   security.polkit.enable = true;
@@ -12,8 +11,7 @@
     enable = true;
     style = "gtk2";
   };
-  environment.systemPackages = with pkgs; [
-  ];
+  environment.systemPackages = with pkgs; [ usbutils android-udev-rules ];
 
   # steam has to be done here
   programs.steam.enable = true;
@@ -60,19 +58,23 @@
   users.users.${user} = {
     isNormalUser = true;
     description = "Me!";
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "plugdev" ];
     # import modules
-    packages = with pkgs ;[
-    ];
+    packages = with pkgs; [ ];
     shell = pkgs.bashInteractive;
     initialPassword = "password"; # TODO fix later with sops-nix
+  };
+
+  services.udisks2 = { enable = true; };
+  services.udev = {
+    enable = true;
+    packages = [ pkgs.udisks2 ];
   };
 
   # Install Fonts
   fonts = {
     enableDefaultFonts = true;
-    fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
-    ];
+    fonts = with pkgs;
+      [ (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; }) ];
   };
 }

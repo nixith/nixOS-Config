@@ -3,6 +3,8 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,21 +34,36 @@
     #};
   };
 
-  outputs = { self, nixpkgs, hyprland, home-manager, nixos-hardware, nix-colors
-    , nix-doom-emacs, ... }@inputs:
+  outputs =
+    { self
+    , nixpkgs
+    , hyprland
+    , home-manager
+    , nixos-hardware
+    , nix-colors
+    , nix-doom-emacs
+    , ...
+    }@inputs:
 
     let
       system = "x86_64-linux";
       #nixpkgs.config.allowUnfree = true;
       pkgs = nixpkgs.legacyPackages.${system};
       user = "ryan";
-    in {
+
+
+      overlays = [
+        inputs.neovim-nightly-overlay.overlay
+      ];
+    in
+    {
       nixosConfigurations = import ./hosts {
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs hyprland nixos-hardware user self;
       }; # Imports ./hosts/default.nix
 
       homeConfigurations = {
+        nixpkgs.overlays = overlays;
 
         Nebula = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
