@@ -36,6 +36,8 @@ in {
     swaylock-fancy
     swayidle
     brightnessctl
+    grim
+    sway-contrib.grimshot
   ];
 
   services.wlsunset = {
