@@ -9,7 +9,7 @@
 
   # Get a newer version of emacs
   services.emacs = { enable = true; };
-  nixpkgs.overlays = [ (import ./overlays/python) ];
+  # nixpkgs.overlays = [ (import ./overlays/python) ];
   programs.doom-emacs = rec {
     enable = true;
     doomPrivateDir = ./doom.d;
@@ -58,8 +58,8 @@
 
     #python
     nodePackages_latest.pyright # lsp
-    haskellPackages.tree-sitter-python
-    tree-sitter-grammars.tree-sitter-python
+    #haskellPackages.tree-sitter-python
+    #tree-sitter-grammars.tree-sitter-python
 
     # Shell
     nodePackages_latest.bash-language-server

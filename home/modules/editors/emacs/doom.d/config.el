@@ -32,10 +32,9 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
+(setq catppuccin-flavor 'mocha) ;; or 'latte, 'macchiato, or 'mocha
 (setq doom-theme 'catppuccin)
-(load-theme 'catppuccin t t)
-(setq catppuccin-flavor 'frappe) ;; or 'latte, 'macchiato, or 'mocha
-(catppuccin-reload)
+;;(load-theme 'catppuccin t )
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
