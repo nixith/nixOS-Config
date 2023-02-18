@@ -1,4 +1,12 @@
-{ config, lib, pkgs, user, inputs, nix-colors, systemType, nix-doom-emacs, ...
+{ config
+, lib
+, pkgs
+, user
+, inputs
+, nix-colors
+, systemType
+, nix-doom-emacs
+, ...
 }:
 
 let nvidia = builtins.hasAttr "nvidia" config.hardware;
@@ -35,10 +43,11 @@ in {
       gnome.nautilus
       gnome.gnome-disk-utility
       partition-manager
+      zig
     ];
   };
   home.sessionVariables = {
-    EDITOR = "helix";
+    EDITOR = "nvim";
     SHELL = "fish";
 
     XDG_CURRENT_DESKTOP = "Hyprland";
@@ -74,6 +83,7 @@ in {
     ./modules/Gui/newsboat
     ./modules/editors/helix
     ./modules/editors/emacs
+    ./modules/editors/neovim
     ./modules/Terminals/Wezterm
     ./modules/Terminals/Kitty
     #./modules/languages/python

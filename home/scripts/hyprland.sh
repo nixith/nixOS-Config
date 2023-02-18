@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export EDITOR="helix"
+export EDITOR="nvim"
 export SHELL="fish"
 export XDG_CURRENT_DESKTOP="Hyprland"
 export XDG_SESSION_TYPE="wayland"
