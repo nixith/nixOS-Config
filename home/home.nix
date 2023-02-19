@@ -55,15 +55,8 @@ in {
     XDG_SESSION_DESKTOP = "Hyprland";
 
     QT_AUTO_SCREEN_SCALE_FACTOR = 1;
-    QT_QPA_PLATFORM = "wayland,xcb";
     QT_QAYLAND_DISABLE_WINDOWDECORATION = 1;
     QT_QPA_PLATFORMTHEME = "qt5ct";
-
-    GBM_BACKEND = "nvidia-drm";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    LIBVA_DRIVER_NAME = "nvidia";
-    WLR_NO_HARDWARE_CURSORS = 1;
-    __GL_VRR_ALLOWED = 0;
   };
   # User Configuration
   xdg.userDirs = {
@@ -84,7 +77,7 @@ in {
     ./modules/editors/helix
     ./modules/editors/emacs
     ./modules/editors/neovim
-    ./modules/Terminals/Wezterm
+    #./modules/Terminals/Wezterm
     ./modules/Terminals/Kitty
     #./modules/languages/python
     #./modules/Meta/cachix.nix
