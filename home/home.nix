@@ -46,6 +46,7 @@ in
       partition-manager
       zig
       glfw-wayland
+      xdg-desktop-portal-gtk
     ];
   };
   home.sessionVariables = {
