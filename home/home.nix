@@ -10,7 +10,8 @@
 }:
 
 let nvidia = builtins.hasAttr "nvidia" config.hardware;
-in {
+in
+{
   nixpkgs.config.allowUnfree = true;
   #cachic  
 
@@ -64,7 +65,9 @@ in {
     enable = true;
     createDirectories = true;
   };
+
   imports = [
+    ./modules/services/syncthing/default.nix
     ./modules/desktops/Wayland/hyprland/default.nix
     ./modules/desktops/Wallpapers
     ./modules/gtk/catppuccin.nix
