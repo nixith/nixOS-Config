@@ -44,6 +44,7 @@ in {
       gnome.gnome-disk-utility
       partition-manager
       zig
+      glfw-wayland
     ];
   };
   home.sessionVariables = {
