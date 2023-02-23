@@ -42,6 +42,9 @@
     , nixos-hardware
     , nix-colors
     , nix-doom-emacs
+    , neovim-nightly-overlay
+    , Hyprland-Desktop-Portal
+    , Hyprland-Waybar
     , ...
     }@inputs:
 
@@ -106,3 +109,4 @@
 
     };
 }
+

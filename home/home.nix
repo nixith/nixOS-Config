@@ -67,6 +67,7 @@ in
     createDirectories = true;
   };
 
+
   imports = [
     ./modules/services/syncthing/default.nix
     ./modules/desktops/Wayland/hyprland/default.nix
