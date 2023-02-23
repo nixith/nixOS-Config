@@ -2,13 +2,15 @@
 let
   user = user;
 
-  monitors = if computer == "Galaxia" then
-    (import ./snippets/DesktopMonitors.nix { })
-  else ''
-    monitor=,preferred,auto,auto
-  '';
+  monitors =
+    if computer == "Galaxia" then
+      (import ./snippets/DesktopMonitors.nix { })
+    else ''
+      monitor=,preferred,auto,auto
+    '';
 
-in {
+in
+{
   imports = [ ../General/Waybar ../General/Rofi ../General/Dunst ];
 
   # Fix waybar
@@ -30,6 +32,10 @@ in {
   };
 
   home.packages = with pkgs; [
+    xdg-desktop-portal
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-gtk
+    xdg-dbus-proxy
     swaybg
     polkit_gnome
     wl-clipboard

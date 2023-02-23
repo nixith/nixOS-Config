@@ -114,7 +114,7 @@
   bind=SUPER,X,exec, systemctl suspend
 
   bind=,print,exec,XDG_CURRENT_DESKTOP=Sway flameshot gui
-  bind=SUPER,print,exec,grimshot save area
+  bind=SUPER,print,exec,grimshot copy area
 
   bind=SUPER,left,movefocus,l
   bind=SUPER,right,movefocus,r
