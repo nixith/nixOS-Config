@@ -32,6 +32,7 @@
     #  url = "github:nix-community/emacs-overlay";
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
+    nil = { url = "github:oxalica/nil"; };
   };
 
   outputs =
@@ -45,6 +46,7 @@
     , neovim-nightly-overlay
     , Hyprland-Desktop-Portal
     , Hyprland-Waybar
+    , nil
     , ...
     }@inputs:
 
