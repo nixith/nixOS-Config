@@ -6,10 +6,13 @@
 , nix-colors
 , systemType
 , nix-doom-emacs
+, computer
 , ...
 }:
 
-let nvidia = builtins.hasAttr "nvidia" config.hardware;
+let 
+windowManager = ./modules/desktops/Wayland/hyprland/default.nix;
+Nvidia = if computer == "Galaxia" then true else false;
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -62,7 +65,6 @@ in
 
   imports = [
     ./modules/services/syncthing/default.nix
-    ./modules/desktops/Wayland/hyprland/default.nix
     ./modules/desktops/Wallpapers
     ./modules/gtk/catppuccin.nix
     ./modules/CLI/Tools.nix
@@ -73,15 +75,15 @@ in
     ./modules/Gui/xournalpp
     ./modules/Gui/newsboat
     ./modules/editors/helix
-    ./modules/editors/emacs
+    #./modules/editors/emacs
     ./modules/editors/neovim
     #./modules/Terminals/Wezterm
     ./modules/Terminals/Kitty
     #./modules/languages/python
     #./modules/Meta/cachix.nix
     nix-colors.homeManagerModule
-
-  ] ++ [ ./NvidiaHome.nix ];
+    (if Nvidia then ./NvidiaHome.nix else windowManager)
+  ];
 
   #caches.cachix = [ "nix-community" "hyprland" ];
 

@@ -1,6 +1,8 @@
-{ config, lib, home-manager, ... }:
+{ config, lib, home-manager, computer, ... }:
 {
-  imports = [
+  imports = (if computer == "Galaxia" then [
     ./modules/desktops/Wayland/hyprland/NvidiaHyprland.nix
-  ];
+  ]
+  else []);
+
 }
