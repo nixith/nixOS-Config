@@ -18,6 +18,6 @@ export WLR_NO_HARDWARE_CURSORS=1
 export __GL_VRR_ALLOWED=0
 
 export SHELL="/usr/bin/env fish"
-export EDITOR="hx"
+export EDITOR="nvim"
 
 sleep 1 & Hyprland
