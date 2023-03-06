@@ -10,9 +10,9 @@
 , ...
 }:
 
-let 
-windowManager = ./modules/desktops/Wayland/hyprland/default.nix;
-Nvidia = if computer == "Galaxia" then true else false;
+let
+  windowManager = ./modules/desktops/Wayland/hyprland/default.nix;
+  Nvidia = if computer == "Galaxia" then true else false;
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -49,7 +49,6 @@ in
       partition-manager
       zig
       glfw-wayland
-      xdg-desktop-portal-gtk
     ];
   };
   home.sessionVariables = {
@@ -75,6 +74,7 @@ in
     ./modules/Gui/xournalpp
     ./modules/Gui/newsboat
     ./modules/editors/helix
+    ./modules/Gui/QT/default.nix
     #./modules/editors/emacs
     ./modules/editors/neovim
     #./modules/Terminals/Wezterm
@@ -84,7 +84,10 @@ in
     nix-colors.homeManagerModule
     (if Nvidia then ./NvidiaHome.nix else windowManager)
   ];
-
+  services.kdeconnect = {
+    enable = true;
+    indicator = true;
+  };
   #caches.cachix = [ "nix-community" "hyprland" ];
 
   fonts.fontconfig.enable = true;
