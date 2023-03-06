@@ -10,7 +10,8 @@ let
   };
 
   lib = nixpkgs.lib;
-in {
+in
+{
 
   laptop = nixpkgs.lib.nixosSystem {
     # Laptop profile

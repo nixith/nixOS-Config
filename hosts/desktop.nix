@@ -30,7 +30,11 @@
   # Enable flatpak
   xdg.portal = {
     enable = true;
-    extraPortals = [ ];
+    extraPortals = [
+      pkgs.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal
+      pkgs.xdg-desktop-portal-gtk
+    ];
   };
   services.flatpak.enable = true;
 
