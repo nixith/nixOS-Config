@@ -68,7 +68,7 @@
     shell = pkgs.bashInteractive;
     initialPassword = "password"; # TODO fix later with sops-nix
   };
-
+  programs.kdeconnect.enable = true;
   services.udisks2 = { enable = true; };
   services.udev = {
     enable = true;

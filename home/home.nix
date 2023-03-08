@@ -84,10 +84,6 @@ in
     nix-colors.homeManagerModule
     (if Nvidia then ./NvidiaHome.nix else windowManager)
   ];
-  services.kdeconnect = {
-    enable = true;
-    indicator = true;
-  };
   #caches.cachix = [ "nix-community" "hyprland" ];
 
   fonts.fontconfig.enable = true;
