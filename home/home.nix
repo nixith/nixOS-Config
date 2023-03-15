@@ -1,20 +1,10 @@
-{ config
-, lib
-, pkgs
-, user
-, inputs
-, nix-colors
-, systemType
-, nix-doom-emacs
-, computer
-, ...
-}:
+{ config, lib, pkgs, user, inputs, nix-colors, systemType, nix-doom-emacs
+, computer, ... }:
 
 let
   windowManager = ./modules/desktops/Wayland/hyprland/default.nix;
   Nvidia = if computer == "Galaxia" then true else false;
-in
-{
+in {
   nixpkgs.config.allowUnfree = true;
   #cachic  
 
@@ -61,7 +51,6 @@ in
     createDirectories = true;
   };
 
-
   imports = [
     ./modules/services/syncthing/default.nix
     ./modules/desktops/Wallpapers
@@ -75,7 +64,7 @@ in
     ./modules/Gui/newsboat
     ./modules/editors/helix
     ./modules/Gui/QT/default.nix
-    #./modules/editors/emacs
+    ./modules/editors/emacs
     ./modules/editors/neovim
     #./modules/Terminals/Wezterm
     ./modules/Terminals/Kitty
@@ -87,6 +76,8 @@ in
   #caches.cachix = [ "nix-community" "hyprland" ];
 
   fonts.fontconfig.enable = true;
+
+  programs.ncspot = { enable = true; };
 
   colorScheme = nix-colors.colorSchemes.catppuccin;
 }
