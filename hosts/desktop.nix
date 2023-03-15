@@ -65,11 +65,16 @@
     extraGroups = [ "networkmanager" "wheel" "video" "audio" "plugdev" ];
     # import modules
     packages = with pkgs; [ ];
-    shell = pkgs.bashInteractive;
+    shell = pkgs.fish;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPLMtBjXvadChqa2pZIvJ6eHrkcYD87/skfl3Kjwg6dO ryan@nixos"
+    ];
     initialPassword = "password"; # TODO fix later with sops-nix
   };
   programs.kdeconnect.enable = true;
   services.udisks2 = { enable = true; };
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
   services.udev = {
     enable = true;
     packages = [ pkgs.udisks2 ];
