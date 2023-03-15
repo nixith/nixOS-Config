@@ -51,15 +51,13 @@
     }@inputs:
 
     let
+
       system = "x86_64-linux";
+
       #nixpkgs.config.allowUnfree = true;
       pkgs = nixpkgs.legacyPackages.${system};
-      user = "ryan";
-
-
-      overlays = [
-        inputs.neovim-nightly-overlay.overlay
-      ];
+      User = "ryan";
+      overlays = [ inputs.neovim-nightly-overlay.overlay ];
     in
     {
       nixosConfigurations = import ./hosts {
