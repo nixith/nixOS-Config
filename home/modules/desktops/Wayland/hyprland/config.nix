@@ -163,7 +163,7 @@
 
   exec-once=emacs --daemon
   exec-once=XDG_CURRENT_DESKTOP=Sway flameshot
-  exec-once="${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
+  exec-once="exec ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
   exec-once=wlsunset -l 35.6 -L -78.8 # Screen dimmer/oranger based on sunrise and sunset
   exec-once=waybar # -c ~/.config/hypr/waybar/config.json -s ~/.config/hypr/waybar/style.css
   exec=swaybg -i ~/Pictures/wallpapers/tropic_island_night.jpg -m fill
