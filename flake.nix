@@ -56,7 +56,7 @@
 
       #nixpkgs.config.allowUnfree = true;
       pkgs = nixpkgs.legacyPackages.${system};
-      User = "ryan";
+      user = "ryan";
       overlays = [ inputs.neovim-nightly-overlay.overlay ];
     in
     {
