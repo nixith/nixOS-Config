@@ -48,4 +48,7 @@
 ;(unpin! t)
 ;
 ;;; config
+;;;
+(package! corfu)
+(package! cape)
 (package! org-fragtog)
