@@ -1,10 +1,20 @@
-{ config, lib, pkgs, user, inputs, nix-colors, systemType, nix-doom-emacs
-, computer, ... }:
+{ config
+, lib
+, pkgs
+, user
+, inputs
+, nix-colors
+, systemType
+, nix-doom-emacs
+, computer
+, ...
+}:
 
 let
   windowManager = ./modules/desktops/Wayland/hyprland/default.nix;
   Nvidia = if computer == "Galaxia" then true else false;
-in {
+in
+{
   nixpkgs.config.allowUnfree = true;
   #cachic  
 
@@ -33,12 +43,16 @@ in {
       bitwarden-cli
       git
       zellij
+      discord
       xfce.thunar
       gnome.nautilus
       gnome.gnome-disk-utility
       partition-manager
+      spotify
+      spicetify-cli
       zig
       glfw-wayland
+      hyfetch
     ];
   };
   home.sessionVariables = {
