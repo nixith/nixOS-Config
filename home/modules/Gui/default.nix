@@ -9,8 +9,8 @@
     logseq
 
     # Gaming
-    steamcmd
-    steam-tui
+    #steamcmd
+    #steam-tui
     gamescope
     gamemode
     mesa
