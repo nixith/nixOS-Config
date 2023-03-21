@@ -43,6 +43,7 @@ in
   };
 
   home.packages = with pkgs; [
+    slurp
     xdg-desktop-portal
     xdg-desktop-portal-wlr
     xdg-desktop-portal-gtk
