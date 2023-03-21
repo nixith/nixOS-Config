@@ -14,7 +14,7 @@
   environment.systemPackages = with pkgs; [ usbutils android-udev-rules ];
 
   # steam has to be done here
-  programs.steam.enable = true;
+  programs.steam.enable = false;
 
   # Configure keymap in X11
   services.xserver = {
