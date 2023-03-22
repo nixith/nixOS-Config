@@ -66,6 +66,7 @@ in
   };
 
   imports = [
+
     ./modules/services/syncthing/default.nix
     ./modules/desktops/Wallpapers
     ./modules/gtk/catppuccin.nix
@@ -73,9 +74,12 @@ in
     ./modules/CLI/btop
     ./modules/shells/Fish
     ./modules/shells/Starship
+
+    # Gui Tools
     ./modules/Gui
     ./modules/Gui/xournalpp
     ./modules/Gui/newsboat
+    ./modules/Gui/zathura/default.nix
     ./modules/editors/helix
     ./modules/Gui/QT/default.nix
     ./modules/editors/emacs
