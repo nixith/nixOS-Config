@@ -2,8 +2,10 @@
 {
   programs.zathura = {
       enable = true;
-      extraconfig = ''
+      extraConfig = ''
       include catppuccin-mocha
+      set selection-clipboard clipboard
+      set recolor
       '';
     };
   xdg.configFile."zathura/catppuccin-mocha".source = ./catppuccin-mocha;
