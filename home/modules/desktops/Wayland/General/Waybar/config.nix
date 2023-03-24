@@ -7,7 +7,8 @@
     #"spacing" = 4, # Gaps between modules (4px)
     # Choose the order of the modules
 
-    "modules-left" = [ "wlr/workspaces" "hyprland/window" ];
+    "modules-left" = [ "wlr/workspaces" ];
+    # "modules-left" = [ "wlr/workspaces" "hyprland/window" ];
     "modules-center" = [ ];
     "modules-right" = [
       "pulseaudio"
