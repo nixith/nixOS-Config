@@ -115,7 +115,7 @@
   bind=SUPER,W,exec,firefox
   bind=SUPER,X,exec, systemctl suspend
 
-  bind=,print,exec,XDG_CURRENT_DESKTOP=Sway flameshot gui
+  bind=,print,exec,flatpak run org.flameshot.Flameshot gui
   bind=SUPER,print,exec,grimshot copy area
 
   bind=SUPER,left,movefocus,l
@@ -162,7 +162,7 @@
    bindm=SUPER,mouse:273,resizewindow
 
   exec-once=emacs --daemon
-  exec-once=XDG_CURRENT_DESKTOP=Sway flameshot
+  exec-once=XDG_CURRENT_DESKTOP=Sway org.flameshot.Flameshot
   exec-once="exec ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
   exec-once=wlsunset -l 35.6 -L -78.8 # Screen dimmer/oranger based on sunrise and sunset
   exec-once=waybar # -c ~/.config/hypr/waybar/config.json -s ~/.config/hypr/waybar/style.css
