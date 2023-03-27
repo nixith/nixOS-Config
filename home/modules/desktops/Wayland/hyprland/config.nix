@@ -145,9 +145,10 @@
   bind=ALT,9,movetoworkspace,9
   bind=ALT,0,movetoworkspace,10
 
-  bind=SUPERALT,space,exec,playerctl play-pause
-  bind=SUPERALT,bracketright,exec,playerctl next
-  bind=SUPERALT,bracketleft,exec,playerctl previous
+  bind=SUPERALT,space,exec,playerctl --player=%any,firefox play-pause
+  bind=SUPERALT,bracketright,exec,playerctl --player=%any,firefox next
+  bind=SUPERALT,bracketleft,exec,playerctl --player=%any,firefox previous
+  bind=,XF86AudioPlay,exec,playerctl --player=%any,firefox play-pause
   bind=,XF86AudioRaiseVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ +5%
   bind=,XF86AudioLowerVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ -5%
   bind=,XF86AudioMute,exec,pactl set-sink-mute @DEFAULT_SINK@ toggle
