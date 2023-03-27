@@ -82,7 +82,7 @@ in
     ./modules/Gui/zathura/default.nix
     ./modules/editors/helix
     ./modules/Gui/QT/default.nix
-    ./modules/editors/emacs
+    #./modules/editors/emacs
     ./modules/editors/neovim
     #./modules/Terminals/Wezterm
     ./modules/Terminals/Kitty
