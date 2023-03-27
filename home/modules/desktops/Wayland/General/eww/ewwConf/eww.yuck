@@ -1,0 +1,54 @@
+
+(defwidget bar1 []
+  (centerbox :class "bar"
+             :orientation "h"
+  (box :orientation "h"
+       :valign "center"
+       :class "bar"
+       (workspaces))
+  (box :orientation "h"
+       :class "bar"
+    (musicStatus))
+  (box)))
+
+
+
+
+(deflisten music :initial ""
+  "playerctl --player=%any,firefox --follow metadata --format '{{ artist }} - {{ title }}' || true"
+)
+
+(deflisten playing :initial ""
+  "playerctl --player=%any,firefox --follow status")
+
+(deflisten workspace "scripts/get-workspaces")
+
+(defwidget workspaces []
+           (literal
+            :content workspace))
+
+(defwidget musicStatus []
+  (revealer :class "music"
+       :orientation "v"
+       :space-evenly false
+       :halign "center"
+       ;; :visible {playing == "Playing"}
+       :reveal {playing == "Playing"}
+       :transition "crossfade"
+       ;; :duration "2000ms"
+    {music != "" ? "🎵${music}" : ""}))
+
+
+
+(defwindow bar
+           :monitor 2
+           :geometry (geometry :x "0%"
+                               :y "6px"
+                               :width "95%"
+                               :height "25px"
+                               :anchor "bottom center")
+           :stacking "bottom"
+           :focusable false
+           :exclusive true
+    (bar1))
+
