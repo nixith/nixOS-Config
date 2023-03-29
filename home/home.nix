@@ -53,11 +53,13 @@ in
       zig
       glfw-wayland
       hyfetch
+      audacity
+      (pkgs.nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
     ];
   };
   home.sessionVariables = {
     EDITOR = "nvim";
-    SHELL = "fish";
+    SHELL = "nu";
   };
   # User Configuration
   xdg.userDirs = {
@@ -73,6 +75,7 @@ in
     ./modules/CLI/Tools.nix
     ./modules/CLI/btop
     ./modules/shells/Fish
+    ./modules/shells/nushell
     ./modules/shells/Starship
 
     # Gui Tools
