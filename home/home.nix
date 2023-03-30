@@ -48,8 +48,6 @@ in
       gnome.nautilus
       gnome.gnome-disk-utility
       partition-manager
-      spotify
-      spicetify-cli
       zig
       glfw-wayland
       hyfetch
@@ -59,7 +57,7 @@ in
   };
   home.sessionVariables = {
     EDITOR = "nvim";
-    SHELL = "nu";
+    SHELL = "fish";
   };
   # User Configuration
   xdg.userDirs = {
@@ -69,17 +67,19 @@ in
 
   imports = [
 
+
     ./modules/services/syncthing/default.nix
     ./modules/desktops/Wallpapers
     ./modules/gtk/catppuccin.nix
     ./modules/CLI/Tools.nix
     ./modules/CLI/btop
     ./modules/shells/Fish
-    ./modules/shells/nushell
+    #./modules/shells/nushell
     ./modules/shells/Starship
 
     # Gui Tools
     ./modules/Gui
+    ./modules/Gui/spotify
     ./modules/Gui/xournalpp
     ./modules/Gui/newsboat
     ./modules/Gui/zathura/default.nix

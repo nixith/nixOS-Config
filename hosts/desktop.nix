@@ -71,6 +71,7 @@
     ];
     initialPassword = "password"; # TODO fix later with sops-nix
   };
+  programs.fish.enable = true;
   programs.kdeconnect.enable = true;
   services.udisks2 = { enable = true; };
   services.devmon.enable = true;

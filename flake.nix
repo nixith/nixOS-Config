@@ -32,6 +32,9 @@
     #  url = "github:nix-community/emacs-overlay";
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
+
+
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
     nil = { url = "github:oxalica/nil"; };
   };
 
@@ -45,8 +48,9 @@
     , nix-doom-emacs
     , neovim-nightly-overlay
     , Hyprland-Desktop-Portal
-    , Hyprland-Waybar
-    , nil
+    , Hyprland-Waybar #Too remove later
+    , nil #gets latest version of nil
+    , spicetify-nix
     , ...
     }@inputs:
 
