@@ -14,27 +14,29 @@
     enable = true;
     doomPrivateDir = ./doom.d;
 
-    doomPackageDir = let
-      filteredPath = builtins.path {
-        path = doomPrivateDir;
-        name = "doom-private-dir-filtered";
-        filter = path: type:
-          builtins.elem (baseNameOf path) [ "init.el" "packages.el" ];
-      };
-    in pkgs.linkFarm "doom-packages-dir" [
-      {
-        name = "init.el";
-        path = "${filteredPath}/init.el";
-      }
-      {
-        name = "packages.el";
-        path = "${filteredPath}/packages.el";
-      }
-      {
-        name = "config.el";
-        path = pkgs.emptyFile;
-      }
-    ];
+    doomPackageDir =
+      let
+        filteredPath = builtins.path {
+          path = doomPrivateDir;
+          name = "doom-private-dir-filtered";
+          filter = path: type:
+            builtins.elem (baseNameOf path) [ "init.el" "packages.el" ];
+        };
+      in
+      pkgs.linkFarm "doom-packages-dir" [
+        {
+          name = "init.el";
+          path = "${filteredPath}/init.el";
+        }
+        {
+          name = "packages.el";
+          path = "${filteredPath}/packages.el";
+        }
+        {
+          name = "config.el";
+          path = pkgs.emptyFile;
+        }
+      ];
   };
 
   home.packages = with pkgs; [
@@ -71,7 +73,7 @@
     nodePackages_latest.vscode-json-languageserver
 
     #nix
-    nil
+    #nil
 
     #vterm
     cmake
