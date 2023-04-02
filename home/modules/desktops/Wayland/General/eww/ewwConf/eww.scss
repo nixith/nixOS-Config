@@ -1,14 +1,30 @@
-@import "mocha.scss";
+@import "mocha";
 
 * {
   all: unset; //Unsets everything so you can style everything from scratch
+  font-size: 15;
+  font-family: JetBrainsMono;
+  background-color: $base;
 }
 
 //Global Styles
 .bar {
   background-color: #1e1e2e;
-  color: #b4befe;
-  padding: 2px;
+  padding: 0px;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+.workspaceUnfocused {
+  background-color: transparent;
+  padding: 6px;
+  color: $text;
+  margin: 0 2px;
+}
+
+.workspaceFocused {
+  @extend .workspaceUnfocused;
+  color: $mauve;
 }
 
 // Styles on classes (see eww.yuck for more information)
@@ -51,6 +67,6 @@
 .label-ram {
   font-size: large;
 }
-.workspaces button:hover {
+.workspace button:hover {
   color: #d35d6e;
 }

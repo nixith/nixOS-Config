@@ -1,5 +1,5 @@
 
-(defwidget bar1 []
+(defwidget bar []
   (centerbox :class "bar"
              :orientation "h"
   (box :orientation "h"
@@ -12,6 +12,15 @@
   (box)))
 
 
+(deflisten temperatures :initial ""
+  "watch sensors -j")
+
+
+
+( defwidget ram []
+  (box
+    "${round(EWW_RAM.used_mem_perc)}%"))
+
 
 
 (deflisten music :initial ""
@@ -21,11 +30,30 @@
 (deflisten playing :initial ""
   "playerctl --player=%any,firefox --follow status")
 
-(deflisten workspace "scripts/get-workspaces")
-
+(deflisten workspaces :initial "[]" "scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "scripts/get-active-workspaces")
 (defwidget workspaces []
-           (literal
-            :content workspace))
+  (eventbox :onscroll "bash ./scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget"
+    (box :space-evenly false
+      (label :text "${workspaces}${current_workspace}" :visible false)
+      (for workspace in workspaces
+        
+        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (box :class "workspace-entry ${workspace.id == current_workspace ? "workspaceFocused" : "workspaceUnfocused"} ${workspace.windows > 0 ? "occupied" : "empty"}"
+               :visible {workspace.windows > 0 || workspace.id == current_workspace}
+            (label :text "${workspace.id}")
+            )
+          )
+        )
+      )
+    )
+  )
+
+;; (deflisten workspace "scripts/get-workspaces")
+;;
+;; (defwidget workspaces []
+;;            (literal
+;;             :content workspace))
 
 (defwidget musicStatus []
   (revealer :class "music"
@@ -36,12 +64,12 @@
        :reveal {playing == "Playing"}
        :transition "crossfade"
        ;; :duration "2000ms"
-    {music != "" ? "🎵${music}" : ""}))
+    {music != "" ? "${music}" : ""}))
 
 
 
 (defwindow bar
-           :monitor 2
+           :monitor 0
            :geometry (geometry :x "0%"
                                :y "6px"
                                :width "95%"
@@ -50,5 +78,5 @@
            :stacking "bottom"
            :focusable false
            :exclusive true
-    (bar1))
+    (bar))
 
