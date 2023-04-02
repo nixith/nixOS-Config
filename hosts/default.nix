@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, nixos-hardware, self, user, hyprland, ... }:
+{ lib, inputs, nixpkgs, nixos-hardware, self, user, hyprland, sops-nix, ... }:
 # This essentially extends the flake
 # do hostname - lib.nixosSystem {} to define a config Make a subfolder for each config
 # Build with nixos-rebuild --flake .#{configName} (I think)
@@ -18,6 +18,7 @@ in
     inherit system;
 
     modules = [
+      sops-nix.nixosModules.sops
 
       ./laptop
       ./system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
