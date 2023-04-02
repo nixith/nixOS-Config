@@ -1,5 +1,5 @@
 # File that contains the defaults for graphical desktops
-{ config, pkgs, user, ... }:
+{ config, pkgs, user, inputs, ... }:
 
 {
 
@@ -64,7 +64,7 @@
     description = "Me!";
     extraGroups = [ "networkmanager" "wheel" "video" "audio" "plugdev" ];
     # import modules
-    packages = with pkgs; [ ];
+    packages = with pkgs; [ ffmpeg  ];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPLMtBjXvadChqa2pZIvJ6eHrkcYD87/skfl3Kjwg6dO ryan@nixos"
