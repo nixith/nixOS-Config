@@ -6,6 +6,7 @@
 , nix-colors
 , systemType
 , nix-doom-emacs
+, spicetify-nix
 , computer
 , ...
 }:
@@ -18,10 +19,11 @@ in
   nixpkgs.config.allowUnfree = true;
   #cachic  
 
-  #nix.settings = {
-  #  substituters = [ "https://hyprland.cachix.org" ];
-  #  trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-  #};
+  gc = {
+    automatic = true;
+    dates = "weekly"; 
+    options = "--delete-older-than 30d";
+  };
 
   home.stateVersion = "22.11";
   programs.home-manager.enable =
@@ -76,10 +78,11 @@ in
     ./modules/shells/Fish
     #./modules/shells/nushell
     ./modules/shells/Starship
+    # ./modules/Gui/spotify
+
 
     # Gui Tools
     ./modules/Gui
-    ./modules/Gui/spotify
     ./modules/Gui/xournalpp
     ./modules/Gui/newsboat
     ./modules/Gui/zathura/default.nix
@@ -95,10 +98,13 @@ in
     (if Nvidia then ./NvidiaHome.nix else windowManager)
   ];
   #caches.cachix = [ "nix-community" "hyprland" ];
-
   fonts.fontconfig.enable = true;
 
-  programs.ncspot = { enable = true; };
+
+
+  programs.ncspot = {
+    enable = true;
+  };
 
   colorScheme = nix-colors.colorSchemes.catppuccin;
 }
