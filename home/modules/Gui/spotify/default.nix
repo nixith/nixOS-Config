@@ -1,35 +1,9 @@
-{ pkgs, lib, spicetify-nix, ... }:
-let
-  spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
-in
+{ pkgs, ... }:
+
 {
-  # allow spotify to be installed if you don't have unfree enabled already
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "spotify"
-  ];
+  home.packages = with pkgs;
+    [ spotify-tui ];
 
-  # import the flake's module for your system
-  imports = [ spicetify-nix.homeManagerModule ];
-
-  # configure spicetify :)
-
-  programs.spicetify =
-    {
-      spotifyPackage = pkgs.spotify;
-
-      enable = true;
-      theme = spicePkgs.themes.catppuccin-mocha;
-      colorScheme = "mauve";
-
-      enabledExtensions = with spicePkgs.extensions; [
-        fullAppDisplay
-        shuffle # shuffle+ (special characters are sanitized out of ext names)
-        hidePodcasts
-        bookmark
-        keyboardShortcut
-        groupSession
-        powerBar
-      ];
-    };
+  programs.spotifyd = { };
 }
 
