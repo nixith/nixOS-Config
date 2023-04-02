@@ -40,17 +40,31 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  #Docker
-  #virtualisation.docker.enable = true;
-  #virtualisation.docker.storageDriver = "btrfs";
+  #Podman
+  virtualisation.podman = {
+    enable = true;
+  };
+
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+    };
+  };
+  virtualisation.spiceUSBRedirection.enable = true;
+  programs.dconf.enable = true;
+  #Distrobox
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
     description = "Me!";
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" "plugdev" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "plugdev" "libvirtd" ];
     # import modules
-    packages = with pkgs; [ ];
+    packages = with pkgs; [
+      distrobox
+      virt-manager
+    ];
     initialPassword = "password"; # TODO fix later with sops-nix
 
   };
