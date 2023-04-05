@@ -7,13 +7,13 @@
 
     # Grab binaries faster from sources
     extra-substituters = [
-    "https://nix-community.cachix.org"
+      "https://nix-community.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
     http-connections = 0; #No limit on number of connections
-    
+
     # nix store optimizations
     auto-optimise-store = true;
 
