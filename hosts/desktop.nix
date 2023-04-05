@@ -81,6 +81,11 @@
     packages = [ pkgs.udisks2 ];
   };
 
+  programs.gamemode = {
+      enable = true;
+      enableRenice = true;
+    };
+
   # Install Fonts
   fonts = {
     enableDefaultFonts = true;
