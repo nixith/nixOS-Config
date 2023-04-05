@@ -55,6 +55,9 @@
   programs.dconf.enable = true;
   #Distrobox
 
+
+  # ZRAM
+  zramSwap.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
