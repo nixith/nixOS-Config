@@ -19,12 +19,7 @@ in
   nixpkgs.config.allowUnfree = true;
   #cachic  
 
-  gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
-
+  #
   home.stateVersion = "22.11";
   programs.home-manager.enable =
     true; # enable home manager and allow it to manage itself
