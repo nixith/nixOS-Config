@@ -21,6 +21,8 @@ let
   '';
 in
 {
+
+  # actually enable hyprland
   imports = [ ../General/Waybar ../General/Rofi ../General/Dunst ];
 
   # Fix waybar
@@ -39,6 +41,11 @@ in
       inherit monitors;
       inherit HyprEnv;
     });
+    xwayland = {
+      enable = true;
+      hidpi = true;
+    };
+    nvidiaPatches = (if computer == "Galaxia" then true else false);
     recommendedEnvironment = true;
   };
 
