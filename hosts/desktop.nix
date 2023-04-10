@@ -64,7 +64,7 @@
     description = "Me!";
     extraGroups = [ "networkmanager" "wheel" "video" "audio" "plugdev" ];
     # import modules
-    packages = with pkgs; [ ffmpeg  ];
+    packages = with pkgs; [ ffmpeg ];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPLMtBjXvadChqa2pZIvJ6eHrkcYD87/skfl3Kjwg6dO ryan@nixos"
@@ -82,9 +82,24 @@
   };
 
   programs.gamemode = {
-      enable = true;
-      enableRenice = true;
+    enable = true;
+    enableRenice = true;
+    settings = {
+      general = {
+        renice = 10;
+      };
+
+      # Warning: GPU optimisations have the potential to damage hardware
+      gpu = {
+        apply_gpu_optimisations = "accept-responsibility";
+        gpu_device = 0;
+        amd_performance_level = "high";
+        nv_powermizer_mode = 0;
+      };
+
+
     };
+  };
 
   # Install Fonts
   fonts = {
