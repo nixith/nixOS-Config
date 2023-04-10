@@ -101,6 +101,6 @@ in
     enable = true;
   };
 
-  colorScheme = nix-colors.colorSchemes.catppuccin;
+  colorScheme = nix-colors.colorSchemes.catppuccin-mocha;
 }
 
