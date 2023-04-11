@@ -24,7 +24,7 @@ in
       ./system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
       ./desktop.nix # Default for graphical desktops
 
-      hyprland.nixosModules.default
+      # hyprland.nixosModules.default
       nixos-hardware.nixosModules.lenovo-thinkpad-l13
     ];
     specialArgs = { inherit inputs user; };

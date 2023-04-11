@@ -26,6 +26,9 @@
 
   networking = {
     hostName = "nixos"; # Define your hostname.
+    networkmanager = {
+        wifi.powersave = true;
+      };
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -39,6 +42,10 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+
+  # Power Management
+  powerManagement.enable = true;
+
 
   #Podman
   virtualisation.podman = {
