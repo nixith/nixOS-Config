@@ -27,8 +27,8 @@
   networking = {
     hostName = "nixos"; # Define your hostname.
     networkmanager = {
-        wifi.powersave = true;
-      };
+      wifi.powersave = true;
+    };
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -44,12 +44,15 @@
   # services.xserver.libinput.enable = true;
 
   # Power Management
-  powerManagement.enable = true;
-
+  powerManagement = {
+    enable = true;
+    powertop.enable = true;
+    cpuFreqGovernor = "ondemand";
+  };
 
   #Podman
   virtualisation.podman = {
-    enable = true;
+    enable = false;
   };
 
   virtualisation.libvirtd = {
