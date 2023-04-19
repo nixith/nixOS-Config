@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   programs.neovim = {
     enable = true;
+    package = pkgs.neovim-nightly;
     withPython3 = true;
     withNodeJs = true;
   };

@@ -1,6 +1,14 @@
 local wezterm = require("wezterm")
 return {
 	-- Appearance
+  window_decorations = "NONE",
+  window_padding = {
+  left = 2,
+  right = 2,
+  top = 0,
+  bottom = 0,
+},
+
 	-- Colors, Opacity, and Fonts
 	font = wezterm.font("JetBrainsMono Nerd Font Mono"),
 	color_scheme = "Catppuccin Mocha",
