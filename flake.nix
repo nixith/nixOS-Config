@@ -4,18 +4,25 @@
   nixConfig = {
     # allow building without passing flags on first run
     extra-experimental-features = "nix-command flakes";
+    # Add me to trusted users
+    trusted-users = ["root" "@wheel" "ryan"];
 
     # Grab binaries faster from sources
-    extra-substituters = [
+    substituters = [
+      "https://cache.nixos.org/"
+      "https://hyprland.cachix.org"
       "https://nix-community.cachix.org"
     ];
-    extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    trusted-public-keys = [
+    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
     http-connections = 0; #No limit on number of connections
 
     # nix store optimizations
     auto-optimise-store = true;
+    allowUnfree = true;
 
   };
 
@@ -84,7 +91,7 @@
       #nixpkgs.config.allowUnfree = true;
       pkgs = nixpkgs.legacyPackages.${system};
       user = "ryan";
-      overlays = [ inputs.neovim-nightly-overlay.overlay ];
+      overlays = [ neovim-nightly-overlay.overlay ];
     in
     {
       nixosConfigurations = import ./hosts {
@@ -111,6 +118,7 @@
           extraSpecialArgs = {
             inherit nix-colors self;
             computer = "Nebula";
+            inherit neovim-nightly-overlay;
           };
 
         };
@@ -130,6 +138,7 @@
           extraSpecialArgs = {
             inherit nix-colors;
             computer = "Galaxia";
+            inherit neovim-nightly-overlay;
           };
 
         };
