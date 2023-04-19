@@ -50,15 +50,12 @@ in {
   nix = {
     settings.auto-optimise-store = true; # Optimise syslinks
     settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.trusted-users = ["root" "@wheel"];
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 5d";
     };
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
   };
 }
 
