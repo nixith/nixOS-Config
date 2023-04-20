@@ -24,7 +24,7 @@ in
     extraModprobeConfig = ''
       options nvidia-drm modeset=1
     '';
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_xanmod;
 
     loader.efi = {
       canTouchEfiVariables = true;
