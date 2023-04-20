@@ -37,7 +37,7 @@
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/2C4F-1F3A";
+      device = "/dev/nvme0n1p1";
       fsType = "vfat";
     };
 
