@@ -2,6 +2,7 @@
 { config, pkgs, user, inputs, ... }:
 
 {
+  zramSwap.enable = true;
 
   # Graphical Necesities
   programs.dconf.enable = true;
