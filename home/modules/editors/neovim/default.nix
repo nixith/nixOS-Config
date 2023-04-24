@@ -17,6 +17,16 @@
     fd
     tree-sitter
     libstdcxx5
+
+  #Python
+    # Linter
+    ruff
+
+    # LSP
+    python310Packages.jedi-language-server
+    nodePackages_latest.pyright
+    luajitPackages.lua-lsp
+    jdt-language-server
   ];
 
 }
