@@ -91,7 +91,11 @@
       #nixpkgs.config.allowUnfree = true;
       pkgs = nixpkgs.legacyPackages.${system};
       user = "ryan";
-      overlays = [ neovim-nightly-overlay.overlay ];
+      overlays = [ neovim-nightly-overlay.overlay
+      (self: super: {
+        discord = super.discord.override { withOpenASAR = true; };
+      })
+    ];
     in
     {
       nixosConfigurations = import ./hosts {
@@ -138,6 +142,8 @@
           extraSpecialArgs = {
             inherit nix-colors;
             computer = "Galaxia";
+            inherit overlays;
+
             inherit neovim-nightly-overlay;
           };
 

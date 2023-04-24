@@ -8,12 +8,12 @@
 , nix-doom-emacs
 , spicetify-nix
 , computer
+, overlays
 , neovim-nightly-overlay
 , ...
 }:
 
 let
-  overlays = [neovim-nightly-overlay.overlay];
   windowManager = ./modules/desktops/Wayland/hyprland/default.nix;
   Nvidia = if computer == "Galaxia" then true else false;
 in
