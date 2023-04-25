@@ -1,13 +1,12 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     oranchelo-icon-theme
   ];
   programs.rofi = {
     package = pkgs.rofi-wayland;
     enable = true;
-    
-    extraConfig = {  
+
+    extraConfig = {
       modi = "run,drun,calc";
       icon-theme = "Papirus";
       show-icons = true;
@@ -22,10 +21,10 @@
       display-Network = " 󰤨  Network";
       sidebar-mode = true;
     };
-    
-    theme = ./Themes/catppuccin-mocha.rasi ;
+
+    theme = ./Themes/catppuccin-mocha.rasi;
     font = "JetBrains Mono";
-    
+
     plugins = with pkgs; [
       rofi-calc
       rofimoji

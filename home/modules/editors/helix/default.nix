@@ -1,5 +1,8 @@
-{ lib, pkgs, ... }: {
-
+{
+  lib,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     nil
     nixpkgs-fmt
@@ -9,7 +12,7 @@
     settings = {
       theme = "catppuccin_Transparent";
 
-      editor.lsp = { display-messages = true; };
+      editor.lsp = {display-messages = true;};
 
       editor = {
         line-number = "relative";
@@ -21,7 +24,7 @@
         normal = "block";
         select = "underline";
       };
-      editor.indent-guides = { render = true; };
+      editor.indent-guides = {render = true;};
     };
 
     themes = {
@@ -31,9 +34,8 @@
     languages = [
       {
         name = "nix";
-        formatter = { command = "nixpkgs-fmt"; };
+        formatter = {command = "nixpkgs-fmt";};
         auto-format = true;
-
       }
     ];
   };

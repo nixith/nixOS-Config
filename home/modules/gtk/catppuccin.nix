@@ -1,7 +1,11 @@
-{ config, lib, pkgs, user, inputs, ... }:
-
-
 {
+  config,
+  lib,
+  pkgs,
+  user,
+  inputs,
+  ...
+}: {
   home.pointerCursor = {
     name = "Catppuccin-Mocha-Dark-Cursors";
     package = pkgs.catppuccin-cursors.mochaDark;
@@ -23,7 +27,7 @@
     theme = {
       name = "Catppuccin-Mocha-Standard-Mauve-Dark";
       package = pkgs.catppuccin-gtk.override {
-        accents = [ "mauve" ];
+        accents = ["mauve"];
         variant = "mocha";
       };
     };

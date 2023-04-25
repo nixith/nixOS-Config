@@ -1,7 +1,11 @@
-{ config, lib, pkgs, user, inputs, ... }:
-
-
 {
+  config,
+  lib,
+  pkgs,
+  user,
+  inputs,
+  ...
+}: {
   home.pointerCursor = {
     name = "Catppuccin-Mocha-Dark-Cursors";
     package = pkgs.catppuccin-cursors.mochaDark;
@@ -19,6 +23,5 @@
       name = "Catppuccin-Purple-Dark";
       package = pkgs.catppuccin-gtk;
     };
-
   };
 }

@@ -1,6 +1,11 @@
-{ config, lib, pkgs, user, inputs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  user,
+  inputs,
+  ...
+}: {
   programs.starship = {
     enable = true;
     enableFishIntegration = true;

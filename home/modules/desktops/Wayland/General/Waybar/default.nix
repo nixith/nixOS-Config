@@ -1,6 +1,4 @@
-{ hyprland, ... }:
-{
-
+{hyprland, ...}: {
   programs.waybar = {
     enable = true;
     settings = import ./config.nix;
@@ -9,4 +7,3 @@
 
   xdg.configFile."waybar/mocha.css".source = ./mocha.css;
 }
-

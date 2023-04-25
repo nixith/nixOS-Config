@@ -1,34 +1,35 @@
-{ config
-, lib
-, pkgs
-, user
-, inputs
-, nix-colors
-, systemType
-, nix-doom-emacs
-, spicetify-nix
-, computer
-, overlays
-, neovim-nightly-overlay
-, ...
-}:
-
-let
-  windowManager = ./modules/desktops/Wayland/hyprland/default.nix;
-  Nvidia = if computer == "Galaxia" then true else false;
-in
 {
+  config,
+  lib,
+  pkgs,
+  user,
+  inputs,
+  nix-colors,
+  systemType,
+  nix-doom-emacs,
+  spicetify-nix,
+  computer,
+  overlays,
+  neovim-nightly-overlay,
+  alejandra,
+  ...
+}: let
+  windowManager = ./modules/desktops/Wayland/hyprland/default.nix;
+  Nvidia =
+    if computer == "Galaxia"
+    then true
+    else false;
+in {
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = overlays;
-  #cachic  
+  #cachic
 
   #
   home.stateVersion = "22.11";
   programs.home-manager.enable =
     true; # enable home manager and allow it to manage itself
 
-  systemd.user.startServices =
-    "sd-switch"; # reload systemd units on config reload
+  systemd.user.startServices = "sd-switch"; # reload systemd units on config reload
 
   home = {
     username = "ryan";
@@ -53,7 +54,7 @@ in
       glfw-wayland
       hyfetch
       audacity
-      (pkgs.nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+      (pkgs.nerdfonts.override {fonts = ["FiraCode" "DroidSansMono"];})
     ];
   };
   home.sessionVariables = {
@@ -67,8 +68,6 @@ in
   };
 
   imports = [
-
-
     ./modules/services/syncthing/default.nix
     ./modules/desktops/Wallpapers
     ./modules/gtk/catppuccin.nix
@@ -78,7 +77,6 @@ in
     #./modules/shells/nushell
     ./modules/shells/Starship
     # ./modules/Gui/spotify
-
 
     # Gui Tools
     ./modules/Gui
@@ -94,12 +92,14 @@ in
     #./modules/languages/python
     #./modules/Meta/cachix.nix
     nix-colors.homeManagerModule
-    (if Nvidia then ./NvidiaHome.nix else windowManager)
+    (
+      if Nvidia
+      then ./NvidiaHome.nix
+      else windowManager
+    )
   ];
   #caches.cachix = [ "nix-community" "hyprland" ];
   fonts.fontconfig.enable = true;
-
-
 
   programs.ncspot = {
     enable = true;
@@ -107,4 +107,3 @@ in
 
   colorScheme = nix-colors.colorSchemes.catppuccin-mocha;
 }
-

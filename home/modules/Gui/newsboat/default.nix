@@ -1,12 +1,17 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.newsboat = {
     enable = true;
     autoReload = true;
-    extraConfig = builtins.readFile (./dark) + (''
+    extraConfig =
+      builtins.readFile ./dark
+      + ''
 
-      macro i set pager kitty-img-pager'');
+        macro i set pager kitty-img-pager'';
 
     urls = [
       {

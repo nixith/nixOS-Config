@@ -1,6 +1,12 @@
-{ config, lib, pkgs, user, inputs, nixpkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  user,
+  inputs,
+  nixpkgs,
+  ...
+}: {
   nixpkgs.config.allowUnfree = true;
   # Apps without Home Manager Modules
   home.packages = with pkgs; [

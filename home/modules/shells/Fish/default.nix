@@ -1,6 +1,4 @@
-{ ... }:
-{
-
+{...}: {
   programs.lsd.enable = true;
   programs.fish = {
     enable = true;
@@ -9,6 +7,5 @@
       la = "lsd -a";
     };
     shellInit = builtins.readFile ./config.fish;
-
   };
 }

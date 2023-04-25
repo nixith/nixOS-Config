@@ -1,4 +1,10 @@
-{ pkgs, nix-doom-emacs, inputs, self, ... }: rec {
+{
+  pkgs,
+  nix-doom-emacs,
+  inputs,
+  self,
+  ...
+}: rec {
   #nixpkgs.overlays = [ (import self.inputs.emacs-overlay) ];
 
   home.file."./doom.d/themes" = {
@@ -8,21 +14,20 @@
   };
 
   # Get a newer version of emacs
-  services.emacs = { enable = true; };
+  services.emacs = {enable = true;};
   # nixpkgs.overlays = [ (import ./overlays/python) ];
   programs.doom-emacs = rec {
     enable = true;
     doomPrivateDir = ./doom.d;
 
-    doomPackageDir =
-      let
-        filteredPath = builtins.path {
-          path = doomPrivateDir;
-          name = "doom-private-dir-filtered";
-          filter = path: type:
-            builtins.elem (baseNameOf path) [ "init.el" "packages.el" ];
-        };
-      in
+    doomPackageDir = let
+      filteredPath = builtins.path {
+        path = doomPrivateDir;
+        name = "doom-private-dir-filtered";
+        filter = path: type:
+          builtins.elem (baseNameOf path) ["init.el" "packages.el"];
+      };
+    in
       pkgs.linkFarm "doom-packages-dir" [
         {
           name = "init.el";

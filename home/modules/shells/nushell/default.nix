@@ -1,5 +1,8 @@
-{ pkgs, home, ... }:
 {
+  pkgs,
+  home,
+  ...
+}: {
   programs.starship.enableNushellIntegration = true;
 
   programs.nushell = {

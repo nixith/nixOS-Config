@@ -1,5 +1,10 @@
-{ inputs, self, user, nvidia, ... }:
 {
+  inputs,
+  self,
+  user,
+  nvidia,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     nvidiaPatches = true;
     extraConfig = ''
@@ -10,7 +15,5 @@
 
     '';
   };
-  imports = [ ./default.nix ];
-
-
+  imports = [./default.nix];
 }

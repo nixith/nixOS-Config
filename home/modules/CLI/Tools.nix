@@ -1,7 +1,12 @@
 # Various Useful CLI Tools
-{ config, lib, pkgs, user, inputs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  user,
+  inputs,
+  ...
+}: {
   programs = {
     bat.enable = true; # cat clone
     exa.enable = true; # ls clone
@@ -21,10 +26,8 @@
         prompt = "#cba6f7";
         "hl+" = "#f38ba8";
       };
-
     };
     zathura.enable = true;
-
   };
   home.packages = with pkgs; [
     coreutils-full

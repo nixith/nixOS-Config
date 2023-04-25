@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-{
-  home.packages = with pkgs;[
+{pkgs, ...}: {
+  home.packages = with pkgs; [
     jq
     socat
     lm_sensors

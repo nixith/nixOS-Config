@@ -7,9 +7,9 @@
     #"spacing" = 4, # Gaps between modules (4px)
     # Choose the order of the modules
 
-    "modules-left" = [ "wlr/workspaces" ];
+    "modules-left" = ["wlr/workspaces"];
     # "modules-left" = [ "wlr/workspaces" "hyprland/window" ];
-    "modules-center" = [ ];
+    "modules-center" = [];
     "modules-right" = [
       "pulseaudio"
       "network"
@@ -115,12 +115,12 @@
       "critical-threshold" = 80;
       # "format-critical" = "{temperatureC}°C {icon}";
       "format" = "{icon} {temperatureC}°C";
-      "format-icons" = [ "" "" "" ];
+      "format-icons" = ["" "" ""];
     };
     "backlight" = {
       # "device" = "acpi_video1";
       "format" = "{percent}% {icon}";
-      "format-icons" = [ "" "" "" "" "" "" "" "" "" ];
+      "format-icons" = ["" "" "" "" "" "" "" "" ""];
     };
     "battery" = {
       "states" = {
@@ -134,7 +134,7 @@
       "format-alt" = ''{time} {icon}'';
       # "format-good" = ""; # An empty format will hide the module
       # "format-full" = "";
-      "format-icons" = [ "" "" "" "" "" ];
+      "format-icons" = ["" "" "" "" ""];
     };
     "battery#bat2" = {
       "bat" = "BAT2";
@@ -163,7 +163,7 @@
         "phone" = "";
         "portable" = "";
         "car" = "";
-        "default" = [ "" "" "" ];
+        "default" = ["" "" ""];
       };
       "on-click" = "pavucontrol";
     };

@@ -1,16 +1,16 @@
 # Edit this configuration file to define what should be installed oncon
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-let
-
+{
+  config,
+  pkgs,
+  ...
+}: let
 in {
-
   # NTFS Support
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot.supportedFilesystems = ["ntfs"];
 
-  imports = [ ];
+  imports = [];
 
   time.timeZone = "America/New_York";
 
@@ -49,7 +49,7 @@ in {
 
   nix = {
     settings.auto-optimise-store = true; # Optimise syslinks
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = ["nix-command" "flakes"];
     settings.trusted-users = ["root" "@wheel"];
     gc = {
       automatic = true;
@@ -58,4 +58,3 @@ in {
     };
   };
 }
-

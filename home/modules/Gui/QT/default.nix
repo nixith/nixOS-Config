@@ -1,16 +1,18 @@
-{ pkgs, home-manager, ... }:
 {
-  home.packages = with pkgs;
-    [
-      qt6.full
-      qt6.qtwayland
-      qt6.wrapQtAppsHook
-      qt5.qtwayland
-      libsForQt5.qt5ct
-      libsForQt5.qtstyleplugin-kvantum
-      libsForQt5.qt5.qtwayland
-      libsForQt5.qt5.qtx11extras
-    ];
+  pkgs,
+  home-manager,
+  ...
+}: {
+  home.packages = with pkgs; [
+    qt6.full
+    qt6.qtwayland
+    qt6.wrapQtAppsHook
+    qt5.qtwayland
+    libsForQt5.qt5ct
+    libsForQt5.qtstyleplugin-kvantum
+    libsForQt5.qt5.qtwayland
+    libsForQt5.qt5.qtx11extras
+  ];
   qt = {
     enable = true;
     platformTheme = "gtk";

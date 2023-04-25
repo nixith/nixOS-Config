@@ -1,4 +1,9 @@
-{ pkgs, monitors, HyprEnv, ... }: ''
+{
+  pkgs,
+  monitors,
+  HyprEnv,
+  ...
+}: ''
   ${HyprEnv}
 
   exec= systemctl --user import-environment

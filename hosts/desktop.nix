@@ -1,7 +1,11 @@
 # File that contains the defaults for graphical desktops
-{ config, pkgs, user, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  user,
+  inputs,
+  ...
+}: {
   zramSwap.enable = true;
 
   # Graphical Necesities
@@ -12,7 +16,7 @@
     enable = true;
     style = "gtk2";
   };
-  environment.systemPackages = with pkgs; [ usbutils android-udev-rules ];
+  environment.systemPackages = with pkgs; [usbutils android-udev-rules];
 
   # steam has to be done here
   programs.steam.enable = false;
@@ -63,9 +67,9 @@
   users.users.${user} = {
     isNormalUser = true;
     description = "Me!";
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" "plugdev" ];
+    extraGroups = ["networkmanager" "wheel" "video" "audio" "plugdev"];
     # import modules
-    packages = with pkgs; [ ffmpeg ];
+    packages = with pkgs; [ffmpeg];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPLMtBjXvadChqa2pZIvJ6eHrkcYD87/skfl3Kjwg6dO ryan@nixos"
@@ -74,12 +78,12 @@
   };
   programs.fish.enable = true;
   programs.kdeconnect.enable = true;
-  services.udisks2 = { enable = true; };
+  services.udisks2 = {enable = true;};
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udev = {
     enable = true;
-    packages = [ pkgs.udisks2 ];
+    packages = [pkgs.udisks2];
   };
 
   programs.gamemode = {
@@ -97,15 +101,12 @@
         amd_performance_level = "high";
         nv_powermizer_mode = 0;
       };
-
-
     };
   };
 
   # Install Fonts
   fonts = {
     enableDefaultFonts = true;
-    fonts = with pkgs;
-      [ (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; }) ];
+    fonts = with pkgs; [(nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})];
   };
 }
