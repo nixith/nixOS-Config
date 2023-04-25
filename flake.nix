@@ -5,7 +5,7 @@
     # allow building without passing flags on first run
     extra-experimental-features = "nix-command flakes";
     # Add me to trusted users
-    trusted-users = ["root" "@wheel" "ryan"];
+    trusted-users = [ "root" "@wheel" "ryan" ];
 
     # Grab binaries faster from sources
     substituters = [
@@ -51,99 +51,102 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-hardware = {url = "github:NixOS/nixos-hardware/master";};
+    nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; };
 
-    nix-colors = {url = "github:misterio77/nix-colors";};
+    nix-colors = { url = "github:misterio77/nix-colors"; };
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     #emacs-overlay = {
     #  url = "github:nix-community/emacs-overlay";
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
 
-    nil = {url = "github:oxalica/nil";};
+    nil = { url = "github:oxalica/nil"; };
     alejandra = {
       url = "github:kamadorueda/alejandra/3.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    sops-nix,
-    hyprland,
-    home-manager,
-    nixos-hardware,
-    nix-colors,
-    nix-doom-emacs,
-    neovim-nightly-overlay,
-    alejandra,
-    Hyprland-Desktop-Portal,
-    Hyprland-Waybar, #Too remove later
-    nil, #gets latest version of nil
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
+  outputs =
+    { self
+    , nixpkgs
+    , sops-nix
+    , hyprland
+    , home-manager
+    , nixos-hardware
+    , nix-colors
+    , nix-doom-emacs
+    , neovim-nightly-overlay
+    , alejandra
+    , Hyprland-Desktop-Portal
+    , Hyprland-Waybar
+    , #Too remove later
+      nil
+    , #gets latest version of nil
+      ...
+    } @ inputs:
+    let
+      system = "x86_64-linux";
 
-    #nixpkgs.config.allowUnfree = true;
-    pkgs = nixpkgs.legacyPackages.${system};
-    user = "ryan";
-    overlays = [
-      neovim-nightly-overlay.overlay
-      (self: super: {
-        discord = super.discord.override {withOpenASAR = true;};
-      })
-    ];
-  in {
-    formatter.x86_64-linux = alejandra.defaultPackage.${system};
-    nixosConfigurations = import ./hosts {
-      inherit (nixpkgs) lib;
-      inherit inputs nixpkgs hyprland nixos-hardware user self sops-nix;
-      specialArgs.inputs = inputs;
-    }; # Imports ./hosts/default.nix
+      #nixpkgs.config.allowUnfree = true;
+      pkgs = nixpkgs.legacyPackages.${system};
+      user = "ryan";
+      overlays = [
+        neovim-nightly-overlay.overlay
+        (self: super: {
+          discord = super.discord.override { withOpenASAR = true; };
+        })
+      ];
+    in
+    {
+      formatter.x86_64-linux = alejandra.defaultPackage.${system};
+      nixosConfigurations = import ./hosts {
+        inherit (nixpkgs) lib;
+        inherit inputs nixpkgs hyprland nixos-hardware user self sops-nix;
+        specialArgs.inputs = inputs;
+      }; # Imports ./hosts/default.nix
 
-    homeConfigurations = {
-      nixpkgs.overlays = overlays;
+      homeConfigurations = {
+        nixpkgs.overlays = overlays;
 
-      Nebula = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
+        Nebula = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+
+          modules = [
+            hyprland.homeManagerModules.default
+            nix-doom-emacs.hmModule
+            ./home/home.nix
+          ];
+
+          extraSpecialArgs = {
+            inherit nix-colors self;
+            computer = "Nebula";
+            inherit neovim-nightly-overlay alejandra system;
+          };
         };
 
-        modules = [
-          hyprland.homeManagerModules.default
-          nix-doom-emacs.hmModule
-          ./home/home.nix
-        ];
+        Galaxia = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
 
-        extraSpecialArgs = {
-          inherit nix-colors self;
-          computer = "Nebula";
-          inherit neovim-nightly-overlay;
-          inherit alejandra;
-        };
-      };
+          modules = [
+            hyprland.homeManagerModules.default
+            nix-doom-emacs.hmModule
+            ./home/home.nix
+          ];
 
-      Galaxia = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
-
-        modules = [
-          hyprland.homeManagerModules.default
-          nix-doom-emacs.hmModule
-          ./home/home.nix
-        ];
-
-        extraSpecialArgs = {
-          inherit nix-colors;
-          computer = "Galaxia";
-          inherit overlays;
-          inherit alejandra neovim-nightly-overlay system;
+          extraSpecialArgs = {
+            inherit nix-colors;
+            computer = "Galaxia";
+            inherit overlays;
+            inherit alejandra neovim-nightly-overlay system;
+          };
         };
       };
     };
-  };
 }
