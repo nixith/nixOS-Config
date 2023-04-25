@@ -17,6 +17,7 @@ return {
       ---@type lspconfig.options
       servers = {
         jsonls = {},
+        -- nix
         nil_ls = {
           settings = {
             ["nil"] = {
@@ -26,7 +27,7 @@ return {
             },
           },
         },
-        --
+        -- lua
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
           settings = {
@@ -40,6 +41,7 @@ return {
             },
           },
         },
+        -- python
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
