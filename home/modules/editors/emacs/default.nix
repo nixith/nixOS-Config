@@ -4,19 +4,20 @@
   inputs,
   self,
   ...
-}: rec {
-  #nixpkgs.overlays = [ (import self.inputs.emacs-overlay) ];
-
-  home.file."./doom.d/themes" = {
-    recursive = true;
-    source = ./doom.d/themes;
-    target = "./.doom.d/themes";
-  };
+}: let
+  emacsVersion = pkgs.emacsUnstablePgtk;
+in rec {
+  # home.file."./doom.d/themes" = {
+  #   recursive = true;
+  #   source = ./doom.d/themes;
+  #   target = "./.doom.d/themes";
+  # };
 
   # Get a newer version of emacs
   services.emacs = {enable = true;};
   # nixpkgs.overlays = [ (import ./overlays/python) ];
   programs.doom-emacs = rec {
+    emacsPackage = emacsVersion;
     enable = true;
     doomPrivateDir = ./doom.d;
 
@@ -42,6 +43,11 @@
           path = pkgs.emptyFile;
         }
       ];
+  };
+
+  programs.emacs = {
+    enable = true;
+    #package = emacsVersion; # replace with pkgs.emacs-gtk, or a version provided by the community overlay if desired.
   };
 
   home.packages = with pkgs; [
