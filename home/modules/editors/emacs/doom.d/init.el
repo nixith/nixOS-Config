@@ -24,6 +24,7 @@
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;ivy               ; a search engine for love and life
+       corfu
        vertico           ; the search engine of the future
 
        :ui
@@ -139,7 +140,7 @@
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
        (json +lsp +tree-sitter)              ; At least it ain't XML
-       ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
+       (java +lsp +tree-sitter) ; the poster child for carpal tunnel syndrome
        ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
        (julia +lsp +tree-sitter)             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
