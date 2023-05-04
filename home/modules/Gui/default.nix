@@ -21,7 +21,7 @@
     mesa
     dxvk
     #itch #(commented due to InsecurePackage)
-    prismlauncher
+    #prismlauncher
 
     # Utilities
     cinnamon.nemo-with-extensions
