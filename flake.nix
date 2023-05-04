@@ -54,11 +54,14 @@
     nixos-hardware = {url = "github:NixOS/nixos-hardware/master";};
 
     nix-colors = {url = "github:misterio77/nix-colors";};
-    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
-    #emacs-overlay = {
-    #  url = "github:nix-community/emacs-overlay";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    nix-doom-emacs = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/nix-doom-emacs";
+    };
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nil = {url = "github:oxalica/nil";};
     alejandra = {
@@ -78,6 +81,7 @@
     nix-doom-emacs,
     neovim-nightly-overlay,
     alejandra,
+    emacs-overlay,
     Hyprland-Desktop-Portal,
     Hyprland-Waybar,
     #Too remove later
@@ -95,6 +99,7 @@
       (self: super: {
         discord = super.discord.override {withOpenASAR = true;};
       })
+      emacs-overlay.overlay
     ];
   in {
     formatter.x86_64-linux = alejandra.defaultPackage.${system};
