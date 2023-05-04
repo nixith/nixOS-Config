@@ -154,10 +154,10 @@
   bind=SUPERALT,bracketright,exec,playerctl --player=%any,firefox next
   bind=SUPERALT,bracketleft,exec,playerctl --player=%any,firefox previous
   bind=,XF86AudioPlay,exec,playerctl --player=%any,firefox play-pause
-  bind=,XF86AudioRaiseVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ +5%
-  bind=,XF86AudioLowerVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ -5%
-  bind=,XF86AudioMute,exec,pactl set-sink-mute @DEFAULT_SINK@ toggle
-  bind=,XF86AudioMicMute,exec,pactl set-source-mute @DEFAULT_SOURCE@ toggle
+  bind=,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+  bind=,XF86AudioLowerVolume,exec,wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-
+  bind=,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+  bind=,XF86AudioMicMute,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
   bind=,XF86MonBrightnessDown,exec,brightnessctl set 10%-
   bind=,XF86MonBrightnessUp,exec,brightnessctl set +10%
   #mute audio upon start
