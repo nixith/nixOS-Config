@@ -45,6 +45,7 @@ in {
       git
       zellij
       python3
+      spotify
       discord
       xfce.thunar
       gnome.nautilus
@@ -100,10 +101,6 @@ in {
   ];
   #caches.cachix = [ "nix-community" "hyprland" ];
   fonts.fontconfig.enable = true;
-
-  programs.ncspot = {
-    enable = true;
-  };
 
   colorScheme = nix-colors.colorSchemes.catppuccin-mocha;
 }
