@@ -24,10 +24,6 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   boot = {
-    initrd.kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
-    extraModprobeConfig = ''
-      options nvidia-drm modeset=1
-    '';
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
     loader.efi = {
