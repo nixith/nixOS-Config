@@ -24,7 +24,7 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
 
     loader.efi = {
       canTouchEfiVariables = true;
