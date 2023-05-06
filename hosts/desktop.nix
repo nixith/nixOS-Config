@@ -64,6 +64,8 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  environment.shells = with pkgs; [fish bash];
+
   users.users.${user} = {
     isNormalUser = true;
     description = "Me!";
