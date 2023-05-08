@@ -78,7 +78,7 @@ in {
     ./modules/shells/Fish
     #./modules/shells/nushell
     ./modules/shells/Starship
-    # ./modules/Gui/spotify
+    ./modules/Gui/spotify
 
     # Gui Tools
     ./modules/Gui
