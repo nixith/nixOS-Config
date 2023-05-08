@@ -10,6 +10,7 @@
   spicetify-nix,
   computer,
   overlays,
+  prismlauncher,
   neovim-nightly-overlay,
   alejandra,
   ...
