@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  prismlauncher,
   user,
   inputs,
   nixpkgs,
@@ -21,7 +22,7 @@
     mesa
     dxvk
     #itch #(commented due to InsecurePackage)
-    #prismlauncher
+    prismlauncher.packages.${pkgs.system}.prismlauncher
 
     # Utilities
     cinnamon.nemo-with-extensions

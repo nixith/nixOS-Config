@@ -37,6 +37,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    prismlauncher = {
+      url = "github:prismlauncher/prismlauncher";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -81,6 +86,7 @@
     nix-doom-emacs,
     neovim-nightly-overlay,
     alejandra,
+    prismlauncher,
     emacs-overlay,
     Hyprland-Desktop-Portal,
     Hyprland-Waybar,
@@ -92,7 +98,6 @@
     system = "x86_64-linux";
 
     #nixpkgs.config.allowUnfree = true;
-    pkgs = nixpkgs.legacyPackages.${system};
     user = "ryan";
     overlays = [
       neovim-nightly-overlay.overlay
@@ -127,8 +132,8 @@
         extraSpecialArgs = {
           inherit nix-colors self;
           computer = "Nebula";
-          inherit overlays;
-          inherit neovim-nightly-overlay alejandra system;
+          inherit overlays system;
+          inherit alejandra neovim-nightly-overlay prismlauncher;
         };
       };
 
@@ -147,8 +152,8 @@
         extraSpecialArgs = {
           inherit nix-colors;
           computer = "Galaxia";
-          inherit overlays;
-          inherit alejandra neovim-nightly-overlay system;
+          inherit overlays system;
+          inherit alejandra neovim-nightly-overlay prismlauncher;
         };
       };
     };
