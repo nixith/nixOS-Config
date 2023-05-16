@@ -21,6 +21,8 @@
   };
 
   home.packages = with pkgs; [
+    # extension dependencies
+    luajitPackages.jsregexp
     ripgrep
     lazygit
     wget
@@ -38,7 +40,8 @@
     ruff
 
     # LSP
-    python310Packages.jedi-language-server
+    python311Packages.jedi-language-server
+    python311Packages.ruff-lsp
     nodePackages_latest.pyright
     nodePackages_latest.vscode-json-languageserver
     sumneko-lua-language-server
