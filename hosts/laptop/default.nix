@@ -10,7 +10,7 @@
 
   boot = {
     #initrd.kernelModules = [ "nvidia" "nvidia_modset" "nvidia_uvm" "nvidia_drm" ];
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
 
     loader.efi = {
       canTouchEfiVariables = true;
