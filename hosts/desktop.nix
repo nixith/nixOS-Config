@@ -105,6 +105,15 @@
       };
     };
   };
+  # video acceleration
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      libvdpau-va-gl
+      vaapiVdpau
+      libvdpau
+    ];
+  };
 
   # Install Fonts
   fonts = {

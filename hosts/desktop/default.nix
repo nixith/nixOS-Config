@@ -47,7 +47,16 @@ in {
     modesetting.enable = true;
     powerManagement.enable = true;
   };
-  hardware.opengl.enable = true;
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      nvidia-vaapi-driver
+    ];
+  };
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "vdpau";
+    VDPAU_DRIVER = "nvidia";
+  };
 
   #environment.systemPackages = with pkgs; [
   #  nvidia-open
