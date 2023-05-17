@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  prismlauncher,
   user,
   inputs,
   nixpkgs,
@@ -22,7 +21,8 @@
     mesa
     dxvk
     #itch #(commented due to InsecurePackage)
-    prismlauncher.packages.${pkgs.system}.prismlauncher
+    #prismlauncher.packages.${pkgs.system}.prismlauncher
+    prismlauncher
 
     # Utilities
     cinnamon.nemo-with-extensions
@@ -43,6 +43,7 @@
 
     # Web
     firefox-wayland
+    element-desktop
 
     # Media
     mpv
