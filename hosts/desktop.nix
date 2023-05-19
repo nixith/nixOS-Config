@@ -16,7 +16,7 @@
     enable = true;
     style = "gtk2";
   };
-  environment.systemPackages = with pkgs; [usbutils android-udev-rules];
+  environment.systemPackages = with pkgs; [usbutils android-udev-rules libva-utils];
 
   # steam has to be done here
   programs.steam.enable = false;
@@ -71,7 +71,7 @@
     description = "Me!";
     extraGroups = ["networkmanager" "wheel" "video" "audio" "plugdev"];
     # import modules
-    packages = with pkgs; [ffmpeg];
+    packages = with pkgs; [ffmpeg glibc libredirect libdrm mesa];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPLMtBjXvadChqa2pZIvJ6eHrkcYD87/skfl3Kjwg6dO ryan@nixos"
