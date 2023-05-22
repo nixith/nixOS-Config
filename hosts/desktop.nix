@@ -19,7 +19,7 @@
   environment.systemPackages = with pkgs; [usbutils android-udev-rules libva-utils];
 
   # steam has to be done here
-  programs.steam.enable = false;
+  programs.steam.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -69,7 +69,7 @@
   users.users.${user} = {
     isNormalUser = true;
     description = "Me!";
-    extraGroups = ["networkmanager" "wheel" "video" "audio" "plugdev"];
+    extraGroups = ["networkmanager" "wheel" "video" "audio" "plugdev" "fuse"];
     # import modules
     packages = with pkgs; [ffmpeg glibc libredirect libdrm mesa];
     shell = pkgs.fish;
