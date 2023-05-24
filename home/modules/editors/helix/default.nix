@@ -30,13 +30,5 @@
     themes = {
       catppuccin_Transparent = builtins.fromTOML (builtins.readFile ./themes/catppuccin_mocha.toml);
     };
-
-    languages = [
-      {
-        name = "nix";
-        formatter = {command = "nixpkgs-fmt";};
-        auto-format = true;
-      }
-    ];
   };
 }
