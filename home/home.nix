@@ -41,7 +41,7 @@ in {
       pulseaudio
       libsForQt5.xp-pen-g430-driver
       gh
-      bitwarden
+      #bitwarden #Marked as insecure due to nodeJS
       bitwarden-cli
       git
       zellij
