@@ -29,8 +29,9 @@ in {
       sops-nix.nixosModules.sops
 
       ./laptop
-      ./system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
-      ./desktop.nix # Default for graphical desktops
+      ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
+      ./common/desktop.nix # Default for graphical desktops
+      ./common/tlp.nix
 
       hyprland.nixosModules.default
       {
@@ -49,8 +50,8 @@ in {
 
     modules = [
       ./desktop
-      ./system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
-      ./desktop.nix # Default for graphical desktops
+      ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
+      ./common/desktop.nix # Default for graphical desktops
 
       hyprland.nixosModules.default
       {
