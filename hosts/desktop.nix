@@ -16,7 +16,7 @@
     enable = true;
     style = "gtk2";
   };
-  environment.systemPackages = with pkgs; [usbutils android-udev-rules libva-utils];
+  environment.systemPackages = with pkgs; [usbutils android-udev-rules libva-utils jack2];
 
   # steam has to be done here
   programs.steam.enable = true;
@@ -69,7 +69,7 @@
   users.users.${user} = {
     isNormalUser = true;
     description = "Me!";
-    extraGroups = ["networkmanager" "wheel" "video" "audio" "plugdev" "fuse"];
+    extraGroups = ["networkmanager" "wheel" "video" "audio" "plugdev" "fuse" "jack"];
     # import modules
     packages = with pkgs; [ffmpeg glibc libredirect libdrm mesa];
     shell = pkgs.fish;

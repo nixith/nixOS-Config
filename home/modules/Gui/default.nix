@@ -28,6 +28,9 @@
     cinnamon.nemo-with-extensions
     flameshot
     carla
+    rnnoise-plugin
+    distrho
+    cadence
     noisetorch
     pavucontrol
     gimp
