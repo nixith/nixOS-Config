@@ -19,7 +19,20 @@
   environment.systemPackages = with pkgs; [usbutils android-udev-rules libva-utils jack2];
 
   # steam has to be done here
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    gamescopeSession = {
+      enable = true;
+    };
+  };
+
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+    env = {
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    };
+  };
 
   # Configure keymap in X11
   services.xserver = {
@@ -34,6 +47,7 @@
 
   # Enable flatpak
   xdg.portal = {
+    xdgOpenUsePortal = true;
     enable = true;
     extraPortals = [
       #pkgs.xdg-desktop-portal-wlr

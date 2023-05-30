@@ -17,7 +17,6 @@
     # Gaming
     #steamcmd
     #steam-tui
-    gamescope
     mesa
     dxvk
     #itch #(commented due to InsecurePackage)
