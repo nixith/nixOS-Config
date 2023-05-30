@@ -65,7 +65,7 @@ in {
     xdg-desktop-portal-wlr
     xdg-desktop-portal-gtk
     xdg-dbus-proxy
-    swaybg
+    swww
     polkit_gnome
     wl-clipboard
     swaylock-fancy
