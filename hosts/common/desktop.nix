@@ -20,6 +20,16 @@
 
   # steam has to be done here
   programs.steam = {
+    package = pkgs.steam.override {
+      extraEnv = {
+        RADV_TEX_ANISO = 16;
+      };
+      extraLibraries = pkgs:
+        with pkgs; [
+          openssl
+          gamemode
+        ];
+    };
     enable = true;
     gamescopeSession = {
       enable = true;
