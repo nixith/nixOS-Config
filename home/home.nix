@@ -47,7 +47,7 @@ in {
       zellij
       python3
       spotify
-      discord
+      webcord-vencord
       xfce.thunar
       gnome.nautilus
       gnome.gnome-disk-utility
