@@ -1,27 +1,46 @@
 local wezterm = require("wezterm")
-return {
+local config = {}
+
+if wezterm.config_builder then
+	config = wezterm.config_builder()
+end
+
+-- config.webgpu_preferred_adapter = {
+-- 	backend = "Vulkan",
+-- 	device = 8066,
+-- 	device_type = "DiscreteGpu",
+-- 	driver = "NVIDIA",
+-- 	driver_info = "530.41.03",
+-- 	name = "NVIDIA GeForce GTX 1650",
+-- 	vendor = 4318,
+-- }
+-- config.front_end = "WebGpu"
+
+config = {
+	enable_wayland = false,
+
 	-- Appearance
-  window_decorations = "NONE",
-  window_padding = {
-  left = 0,
-  right = 0,
-  top = 0,
-  bottom = 0,
-},
+	window_decorations = "NONE",
+	window_padding = {
+		left = 0,
+		right = 0,
+		top = 0,
+		bottom = 0,
+	},
 
 	-- Colors, Opacity, and Fonts
-	font = wezterm.font("JetBrainsMono Nerd Font Mono"),
-	color_scheme = "Catppuccin Mocha",
-	window_background_opacity = 0.2,
-	colors = {
-  	selection_bg = 'rgba(50% 50% 50% 50%)',
-  	selection_fg = 'none',
-},
+	font = wezterm.font("JetBrainsMonoNL Nerd Font Mono", { weight = "Bold" }),
+	color_scheme = "Catppuccin Macchiato",
+	window_background_opacity = 0.6,
+	-- colors = {
+	-- 	selection_bg = "rgba(50% 50% 50% 50%)",
+	-- 	selection_fg = "none",
+	-- },
 	-- Tab Bar
 	hide_tab_bar_if_only_one_tab = true,
 
 	-- shell to run
-	default_prog = { 'fish', '-l' },
+	default_prog = { "fish", "-l" },
 
 	-- Keybinds
 	leader = {
@@ -52,3 +71,5 @@ return {
 		},
 	},
 }
+
+return config
