@@ -26,15 +26,21 @@
   };
 
   inputs = {
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
     sops-nix.url = "github:Mic92/sops-nix";
+
+    anyrun.url = "github:Kirottu/anyrun";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.url = "nixpkgs/nixos-unstable";
     };
 
     #prismlauncher = {
@@ -53,7 +59,7 @@
 
     Hyprland-Waybar = {
       url = "github:r-clifford/Waybar-Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-hardware = {url = "github:NixOS/nixos-hardware/master";};
@@ -77,6 +83,7 @@
 
   outputs = {
     self,
+    fenix,
     nixpkgs,
     sops-nix,
     hyprland,
@@ -100,6 +107,8 @@
     #nixpkgs.config.allowUnfree = true;
     user = "ryan";
     overlays = [
+      #inputs.anyrun.overlay
+      (_: super: let pkgs = fenix.inputs.nixpkgs.legacyPackages.${super.system}; in fenix.overlays.default pkgs pkgs)
       neovim-nightly-overlay.overlay
       (self: super: {
         discord = super.discord.override {withOpenASAR = true;};
