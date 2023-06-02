@@ -28,14 +28,13 @@
     wget
     curl
     go
-    rustup
     nodePackages.npm
     gcc
     fd
     tree-sitter
     libstdcxx5
 
-    #Python
+    ### Python ###
     # Linter
     ruff
 
@@ -47,6 +46,16 @@
     sumneko-lua-language-server
     stylua
     jdt-language-server
+
+    ### Rust ###
+    (fenix.complete.withComponents [
+      "cargo"
+      "clippy"
+      "rust-src"
+      "rustc"
+      "rustfmt"
+    ])
+    rust-analyzer-nightly
 
     # Formatter
     alejandra.defaultPackage.${system}
