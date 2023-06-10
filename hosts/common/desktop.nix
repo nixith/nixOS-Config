@@ -142,6 +142,11 @@
   # Install Fonts
   fonts = {
     enableDefaultFonts = true;
-    fonts = with pkgs; [(nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})];
+    fonts = with pkgs; [
+      (nerdfonts.override {
+        fonts = ["FiraCode" "JetBrainsMono"];
+        enableWindowsFonts = true;
+      })
+    ];
   };
 }
