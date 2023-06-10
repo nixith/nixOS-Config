@@ -32,6 +32,7 @@ in {
       ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
       ./common/desktop.nix # Default for graphical desktops
       ./common/tlp.nix
+      ./common/security.nix
 
       hyprland.nixosModules.default
       {
@@ -45,13 +46,15 @@ in {
     specialArgs = {inherit inputs user;};
   };
   desktop = nixpkgs.lib.nixosSystem {
-    # Laptop profile
+    # Desktop profile
     inherit system;
 
     modules = [
       ./desktop
       ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
       ./common/desktop.nix # Default for graphical desktops
+      ./common/security.nix
+      ./common/virtualisation.nix
 
       hyprland.nixosModules.default
       {
