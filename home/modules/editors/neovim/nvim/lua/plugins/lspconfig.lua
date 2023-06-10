@@ -74,9 +74,9 @@ return {
           --     },
           --   },
           -- },
-          -- checkOnSave = {
-          --   command = "clippy",
-          -- },
+          checkOnSave = {
+            command = "clippy",
+          },
         },
       },
       --------- #### ---------
