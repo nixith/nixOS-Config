@@ -51,7 +51,7 @@ in {
 
     modules = [
       ./desktop
-      ./common/kmscon.nix
+      # ./common/kmscon.nix # alternate tty, need to figure out how to turn off gpu so wayland can take it
       ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
       ./common/desktop.nix # Default for graphical desktops
       ./common/security.nix
