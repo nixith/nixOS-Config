@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   services.kmscon = {
     enable = true;
+    extraConfig = "drm=off";
     hwRender = false;
     fonts = [
       {
