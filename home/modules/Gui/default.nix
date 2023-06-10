@@ -27,7 +27,8 @@
     cinnamon.nemo-with-extensions
     flameshot
     carla
-    rnnoise-plugin
+    libebur128 # auto-gain plugins
+    rnnoise-plugin # Denoiser plugin
     distrho
     cadence
     noisetorch
@@ -45,6 +46,7 @@
 
     # Web
     firefox-wayland
+    brave
     element-desktop
 
     # Media
