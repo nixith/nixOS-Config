@@ -72,6 +72,7 @@ in {
     swayidle
     brightnessctl
     grim
+    #anyrun
     sway-contrib.grimshot
   ];
 
