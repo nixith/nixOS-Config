@@ -2,6 +2,7 @@
   pkgs,
   system,
   alejandra,
+  nil,
   ...
 }: {
   # move config files to .config
@@ -56,7 +57,7 @@
       "rustfmt"
     ])
     rust-analyzer-nightly
-
+    ### Nix
     # Formatter
     alejandra.defaultPackage.${system}
   ];
