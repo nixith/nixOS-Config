@@ -21,15 +21,16 @@ config = {
 
 	-- Appearance
 	window_decorations = "NONE",
+	enable_scroll_bar = false,
 	window_padding = {
-		left = 0,
-		right = 0,
-		top = 0,
-		bottom = 0,
+		left = "0px",
+		right = "0px",
+		top = "0px",
+		bottom = "0px",
 	},
 
 	-- Colors, Opacity, and Fonts
-	font = wezterm.font("JetBrainsMonoNL Nerd Font Mono", { weight = "Bold" }),
+	font = wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Bold" }),
 	color_scheme = "Catppuccin Macchiato",
 	window_background_opacity = 0.6,
 	-- colors = {
