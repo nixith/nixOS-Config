@@ -75,6 +75,8 @@
     };
 
     nil = {url = "github:oxalica/nil";};
+    nixd = {url = "github:nix-community/nixd";};
+
     alejandra = {
       url = "github:kamadorueda/alejandra/3.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -124,6 +126,7 @@
     }; # Imports ./hosts/default.nix
 
     homeConfigurations = {
+      HmInputs = overlays system alejandra neovim-nightly-overlay;
       nixpkgs.overlays = overlays;
 
       Nebula = home-manager.lib.homeManagerConfiguration {
@@ -142,7 +145,7 @@
           inherit nix-colors self;
           computer = "Nebula";
           inherit overlays system;
-          inherit alejandra neovim-nightly-overlay;
+          inherit alejandra neovim-nightly-overlay nil;
         };
       };
 
@@ -162,7 +165,7 @@
           inherit nix-colors;
           computer = "Galaxia";
           inherit overlays system;
-          inherit alejandra neovim-nightly-overlay;
+          inherit alejandra neovim-nightly-overlay nil;
         };
       };
     };
