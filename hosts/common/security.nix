@@ -5,7 +5,7 @@
 }: {
   ### apparmor
 
-  sercurity.apparmor = {
+  security.apparmor = {
     enable = true;
   };
 
