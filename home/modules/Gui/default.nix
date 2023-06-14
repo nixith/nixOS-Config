@@ -27,7 +27,8 @@
     cinnamon.nemo-with-extensions
     flameshot
     carla
-    libebur128 # auto-gain plugins
+    csa
+    calf
     rnnoise-plugin # Denoiser plugin
     distrho
     cadence
