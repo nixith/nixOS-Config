@@ -30,6 +30,12 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flakeProgramsSqlite = {
+      url = "github:wamserma/flake-programs-sqlite";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
     sops-nix.url = "github:Mic92/sops-nix";
@@ -99,7 +105,7 @@
     emacs-overlay,
     Hyprland-Desktop-Portal,
     Hyprland-Waybar,
-    #Too remove later
+    flakeProgramsSqlite,
     nil,
     #gets latest version of nil
     ...
