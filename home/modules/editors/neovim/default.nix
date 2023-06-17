@@ -57,8 +57,14 @@
       "rustfmt"
     ])
     rust-analyzer-nightly
-    ### Nix
-    # Formatter
+
+    ### Formatters: ###
+    shfmt
+    stylua
+
+    #nix
     alejandra.defaultPackage.${system}
+    statix
+    deadnix
   ];
 }
