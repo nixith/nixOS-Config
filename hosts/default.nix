@@ -36,6 +36,7 @@ in {
         ./common/desktop.nix # Default for graphical desktops
         ./common/tlp.nix
         ./common/security.nix
+        ./common/virtualisation.nix
 
         hyprland.nixosModules.default
         {
