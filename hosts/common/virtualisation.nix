@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  user,
+  ...
+}: {
   virtualisation = {
     libvirtd = {
       enable = true;
@@ -14,5 +18,12 @@
     #  };
   };
 
-  environment.systemPackages = [pkgs.virt-manager];
+  environment.systemPackages = [pkgs.virt-manager pkgs.distrobox pkgs.shadow];
+
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
+  users.users.${user}.extraGroups = ["podman"];
 }
