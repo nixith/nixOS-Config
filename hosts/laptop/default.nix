@@ -62,19 +62,8 @@
     ];
   };
 
-  #Podman
-  virtualisation.podman = {
-    enable = false;
-  };
-
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      package = pkgs.qemu_kvm;
-    };
-  };
-  virtualisation.spiceUSBRedirection.enable = true;
   programs.dconf.enable = true;
+
   #Distrobox
 
   # ZRAM
