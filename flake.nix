@@ -30,7 +30,7 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    flakeCompat = {url = "github:inclyc/flake-compat";};
     flakeProgramsSqlite = {
       url = "github:wamserma/flake-programs-sqlite";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -71,14 +71,6 @@
     nixos-hardware = {url = "github:NixOS/nixos-hardware/master";};
 
     nix-colors = {url = "github:misterio77/nix-colors";};
-    nix-doom-emacs = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/nix-doom-emacs";
-    };
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     nil = {url = "github:oxalica/nil";};
     nixd = {url = "github:nix-community/nixd";};
@@ -98,11 +90,9 @@
     home-manager,
     nixos-hardware,
     nix-colors,
-    nix-doom-emacs,
     neovim-nightly-overlay,
     alejandra,
     #prismlauncher,
-    emacs-overlay,
     Hyprland-Desktop-Portal,
     Hyprland-Waybar,
     flakeProgramsSqlite,
@@ -121,7 +111,6 @@
       (self: super: {
         discord = super.discord.override {withOpenASAR = true;};
       })
-      emacs-overlay.overlay
     ];
   in {
     formatter.x86_64-linux = alejandra.defaultPackage.${system};
@@ -143,7 +132,6 @@
 
         modules = [
           hyprland.homeManagerModules.default
-          nix-doom-emacs.hmModule
           ./home/home.nix
         ];
 
@@ -163,7 +151,6 @@
 
         modules = [
           hyprland.homeManagerModules.default
-          nix-doom-emacs.hmModule
           ./home/home.nix
         ];
 
