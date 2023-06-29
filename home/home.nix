@@ -6,7 +6,6 @@
   inputs,
   nix-colors,
   systemType,
-  nix-doom-emacs,
   spicetify-nix,
   computer,
   overlays,
@@ -62,6 +61,7 @@ in {
     SHELL = "fish";
   };
   # User Configuration
+
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
@@ -85,7 +85,6 @@ in {
     ./modules/Gui/zathura/default.nix
     ./modules/editors/helix
     ./modules/Gui/QT/default.nix
-    #./modules/editors/emacs
     ./modules/editors/neovim
     ./modules/Terminals/Wezterm
     ./modules/Terminals/Kitty

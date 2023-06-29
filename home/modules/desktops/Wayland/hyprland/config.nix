@@ -167,7 +167,6 @@
    bindm=SUPER,mouse:272,movewindow
    bindm=SUPER,mouse:273,resizewindow
 
-  exec-once=emacs --daemon
   exec-once=XDG_CURRENT_DESKTOP=Sway org.flameshot.Flameshot
   exec=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
   exec-once=wlsunset -l 35.6 -L -78.8 # Screen dimmer/oranger based on sunrise and sunset
