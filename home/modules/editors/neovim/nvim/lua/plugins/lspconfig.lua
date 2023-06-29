@@ -30,9 +30,17 @@ return {
               formatting = {
                 command = { "alejandra" },
               },
+              nix = {
+                flake = {
+                  autoArchive = true,
+                  autoEvalInputs = true,
+                },
+              },
             },
           },
         },
+
+        nixd = {},
 
         --- programming lanugages
         -- lua
