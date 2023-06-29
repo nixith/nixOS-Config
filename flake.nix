@@ -30,7 +30,6 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flakeCompat = {url = "github:inclyc/flake-compat";};
     flakeProgramsSqlite = {
       url = "github:wamserma/flake-programs-sqlite";
       inputs.nixpkgs.follows = "nixpkgs";
