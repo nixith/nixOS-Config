@@ -27,8 +27,7 @@ in {
 
   #
   home.stateVersion = "22.11";
-  programs.home-manager.enable =
-    true; # enable home manager and allow it to manage itself
+  programs.home-manager.enable = true; # enable home manager and allow it to manage itself
 
   systemd.user.startServices = "sd-switch"; # reload systemd units on config reload
 
@@ -56,7 +55,6 @@ in {
       glfw-wayland
       hyfetch
       audacity
-      (pkgs.nerdfonts.override {fonts = ["FiraCode" "DroidSansMono"];})
     ];
   };
   home.sessionVariables = {
@@ -72,7 +70,7 @@ in {
   imports = [
     ./modules/services/syncthing/default.nix
     ./modules/desktops/Wallpapers
-    ./modules/gtk/catppuccin.nix
+    ./modules/gtk/adw-gtk3.nix
     ./modules/CLI/Tools.nix
     ./modules/CLI/btop
     ./modules/shells/Fish

@@ -6,7 +6,10 @@
 }: {
   programs.kitty = {
     enable = true;
-    font = {name = "JetBrians Mono";};
+    font = {
+      name = "Lilex Nerd Font Regular";
+      size = 13;
+    };
     settings = {
       background_opacity = "0.4";
       background_tint = "1";

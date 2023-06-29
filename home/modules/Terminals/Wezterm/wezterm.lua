@@ -5,19 +5,19 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
--- config.webgpu_preferred_adapter = {
--- 	backend = "Vulkan",
--- 	device = 8066,
--- 	device_type = "DiscreteGpu",
--- 	driver = "NVIDIA",
--- 	driver_info = "530.41.03",
--- 	name = "NVIDIA GeForce GTX 1650",
--- 	vendor = 4318,
--- }
--- config.front_end = "WebGpu"
+config.webgpu_preferred_adapter = {
+	backend = "Vulkan",
+	device = 8066,
+	device_type = "DiscreteGpu",
+	driver = "NVIDIA",
+	driver_info = "530.41.03",
+	name = "NVIDIA GeForce GTX 1650",
+	vendor = 4318,
+}
+config.front_end = "WebGpu"
 
 config = {
-	enable_wayland = false,
+	-- enable_wayland = false,
 
 	-- Appearance
 	window_decorations = "NONE",
@@ -30,9 +30,9 @@ config = {
 	},
 
 	-- Colors, Opacity, and Fonts
-	font = wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Bold" }),
+	font = wezterm.font("Lilex Nerd Font", { weight = "Regular" }),
 	color_scheme = "Catppuccin Macchiato",
-	window_background_opacity = 0.6,
+	window_background_opacity = 0.4,
 	-- colors = {
 	-- 	selection_bg = "rgba(50% 50% 50% 50%)",
 	-- 	selection_fg = "none",
