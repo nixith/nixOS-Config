@@ -89,6 +89,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   environment.shells = with pkgs; [fish bash];
+  programs.fish.enable = true;
 
   users.users.${user} = {
     isNormalUser = true;
@@ -102,7 +103,6 @@
     ];
     initialPassword = "password"; # TODO fix later with sops-nix
   };
-  programs.fish.enable = true;
   programs.kdeconnect.enable = true;
   services.udisks2 = {enable = true;};
   services.devmon.enable = true;
@@ -144,7 +144,17 @@
     enableDefaultFonts = true;
     fonts = with pkgs; [
       (nerdfonts.override {
-        fonts = ["FiraCode" "JetBrainsMono"];
+        fonts = [
+          "FiraCode"
+          "JetBrainsMono"
+          "Iosevka"
+          "Inconsolata"
+          "ComicShannsMono"
+          "DaddyTimeMono"
+          "FantasqueSansMono"
+          "Lilex"
+          "Monofur"
+        ];
         enableWindowsFonts = true;
       })
     ];
