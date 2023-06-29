@@ -16,7 +16,7 @@
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly;
+    #package = neovim-nightly;
     withPython3 = true;
     withNodeJs = true;
   };
@@ -35,17 +35,22 @@
     tree-sitter
     libstdcxx5
 
+    ## nullLS requirements ##
+    stylua
+    selene
+    shfmt
+    shellcheck
+    beautysh
+
     ### Python ###
     # Linter
     ruff
 
     # LSP
-    python311Packages.jedi-language-server
     python311Packages.ruff-lsp
-    nodePackages_latest.pyright
+    pylyzer
     nodePackages_latest.vscode-json-languageserver
     sumneko-lua-language-server
-    stylua
     jdt-language-server
 
     ### Rust ###
@@ -59,12 +64,12 @@
     rust-analyzer-nightly
 
     ### Formatters: ###
-    shfmt
     stylua
 
     #nix
     alejandra.defaultPackage.${system}
     statix
+    nixd
     deadnix
   ];
 }

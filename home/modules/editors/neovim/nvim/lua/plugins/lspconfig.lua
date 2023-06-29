@@ -51,7 +51,7 @@ return {
         },
         --python
         ruff_lsp = {},
-        jedi_language_server = {},
+        pylyzer = {},
 
         --rust
         rust_analyzer = {
