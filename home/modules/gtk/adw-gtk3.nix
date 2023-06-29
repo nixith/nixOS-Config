@@ -6,14 +6,6 @@
   inputs,
   ...
 }: {
-  home.pointerCursor = let
-    pkg = pkgs.catppuccin-cursors.mochaDark;
-  in {
-    name = pkg.pname;
-    package = pkg;
-    size = 16;
-  };
-
   gtk = {
     enable = true;
 
@@ -25,20 +17,19 @@
     };
 
     iconTheme = let
+      flavor = "mocha";
+      accent = "lavender";
       pkg = pkgs.catppuccin-papirus-folders.override {
-        flavor = "mocha";
-        accent = "mauve";
+        flavor = flavor;
+        accent = accent;
       };
     in {
-      name = pkg.pname;
+      name = "Papirus";
       package = pkg;
     };
 
     theme = let
-      pkg = pkgs.catppuccin-gtk.override {
-        accents = ["mauve"];
-        variant = "mocha";
-      };
+      pkg = pkgs.adw-gtk3;
     in {
       name = pkg.pname;
       package = pkg;

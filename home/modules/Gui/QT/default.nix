@@ -1,25 +1,14 @@
-{
-  pkgs,
-  home-manager,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
-    qt6.full
     qt6.qtwayland
-    qt6.wrapQtAppsHook
-    qt5.qtwayland
-    libsForQt5.qt5ct
-    libsForQt5.qtstyleplugin-kvantum
-    libsForQt5.qt5.qtwayland
-    libsForQt5.qt5.qtx11extras
   ];
   qt = {
     enable = true;
-    platformTheme = "gtk";
-    #style = {
-    #  package = pkgs.libsForQt5.qtstyleplugin-kvantum;
-    #  name = "kvantum";
-    #};
+    platformTheme = "gnome";
+    style = {
+      package = pkgs.adwaita-qt6;
+      name = "adwaita-dark";
+    };
   };
 
   #  home.sessionVariables = {
