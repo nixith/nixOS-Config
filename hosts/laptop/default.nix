@@ -14,14 +14,14 @@
 
     loader.efi = {
       canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi";
+      efiSysMountPoint = "/boot/";
     };
 
     loader.grub = {
       enable = true;
       device = "nodev";
       efiSupport = true;
-      #useOSProber = true; # enables dual boot;
+      useOSProber = true; # enables dual boot;
     };
 
     loader.systemd-boot = {enable = false;};
