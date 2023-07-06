@@ -82,6 +82,7 @@ in {
     ./modules/Gui
     ./modules/Gui/xournalpp
     ./modules/Gui/newsboat
+    ./modules/Gui/firefox
     ./modules/Gui/zathura/default.nix
     ./modules/editors/helix
     ./modules/Gui/QT/default.nix
