@@ -107,8 +107,8 @@
       #inputs.anyrun.overlay
       (_: super: let pkgs = fenix.inputs.nixpkgs.legacyPackages.${super.system}; in fenix.overlays.default pkgs pkgs)
       #neovim-nightly-overlay.overlay
-      (self: super: {
-        discord = super.discord.override {withOpenASAR = true;};
+      (final: prev: {
+        discord = prev.discord.override {withOpenASAR = true;};
       })
     ];
   in {
