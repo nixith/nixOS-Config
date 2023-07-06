@@ -47,7 +47,7 @@
     ruff
 
     # LSP
-    python311Packages.ruff-lsp
+    ruff-lsp
     pylyzer
     nodePackages_latest.vscode-json-languageserver
     sumneko-lua-language-server
