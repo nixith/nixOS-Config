@@ -30,6 +30,8 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
     flakeProgramsSqlite = {
       url = "github:wamserma/flake-programs-sqlite";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,8 +40,6 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
     sops-nix.url = "github:Mic92/sops-nix";
-
-    anyrun.url = "github:Kirottu/anyrun";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
@@ -95,6 +95,7 @@
     Hyprland-Desktop-Portal,
     Hyprland-Waybar,
     flakeProgramsSqlite,
+    chaotic,
     nil,
     #gets latest version of nil
     ...
@@ -104,7 +105,6 @@
     #nixpkgs.config.allowUnfree = true;
     user = "ryan";
     overlays = [
-      #inputs.anyrun.overlay
       (_: super: let pkgs = fenix.inputs.nixpkgs.legacyPackages.${super.system}; in fenix.overlays.default pkgs pkgs)
       #neovim-nightly-overlay.overlay
       (final: prev: {
@@ -115,7 +115,7 @@
     formatter.x86_64-linux = alejandra.defaultPackage.${system};
     nixosConfigurations = import ./hosts {
       inherit (nixpkgs) lib;
-      inherit inputs nixpkgs hyprland nixos-hardware user self sops-nix;
+      inherit inputs nixpkgs hyprland nixos-hardware user self sops-nix chaotic;
       specialArgs.inputs = inputs;
     }; # Imports ./hosts/default.nix
 
@@ -135,7 +135,7 @@
         ];
 
         extraSpecialArgs = {
-          inherit nix-colors self;
+          inherit nix-colors;
           computer = "Nebula";
           inherit overlays system inputs;
           inherit alejandra neovim-nightly-overlay nil;
