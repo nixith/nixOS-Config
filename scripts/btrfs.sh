@@ -21,4 +21,4 @@ mkdir /mnt/boot
 mount /dev/"$1"1 /mnt/boot
 cd /mnt
 
-nixos-install --flake --impure "github:bromine1/nixos-config#""$2"
+nixos-install --flake "github:bromine1/nixos-config#""$2" --extra-experimental-features nix-command --extra-experimental-features flakes --impure
