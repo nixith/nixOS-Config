@@ -48,10 +48,10 @@
       inputs.nixpkgs.url = "nixpkgs/nixos-unstable";
     };
 
-    #prismlauncher = {
-    #  url = "github:prismlauncher/prismlauncher";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    prismlauncher = {
+      url = "github:prismlauncher/prismlauncher";
+      #inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     hyprland = {
       url = "github:hyprwm/Hyprland";
@@ -91,7 +91,7 @@
     nix-colors,
     neovim-nightly-overlay,
     alejandra,
-    #prismlauncher,
+    prismlauncher,
     Hyprland-Desktop-Portal,
     Hyprland-Waybar,
     flakeProgramsSqlite,
@@ -137,7 +137,7 @@
         extraSpecialArgs = {
           inherit nix-colors self;
           computer = "Nebula";
-          inherit overlays system;
+          inherit overlays system inputs;
           inherit alejandra neovim-nightly-overlay nil;
         };
       };
@@ -156,7 +156,7 @@
         extraSpecialArgs = {
           inherit nix-colors;
           computer = "Galaxia";
-          inherit overlays system;
+          inherit overlays system inputs;
           inherit alejandra neovim-nightly-overlay nil;
         };
       };
