@@ -26,7 +26,7 @@
     env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
 
     env = CLUTTER_BACKEND,"wayland"
-     env = SDL_VIDEODRIVER,wayland
+    env = SDL_VIDEODRIVER,wayland
   '';
 in {
   # actually enable hyprland
@@ -47,6 +47,7 @@ in {
       inherit pkgs;
       inherit monitors;
       inherit HyprEnv;
+      inherit computer;
     };
     xwayland = {
       enable = true;

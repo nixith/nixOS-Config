@@ -2,6 +2,7 @@
   pkgs,
   monitors,
   HyprEnv,
+  computer,
   ...
 }: ''
   ${HyprEnv}
@@ -107,6 +108,16 @@
   windowrule=float, zoom
   windowrulev2 = noanim,class:^(flameshot)$
   windowrulev2 = float,class:^(flameshot)$
+  windowrulev2 = fakefullscreen,class:^(flameshot)$
+  layer
+  ${
+    if computer == "Galaxia"
+    then ''windowrulev2 = monitor 2,class:^(flameshot)$''
+    else null
+  }
+  windowrulev2 = move 0 0,class:^(flameshot)$
+  windowrulev2 = noborder,class:^(flameshot)$
+
 
   bind=SUPER,Q,killactive,
   bind=SUPERSHIFT,L,exit,
@@ -120,7 +131,7 @@
   bind=SUPER,W,exec,firefox
   bind=SUPER,X,exec, systemctl suspend
 
-  bind=,print,exec,flatpak run org.flameshot.Flameshot gui
+  bind=,print,exec,XDG_CURRENT_DESKTOP=Sway flameshot gui
   bind=SUPER,print,exec,grimshot copy area
 
   bind=SUPER,left,movefocus,l
@@ -167,7 +178,7 @@
    bindm=SUPER,mouse:272,movewindow
    bindm=SUPER,mouse:273,resizewindow
 
-  exec-once=XDG_CURRENT_DESKTOP=Sway org.flameshot.Flameshot
+  exec-once=XDG_CURRENT_DESKTOP=Sway flameshot
   exec=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
   exec-once=wlsunset -l 35.6 -L -78.8 # Screen dimmer/oranger based on sunrise and sunset
   exec-once=waybar # -c ~/.config/hypr/waybar/config.json -s ~/.config/hypr/waybar/style.css
