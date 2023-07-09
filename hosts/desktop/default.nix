@@ -28,17 +28,17 @@ in {
 
     loader.efi = {
       canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/";
+      #efiSysMountPoint = "/boot/";
     };
 
     loader.grub = {
-      enable = true;
+      enable = false;
       device = "nodev";
       efiSupport = true;
       #useOSProber = true; # enables dual boot;
     };
 
-    loader.systemd-boot = {enable = false;};
+    loader.systemd-boot = {enable = true;};
   };
 
   # Nvidia Stuff
