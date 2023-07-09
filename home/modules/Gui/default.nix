@@ -7,7 +7,7 @@
   nixpkgs,
   ...
 }: let
-  prismlauncher = pkgs.prismlauncher.override {glfw = pkgs.glfw-wayland;};
+  prismlauncher = inputs.prismlauncher.packages.${pkgs.system}.prismlauncher.override {glfw = pkgs.glfw-wayland;};
 in {
   nixpkgs.config.allowUnfree = true;
   # Apps without Home Manager Modules
