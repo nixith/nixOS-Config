@@ -19,5 +19,6 @@ mount -o compress=zstd,noatime,subvol=nix "/dev/$1"2 /mnt/nix
 
 mkdir /mnt/boot
 mount /dev/"$1"1 /mnt/boot
+cd /mnt
 
 nixos-install --flake --impure "github:bromine1/nixos-config#""$2"
