@@ -113,7 +113,7 @@
   ${
     if computer == "Galaxia"
     then ''windowrulev2 = monitor 2,class:^(flameshot)$''
-    else null
+    else ""
   }
   windowrulev2 = move 0 0,class:^(flameshot)$
   windowrulev2 = noborder,class:^(flameshot)$
