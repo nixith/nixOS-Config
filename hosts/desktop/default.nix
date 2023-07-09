@@ -58,9 +58,8 @@ in {
     VDPAU_DRIVER = "nvidia";
   };
 
-  #environment.systemPackages = with pkgs; [
-  #  nvidia-open
-  #];
+  environment.systemPackages = with pkgs; [
+  ];
 
   networking = {
     hostName = hostname; # Define your hostname.
