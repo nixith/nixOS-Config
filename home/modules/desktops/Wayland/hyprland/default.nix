@@ -30,7 +30,7 @@
   '';
 in {
   # actually enable hyprland
-  imports = [../General/Waybar ../General/Rofi ../General/Dunst];
+  imports = [../General/Waybar ../General/Rofi ../General/anyrun ../General/Dunst];
 
   # Fix waybar
   programs.waybar.package = pkgs.waybar.overrideAttrs (oldAttrs: {

@@ -109,7 +109,7 @@
   windowrulev2 = noanim,class:^(flameshot)$
   windowrulev2 = float,class:^(flameshot)$
   windowrulev2 = fakefullscreen,class:^(flameshot)$
-  layer
+  layerrule = noanim, anyrun
   ${
     if computer == "Galaxia"
     then ''windowrulev2 = monitor 2,class:^(flameshot)$''
@@ -124,6 +124,7 @@
   bind=SUPER,E,exec,nemo
   bind=SUPER,space,togglefloating,
   bind=SUPER,D,exec,rofi -show drun
+  bind=SUPERSHIFT,D,exec,anyrun
   bind=SUPER,C,exec, rofi -show calc
   bind=SUPER,P,pseudo,
   bind=SUPER,Return,exec,kitty
