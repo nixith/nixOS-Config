@@ -54,6 +54,7 @@ in {
       glfw-wayland
       hyfetch
       audacity
+      obsidian
     ];
   };
   home.sessionVariables = {
@@ -77,7 +78,7 @@ in {
     #./modules/shells/nushell
     ./modules/shells/Starship
     ./modules/Gui/spotify
-
+    ./modules/desktops/Wayland/General/swayOSD
     # Gui Tools
     ./modules/Gui
     ./modules/Gui/xournalpp
