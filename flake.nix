@@ -6,17 +6,20 @@
     extra-experimental-features = "nix-command flakes";
     # Add me to trusted users
     trusted-users = ["root" "@wheel" "ryan"];
+    builders-use-substitutes = true;
 
     # Grab binaries faster from sources
     substituters = [
       "https://cache.nixos.org/"
       "https://hyprland.cachix.org"
       "https://nix-community.cachix.org"
+      "https://anyrun.cachix.org"
     ];
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
     ];
     http-connections = 0; #No limit on number of connections
 
@@ -30,12 +33,13 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     flakeProgramsSqlite = {
       url = "github:wamserma/flake-programs-sqlite";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    anyrun.url = "github:Kirottu/anyrun";
 
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
@@ -83,6 +87,7 @@
   outputs = {
     self,
     fenix,
+    anyrun,
     nixpkgs,
     sops-nix,
     hyprland,
@@ -95,7 +100,6 @@
     Hyprland-Desktop-Portal,
     Hyprland-Waybar,
     flakeProgramsSqlite,
-    chaotic,
     nil,
     #gets latest version of nil
     ...
@@ -115,7 +119,7 @@
     formatter.x86_64-linux = alejandra.defaultPackage.${system};
     nixosConfigurations = import ./hosts {
       inherit (nixpkgs) lib;
-      inherit inputs nixpkgs hyprland nixos-hardware user self sops-nix chaotic;
+      inherit inputs nixpkgs hyprland nixos-hardware user self sops-nix;
       specialArgs.inputs = inputs;
     }; # Imports ./hosts/default.nix
 
@@ -132,6 +136,7 @@
         modules = [
           hyprland.homeManagerModules.default
           ./home/home.nix
+          anyrun.homeManagerModules.default
         ];
 
         extraSpecialArgs = {

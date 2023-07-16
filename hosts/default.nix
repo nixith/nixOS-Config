@@ -1,6 +1,5 @@
 {
   lib,
-  chaotic,
   inputs,
   nixpkgs,
   nixos-hardware,
@@ -57,7 +56,6 @@ in {
 
     modules =
       [
-        chaotic.nixosModules.default
         ./desktop
         # ./common/kmscon.nix # alternate tty, need to figure out how to turn off gpu so wayland can take it
         ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
