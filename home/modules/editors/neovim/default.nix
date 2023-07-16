@@ -51,7 +51,7 @@
     pylyzer
     nodePackages_latest.vscode-json-languageserver
     sumneko-lua-language-server
-    jdt-language-server
+    nodePackages_latest.pyright
 
     ### Rust ###
     (fenix.complete.withComponents [
