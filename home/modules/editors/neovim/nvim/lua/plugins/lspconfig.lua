@@ -60,6 +60,7 @@ return {
         --python
         ruff_lsp = {},
         pylyzer = {},
+        pyright = {},
 
         --rust
         rust_analyzer = {
