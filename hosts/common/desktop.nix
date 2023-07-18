@@ -51,6 +51,10 @@
     xkbVariant = "";
     displayManager.startx.enable = true;
   };
+  services.gpm = {
+    enable = true;
+    protocol = "imps2";
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
