@@ -172,9 +172,19 @@
   bind=,XF86AudioMicMute,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
   bind=,XF86MonBrightnessDown,exec,brightnessctl set 10%-
   bind=,XF86MonBrightnessUp,exec,brightnessctl set +10%
-  #mute audio upon start
-  exec-once=pactl set-sink-mute @DEFAULT_SINK@ toggle
-  exec-once=pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+  ${
+    if computer == "Galaxia"
+    then ''
+      exec-once=pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=my-virtualmic channel_map=front-left,front-right
+      exec-once=carla --no-gui ~/Music/Patchbay/VoiceFIlter.carxp
+    ''
+    else ''
+      #mute audio upon start
+      exec-once=pactl set-sink-mute @DEFAULT_SINK@ toggle
+      exec-once=pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    ''
+  }
 
    bindm=SUPER,mouse:272,movewindow
    bindm=SUPER,mouse:273,resizewindow
