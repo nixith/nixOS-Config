@@ -31,12 +31,10 @@
   inputs = {
     fenix = {
       url = "github:nix-community/fenix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     flakeProgramsSqlite = {
       url = "github:wamserma/flake-programs-sqlite";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     anyrun.url = "github:Kirottu/anyrun";
@@ -59,17 +57,16 @@
 
     hyprland = {
       url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    Hyprland-Desktop-Portal = {
-      url = "github:hyprwm/xdg-desktop-portal-hyprland";
-    };
+    #Hyprland-Desktop-Portal = {
+    #  url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    #};
 
-    Hyprland-Waybar = {
-      url = "github:r-clifford/Waybar-Hyprland";
-      #inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #Hyprland-Waybar = {
+    #  url = "github:r-clifford/Waybar-Hyprland";
+    #  #inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     nixos-hardware = {url = "github:NixOS/nixos-hardware/master";};
 
@@ -79,8 +76,8 @@
     nixd = {url = "github:nix-community/nixd";};
 
     alejandra = {
-      url = "github:kamadorueda/alejandra/3.0.0";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:kamadorueda/alejandra";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -97,8 +94,6 @@
     neovim-nightly-overlay,
     alejandra,
     prismlauncher,
-    Hyprland-Desktop-Portal,
-    Hyprland-Waybar,
     flakeProgramsSqlite,
     nil,
     #gets latest version of nil
@@ -156,6 +151,7 @@
         modules = [
           hyprland.homeManagerModules.default
           ./home/home.nix
+          anyrun.homeManagerModules.default
         ];
 
         extraSpecialArgs = {
