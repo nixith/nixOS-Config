@@ -7,12 +7,12 @@
   nixpkgs,
   ...
 }: let
-  prismlauncher = inputs.prismlauncher.packages.${pkgs.system}.prismlauncher.override {glfw = pkgs.glfw-wayland;};
+  #prismlauncher = inputs.prismlauncher.packages.${pkgs.system}.prismlauncher.override {glfw = pkgs.glfw-wayland;};
 in {
   nixpkgs.config.allowUnfree = true;
   # Apps without Home Manager Modules
-  home.packages = with pkgs;
-    [
+  home.packages =
+    with pkgs; [
       # note taking
       xournalpp
       logseq
@@ -57,5 +57,6 @@ in {
       #Libs
       xorg.libxcb
     ]
-    ++ [prismlauncher];
+    #++ [prismlauncher]
+    ;
 }
