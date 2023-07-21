@@ -70,6 +70,7 @@
     ];
   };
   services.flatpak.enable = true;
+  services.upower.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
