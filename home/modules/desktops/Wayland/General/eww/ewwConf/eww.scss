@@ -3,23 +3,44 @@
 * {
   all: unset; //Unsets everything so you can style everything from scratch
   font-size: 15;
-  font-family: JetBrainsMono;
-  background-color: $base;
+  font-family: Lilex Nerd Font Regular;
+  background-color: transparent;
 }
 
 //Global Styles
 .bar {
+  background-color: transparent;
+  padding: 0px;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+
+.progressWheel {
+  background-color: #45475a;
+  padding: 8px;
+  color: $text;
+  margin: 0 3px;
+}
+
+.ram {
+  @extend .progressWheel;
+  color: $red;
+}
+
+.container {
   background-color: #1e1e2e;
+  color: #1e1e2e;
   padding: 0px;
   transition-property: background-color;
   transition-duration: 0.5s;
 }
 
 .workspaceUnfocused {
-  background-color: transparent;
-  padding: 6px;
+  background-color: #1e1e2e;
+  padding: 8px;
   color: $text;
-  margin: 0 2px;
+  margin: 0 3px;
 }
 
 .workspaceFocused {

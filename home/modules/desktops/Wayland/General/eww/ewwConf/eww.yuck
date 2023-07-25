@@ -4,12 +4,15 @@
              :orientation "h"
   (box :orientation "h"
        :valign "center"
-       :class "bar"
-       (workspaces))
+       :class "barBox"
+       (box :class "wrapper"
+            :width 10
+        (workspaces)))
   (box :orientation "h"
-       :class "bar"
-    (musicStatus))
-  (box)))
+       :class "barBox"
+    ;(musicStatus)
+    )
+  (box :class "barBox")))
 
 
 (deflisten temperatures :initial ""
@@ -18,10 +21,10 @@
 
 
 ( defwidget ram []
-  (box
-    "${round(EWW_RAM.used_mem_perc)}%"))
-
-
+  (box :class "container" :orientation "v"
+    (circular-progress :value {EWW_RAM.used_mem_perc} :class "ram" :thickness 3)
+  )
+)
 
 (deflisten music :initial ""
   "playerctl --player=%any,firefox --follow metadata --format '{{ artist }} - {{ title }}' || true"
@@ -30,13 +33,13 @@
 (deflisten playing :initial ""
   "playerctl --player=%any,firefox --follow status")
 
-(deflisten workspaces :initial "[]" "scripts/get-workspaces")
+(deflisten occupiedWorkspaces :initial "[]" "scripts/get-workspaces")
 (deflisten current_workspace :initial "1" "scripts/get-active-workspaces")
 (defwidget workspaces []
   (eventbox :onscroll "bash ./scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget"
-    (box :space-evenly false
-      (label :text "${workspaces}${current_workspace}" :visible false)
-      (for workspace in workspaces
+    (box :space-evenly false :class "container" :orientation "v"
+      (label :text "${occupiedWorkspaces}${current_workspace}" :visible false)
+      (for workspace in occupiedWorkspaces
         
         (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
           (box :class "workspace-entry ${workspace.id == current_workspace ? "workspaceFocused" : "workspaceUnfocused"} ${workspace.windows > 0 ? "occupied" : "empty"}"
@@ -67,16 +70,25 @@
     {music != "" ? "${music}" : ""}))
 
 
+(defwidget stats )
+
 
 (defwindow bar 
            :monitor 0
            :geometry (geometry :x "0%"
-                               :y "6px"
-                               :width "95%"
-                               :height "25px"
-                               :anchor "top center")
-           :stacking "bottom"
+                               :y "0px"
+                               :width "3%"
+                               :height "100%"
+                               :anchor "top left")
+           :stacking "overlay"
            :focusable false
            :exclusive true
-    (bar))
+           :namespace "bar"
+    (box :class "bar" :orientation "v"
+      (box (workspaces))
+      (box (ram))
+      
+      
+    )
+)
 
