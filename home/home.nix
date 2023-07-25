@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  hyprland,
   user,
   inputs,
   nix-colors,
@@ -24,7 +25,6 @@ in {
   nixpkgs.overlays = overlays;
   #cachic
 
-  #
   home.stateVersion = "22.11";
   programs.home-manager.enable = true; # enable home manager and allow it to manage itself
 

@@ -2,6 +2,7 @@
   config,
   lib,
   home-manager,
+  inputs,
   computer,
   ...
 }: {
