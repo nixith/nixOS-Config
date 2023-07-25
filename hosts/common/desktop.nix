@@ -29,6 +29,7 @@
           openssl
           gamemode
         ];
+      extraProfile = "export STEAM_EXTRA_COMPAT_TOOLS_PATHS='${inputs.nix-gaming.packages.${pkgs.system}.proton-ge}'";
     };
     enable = true;
     gamescopeSession = {
@@ -115,6 +116,11 @@
   services.udev = {
     enable = true;
     packages = [pkgs.udisks2];
+  };
+
+  hardware.logitech = {
+    wireless.enable = true;
+    wireless.enableGraphical = true;
   };
 
   programs.gamemode = {
