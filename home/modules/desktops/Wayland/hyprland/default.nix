@@ -1,5 +1,6 @@
 {
   inputs,
+  system,
   self,
   user,
   hyprland,
@@ -42,6 +43,7 @@ in {
   });
 
   wayland.windowManager.hyprland = {
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     enable = true;
     extraConfig = import ./config.nix {
       inherit pkgs;
@@ -53,11 +55,10 @@ in {
       enable = true;
       hidpi = true;
     };
-    nvidiaPatches =
+    enableNvidiaPatches =
       if computer == "Galaxia"
       then true
       else false;
-    recommendedEnvironment = true;
   };
 
   home.packages = with pkgs; [
