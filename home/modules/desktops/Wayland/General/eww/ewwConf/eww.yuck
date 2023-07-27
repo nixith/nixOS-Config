@@ -26,6 +26,20 @@
   )
 )
 
+( defwidget volume []
+  (box :class "container" :orientation "v"
+    (box :orientation "h"
+      (label :text "󰕾")
+      (circular-progress :value {EWW_RAM.used_mem_perc} :class "audio" :thickness 3)
+    )
+    (box :orientation "h"
+      (label :text "")
+      (circular-progress :value {EWW_RAM.used_mem_perc} :class "audio" :thickness 3)
+    )
+  )
+)
+
+
 (deflisten music :initial ""
   "playerctl --player=%any,firefox --follow metadata --format '{{ artist }} - {{ title }}' || true"
 )
@@ -70,7 +84,11 @@
     {music != "" ? "${music}" : ""}))
 
 
-(defwidget stats )
+(defwidget stats [] 
+  (box :class "container" :orientation "v"
+    ( ram )
+    ( volume )
+    ))
 
 
 (defwindow bar 
@@ -86,7 +104,8 @@
            :namespace "bar"
     (box :class "bar" :orientation "v"
       (box (workspaces))
-      (box (ram))
+      (box )
+      (box (stats))
       
       
     )
