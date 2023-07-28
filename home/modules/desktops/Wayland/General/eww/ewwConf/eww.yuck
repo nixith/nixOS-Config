@@ -1,25 +1,4 @@
 
-(defwidget bar []
-  (centerbox :class "bar"
-             :orientation "h"
-  (box :orientation "h"
-       :valign "center"
-       :class "barBox"
-       (box :class "wrapper"
-            :width 10
-        (workspaces)))
-  (box :orientation "h"
-       :class "barBox"
-    ;(musicStatus)
-    )
-  (box :class "barBox")))
-
-
-(deflisten temperatures :initial ""
-  "watch sensors -j")
-
-
-
 ( defwidget ram []
   
   (box :class "container" :orientation "v"
@@ -52,7 +31,7 @@
   )
 
 (defwidget stats [] 
-  (box :class "container"
+  (box 
        :orientation "v"
        :space-evenly false
     ( ram )
@@ -74,7 +53,7 @@
 (deflisten current_workspace :initial "1" "scripts/get-active-workspaces")
 (defwidget workspaces []
   (eventbox :onscroll "bash ./scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget"
-    (box :space-evenly false :class "container" :orientation "v"
+    (box :space-evenly false  :orientation "v"
       (label :text "${occupiedWorkspaces}${current_workspace}" :visible false)
       (for workspace in occupiedWorkspaces
         
@@ -106,10 +85,18 @@
        ;; :duration "2000ms"
     {music != "" ? "${music}" : ""}))
 
-
-
-
-(defwindow bar 
+(defwidget bar []
+      (box :class "bar" 
+         :orientation "v"
+               
+      (box (workspaces))
+      ;(box :valign "center" {EWW_TIME} )
+      (box :valign "center" "󰥔" )
+      (box :valign "end" (stats))
+            
+    )
+)
+(defwindow bar0 
            :monitor 0
            :geometry (geometry :x "0%"
                                :y "0%"
@@ -120,14 +107,33 @@
            :focusable false
            :exclusive true
            :namespace "bar"
-    (box :class "bar" 
-               :orientation "v"
-               
-      (box (workspaces))
-      (box )
-      (box (stats))
-      
-      
-    )
+  (bar)
 )
 
+(defwindow bar1 
+           :monitor 1
+           :geometry (geometry :x "0%"
+                               :y "0%"
+                               ;width "3%"
+                               :height "100%"
+                               :anchor "left center")
+           :stacking "fg"
+           :focusable false
+           :exclusive true
+           :namespace "bar"
+  (bar)
+)
+
+(defwindow bar2
+           :monitor 2
+           :geometry (geometry :x "0%"
+                               :y "0%"
+                               ;width "3%"
+                               :height "100%"
+                               :anchor "left center")
+           :stacking "fg"
+           :focusable false
+           :exclusive true
+           :namespace "bar"
+  (bar)
+)

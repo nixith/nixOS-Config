@@ -1,4 +1,0 @@
-( defwidget time 
-  (box (
-        {EWW_TIME}
-        )))
