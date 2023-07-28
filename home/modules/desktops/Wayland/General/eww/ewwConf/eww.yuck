@@ -21,23 +21,46 @@
 
 
 ( defwidget ram []
+  
   (box :class "container" :orientation "v"
     (circular-progress :value {EWW_RAM.used_mem_perc} :class "ram" :thickness 3)
+    (label :text "" :xalign 0.42 )
   )
 )
 
 ( defwidget volume []
   (box :class "container" :orientation "v"
-    (box :orientation "h"
-      (label :text "󰕾")
+    (box :orientation "v"
       (circular-progress :value {EWW_RAM.used_mem_perc} :class "audio" :thickness 3)
+      (label :text "󰕾" :xalign 0.5)
     )
-    (box :orientation "h"
-      (label :text "")
+    (box :orientation "v"
       (circular-progress :value {EWW_RAM.used_mem_perc} :class "audio" :thickness 3)
+      (label :text "" :xalign 0.5)
     )
   )
 )
+
+( defwidget battery []
+
+  (box
+    :class "container"
+    :orientation "v"
+    (circular-progress :value {EWW_BATTERY.BAT0.capacity} :thickness 3)
+    (label :text " " :xalign 0.6)
+    )
+  )
+
+(defwidget stats [] 
+  (box :class "container"
+       :orientation "v"
+       :space-evenly false
+    ( ram )
+    ( volume )
+    ( battery )
+    )
+  )
+
 
 
 (deflisten music :initial ""
@@ -84,25 +107,22 @@
     {music != "" ? "${music}" : ""}))
 
 
-(defwidget stats [] 
-  (box :class "container" :orientation "v"
-    ( ram )
-    ( volume )
-    ))
 
 
 (defwindow bar 
            :monitor 0
            :geometry (geometry :x "0%"
-                               :y "0px"
-                               :width "3%"
+                               :y "0%"
+                               ;width "3%"
                                :height "100%"
-                               :anchor "top left")
-           :stacking "overlay"
+                               :anchor "left center")
+           :stacking "fg"
            :focusable false
            :exclusive true
            :namespace "bar"
-    (box :class "bar" :orientation "v"
+    (box :class "bar" 
+               :orientation "v"
+               
       (box (workspaces))
       (box )
       (box (stats))
