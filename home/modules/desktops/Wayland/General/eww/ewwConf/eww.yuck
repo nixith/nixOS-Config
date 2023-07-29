@@ -37,8 +37,21 @@
     ( ram )
     ( volume )
     ( battery )
-    )
   )
+)
+
+(defpoll time
+  :interval "10s"
+  :initial "00:00"
+  "date '+%H\\n%M'"
+  )
+
+(defwidget clock []
+  (box
+    (label :text time)
+  )
+)
+
 
 
 
@@ -85,13 +98,15 @@
        ;; :duration "2000ms"
     {music != "" ? "${music}" : ""}))
 
+
 (defwidget bar []
       (box :class "bar" 
          :orientation "v"
                
       (box (workspaces))
-      ;(box :valign "center" {EWW_TIME} )
-      (box :valign "center" "󰥔" )
+      (box :valign "center"
+        (clock)
+      )
       (box :valign "end" (stats))
             
     )
@@ -101,7 +116,7 @@
            :geometry (geometry :x "0%"
                                :y "0%"
                                ;width "3%"
-                               :height "100%"
+                               :height "98%"
                                :anchor "left center")
            :stacking "fg"
            :focusable false
