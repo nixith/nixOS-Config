@@ -25,11 +25,12 @@
   (box
     :class "container"
     :orientation "v"
-    (circular-progress :value {EWW_BATTERY.BAT0.capacity} :thickness 3)
+    (circular-progress :value {EWW_BATTERY.BAT0.capacity} 
+                       :thickness 3
     (label :text " " :xalign 0.6)
     )
   )
-
+)
 (defwidget stats [] 
   (box 
        :orientation "v"
@@ -106,6 +107,7 @@
       (box (workspaces))
       (box :valign "center"
         (clock)
+        
       )
       (box :valign "end" (stats))
             
@@ -130,7 +132,7 @@
            :geometry (geometry :x "0%"
                                :y "0%"
                                ;width "3%"
-                               :height "100%"
+                               :height "98%"
                                :anchor "left center")
            :stacking "fg"
            :focusable false
@@ -144,7 +146,7 @@
            :geometry (geometry :x "0%"
                                :y "0%"
                                ;width "3%"
-                               :height "100%"
+                               :height "98%"
                                :anchor "left center")
            :stacking "fg"
            :focusable false
