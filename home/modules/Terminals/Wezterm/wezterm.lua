@@ -30,7 +30,7 @@ config = {
 	},
 
 	-- Colors, Opacity, and Fonts
-	font = wezterm.font("Lilex Nerd Font", { weight = "Regular" }),
+	font = wezterm.font("Lilex Nerd Font", { weight = "Bold" }),
 	color_scheme = "Catppuccin Macchiato",
 	window_background_opacity = 0.4,
 	-- colors = {
