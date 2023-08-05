@@ -71,5 +71,9 @@
     statix
     nixd
     deadnix
+
+    #typst
+    typst
+    typst-lsp
   ];
 }

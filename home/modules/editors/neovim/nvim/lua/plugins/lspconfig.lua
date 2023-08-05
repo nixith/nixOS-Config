@@ -60,31 +60,9 @@ return {
         --python
         ruff_lsp = {},
         pylyzer = {},
-        pyright = {},
-
-        --rust
-        rust_analyzer = {
-          -- mason = false,
-          -- settings = {
-          --   ["rust-analyzer"] = {
-          --     imports = {
-          --       granularity = {
-          --         group = "module",
-          --       },
-          --       prefix = "self",
-          --     },
-          --     cargo = {
-          --       buildScripts = {
-          --         enable = true,
-          --       },
-          --     },
-          --     procMacro = {
-          --       enable = true,
-          --     },
-          --   },
-          -- },
-          checkOnSave = {
-            command = "clippy",
+        typst_lsp = {
+          settings = {
+            exportPdf = "onType",
           },
         },
       },
