@@ -35,6 +35,7 @@ in {
     homeDirectory = "/home/ryan";
 
     packages = with pkgs; [
+      thunderbirdPackages.thunderbird-115
       ntfs3g
       pulseaudio
       libsForQt5.xp-pen-g430-driver
