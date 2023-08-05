@@ -5,12 +5,16 @@
   font-size: 12;
   font-family: Lilex Nerd Font Regular;
   background-color: transparent;
+  
+
 }
 
 //Global Styles
 .bar {
   background-color: transparent;
   padding: 0px;
+  border-radius: 16px;
+
   transition-property: background-color;
   transition-duration: 0.5s;
 }
@@ -37,7 +41,7 @@
 }
 
 .workspaceUnfocused {
-  background-color: #1e1e2e;
+  // background-color: #1e1e2e;
   padding: 8px;
   color: $text;
   margin: 0 3px;
@@ -46,6 +50,12 @@
 .workspaceFocused {
   @extend .workspaceUnfocused;
   color: $mauve;
+}
+
+.wrapperWidget {
+  background-color: #1e1e2e;
+  border-radius: 16px;
+  padding: 2px;
 }
 
 // Styles on classes (see eww.yuck for more information)

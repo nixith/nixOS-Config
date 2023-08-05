@@ -1,15 +1,18 @@
 
 ( defwidget ram []
   
-  (box :class "container" :orientation "v"
+  (box :class "container" 
+       :orientation "v"
     (circular-progress :value {EWW_RAM.used_mem_perc} :class "ram" :thickness 3)
     (label :text "" :xalign 0.42 )
   )
 )
 
 ( defwidget volume []
-  (box :class "container" :orientation "v"
-    (box :orientation "v"
+  (box :class "container" 
+       :orientation "v"
+    (box 
+      :orientation "v"
       (circular-progress :value {EWW_RAM.used_mem_perc} :class "audio" :thickness 3)
       (label :text "󰕾" :xalign 0.5)
     )
@@ -27,14 +30,19 @@
     :orientation "v"
     (circular-progress :value {EWW_BATTERY.BAT0.capacity} 
                        :thickness 3
-    (label :text " " :xalign 0.6)
-    )
+      )
+    (label :text " " 
+           :xalign 0.6
+      )
+    
   )
 )
 (defwidget stats [] 
   (box 
+       :class "wrapperWidget"
        :orientation "v"
        :space-evenly false
+       :valign "end"
     ( ram )
     ( volume )
     ( battery )
@@ -66,8 +74,8 @@
 (deflisten occupiedWorkspaces :initial "[]" "scripts/get-workspaces")
 (deflisten current_workspace :initial "1" "scripts/get-active-workspaces")
 (defwidget workspaces []
-  (eventbox :onscroll "bash ./scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget"
-    (box :space-evenly false  :orientation "v"
+  (eventbox :onscroll "bash ./scripts/change-active-workspace {} ${current_workspace}" 
+    (box :space-evenly false  :orientation "v" :class "wrapperWidget"
       (label :text "${occupiedWorkspaces}${current_workspace}" :visible false)
       (for workspace in occupiedWorkspaces
         
@@ -104,12 +112,12 @@
       (box :class "bar" 
          :orientation "v"
                
-      (box (workspaces))
-      (box :valign "center"
+      (box :valign "start" (workspaces))
+      (box :valign "center" :class "wrapperWidget"
         (clock)
         
       )
-      (box :valign "end" (stats))
+      (box  :class "wrapperWidget" :valign "end" (stats))
             
     )
 )
