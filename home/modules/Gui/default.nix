@@ -22,7 +22,8 @@ in {
     mesa
     dxvk
     #itch #(commented due to InsecurePackage)
-    #prismlauncher.packages.${pkgs.system}.prismlauncher
+    (prismlauncher.override
+      {glfw = pkgs.glfw-wayland;})
 
     # Utilities
     cinnamon.nemo-with-extensions
