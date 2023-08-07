@@ -75,10 +75,12 @@
 
   decoration {
       rounding=10
-      blur=1
-      blur_size=3 # minimum 1
-      blur_passes=1 # minimum 1
-      blur_new_optimizations=1
+      blur {
+      enabled=1
+      size=3 # minimum 1
+      passes=1 # minimum 1
+      new_optimizations=1
+      }
   }
 
   animations {
