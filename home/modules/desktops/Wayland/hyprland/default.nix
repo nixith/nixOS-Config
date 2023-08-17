@@ -14,10 +14,26 @@
 
   monitors =
     if computer == "Galaxia"
-    then (import ./snippets/DesktopMonitors.nix {})
+    then
+      (
+        import ./snippets/DesktopMonitors.nix {}
+      )
     else ''
       monitor=,preferred,auto,auto
     '';
+
+  nvidiaPatches =
+    if computer == "Galaxia"
+    then true
+    else false;
+
+  hyprlandPackage =
+    if computer == "Galaxia"
+    then inputs.hyprland.packages.${pkgs.system}.hyprland-nvidia
+    else inputs.hyprland.packages.${pkgs.system}.hyprland;
+
+  waybarPackage = pkgs.waybar-hyprland;
+
   HyprEnv = ''
      env = XDG_CURRENT_DESKTOP,Hyprland
     env = XDG_SESSION_TYPE,wayland
@@ -34,16 +50,10 @@ in {
   imports = [../General/Waybar ../General/Rofi ../General/anyrun ../General/Dunst];
 
   # Fix waybar
-  programs.waybar.package = pkgs.waybar.overrideAttrs (oldAttrs: {
-    postPatch = ''
-      # use hyprctl to switch workspaces
-      sed -i 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = "hyprctl dispatch workspace " + name_;\n\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp
-    '';
-    mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
-  });
+  programs.waybar.package = waybarPackage;
 
   wayland.windowManager.hyprland = {
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    package = hyprlandPackage;
     enable = true;
     extraConfig = import ./config.nix {
       inherit pkgs;
@@ -53,12 +63,8 @@ in {
     };
     xwayland = {
       enable = true;
-      hidpi = true;
     };
-    enableNvidiaPatches =
-      if computer == "Galaxia"
-      then true
-      else false;
+    enableNvidiaPatches = nvidiaPatches;
   };
 
   home.packages = with pkgs; [
