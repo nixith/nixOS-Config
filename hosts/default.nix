@@ -42,7 +42,7 @@ in {
         {
           programs.hyprland = {
             enable = true;
-            nvidiaPatches = true;
+            package = inputs.hyprland.packages.${pkgs.system}.hyprland;
           };
         }
         nixos-hardware.nixosModules.lenovo-thinkpad-l13
@@ -67,7 +67,8 @@ in {
         {
           programs.hyprland = {
             enable = true;
-            nvidiaPatches = true;
+            enableNvidiaPatches = true;
+            package = inputs.hyprland.packages.${pkgs.system}.hyprland;
           };
         }
         #nixos-hardware.nixosModules.lenovo-thinkpad-l13
