@@ -77,7 +77,8 @@ in {
     ./modules/CLI/btop
     ./modules/shells/Fish
     #./modules/shells/nushell
-    ./modules/shells/Starship
+    ./modules/shells/shellApps/Starship
+    ./modules/shells/shellApps/zoxide.nix
     ./modules/Gui/spotify
     ./modules/desktops/Wayland/General/swayOSD
     # Gui Tools
