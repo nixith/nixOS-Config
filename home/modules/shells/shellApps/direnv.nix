@@ -1,6 +1,6 @@
 {...}: {
   programs.direnv = {
     enable = true;
-    nix-derenv.enable = true;
+    nix-direnv.enable = true;
   };
 }
