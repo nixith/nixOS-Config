@@ -60,11 +60,9 @@ return {
         --python
         ruff_lsp = {},
         pylyzer = {},
-        typst_lsp = {
-          settings = {
-            exportPdf = "onType",
-          },
-        },
+
+        -- typst
+        typst_lsp = {},
       },
       --------- #### ---------
       -- you can do any additional lsp server setup here
