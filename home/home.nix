@@ -79,6 +79,7 @@ in {
     #./modules/shells/nushell
     ./modules/shells/shellApps/Starship
     ./modules/shells/shellApps/zoxide.nix
+    ./modules/shells/shellApps/direnv.nix
     ./modules/Gui/spotify
     ./modules/desktops/Wayland/General/swayOSD
     # Gui Tools
