@@ -61,7 +61,11 @@
       "rustc"
       "rustfmt"
     ])
+    #
     rust-analyzer-nightly
+
+    # debugger?
+    vscode-extensions.vadimcn.vscode-lldb
 
     ### Formatters: ###
     stylua
