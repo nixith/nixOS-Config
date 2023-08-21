@@ -65,7 +65,7 @@ return {
         typst_lsp = {
           settings = {
             exportPdf = "onType", -- Choose onType, onSave or never.
-            serverPath = "~/.nix-profile/bin/typst-lsp", -- Normally, there is no need to uncomment it.
+            -- serverPath = "~/.nix-profile/bin/typst-lsp", -- Normally, there is no need to uncomment it.
           },
         },
       },
@@ -74,10 +74,13 @@ return {
       -- return true if you don't want this server to be setup with lspconfig
       ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
       setup = {
-        rust_analyzer = function(_, opts)
-          require("rust-tools").setup({ server = opts })
-          return true
-        end,
+        -- ## Rust Config Done in other File ##
+
+        --rust_analyzer = function(_, opts)
+        --  require("rust-tools").setup({ server = opts })
+        --  return true
+        --end,
+
         -- example to setup with typescript.nvim
         -- tsserver = function(_, opts)
         --   require("typescript").setup({ server = opts })
