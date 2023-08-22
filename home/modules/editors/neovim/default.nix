@@ -52,7 +52,7 @@
     nodePackages_latest.vscode-json-languageserver
     sumneko-lua-language-server
     nodePackages_latest.pyright
-
+    jdt-language-server
     ### Rust ###
     (fenix.complete.withComponents [
       "cargo"
@@ -66,6 +66,9 @@
 
     # debugger?
     vscode-extensions.vadimcn.vscode-lldb
+
+    # tomly thing I use for rust
+    taplo
 
     ### Formatters: ###
     stylua
