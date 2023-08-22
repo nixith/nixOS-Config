@@ -83,11 +83,11 @@
         "rust-analyzer-src": "rust-analyzer-src_2"
       },
       "locked": {
-        "lastModified": 1692512345,
-        "narHash": "sha256-ztOkYlG6LgS5AyjcQG3XWX3MRBQCHmTVlW3rhd2UdJs=",
+        "lastModified": 1692598848,
+        "narHash": "sha256-LYQNc486Em/UGU/LCzbcafNY6kOdl1mP6FcnWdudFKo=",
         "owner": "nix-community",
         "repo": "fenix",
-        "rev": "75907b374bd1b95fe7ebaa482e4872caae9da081",
+        "rev": "224c5c301ab5f96afe51ec4dfa661fa82ab4ad05",
         "type": "github"
       },
       "original": {
@@ -340,11 +340,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1692571950,
-        "narHash": "sha256-b72Y94+DyWnmOJrtL3h0DCQxBRNmiRc+Uj9cj2UuaoE=",
+        "lastModified": 1692589938,
+        "narHash": "sha256-aTUwiSSOcWei3hg4VEs0QKrlZ46MpdZ95dvmEzIVWak=",
         "owner": "wamserma",
         "repo": "flake-programs-sqlite",
-        "rev": "0861f036d705eb6e596b8d371975527df927cca1",
+        "rev": "f40af1e0fb8046b1866cb058b7df973cd97efa8e",
         "type": "github"
       },
       "original": {
@@ -1019,11 +1019,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1692559209,
-        "narHash": "sha256-pq4VJDJ11QR2ZF9zYA9XLXXr5WZ30fPrf1WKEISo7gM=",
+        "lastModified": 1692599365,
+        "narHash": "sha256-FT4ZZpIAbWdtTZjd5a+AfYUBD5qCgxW3D9JQsfYU1gg=",
         "owner": "prismlauncher",
         "repo": "prismlauncher",
-        "rev": "5c95448f1f323eeb4b52425c304df95c9a01d5c8",
+        "rev": "fcb436f1f469d6de09a334f3e131b87b09c9821e",
         "type": "github"
       },
       "original": {
