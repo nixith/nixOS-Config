@@ -1,6 +1,7 @@
 GIMP Palette
 Name: Catppuccin Mocha
 #
+205 214 244 cdd6f4 # text
 245 224 220 f5e0dc
 242 205 205 f2cdcd
 245 194 231 f5c2e7
@@ -15,7 +16,6 @@ Name: Catppuccin Mocha
 116 199 236 74c7ec
 137 180 250 89b4fa
 180 190 254 b4befe
-205 214 244 cdd6f4
 186 194 222 bac2de
 166 173 200 a6adc8
 147 153 178 9399b2
@@ -24,6 +24,5 @@ Name: Catppuccin Mocha
 88  91  112 585b70
 69  71  90  45475a
 49  50  68  313244
-30  30  46  1e1e2e
 24  24  37  181825
 17  17  27  11111b
