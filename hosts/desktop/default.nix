@@ -20,7 +20,9 @@ in {
   };
 
   # some weird workarounds for hyprland and hostname detection
-  environment.variables = {HOSTNAME = hostname;};
+  environment.variables = {
+    HOSTNAME = hostname;
+  };
   nixpkgs.config.allowUnfree = true;
 
   boot = {
