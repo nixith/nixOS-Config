@@ -44,6 +44,7 @@
 
     env = CLUTTER_BACKEND,"wayland"
     env = SDL_VIDEODRIVER,wayland
+    env = NIXOS_OZONE_WL, 1
   '';
 in {
   # actually enable hyprland
