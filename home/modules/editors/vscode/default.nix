@@ -4,7 +4,8 @@
   ...
 }: {
   programs.vscode = {
-    enable = true;
-    programs.vscode.mutableExtensionsDir = true;
+    enable = false;
+    mutableExtensionsDir = true;
+    package = pkgs.vscode-fhs;
   };
 }
