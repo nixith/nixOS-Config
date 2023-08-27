@@ -116,7 +116,11 @@
   services.gvfs.enable = true;
   services.udev = {
     enable = true;
-    packages = [pkgs.udisks2];
+    packages = [
+      pkgs.udisks2
+      pkgs.platformio
+      pkgs.openocd
+    ];
   };
 
   hardware.logitech = {
