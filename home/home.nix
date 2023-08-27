@@ -20,6 +20,8 @@
     if computer == "Galaxia"
     then true
     else false;
+  username = "ryan";
+  homeDirectory = "/home/${username}";
 in {
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = overlays;
@@ -31,9 +33,7 @@ in {
   systemd.user.startServices = "sd-switch"; # reload systemd units on config reload
 
   home = {
-    username = "ryan";
-    homeDirectory = "/home/ryan";
-
+    inherit username homeDirectory;
     packages = with pkgs; [
       thunderbirdPackages.thunderbird-115
       ntfs3g
@@ -67,6 +67,10 @@ in {
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
+  };
+
+  xdg.systemDirs = {
+    data = ["${homeDirectory}/.local/share"];
   };
 
   imports = [
