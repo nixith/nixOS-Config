@@ -32,10 +32,8 @@
     then inputs.hyprland.packages.${pkgs.system}.hyprland-nvidia
     else inputs.hyprland.packages.${pkgs.system}.hyprland;
 
-  waybarPackage = pkgs.waybar-hyprland;
-
   HyprEnv = ''
-     env = XDG_CURRENT_DESKTOP,Hyprland
+    env = XDG_CURRENT_DESKTOP,Hyprland
     env = XDG_SESSION_TYPE,wayland
     env = XDG_SESSION_DESKTOP,Hyprland
 
@@ -51,7 +49,7 @@ in {
   imports = [../General/Waybar ../General/Rofi ../General/anyrun ../General/Dunst];
 
   # Fix waybar
-  programs.waybar.package = waybarPackage;
+  programs.waybar.package = pkgs.waybar;
 
   wayland.windowManager.hyprland = {
     package = hyprlandPackage;
