@@ -47,8 +47,6 @@ in {
       python3
       spotify
       webcord-vencord
-      xfce.thunar
-      gnome.nautilus
       gnome.gnome-disk-utility
       partition-manager
       zig
