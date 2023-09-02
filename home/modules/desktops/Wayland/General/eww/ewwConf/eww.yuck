@@ -2,23 +2,40 @@
 ( defwidget ram []
   
   (box :class "container" 
-       :orientation "v"
-    (circular-progress :value {EWW_RAM.used_mem_perc} :class "ram" :thickness 3)
-    (label :text "" :xalign 0.42 )
+       :orientation "h"
+    (circular-progress :value {EWW_RAM.used_mem_perc} 
+                       :class "ramCircle" 
+                       :thickness 3
+      (label :text " " 
+              :class "wheelLabel" 
+
+           ;:xalign 0.42 
+      )
+    ) 
   )
 )
 
 ( defwidget volume []
   (box :class "container" 
-       :orientation "v"
+       :orientation "h"
+       :space-evenly true;
     (box 
-      :orientation "v"
-      (circular-progress :value {EWW_RAM.used_mem_perc} :class "audio" :thickness 3)
-      (label :text "󰕾" :xalign 0.5)
+      :orientation "h"
+      (circular-progress :value {EWW_RAM.used_mem_perc} :class "progressWheel" :thickness 3
+        ( label :text "󰕾 "
+                :class "wheelLabel"
+             :xalign 0.7
+        )   
+      )
     )
-    (box :orientation "v"
-      (circular-progress :value {EWW_RAM.used_mem_perc} :class "audio" :thickness 3)
-      (label :text "" :xalign 0.5)
+    (box :orientation "h"
+      (circular-progress :value {EWW_RAM.used_mem_perc} :class "progressWheel" :thickness 3
+        (label :text " " 
+               :class "wheelLabel"
+
+             :xalign 0.47
+        )
+      )
     )
   )
 )
@@ -27,22 +44,24 @@
 
   (box
     :class "container"
-    :orientation "v"
+    :orientation "h"
     (circular-progress :value {EWW_BATTERY.BAT0.capacity} 
                        :thickness 3
+                       :class "progressWheel"
+    (label :text " "
+           :class "wheelLabel"
+           ;:xalign 0.6
       )
-    (label :text " " 
-           :xalign 0.6
-      )
+    )
     
   )
 )
 (defwidget stats [] 
   (box 
        :class "wrapperWidget"
-       :orientation "v"
-       :space-evenly false
-       :valign "end"
+       :orientation "h"
+       :space-evenly false;
+       :halign "start"
     ( ram )
     ( volume )
     ( battery )
@@ -52,7 +71,7 @@
 (defpoll time
   :interval "10s"
   :initial "00:00"
-  "date '+%H\\n%M'"
+  "date '+%H:%M'"
   )
 
 (defwidget clock []
@@ -75,7 +94,7 @@
 (deflisten current_workspace :initial "1" "scripts/get-active-workspaces")
 (defwidget workspaces []
   (eventbox :onscroll "bash ./scripts/change-active-workspace {} ${current_workspace}" 
-    (box :space-evenly false  :orientation "v" :class "wrapperWidget"
+    (box :space-evenly false  :orientation "h" :class "wrapperWidget"
       (label :text "${occupiedWorkspaces}${current_workspace}" :visible false)
       (for workspace in occupiedWorkspaces
         
@@ -98,7 +117,7 @@
 
 (defwidget musicStatus []
   (revealer :class "music"
-       :orientation "v"
+       :orientation "h"
        :space-evenly false
        :halign "center"
        ;; :visible {playing == "Playing"}
@@ -110,14 +129,14 @@
 
 (defwidget bar []
       (box :class "bar" 
-         :orientation "v"
+         :orientation "h"
                
-      (box :valign "start" (workspaces))
-      (box :valign "center" :class "wrapperWidget"
+      (box :halign "start" (workspaces))
+      (box :halign "center" :class "wrapperWidget"
         (clock)
         
       )
-      (box  :class "wrapperWidget" :valign "end" (stats))
+      (box  :class "wrapperWidget" :halign "end" (stats))
             
     )
 )
@@ -125,9 +144,9 @@
            :monitor 0
            :geometry (geometry :x "0%"
                                :y "0%"
-                               ;width "3%"
-                               :height "98%"
-                               :anchor "left center")
+                               :width "98%"
+                               :height "1%"
+                               :anchor "top center")
            :stacking "fg"
            :focusable false
            :exclusive true
@@ -141,7 +160,7 @@
                                :y "0%"
                                ;width "3%"
                                :height "98%"
-                               :anchor "left center")
+                               :anchor "top center")
            :stacking "fg"
            :focusable false
            :exclusive true
@@ -155,7 +174,7 @@
                                :y "0%"
                                ;width "3%"
                                :height "98%"
-                               :anchor "left center")
+                               :anchor "top center")
            :stacking "fg"
            :focusable false
            :exclusive true

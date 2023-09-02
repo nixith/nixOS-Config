@@ -13,7 +13,7 @@
 .bar {
   background-color: transparent;
   padding: 0px;
-  border-radius: 16px;
+  border-radius: 4px;
 
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -22,15 +22,29 @@
 
 .progressWheel {
   background-color: #45475a;
-  padding: 8px;
+  padding: 4px;
   color: $text;
-  margin: 0 3px;
+  font-size: 10pt;
+  margin-left: 4px;
+  margin-right: 4px;
+
 }
 
-.ram {
-  @extend .progres;
+.wheelLabel {
+  // @extend .progressWheel;
+  color: $text;
+  font-size: 8pt;
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.ramCircle {
+  @extend .progressWheel;
   color: $red;
 }
+
 
 .container {
   background-color: #1e1e2e;
@@ -42,9 +56,9 @@
 
 .workspaceUnfocused {
   // background-color: #1e1e2e;
-  padding: 8px;
+  // padding: 8px;
+  margin: 4px;
   color: $text;
-  margin: 0 3px;
 }
 
 .workspaceFocused {
