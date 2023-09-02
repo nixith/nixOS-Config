@@ -7,8 +7,8 @@
     #"spacing" = 4, # Gaps between modules (4px)
     # Choose the order of the modules
 
-    "modules-left" = ["wlr/workspaces"];
-    # "modules-left" = [ "wlr/workspaces" "hyprland/window" ];
+    "modules-left" = ["hyprland/workspaces"];
+    # "modules-left" = [ "hyprland/workspaces" "hyprland/window" ];
     "modules-center" = [];
     "modules-right" = [
       "pulseaudio"
@@ -22,7 +22,7 @@
       "tray"
     ];
     # Modules configuration
-    "wlr/workspaces" = {
+    "hyprland/workspaces" = {
       "format" = "{icon}";
       "on-scroll-up" = "hyprctl dispatch workspace e+1";
       "on-scroll-down" = "hyprctl dispatch workspace e-1";

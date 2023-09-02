@@ -44,7 +44,7 @@ button {
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 
-#workspaces button {
+#hyprland button {
   padding: 0 5px;
   border-radius: 5em / 5em;
   background-color: transparent;
@@ -53,7 +53,7 @@ button {
   font-weight: bold;
 }
 
-#workspaces button.active {
+#hyprland button.active {
   padding: 0 5px;
   border-radius: 5em / 5em;
   background-color: @surface0;
@@ -91,7 +91,7 @@ button {
   color: @red;
 }
 #window,
-#workspaces {
+#hyprland {
   margin: 0 4px;
   background-color: transparent;
   font-weight: bold;
@@ -101,12 +101,12 @@ button {
 }
 
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
+.modules-left > widget:first-child > #hyprland {
   margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
+.modules-right > widget:last-child > #hyprland {
   margin-right: 0;
 }
 
