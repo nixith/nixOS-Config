@@ -46,10 +46,9 @@
   '';
 in {
   # actually enable hyprland
-  imports = [../General/Waybar ../General/Rofi ../General/anyrun ../General/Dunst];
+  imports = [../General/eww ../General/Rofi ../General/anyrun ../General/Dunst];
 
   # Fix waybar
-  programs.waybar.package = pkgs.waybar;
 
   wayland.windowManager.hyprland = {
     package = hyprlandPackage;
@@ -75,8 +74,6 @@ in {
     swww
     polkit_gnome
     wl-clipboard
-    swaylock-fancy
-    swayidle
     brightnessctl
     grim
     #anyrun
@@ -88,8 +85,32 @@ in {
     latitude = "35.65";
     longitude = "-78.83";
   };
+
   xdg.configFile."hypr/Assets/tropic_island_night.jpg".source =
     ./Assets/tropic_island_night.jpg;
 
-  # Wallpaper
+  programs.swaylock = {
+    enable = true;
+  };
+
+  services.swayidle = {
+    enable = true;
+    events = [
+      {
+        event = "before-sleep";
+        command = "${pkgs.swaylock}/bin/swaylock";
+      }
+      {
+        event = "lock";
+        command = "lock";
+      }
+    ];
+
+    timeouts = [
+      {
+        timeout = 120;
+        command = "${pkgs.swaylock}/bin/swaylock -fF";
+      }
+    ];
+  };
 }
