@@ -86,8 +86,17 @@ in {
     longitude = "-78.83";
   };
 
-  xdg.configFile."hypr/Assets/tropic_island_night.jpg".source =
-    ./Assets/tropic_island_night.jpg;
+  xdg.configFile."hypr/Assets/tropic_island_night.jpg".source = ./Assets/tropic_island_night.jpg;
+
+  home.file = {
+    scripts = {
+      enable = true;
+      executable = true;
+      recursive = true;
+      source = ./scripts;
+      target = ".config/hypr/scripts";
+    };
+  };
 
   programs.swaylock = {
     enable = true;
