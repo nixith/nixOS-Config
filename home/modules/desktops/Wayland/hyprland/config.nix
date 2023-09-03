@@ -164,20 +164,20 @@
   bind=ALT,9,movetoworkspace,9
   bind=ALT,0,movetoworkspace,10
 
-  bind=SUPERALT,space,exec,playerctl --player=%any,firefox play-pause
-  bind=SUPERALT,bracketright,exec,playerctl --player=%any,firefox next
-  bind=SUPERALT,bracketleft,exec,playerctl --player=%any,firefox previous
-  bind=,XF86AudioPlay,exec,playerctl --player=%any,firefox play-pause
-  bind=,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && ~/.config/hypr/scripts/ewwVolUpdate.sh
-  bind=,XF86AudioLowerVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && ~/.config/hypr/scripts/ewwVolUpdate.sh
-  bind=SUPER,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 5%+ && ~/.config/hypr/scripts/ewwVolUpdate.sh
-  bind=SUPER,XF86AudioLowerVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 5%- && ~/.config/hypr/scripts/ewwVolUpdate.sh
+  bindl=SUPERALT,space,exec,playerctl --player=%any,firefox play-pause
+  bindl=SUPERALT,bracketright,exec,playerctl --player=%any,firefox next
+  bindl=SUPERALT,bracketleft,exec,playerctl --player=%any,firefox previous
+  bindl=,XF86AudioPlay,exec,playerctl --player=%any,firefox play-pause
+  binde=,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && ~/.config/hypr/scripts/ewwVolUpdate.sh
+  binde=,XF86AudioLowerVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && ~/.config/hypr/scripts/ewwVolUpdate.sh
+  binde=SUPER,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 5%+ && ~/.config/hypr/scripts/ewwVolUpdate.sh
+  binde=SUPER,XF86AudioLowerVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 5%- && ~/.config/hypr/scripts/ewwVolUpdate.sh
 
   bind=,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ~/.config/hypr/scripts/ewwVolUpdate.sh
   bind=SUPER,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ~/.config/hypr/scripts/ewwVolUpdate.sh
   bind=,XF86AudioMicMute,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ~/.config/hypr/scripts/ewwVolUpdate.sh
-  bind=,XF86MonBrightnessDown,exec,brightnessctl set 10%-
-  bind=,XF86MonBrightnessUp,exec,brightnessctl set +10%
+  binde=,XF86MonBrightnessDown,exec,brightnessctl set 10%-
+  binde=,XF86MonBrightnessUp,exec,brightnessctl set +10%
 
   ${
     if computer == "Galaxia"
@@ -199,7 +199,6 @@
   exec-once=XDG_CURRENT_DESKTOP=Sway flameshot
   exec=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
   exec-once=wlsunset -l 35.6 -L -78.8 # Screen dimmer/oranger based on sunrise and sunset
-  exec=pkill eww
   exec=eww daemon
     ${
     if computer == "Galaxia"
