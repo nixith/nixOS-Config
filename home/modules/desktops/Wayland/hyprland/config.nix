@@ -168,9 +168,13 @@
   bind=SUPERALT,bracketright,exec,playerctl --player=%any,firefox next
   bind=SUPERALT,bracketleft,exec,playerctl --player=%any,firefox previous
   bind=,XF86AudioPlay,exec,playerctl --player=%any,firefox play-pause
-  bind=,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
-  bind=,XF86AudioLowerVolume,exec,wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-
+  bind=,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && ~/.config/hypr/scripts/ewwVolUpdate.sh
+  bind=,XF86AudioLowerVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && ~/.config/hypr/scripts/ewwVolUpdate.sh
+  bind=SUPER,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 5%+ && ~/.config/hypr/scripts/ewwVolUpdate.sh
+  bind=SUPER,XF86AudioLowerVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 5%- && ~/.config/hypr/scripts/ewwVolUpdate.sh
+
   bind=,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+  bind=SUPER,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
   bind=,XF86AudioMicMute,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
   bind=,XF86MonBrightnessDown,exec,brightnessctl set 10%-
   bind=,XF86MonBrightnessUp,exec,brightnessctl set +10%
@@ -179,14 +183,16 @@
     if computer == "Galaxia"
     then ''
       exec-once=pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=my-virtualmic channel_map=front-left,front-right
-      exec-once=carla --no-gui ~/Music/Patchbay/VoiceFIlter.carxp
+      exec-once=carla --no-gui ~/Music/Patchbay/VoiceFilter.carxp
     ''
     else ''
       #mute audio upon start
-      exec-once=pactl set-sink-mute @DEFAULT_SINK@ toggle
-      exec-once=pactl set-source-mute @DEFAULT_SOURCE@ toggle
+      exec-once=wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+      exec-once=wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
     ''
   }
+
+  exec-once = eww
 
    bindm=SUPER,mouse:272,movewindow
    bindm=SUPER,mouse:273,resizewindow
@@ -194,8 +200,20 @@
   exec-once=XDG_CURRENT_DESKTOP=Sway flameshot
   exec=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
   exec-once=wlsunset -l 35.6 -L -78.8 # Screen dimmer/oranger based on sunrise and sunset
-  exec-once=waybar # -c ~/.config/hypr/waybar/config.json -s ~/.config/hypr/waybar/style.css
-  exec-once=swww init
+  exec-once=eww daemon
+    ${
+    if computer == "Galaxia"
+    then ''
+      exec-once = eww open bar0
+      exec-once = eww open bar1
+      exec-once = eww open bar2
+    ''
+    else ''
+      exec-once = eww open bar0
+    ''
+  }
+  exec-once=~/.config/hyprland/scripts/ewwVolUpdate.sh
+  exec-once=swww init && swww image ~/.config/hypr/Assets/tropic_island_night.jpg
   exec-once=swww image ~/Pictures/wallpapers/tropic_island_night.jpg
   exec=export XDG_CURRENT_DESKTOP="Sway"
   #exec-once= wezterm
