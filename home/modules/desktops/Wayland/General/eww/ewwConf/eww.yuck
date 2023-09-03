@@ -15,13 +15,18 @@
   )
 )
 
+( defvar volOut 0 )
+( defvar volOutState "󰝟 ") ;; or 󰕾 
+( defvar volIn 0)
+(defvar volInState "󰍭 ") ;; or 
+
 ( defwidget volume []
   (box :class "container" 
        :orientation "h"
        :space-evenly true;
     (box 
       :orientation "h"
-      (circular-progress :value {EWW_RAM.used_mem_perc} :class "progressWheel" :thickness 3
+      (circular-progress :value volOut :class "volCircle" :thickness 3
         ( label :text "󰕾 "
                 :class "wheelLabel"
              :xalign 0.7
@@ -29,7 +34,7 @@
       )
     )
     (box :orientation "h"
-      (circular-progress :value {EWW_RAM.used_mem_perc} :class "progressWheel" :thickness 3
+      (circular-progress :value volIn :class "micCircle" :thickness 3
         (label :text " " 
                :class "wheelLabel"
 
@@ -47,6 +52,7 @@
     :orientation "h"
     (circular-progress :value {EWW_BATTERY.BAT0.capacity} 
                        :thickness 3
+                       :visible {EWW_BATTERY ?: false }
                        :class "progressWheel"
     (label :text " "
            :class "wheelLabel"
@@ -68,15 +74,12 @@
   )
 )
 
-(defpoll time
-  :interval "10s"
-  :initial "00:00"
-  "date '+%H:%M'"
-  )
 
 (defwidget clock []
   (box
-    (label :text time)
+    (label :text {formattime(EWW_TIME , '%H:%M')}
+           :class "time")
+
   )
 )
 
@@ -144,7 +147,7 @@
            :monitor 0
            :geometry (geometry :x "0%"
                                :y "0%"
-                               :width "98%"
+                               :width "100%"
                                :height "1%"
                                :anchor "top center")
            :stacking "fg"
@@ -158,8 +161,8 @@
            :monitor 1
            :geometry (geometry :x "0%"
                                :y "0%"
-                               ;width "3%"
-                               :height "98%"
+                               :width "100%"
+                               :height "1%"
                                :anchor "top center")
            :stacking "fg"
            :focusable false
@@ -172,8 +175,8 @@
            :monitor 2
            :geometry (geometry :x "0%"
                                :y "0%"
-                               ;width "3%"
-                               :height "98%"
+                               :width "100%"
+                               :height "1%"
                                :anchor "top center")
            :stacking "fg"
            :focusable false

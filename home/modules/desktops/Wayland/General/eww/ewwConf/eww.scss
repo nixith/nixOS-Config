@@ -45,6 +45,26 @@
   color: $red;
 }
 
+.volCircle {
+  @extend .progressWheel;
+  color: $sapphire;
+}
+
+.micCircle {
+  @extend .progressWheel;
+  color: $sky;
+}
+
+.batCircle {
+  @extend .progressWheel;
+  color: $yellow;
+}
+
+.time {
+  @extend container;
+  color: $pink;
+  
+}
 
 .container {
   background-color: #1e1e2e;
@@ -68,7 +88,7 @@
 
 .wrapperWidget {
   background-color: #1e1e2e;
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 2px;
 }
 
