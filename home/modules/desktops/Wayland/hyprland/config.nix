@@ -173,9 +173,9 @@
   bind=SUPER,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 5%+ && ~/.config/hypr/scripts/ewwVolUpdate.sh
   bind=SUPER,XF86AudioLowerVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 5%- && ~/.config/hypr/scripts/ewwVolUpdate.sh
 
-  bind=,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-  bind=SUPER,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
-  bind=,XF86AudioMicMute,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+  bind=,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ~/.config/hypr/scripts/ewwVolUpdate.sh
+  bind=SUPER,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ~/.config/hypr/scripts/ewwVolUpdate.sh
+  bind=,XF86AudioMicMute,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ~/.config/hypr/scripts/ewwVolUpdate.sh
   bind=,XF86MonBrightnessDown,exec,brightnessctl set 10%-
   bind=,XF86MonBrightnessUp,exec,brightnessctl set +10%
 
@@ -187,12 +187,11 @@
     ''
     else ''
       #mute audio upon start
-      exec-once=wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-      exec-once=wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+      exec-once=wpctl set-mute @DEFAULT_AUDIO_SINK@ 1
+      exec-once=wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 1
     ''
   }
 
-  exec-once = eww
 
    bindm=SUPER,mouse:272,movewindow
    bindm=SUPER,mouse:273,resizewindow
@@ -200,19 +199,20 @@
   exec-once=XDG_CURRENT_DESKTOP=Sway flameshot
   exec=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
   exec-once=wlsunset -l 35.6 -L -78.8 # Screen dimmer/oranger based on sunrise and sunset
-  exec-once=eww daemon
+  exec=pkill eww
+  exec=eww daemon
     ${
     if computer == "Galaxia"
     then ''
-      exec-once = eww open bar0
-      exec-once = eww open bar1
-      exec-once = eww open bar2
+      exec= eww open bar0
+      exec= eww open bar1
+      exec= eww open bar2
     ''
     else ''
-      exec-once = eww open bar0
+      exec= eww open bar0
     ''
   }
-  exec-once=~/.config/hyprland/scripts/ewwVolUpdate.sh
+  exec=~/.config/hyprland/scripts/ewwVolUpdate.sh
   exec-once=swww init && swww image ~/.config/hypr/Assets/tropic_island_night.jpg
   exec-once=swww image ~/Pictures/wallpapers/tropic_island_night.jpg
   exec=export XDG_CURRENT_DESKTOP="Sway"
