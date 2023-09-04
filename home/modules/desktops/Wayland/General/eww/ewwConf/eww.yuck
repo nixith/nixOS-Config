@@ -96,15 +96,15 @@
 
 (deflisten occupiedWorkspaces :initial "[]" "scripts/get-workspaces")
 (deflisten current_workspace :initial "1" "scripts/get-active-workspaces")
-(defwidget workspaces []
+(defwidget workspaces [monitorID]
   (eventbox :onscroll "bash ./scripts/change-active-workspace {} ${current_workspace}" 
     (box :space-evenly false  :orientation "h" :class "wrapperWidget"
       (label :text "${occupiedWorkspaces}${current_workspace}" :visible false)
       (for workspace in occupiedWorkspaces
         
         (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
-          (box :class "workspace-entry ${workspace.id == current_workspace ? "workspaceFocused" : "workspaceUnfocused"} ${workspace.windows > 0 ? "occupied" : "empty"}"
-               :visible {workspace.windows > 0 || workspace.id == current_workspace}
+          (box :class "workspace-entry ${workspace.id == current_workspace ? "workspaceFocused" : "workspaceUnfocused"} ${workspace.stats.windows > 0 ? "occupied" : "empty"}"
+               :visible {workspace.stats.windows > 0 || workspace.id == current_workspace && workspace.stats.monitor == monitorID}
             (label :text "${workspace.id}")
             )
           )
@@ -131,11 +131,11 @@
     {music != "" ? "${music}" : ""}))
 
 
-(defwidget bar []
+(defwidget bar [monitorID]
       (box :class "bar" 
          :orientation "h"
                
-      (box :halign "start" (workspaces))
+      (box :halign "start" (workspaces :monitorID monitorID))
       (box :halign "center" :class "wrapperWidget"
         (clock)
         
@@ -155,7 +155,7 @@
            :focusable false
            :exclusive true
            :namespace "bar"
-  (bar)
+  (bar :monitorID 0)
 )
 
 (defwindow bar1 
@@ -169,7 +169,7 @@
            :focusable false
            :exclusive true
            :namespace "bar"
-  (bar)
+  (bar :monitorID 1)
 )
 
 (defwindow bar2
@@ -183,5 +183,5 @@
            :focusable false
            :exclusive true
            :namespace "bar"
-  (bar)
+  (bar :monitorID 2)
 )
