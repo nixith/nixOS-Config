@@ -44,7 +44,7 @@
 
     anyrun.url = "github:Kirottu/anyrun";
 
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     sops-nix.url = "github:Mic92/sops-nix";
 
