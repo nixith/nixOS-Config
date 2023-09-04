@@ -15,6 +15,19 @@
   )
 )
 
+(defwidget cpuUsage []
+  (box :class "container"
+       :orientation "h"
+    (circular-progress :value {EWW_CPU.avg}
+                       :class "cpuCircle"
+                       :thickness 3
+      (label :text " "
+             :class "wheelLabel"
+      )
+    )
+  )
+)
+
 ( defvar volOut 0 )
 ( defvar volOutState "󰝟 ") ;; or 󰕾 
 ( defvar volIn 0)
@@ -69,6 +82,7 @@
        :orientation "h"
        :space-evenly false;
        :halign "start"
+    ;( cpuUsage )
     ( ram )
     ( volume )
     ( battery )

@@ -45,6 +45,11 @@
   color: $red;
 }
 
+.cpuCircle {
+  @extend .progressWheel;
+  color: $peach;
+}
+
 .volCircle {
   @extend .progressWheel;
   color: $sapphire;
