@@ -84,11 +84,10 @@
   }
 
   animations {
-      enabled=1
-      animation=windows,1,7,default
-      animation=border,1,10,default
-      animation=fade,1,10,default
-      animation=workspaces,1,6,default
+      #animation=windows,1,7,default
+      #animation=border,1,10,default
+      #animation=fade,1,10,default
+      #animation=workspaces,1,6,default
   }
 
   dwindle {
@@ -203,12 +202,12 @@
     ${
     if computer == "Galaxia"
     then ''
-      exec= eww open bar0
+      exec= eww open bar0 && ~/.config/hyprland/scripts/ewwVolUpdate.sh
       exec= eww open bar1
       exec= eww open bar2
     ''
     else ''
-      exec= eww open bar0
+      exec= eww open bar0 && ~/.config/hyprland/scripts/ewwVolUpdate.sh
     ''
   }
   exec=~/.config/hyprland/scripts/ewwVolUpdate.sh
