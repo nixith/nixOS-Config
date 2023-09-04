@@ -177,10 +177,10 @@
   bindl=SUPERALT,bracketright,exec,playerctl --player=%any,firefox next
   bindl=SUPERALT,bracketleft,exec,playerctl --player=%any,firefox previous
   bindl=,XF86AudioPlay,exec,playerctl --player=%any,firefox play-pause
-  binde=,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && ~/.config/hypr/scripts/ewwVolUpdate.sh
-  binde=,XF86AudioLowerVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%- && ~/.config/hypr/scripts/ewwVolUpdate.sh
-  binde=SUPER,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 5%+ && ~/.config/hypr/scripts/ewwVolUpdate.sh
-  binde=SUPER,XF86AudioLowerVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 5%- && ~/.config/hypr/scripts/ewwVolUpdate.sh
+  binde=,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2.5%+ && ~/.config/hypr/scripts/ewwVolUpdate.sh
+  binde=,XF86AudioLowerVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2.5%- && ~/.config/hypr/scripts/ewwVolUpdate.sh
+  binde=SUPER,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 2.5%+ && ~/.config/hypr/scripts/ewwVolUpdate.sh
+  binde=SUPER,XF86AudioLowerVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SOURCE@ 2.5%- && ~/.config/hypr/scripts/ewwVolUpdate.sh
 
   bind=,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ~/.config/hypr/scripts/ewwVolUpdate.sh
   bind=SUPER,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ~/.config/hypr/scripts/ewwVolUpdate.sh
