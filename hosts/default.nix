@@ -16,7 +16,7 @@ let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
     config = {allowUnfree = true;};
-    inherit system;
+    inherit system self inputs;
   };
 
   common = [inputs.flakeProgramsSqlite.nixosModules.programs-sqlite];
