@@ -11,6 +11,15 @@
 
   services.dbus.apparmor = "enabled";
 
+  # Grant passwod to certain apps
+  security.pam.services = {
+    swaylock = {
+      text = ''
+        auth include login
+      '';
+    };
+  };
+
   ### Firejail
   programs.firejail = {
     enable = true;
