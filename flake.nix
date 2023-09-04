@@ -127,6 +127,8 @@
     homeConfigurations = {
       HmInputs = overlays system alejandra neovim-nightly-overlay;
       nixpkgs.overlays = overlays;
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
 
       Nebula = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
