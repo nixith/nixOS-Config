@@ -11,6 +11,7 @@
     # Grab binaries faster from sources
     substituters = [
       "https://cache.nixos.org/"
+      "https://cache.garnix.io"
       "https://hyprland.cachix.org"
       "https://prismlauncher.cachix.org"
       "https://nix-community.cachix.org"
@@ -24,6 +25,7 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+      "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
     ];
     http-connections = 0; #No limit on number of connections
 
