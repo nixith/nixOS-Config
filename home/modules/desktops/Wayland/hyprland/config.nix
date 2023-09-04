@@ -121,7 +121,8 @@
 
 
   bind=SUPER,Q,killactive,
-  bind=SUPERSHIFT,L,exit,
+  #bind=SUPERSHIFT,L,exit,
+  bind=SUPERSHIFT,End,exit
   bind=SUPER,E,exec,nemo
   bind=SUPER,space,togglefloating,
   bind=SUPER,D,exec,rofi -show drun
@@ -136,10 +137,19 @@
   bind=,print,exec,XDG_CURRENT_DESKTOP=Sway flameshot gui
   bind=SUPER,print,exec,grimshot copy area
 
-  bind=SUPER,left,movefocus,l
-  bind=SUPER,right,movefocus,r
-  bind=SUPER,up,movefocus,u
-  bind=SUPER,down,movefocus,d
+  #window focus with vim binds
+  bind=SUPER,H,movefocus,l
+  bind=SUPER,L,movefocus,r
+  bind=SUPER,K,movefocus,u
+  bind=SUPER,J,movefocus,d
+
+  #moving windows with vim binds
+  bind=SUPERSHIFT,H,movewindow,l
+  bind=SUPERSHIFT,L,movewindow,r
+  bind=SUPERSHIFT,K,movewindow,u
+  bind=SUPERSHIFT,J,movewindow,d
+
+
 
   bind=SUPER,1,workspace,1
   bind=SUPER,2,workspace,2
