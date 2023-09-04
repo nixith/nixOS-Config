@@ -52,7 +52,7 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.url = "nixpkgs/nixos-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     prismlauncher = {
