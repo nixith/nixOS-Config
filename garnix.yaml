@@ -1,0 +1,25 @@
+builds: # optional
+  # default:
+  #   exclude: []
+  #   include:
+  #   - '*.x86_64-linux.*'
+  #   - defaultPackage.x86_64-linux
+  #   - devShell.x86_64-linux
+  #   - homeConfigurations.*
+  #   - nixosConfigurations.*
+  # Specifies what should be built. Everything in the `include` section, minus everything in the `exclude` section, is built.
+  # builds
+  include: # optional
+    # What builds to include. This is a list of *attribute matchers*, of the form `x.y.z` or `x.y`. For example, `packages.x86_64-linux.*`, or `*.*`. Two-place matchers only match two-place matchers, and three-place matchers only match three-place matchers. '*' is the wildcard.
+     - '*.x86_64-linux.*'
+     - defaultPackage.x86_64-linux
+     - devShell.x86_64-linux
+     - homeConfigurations.*
+     - nixosConfigurations.*
+  exclude: # optional
+    # What builds to exclude. This is a list of *attribute matchers*, of the form `x.y.z` or `x.y`. For example, `packages.x86_64-linux.*`, or `*.*`. Two-place matchers only match two-place matchers, and three-place matchers only match three-place matchers. '*' is the wildcard. This is applied *after* the 'include'. Thus, if something matches both the 'include' and the 'exclude', it will be excluded.
+     - homeConfigurations.HmInpits
+     - homeConfigurations.home-manager
+     - homeConfigurations.nixpkgs
+
+
