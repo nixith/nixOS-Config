@@ -1,5 +1,5 @@
 {
-  description = "A useful config";
+  description = "nixith's nix config";
 
   nixConfig = {
     # allow building without passing flags on first run
@@ -79,7 +79,6 @@
 
     nix-colors = {url = "github:misterio77/nix-colors";};
 
-    nil = {url = "github:oxalica/nil";};
     nixd = {url = "github:nix-community/nixd";};
 
     alejandra = {
@@ -103,8 +102,6 @@
     nix-gaming,
     prismlauncher,
     flakeProgramsSqlite,
-    nil,
-    #gets latest version of nil
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -147,7 +144,7 @@
           inherit nix-colors;
           computer = "Nebula";
           inherit overlays system inputs;
-          inherit alejandra neovim-nightly-overlay nil hyprland;
+          inherit alejandra neovim-nightly-overlay hyprland;
         };
       };
 
@@ -166,7 +163,7 @@
           inherit nix-colors;
           computer = "Galaxia";
           inherit overlays system inputs;
-          inherit alejandra neovim-nightly-overlay nil hyprland;
+          inherit alejandra neovim-nightly-overlay hyprland;
         };
       };
     };
