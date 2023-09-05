@@ -29,7 +29,7 @@
 )
 
 ( defvar volOut 0 )
-( defvar volOutState "󰝟 ") ;; or 󰕾 
+( defvar volOutState " ") ;; or 󰕾 
 ( defvar volIn 0)
 (defvar volInState "󰍮 ") ;; or 󰍬  
 ( defvar micPosition 0.72)
