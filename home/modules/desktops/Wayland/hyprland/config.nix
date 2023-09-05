@@ -132,7 +132,7 @@
   bind=SUPER,Return,exec,kitty
   bind=SUPER,F,fullscreen,
   bind=SUPER,W,exec,firefox
-  bind=SUPER,X,exec, systemctl suspend
+  bindl=SUPER,X,exec, systemctl suspend
 
   bind=,print,exec,XDG_CURRENT_DESKTOP=Sway flameshot gui
   bind=SUPER,print,exec,grimshot copy area
