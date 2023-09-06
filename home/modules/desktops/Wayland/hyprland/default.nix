@@ -100,6 +100,9 @@ in {
 
   programs.swaylock = {
     enable = true;
+    package = pkgs.swaylock-effects;
+    settings = {
+    };
   };
 
   services.swayidle = {
