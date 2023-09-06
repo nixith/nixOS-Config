@@ -49,10 +49,9 @@ in {
       webcord-vencord
       gnome.gnome-disk-utility
       partition-manager
-      zig
+      gum
       glfw-wayland
       hyfetch
-      audacity
       obsidian
     ];
   };
