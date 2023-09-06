@@ -3,6 +3,7 @@
   
   (box :class "container" 
        :orientation "h"
+       :tooltip {EWW_RAM.used_mem_perc}
     (circular-progress :value {EWW_RAM.used_mem_perc} 
                        :class "ramCircle" 
                        :thickness 3
@@ -18,6 +19,7 @@
 (defwidget cpuUsage []
   (box :class "container"
        :orientation "h"
+       :tooltip {EWW_CPU.avg}
     (circular-progress :value {EWW_CPU.avg}
                        :class "cpuCircle"
                        :thickness 3
@@ -40,6 +42,7 @@
        :space-evenly true;
     (box 
       :orientation "h"
+      :tooltip volOut
       (circular-progress :value volOut :class "volCircle" :thickness 3
         ( label :text volOutState
                 :class "wheelLabel"
@@ -48,6 +51,7 @@
       )
     )
     (box :orientation "h"
+      :tooltip volIn
       (circular-progress :value volIn :class "micCircle" :thickness 3
         (label :text volInState
                :class "wheelLabel"
@@ -57,6 +61,40 @@
       )
     )
   )
+
+)
+
+(defwidget dischargeStatus []
+  (label :text {
+    EWW_BATTERY.BAT0.status == "Discharging" ? 
+      ;; discharging icons
+      EWW_BATTERY.BAT0.capacity >= 90 ? '󰂂' : 
+      EWW_BATTERY.BAT0.capacity >= 80 ? '󰂁' :
+      EWW_BATTERY.BAT0.capacity >= 70 ? '󰂀' : 
+      EWW_BATTERY.BAT0.capacity >= 60 ? '󰁿' : 
+      EWW_BATTERY.BAT0.capacity >= 50 ? '󰁾' : 
+      EWW_BATTERY.BAT0.capacity >= 40 ? '󰁽' : 
+      EWW_BATTERY.BAT0.capacity >= 30 ? '󰁼' :
+      EWW_BATTERY.BAT0.capacity >= 20 ? '󰁻' :
+      EWW_BATTERY.BAT0.capacity >= 10 ? '󰁺' : 
+      EWW_BATTERY.BAT0.capacity == 100 ? '󰁹' : ' 󰂎'
+ : 
+
+    ;; discharging icon
+      EWW_BATTERY.BAT0.capacity >= 90 ? '󰂅 ' : 
+      EWW_BATTERY.BAT0.capacity >= 80 ? '󰂋 ' :
+      EWW_BATTERY.BAT0.capacity >= 70 ? '󰂊 ' : 
+      EWW_BATTERY.BAT0.capacity >= 60 ? '󰢞 ' : 
+      EWW_BATTERY.BAT0.capacity >= 50 ? '󰂉 ' : 
+      EWW_BATTERY.BAT0.capacity >= 40 ? '󰢝 ' : 
+      EWW_BATTERY.BAT0.capacity >= 30 ? '󰂈 ' :
+      EWW_BATTERY.BAT0.capacity >= 20 ? '󰂇 ' :
+      EWW_BATTERY.BAT0.capacity >= 10 ? '󰂆 ' : 
+                                    '󰢜 '
+  }
+
+  :class {EWW_BATTERY.BAT0.status == "Discharging" ? "wheelLabelMonoWidth" : 'wheelLabel'}
+    )
 )
 
 ( defwidget battery []
@@ -64,16 +102,14 @@
   (box
     :class "container"
     :orientation "h"
+    :tooltip {EWW_BATTERY.BAT0.capacity}
     (circular-progress :value {EWW_BATTERY.BAT0.capacity} 
                        :thickness 3
                        :visible {EWW_BATTERY ?: false }
                        :class "progressWheel"
-    (label :text " "
-           :class "wheelLabel"
-           ;:xalign 0.6
-      )
+    ( dischargeStatus )
+
     )
-    
   )
 )
 (defwidget stats [] 
@@ -120,12 +156,12 @@
           (box :class "workspace-entry ${workspace.id == current_workspace ? "workspaceFocused" : "workspaceUnfocused"} ${workspace.stats.windows > 0 ? "occupied" : "empty"}"
                :visible {workspace.stats.windows > 0 || workspace.id == current_workspace && workspace.stats.monitor == monitorID}
             (label :text "${workspace.id}")
-            )
           )
         )
       )
     )
   )
+)
 
 ;; (deflisten workspace "scripts/get-workspaces")
 ;;
