@@ -65,7 +65,7 @@
       sensitivity=1.0 # for mouse cursor
 
       gaps_in=3
-      gaps_out=15
+      gaps_out=10
       border_size=2
       col.active_border=$mauve
       col.inactive_border=0x66333333
@@ -208,16 +208,16 @@
   exec-once=XDG_CURRENT_DESKTOP=Sway flameshot
   exec=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
   exec-once=wlsunset -l 35.6 -L -78.8 # Screen dimmer/oranger based on sunrise and sunset
-  exec=eww daemon
+  exec=eww daemon -c ~/.config/eww/
     ${
     if computer == "Galaxia"
     then ''
-      exec= eww open bar0 && ~/.config/hyprland/scripts/ewwVolUpdate.sh
-      exec= eww open bar1
-      exec= eww open bar2
+      exec= eww open bar0 -c ~/.config/eww/ && ~/.config/hyprland/scripts/ewwVolUpdate.sh
+      exec= eww open bar1 -c ~/.config/eww/
+      exec= eww open bar2 -c ~/.config/eww/
     ''
     else ''
-      exec= eww open bar0 && ~/.config/hyprland/scripts/ewwVolUpdate.sh
+      exec= eww open bar0 -c ~/.config/eww/ && ~/.config/hyprland/scripts/ewwVolUpdate.sh
     ''
   }
   exec=~/.config/hyprland/scripts/ewwVolUpdate.sh
