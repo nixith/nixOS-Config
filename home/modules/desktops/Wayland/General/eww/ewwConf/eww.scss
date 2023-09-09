@@ -21,7 +21,7 @@
 
 
 .progressWheel {
-  background-color: #45475a;
+  background-color: $surface1;
   padding: 4px;
   color: $text;
 
@@ -39,6 +39,12 @@
   margin-right: 6px;
   margin-top: 4px;
   margin-bottom: 4px;
+}
+
+tooltip * {
+  @extend container;
+  color: $text;
+  background-color: $base;
 }
 
 .wheelLabelMonoWidth {
@@ -82,16 +88,16 @@
 }
 
 .container {
-  background-color: #1e1e2e;
-  color: #cdd6f4;
+  background-color: $base;
+  color: $text;
   padding: 0px;
   transition-property: background-color;
   transition-duration: 0.5s;
 }
 
 .workspaceUnfocused {
-  // background-color: #1e1e2e;
-  // padding: 8px;
+  background-color: $base;
+ // padding: 8px;
   margin: 4px;
   color: $text;
 }
@@ -102,7 +108,7 @@
 }
 
 .wrapperWidget {
-  background-color: #1e1e2e;
+  background-color: $base;
   border-radius: 8px;
   padding: 2px;
 }
