@@ -38,9 +38,6 @@
     ## nullLS requirements ##
     stylua
     selene
-    shfmt
-    shellcheck
-    beautysh
 
     ### Python ###
     # Linter
@@ -82,5 +79,27 @@
     #typst
     typst
     typst-lsp
+
+    #linters, formatters, and more
+    efm-langserver
+
+    ## css
+    nodePackages_latest.stylelint
+
+    # shell
+    shfmt
+    shellcheck
+    beautysh
+
+    # spelling
+    proselint
+    nodePackages_latest.textlint
+    typos
+    vale
+
+    ## markdown
+    nodePackages_latest.cspell
+    nodePackages_latest.markdownlint-cli2
+    nodePackages_latest.markdownlint-cli
   ];
 }
