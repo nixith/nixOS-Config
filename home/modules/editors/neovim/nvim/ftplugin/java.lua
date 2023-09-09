@@ -4,6 +4,14 @@ local capabilities = vim.tbl_deep_extend(
   vim.lsp.protocol.make_client_capabilities(),
   require("cmp_nvim_lsp").default_capabilities()
 )
+-- set tabs
+local bufnr = vim.api.nvim_get_current_buf()
+vim.opt_local.tabstop = 4
+vim.opt_local.shiftwidth = 4
+vim.opt_local.expandtab = true
+vim.opt_local.autoindent = true
+vim.opt_local.smarttab = true
+--set shiftwidth=4 smarttab
 
 -- change to cmp_nvim_lsp.default_capabilities
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
