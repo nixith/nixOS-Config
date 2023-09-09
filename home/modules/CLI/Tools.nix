@@ -9,7 +9,6 @@
 }: {
   programs = {
     bat.enable = true; # cat clone
-    exa.enable = true; # ls clone
     fzf = {
       enable = true;
       colors = {
