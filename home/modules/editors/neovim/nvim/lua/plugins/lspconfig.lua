@@ -1,7 +1,25 @@
+local languages = {
+  lua = {},
+  java = {
+    lintCommand = "checkstyle -c" .. vim.env.HOME .. "/.local/share/nvim/lintConfig/csc116_checks_jenkins.xml ${INPUT}",
+    lintFormats = "[%tARN] %f:%l:%c: %m [%r]",
+  },
+}
+
 return {
+
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "simrat39/rust-tools.nvim" },
+    dependencies = {
+      { "simrat39/rust-tools.nvim" },
+      {
+        "folke/neoconf.nvim",
+        cmd = "Neoconf",
+        config = true,
+        dependencies = { "nvim-lspconfig" },
+      },
+      { "folke/neodev.nvim",       opts = {} },
+    },
     opts = {
       -- add any global capabilities here
       capabilities = {},
@@ -10,15 +28,15 @@ return {
       -- options for vim.lsp.buf.format
       -- `bufnr` and `filter` is handled by the LazyVim formatter,
       -- but can be also overridden when specified
-      format = {
-        formatting_options = nil,
-        timeout_ms = nil,
-      },
+      format = { formatting_options = nil, timeout_ms = nil },
 
       --------- #### ---------
       -- LSP Server Settings -
       ---@type lspconfig.options
       servers = {
+        -- technically not a language server, but a lint hoster
+
+
         --- configuration languages
         -- json
         jsonls = {},
@@ -27,9 +45,7 @@ return {
         nil_ls = {
           settings = {
             ["nil"] = {
-              formatting = {
-                command = { "alejandra" },
-              },
+              formatting = { command = { "alejandra" } },
               nix = {
                 flake = {
                   autoArchive = true,
@@ -48,16 +64,12 @@ return {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
           settings = {
             Lua = {
-              workspace = {
-                checkThirdParty = false,
-              },
-              completion = {
-                callSnippet = "Replace",
-              },
+              workspace = { checkThirdParty = false },
+              completion = { callSnippet = "Replace" },
             },
           },
         },
-        --python
+        -- python
         ruff_lsp = {},
         pylyzer = {},
 
@@ -76,10 +88,10 @@ return {
       setup = {
         -- ## Rust Config Done in other File ##
 
-        --rust_analyzer = function(_, opts)
+        -- rust_analyzer = function(_, opts)
         --  require("rust-tools").setup({ server = opts })
         --  return true
-        --end,
+        -- end,
 
         -- example to setup with typescript.nvim
         -- tsserver = function(_, opts)
@@ -91,5 +103,4 @@ return {
       },
     },
   },
-  { "jay-babu/mason-nvim-dap.nvim", enabled = false },
-}
+  { "jay-babu/mason-nvim-dap.nvim", enabled = false }, }
