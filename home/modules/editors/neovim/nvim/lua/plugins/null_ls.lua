@@ -1,10 +1,13 @@
 return {
+  { "davidmh/cspell.nvim", dependencies = "jose-elias-alvarez/null-ls.nvim" },
   {
     "jose-elias-alvarez/null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {},
+    enable = true,
     opts = function(_, opts)
       local nls = require("null-ls")
+      local cspell = require("cspell")
       return {
         root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
         sources = {
@@ -12,9 +15,19 @@ return {
           nls.builtins.formatting.fish_indent,
           nls.builtins.diagnostics.fish,
 
+          --java
+          nls.builtins.diagnostics.checkstyle.with({
+            extra_args = { "-c", vim.env.HOME .. "/.local/share/nvim/lintConfig/csc116_checks_jenkins.xml" },
+            args = { "-f", "sarif", "$ROOT" },
+          }),
+
           -- lua
           nls.builtins.formatting.stylua,
           nls.builtins.diagnostics.selene,
+
+          -- git
+          nls.builtins.diagnostics.commitlint,
+          nls.builtins.code_actions.gitsigns,
 
           -- rust
           -- nls.builtins.formatting.rustfmt,
@@ -24,9 +37,6 @@ return {
           nls.builtins.formatting.beautysh,
           nls.builtins.formatting.shfmt,
           nls.builtins.formatting.shellharden,
-
-          -- general
-          nls.builtins.code_actions.ts_node_action,
 
           -- nix lang
           nls.builtins.code_actions.statix,
@@ -40,7 +50,18 @@ return {
 
           -- text
           nls.builtins.hover.dictionary,
+          nls.builtins.code_actions.proselint,
           nls.builtins.hover.printenv,
+          --cspell.diagnostics,
+          --cspell.code_actions,
+          nls.builtins.diagnostics.textlint,
+          nls.builtins.diagnostics.typos,
+
+          --md
+          nls.builtins.diagnostics.markdownlint,
+
+          -- css
+          nls.builtins.diagnostics.stylelint,
         },
       }
     end,
