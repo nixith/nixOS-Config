@@ -1,5 +1,4 @@
 return {
-
   -- Extend auto completion
   {
     "hrsh7th/nvim-cmp",
@@ -29,28 +28,16 @@ return {
     end,
   },
 
-  -- Ensure Rust debugger is installed
-
   {
     "simrat39/rust-tools.nvim",
     lazy = true,
     opts = function()
-      local ok, mason_registry = pcall(require, "mason-registry")
       local adapter ---@type any
-      if ok then
-        -- rust tools configuration for debugging support
-        local extension_path = vim.env.HOME .. "/.nix-profile/share/vscode/extensions/vadimcn.vscode-lldb/"
-        local codelldb_path = extension_path .. "adapter/codelldb"
-        local liblldb_path = ""
-        if vim.loop.os_uname().sysname:find("Windows") then
-          liblldb_path = extension_path .. "lldb\\bin\\liblldb.dll"
-        elseif vim.fn.has("mac") == 1 then
-          liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
-        else
-          liblldb_path = extension_path .. "lldb/lib/liblldb.so"
-        end
-        adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path)
-      end
+      -- rust tools configuration for debugging support
+      local extension_path = vim.env.HOME .. "/.nix-profile/share/vscode/extensions/vadimcn.vscode-lldb/"
+      local codelldb_path = extension_path .. "adapter/codelldb"
+      local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
+      adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path)
       return {
         dap = {
           adapter = adapter,
@@ -125,9 +112,9 @@ return {
       },
       setup = {
         rust_analyzer = function(_, opts)
-          local rust_tools_opts = require("lazyvim.util").opts("rust-tools.nvim")
-          -- require("rust-tools").setup(vim.tbl_deep_extend("force", rust_tools_opts or {}, { server = opts }))
-          require("rust-tools").setup({ server = opts })
+          --local rust_tools_opts = require("lazyvim.util").opts("rust-tools.nvim")
+          --require("rust-tools").setup(vim.tbl_deep_extend("force", rust_tools_opts or {}, { server = opts }))
+          require("rust-tools").setup(vim.tbl_deep_extend("force", {}, { server = opts }))
           return true
         end,
       },
