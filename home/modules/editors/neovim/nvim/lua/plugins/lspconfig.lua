@@ -12,13 +12,6 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "simrat39/rust-tools.nvim" },
-      {
-        "folke/neoconf.nvim",
-        cmd = "Neoconf",
-        config = true,
-        dependencies = { "nvim-lspconfig" },
-      },
-      { "folke/neodev.nvim",       opts = {} },
     },
     opts = {
       -- add any global capabilities here
@@ -35,7 +28,6 @@ return {
       ---@type lspconfig.options
       servers = {
         -- technically not a language server, but a lint hoster
-
 
         --- configuration languages
         -- json
@@ -103,4 +95,5 @@ return {
       },
     },
   },
-  { "jay-babu/mason-nvim-dap.nvim", enabled = false }, }
+  { "jay-babu/mason-nvim-dap.nvim", enabled = false },
+}
