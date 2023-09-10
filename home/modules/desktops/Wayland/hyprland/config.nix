@@ -221,8 +221,7 @@
     ''
   }
   exec=~/.config/hyprland/scripts/ewwVolUpdate.sh
-  exec-once=swww init && swww image ~/.config/hypr/Assets/tropic_island_night.jpg
-  exec-once=swww image ~/Pictures/wallpapers/tropic_island_night.jpg
+  exec-once=swww init && swww img ~/.config/hypr/Assets/tropic_island_night.jpg
   exec=export XDG_CURRENT_DESKTOP="Sway"
   #exec-once= wezterm
 ''
