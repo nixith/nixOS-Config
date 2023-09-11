@@ -77,7 +77,7 @@ in {
     ./modules/CLI/Tools.nix
     ./modules/CLI/btop
     ./modules/shells/Fish
-    #./modules/shells/nushell
+    ./modules/shells/nushell
     ./modules/shells/shellApps/Starship
     ./modules/shells/shellApps/zoxide.nix
     ./modules/shells/shellApps/direnv.nix
