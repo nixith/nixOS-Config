@@ -1,8 +1,7 @@
 #!/usr/bin/env dash
 
-MONITOR_ID_DICT=$(hyprctl monitors -j | jaq --color never -c 'map({key: .name, value: .id}) | from_entries')
-
 spaces() {
+	MONITOR_ID_DICT=$(hyprctl monitors -j | jaq --color never -c 'map({key: .name, value: .id}) | from_entries')
 	WORKSPACE_WINDOWS=$(hyprctl workspaces -j | jaq --color never -c --arg table $MONITOR_ID_DICT 'map({key: .id | tostring, value: ({windows: .windows, monitor: .monitor })}) | from_entries | ($table | fromjson) as $jsontable | .[].monitor |=  $jsontable[.]')
 	seq 1 10 | jaq --arg windows "$WORKSPACE_WINDOWS" --slurp --color never -c 'map(tostring) | ($windows | fromjson) as $JSONwindows | map({id: ., stats: ($JSONwindows[.]//0)})'
 }
