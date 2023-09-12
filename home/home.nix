@@ -79,6 +79,7 @@ in {
     ./modules/shells/Fish
     ./modules/shells/nushell
     ./modules/shells/shellApps/Starship
+    #./modules/shells/shellApps/carapace.nix
     ./modules/shells/shellApps/zoxide.nix
     ./modules/shells/shellApps/direnv.nix
     ./modules/Gui/spotify
