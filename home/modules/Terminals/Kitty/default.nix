@@ -8,7 +8,7 @@
     enable = true;
     font = {
       name = "Lilex Nerd Font Regular";
-      size = 12;
+      size = 10;
     };
     settings = {
       background_opacity = "0.4";
