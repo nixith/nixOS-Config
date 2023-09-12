@@ -1,10 +1,10 @@
 if not status --is-interactive
-  exit
+    exit
 end
 set -e fish_user_paths
 set -U fish_user_paths $HOME/.bin $HOME/.local/bin $HOME/Applications $fish_user_paths $HOME/.config/emacs/bin
 # Sets the terminal type for proper colors
-set TERM "xterm-256color"
+set TERM xterm-256color
 
 set fish_greeting
 
@@ -73,9 +73,9 @@ function ex --description "Extract bundled & compressed files"
             case '*'
                 echo "'$argv[1]' cannot be extracted via ex"
         end
-   else
-       echo "'$argv[1]' is not a valid file"
-   end
+    else
+        echo "'$argv[1]' is not a valid file"
+    end
 end
 
 function cd
@@ -105,34 +105,33 @@ end
 #colorscript random
 
 # colors to set or unset
+# name: 'Catppuccin mocha'
+# url: 'https://github.com/catppuccin/fish'
+# preferred_background: 1e1e2e
 
-set fish_color_autosuggestion "#969896"
-set fish_color_cancel -r
-set fish_color_command "#0782DE"
-set fish_color_comment "#f0c674"
-set fish_color_cwd "#008000"
-set fish_color_cwd_root red
-set fish_color_end "#b294bb"
-set fish_color_error "#fb4934"
-set fish_color_escape "#fe8019"
-set fish_color_history_current --bold
-set fish_color_host "#85AD82"
-set fish_color_host_remote yellow
-set fish_color_match --background=brblue
-set fish_color_normal normal
-set fish_color_operator "#fe8019"
-set fish_color_param "#81a2be"
-set fish_color_quote "#b8bb26"
-set fish_color_redirection "#d3869b"
-set fish_color_search_match bryellow background=brblack
-set fish_color_selection white --bold background=brblack
-set fish_color_status red
-set fish_color_user brgreen
-set fish_color_valid_path --underline
-set fish_pager_color_completion normal
-set fish_pager_color_description "#B3A06D" yellow
-set fish_pager_color_prefix normal --bold underline
-set fish_pager_color_prefix white --bold --underline
-set fish_pager_color_progress brwhite --background=cyan
-set fish_color_search_match --background="#60AEFF"
-fish_add_path /home/ryans/.spicetify
+set fish_color_normal "#cdd6f4"
+set fish_color_command "#89b4fa"
+set fish_color_param "#f2cdcd"
+set fish_color_keyword "#f38ba8"
+set fish_color_quote "#a6e3a1"
+set fish_color_redirection "#f5c2e7"
+set fish_color_end "#fab387"
+set fish_color_comment "#7f849c"
+set fish_color_error "#f38ba8"
+set fish_color_gray "#6c7086"
+set fish_color_selection "--background=313244"
+set fish_color_search_match "--background=313244"
+set fish_color_option "#a6e3a1"
+set fish_color_operator "#f5c2e7"
+set fish_color_escape "#eba0ac"
+set fish_color_autosuggestion "#6c7086"
+set fish_color_cancel "#f38ba8"
+set fish_color_cwd "#f9e2af"
+set fish_color_user "#94e2d5"
+set fish_color_host "#89b4fa"
+set fish_color_host_remote "#a6e3a1"
+set fish_color_status "#f38ba8"
+set fish_pager_color_progress "#6c7086"
+set fish_pager_color_prefix "#f5c2e7"
+set fish_pager_color_completion "#cdd6f4"
+set fish_pager_color_description "#6c7086"
