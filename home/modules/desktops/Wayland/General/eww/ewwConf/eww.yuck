@@ -122,6 +122,7 @@
     ( ram )
     ( volume )
     ( battery )
+    ( clock )
   )
 )
 
@@ -187,7 +188,9 @@
                
       (box :halign "start" (workspaces :monitorID monitorID))
       (box :halign "center" :class "wrapperWidget"
-        (clock)
+      ;;  ()
+      ;;:visible {playing == "Playing"}
+      ;;( musicStatus )
         
       )
       (box  :class "wrapperWidget" :halign "end" (stats))

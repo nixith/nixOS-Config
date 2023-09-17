@@ -52,8 +52,8 @@ return {
           nls.builtins.hover.dictionary,
           nls.builtins.code_actions.proselint,
           nls.builtins.hover.printenv,
-          --cspell.diagnostics,
-          --cspell.code_actions,
+          cspell.diagnostics,
+          cspell.code_actions,
           nls.builtins.diagnostics.textlint,
           nls.builtins.diagnostics.typos,
 
