@@ -1,4 +1,11 @@
-{...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [
+    vivid # generate LS_COLORS for catppuccin
+  ];
   programs.fish = {
     enable = true;
     shellAbbrs = {
@@ -7,5 +14,15 @@
       ll = "eza -al";
     };
     shellInit = builtins.readFile ./config.fish;
+    plugins = [
+      #{
+      #  name = "fzf.fish";
+      #  src = inputs.fish-fzf;
+      #}
+      {
+        name = "z";
+        src = inputs.fish-z;
+      }
+    ];
   };
 }
