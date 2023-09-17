@@ -35,6 +35,11 @@
   };
 
   inputs = {
+    fish-z = {
+      url = "github:jethrokuan/z";
+      flake = false;
+    };
+
     nix-gaming.url = "github:fufexan/nix-gaming";
     fenix = {
       url = "github:nix-community/fenix";
