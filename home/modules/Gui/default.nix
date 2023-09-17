@@ -23,7 +23,7 @@ in {
     dxvk
     #itch #(commented due to InsecurePackage)
     (prismlauncher.override
-      {glfw = pkgs.glfw-wayland;})
+      {glfw = pkgs.glfw-wayland-minecraft;})
 
     # Utilities
     cinnamon.nemo-with-extensions
