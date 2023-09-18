@@ -12,7 +12,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod"];
+  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "bcache"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
@@ -41,8 +41,8 @@
   };
 
   fileSystems."/home/ryan/Storage" = {
-    device = "/dev/disk/by-uuid/ccc7af43-7111-4bfb-9468-d8c50cac3fb9";
-    fsType = "ext4";
+    device = "/dev/sda:/dev/sdb";
+    fsType = "bcachefs";
   };
 
   swapDevices = [];
