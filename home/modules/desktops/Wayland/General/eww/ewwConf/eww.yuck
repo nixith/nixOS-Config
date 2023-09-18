@@ -191,7 +191,7 @@
       ;;  ()
       ;;:visible {playing == "Playing"}
       ;;( musicStatus )
-        
+           :visible false  
       )
       (box  :class "wrapperWidget" :halign "end" (stats))
             
