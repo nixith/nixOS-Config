@@ -32,6 +32,7 @@
     # nix store optimizations
     auto-optimise-store = true;
     allowUnfree = true;
+    accept-flake-config = true;
   };
 
   inputs = {
