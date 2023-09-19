@@ -31,6 +31,22 @@ local config = {
     ["$/progress"] = function(_, result, ctx)
       -- disable progress updates.
     end,
+    settings = {
+      eclipse = {
+        downloadSources = true,
+      },
+      implementationsCodeLens = {
+        enable = true,
+      },
+      signatureHelp = {
+        enabled = true,
+      },
+      completion = {
+        favoriteStaticMembers = {
+          "org.junit.jupiter.api.Assertions.*",
+        },
+      },
+    },
   },
   root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
   capabilities = vim.deepcopy(capabilities), -- taken from lazyVim
