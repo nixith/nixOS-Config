@@ -3,8 +3,9 @@ local config = {}
 local gpus = wezterm.gui.enumerate_gpus()
 
 config = {
-	--webgpu_preferred_adapter = gpus[3],
-	front_end = "OpenGL",
+
+	webgpu_preferred_adapter = gpus[2],
+	front_end = "WebGpu",
 
 	-- enable_wayland = false,
 
