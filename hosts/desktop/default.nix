@@ -45,7 +45,9 @@ in {
   };
 
   # Nvidia Stuff
-  services.xserver.videoDrivers = ["nvidia"];
+  #
+  #  #services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["nouveau"];
   hardware.nvidia = {
     open = true;
     modesetting.enable = true;
@@ -55,14 +57,17 @@ in {
     enable = true;
     extraPackages = with pkgs; [
       nvidia-vaapi-driver
+      vaapiVdpau
+      libva
     ];
   };
   environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "vdpau";
-    VDPAU_DRIVER = "nvidia";
+    #LIBVA_DRIVER_NAME = "vdpau";
+    #VDPAU_DRIVER = "nvidia";
   };
 
   environment.systemPackages = with pkgs; [
+    mesa
   ];
 
   networking = {
@@ -90,6 +95,7 @@ in {
     packages = with pkgs; [];
     initialPassword = "password"; # TODO fix later with sops-nix
   };
+
   environment.shells = with pkgs; [fish bash dash];
   # Allow unfree packages
 
