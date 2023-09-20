@@ -1,22 +1,11 @@
 local wezterm = require("wezterm")
 local config = {}
-
-if wezterm.config_builder then
-	config = wezterm.config_builder()
-end
-
-config.webgpu_preferred_adapter = {
-	backend = "Vulkan",
-	device = 8066,
-	device_type = "DiscreteGpu",
-	driver = "NVIDIA",
-	driver_info = "530.41.03",
-	name = "NVIDIA GeForce GTX 1650",
-	vendor = 4318,
-}
-config.front_end = "WebGpu"
+local gpus = wezterm.gui.enumerate_gpus()
 
 config = {
+	--webgpu_preferred_adapter = gpus[3],
+	front_end = "OpenGL",
+
 	-- enable_wayland = false,
 
 	-- Appearance
@@ -32,7 +21,7 @@ config = {
 	-- Colors, Opacity, and Fonts
 	font = wezterm.font("Lilex Nerd Font", { weight = "Bold" }),
 	color_scheme = "Catppuccin Macchiato",
-	window_background_opacity = 0.4,
+	window_background_opacity = 1,
 	-- colors = {
 	-- 	selection_bg = "rgba(50% 50% 50% 50%)",
 	-- 	selection_fg = "none",
