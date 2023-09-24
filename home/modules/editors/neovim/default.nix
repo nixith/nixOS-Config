@@ -46,6 +46,10 @@
     # LSP
     ruff-lsp
     pylyzer
+    # yaml
+    nodePackages_latest.yaml-language-server
+    yamllint
+    yamlfmt
     nodePackages_latest.vscode-json-languageserver
     sumneko-lua-language-server
     nodePackages_latest.pyright
@@ -96,6 +100,7 @@
     nodePackages_latest.textlint
     typos
     vale
+    ltex-ls
 
     ## markdown
     nodePackages_latest.cspell
