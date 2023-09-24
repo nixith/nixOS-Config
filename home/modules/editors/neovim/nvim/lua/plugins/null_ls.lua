@@ -21,6 +21,11 @@ return {
             args = { "-f", "sarif", "$ROOT" },
           }),
 
+          -- markup languages
+          --- yaml
+          nls.builtins.diagnostics.yamllint,
+          nls.builtins.formatting.yamlfmt,
+
           -- lua
           nls.builtins.formatting.stylua,
           nls.builtins.diagnostics.selene,
