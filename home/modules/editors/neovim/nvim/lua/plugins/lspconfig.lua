@@ -32,6 +32,8 @@ return {
         --- configuration languages
         -- json
         jsonls = {},
+        --yaml
+        yamlls = {},
 
         -- nix
         nil_ls = {
@@ -53,6 +55,7 @@ return {
         --- programming lanugages
         -- lua
         lua_ls = {
+          filetypes = { "lua" },
           -- mason = false, -- set to false if you don't want this server to be installed with mason
           settings = {
             Lua = {
@@ -71,6 +74,14 @@ return {
             exportPdf = "onType", -- Choose onType, onSave or never.
             -- serverPath = "~/.nix-profile/bin/typst-lsp", -- Normally, there is no need to uncomment it.
           },
+        },
+        ltex = {
+          settings = {
+            ltex = {
+              language = "en-US",
+            },
+          },
+          filetypes = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "typst" },
         },
       },
       --------- #### ---------
