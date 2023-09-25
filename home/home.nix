@@ -95,6 +95,7 @@ in {
     ./modules/editors/vscode
     ./modules/editors/neovim
     ./modules/Terminals/Wezterm
+    ./modules/Terminals/Rio
     ./modules/Terminals/Kitty
     #./modules/languages/python
     #./modules/Meta/cachix.nix
