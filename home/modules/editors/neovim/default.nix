@@ -4,7 +4,11 @@
   alejandra,
   nil,
   ...
-}: {
+}: let
+  plugins = with pkgs; [
+    vimPlugins.nvim-treesitter.withAllGrammars
+  ];
+in {
   # move config files to .config
 
   home.file.nvim = {
@@ -19,6 +23,7 @@
     #package = neovim-nightly;
     withPython3 = true;
     withNodeJs = true;
+    inherit plugins;
   };
 
   home.packages = with pkgs; [
@@ -53,7 +58,6 @@
     nodePackages_latest.vscode-json-languageserver
     sumneko-lua-language-server
     nodePackages_latest.pyright
-    jdt-language-server
     ### Rust ###
     (fenix.complete.withComponents [
       "cargo"
@@ -64,6 +68,11 @@
     ])
     #
     rust-analyzer-nightly
+
+    ### Java ###
+    jdt-language-server
+    vscode-extensions.vscjava.vscode-java-test
+    vscode-extensions.vscjava.vscode-java-debug
 
     # debugger?
     vscode-extensions.vadimcn.vscode-lldb
