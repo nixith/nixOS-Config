@@ -7,7 +7,7 @@ config = {
 	webgpu_preferred_adapter = gpus[2],
 	front_end = "WebGpu",
 
-	-- enable_wayland = false,
+	enable_wayland = false,
 
 	-- Appearance
 	window_decorations = "NONE",
@@ -22,7 +22,7 @@ config = {
 	-- Colors, Opacity, and Fonts
 	font = wezterm.font("Lilex Nerd Font", { weight = "Bold" }),
 	color_scheme = "Catppuccin Macchiato",
-	window_background_opacity = 1,
+	window_background_opacity = 0.4,
 	-- colors = {
 	-- 	selection_bg = "rgba(50% 50% 50% 50%)",
 	-- 	selection_fg = "none",
