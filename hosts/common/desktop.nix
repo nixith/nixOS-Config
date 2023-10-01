@@ -39,7 +39,7 @@
 
   programs.gamescope = {
     enable = true;
-    capSysNice = true;
+    #capSysNice = true;
     env = {
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     };
