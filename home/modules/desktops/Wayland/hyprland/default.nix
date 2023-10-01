@@ -74,6 +74,7 @@ in {
     swww
     polkit_gnome
     wl-clipboard
+    clipboard-jh
     brightnessctl
     grim
     #anyrun
