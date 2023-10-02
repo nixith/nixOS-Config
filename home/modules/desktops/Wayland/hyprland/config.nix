@@ -125,7 +125,7 @@
   bind=SUPERSHIFT,End,exit
   bind=SUPER,E,exec,nemo
   bind=SUPER,space,togglefloating,
-  bind=SUPER,D,exec,rofi -show drun
+  bind=SUPER,D,exec,anyrun
   bind=SUPERSHIFT,D,exec,anyrun
   bind=SUPER,C,exec, rofi -show calc
   bind=SUPER,P,pseudo,

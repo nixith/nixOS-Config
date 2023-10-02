@@ -46,7 +46,7 @@
   '';
 in {
   # actually enable hyprland
-  imports = [../General/eww ../General/Rofi ../General/anyrun ../General/Dunst];
+  imports = [../General/eww ../General/anyrun ../General/Dunst];
 
   # Fix waybar
 
