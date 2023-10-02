@@ -5,7 +5,7 @@
   ...
 }: {
   programs.anyrun = {
-    enable = false;
+    enable = true;
     config = {
       plugins = [
         # An array of all the plugins you want, which either can be paths to the .so files, or their packages
@@ -18,20 +18,20 @@
       ];
       width = {fraction = 0.4;};
       x = {fraction = 0.5;};
-      y = {fraction = 0.3;};
+      y = {fraction = 0.05;};
       #position = "top";
       #verticalOffset = {absolute = 0;};
       hideIcons = false;
       ignoreExclusiveZones = true;
       layer = "overlay";
-      #hidePluginInfo = false;
+      hidePluginInfo = true;
       #closeOnClick = false;
       #showResultsImmediately = false;
       maxEntries = null;
     };
     extraCss = ''
       .window {
-        color: transparent
+        color: transparent,
       }
     '';
 
