@@ -125,7 +125,7 @@
   bind=SUPERSHIFT,End,exit
   bind=SUPER,E,exec,nemo
   bind=SUPER,space,togglefloating,
-  bind=SUPER,D,exec,rofi -show drun
+  bind=SUPER,D,exec,anyrun
   bind=SUPERSHIFT,D,exec,anyrun
   bind=SUPER,C,exec, rofi -show calc
   bind=SUPER,P,pseudo,
@@ -210,7 +210,6 @@
   exec-once=wlsunset -l 35.6 -L -78.8 # Screen dimmer/oranger based on sunrise and sunset
   exec=eww daemon -c ~/.config/eww/
   exec=eww open-many $(eww windows | grep '^[^\*]')
-  exec=~/.config/hyprland/scripts/ewwVolUpdate.sh
   exec=~/.config/hyprland/scripts/ewwVolUpdate.sh
   exec-once=swww init
   exec=swww img ~/.config/hypr/Assets/tropic_island_night.jpg

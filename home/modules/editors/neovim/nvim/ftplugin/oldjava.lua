@@ -20,7 +20,6 @@ local workspace_dir = vim.env.HOME .. "/.cache/jdtls/" .. project_name
 local config = {
   cmd = {
     vim.env.HOME .. "/.nix-profile/bin/jdt-language-server", -- path to jdtls
-
     "-data",
     workspace_dir, -- can be anything, just know it modifies stuff
   },
@@ -31,24 +30,43 @@ local config = {
     ["$/progress"] = function(_, result, ctx)
       -- disable progress updates.
     end,
-    settings = {
-      eclipse = {
-        downloadSources = true,
-      },
-      implementationsCodeLens = {
-        enable = true,
-      },
-      signatureHelp = {
-        enabled = true,
-      },
-      completion = {
-        favoriteStaticMembers = {
-          "org.junit.jupiter.api.Assertions.*",
-        },
+  },
+  settings = {
+    eclipse = {
+      downloadSources = true,
+    },
+    implementationsCodeLens = {
+      enable = true,
+    },
+    signatureHelp = {
+      enabled = true,
+    },
+    completion = {
+      favoriteStaticMembers = {
+        "org.junit.Assert.*",
+        "org.junit.Assume.*",
+        "org.junit.jupiter.api.Assertions.*",
+        "org.junit.jupiter.api.Assumptions.*",
+        "org.junit.jupiter.api.DynamicContainer.*",
+        "org.junit.jupiter.api.DynamicTest.*",
       },
     },
   },
-  root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
+  init_options = {
+    bundles = {
+      vim.fn.glob(
+        vim.env.HOME
+          .. "/.nix-profile/share/vscode/extensions/vscjava.vscode-java-debug/server/com.microsoft.java.debug.plugin-*.jar",
+        true
+      ),
+      vim.fn.glob(
+        vim.env.HOME
+          .. "/.nix-profile/share/vscode/extensions/vscjava.vscode-java-test/server/com.microsoft.java.test.plugin-*.jar",
+        true
+      ),
+    },
+  },
+  root_dir = require("lspconfig.server_configurations.jdtls").default_config.root_dir,
   capabilities = vim.deepcopy(capabilities), -- taken from lazyVim
 }
 require("jdtls").start_or_attach(config)

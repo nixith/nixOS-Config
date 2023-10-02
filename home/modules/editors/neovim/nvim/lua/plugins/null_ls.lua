@@ -18,7 +18,7 @@ return {
           --java
           nls.builtins.diagnostics.checkstyle.with({
             extra_args = { "-c", vim.env.HOME .. "/.local/share/nvim/lintConfig/csc116_checks_jenkins.xml" },
-            args = { "-f", "sarif", "$ROOT" },
+            args = { "-f", "sarif", "$ROOT", "-x", ".direnv/", "-x", "project_docs/", "-x", "lib" },
           }),
 
           -- markup languages
