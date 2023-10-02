@@ -209,19 +209,10 @@
   exec=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
   exec-once=wlsunset -l 35.6 -L -78.8 # Screen dimmer/oranger based on sunrise and sunset
   exec=eww daemon -c ~/.config/eww/
-    ${
-    if computer == "Galaxia"
-    then ''
-      exec= eww open bar0 -c ~/.config/eww/ && ~/.config/hyprland/scripts/ewwVolUpdate.sh
-      exec= eww open bar1 -c ~/.config/eww/
-      exec= eww open bar2 -c ~/.config/eww/
-    ''
-    else ''
-      exec= eww open bar0 -c ~/.config/eww/ && ~/.config/hyprland/scripts/ewwVolUpdate.sh
-    ''
-  }
+  exec=eww open-many $(eww windows | grep '^[^\*]')
   exec=~/.config/hyprland/scripts/ewwVolUpdate.sh
-  exec-once=swww init && swww img ~/.config/hypr/Assets/tropic_island_night.jpg
+  exec=~/.config/hyprland/scripts/ewwVolUpdate.sh
+  exec-once=swww init
+  exec=swww img ~/.config/hypr/Assets/tropic_island_night.jpg
   exec=export XDG_CURRENT_DESKTOP="Sway"
-  #exec-once= wezterm
 ''
