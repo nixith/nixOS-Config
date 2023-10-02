@@ -10,7 +10,6 @@ set fish_greeting
 
 # Prevent directories names from being shortened
 set fish_prompt_pwd_dir_length 0
-set -x FZF_DEFAULT_OPTS "--color=16,header:13,info:5,pointer:3,marker:9,spinner:1,prompt:5,fg:7,hl:14,fg+:3,hl+:9 --inline-info --tiebreak=end,length --bind=shift-tab:toggle-down,tab:toggle-up"
 # "bat" as manpager
 set -x MANPAGER "bat -l man -p'"
 set -g theme_nerd_fonts yes
@@ -86,7 +85,6 @@ export LS_COLORS="$(vivid generate catppuccin-mocha)"
 
 ### ALIASES ###
 
-alias fzf fzf
 
 
 #add new fonts
