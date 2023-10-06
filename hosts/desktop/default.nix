@@ -68,7 +68,7 @@ in {
     extraGroups = ["networkmanager" "wheel" "video" "audio"];
     # import modules
     packages = with pkgs; [];
-    initialPassword = "password"; # TODO fix later with sops-nix
+    hashedPassword = "$6$8a7Hgdgv5zOp6w5u$Kro/9wAni3mtXOGhc8bWxYCa8aijTqowdA1lXucHiLxtct/9ZGAr9bzwePv5cfjnQSUG2YOvJOMYpVF0j75G91"; #TODO fix with sops-nix
   };
 
   environment.shells = with pkgs; [fish bash dash];
