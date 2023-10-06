@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   services.calibre-web = {
     enable = true;
-    enableBookUpdating = true;
     options = {
-      calibreLibrary = /home/ryan + "Calibre Library";
+      calibreLibrary = /home/ryan/CalibreLibrary;
       enableKepubify = true;
+      enableBookUploading = true;
     };
   };
   #services.calibre-server = {
