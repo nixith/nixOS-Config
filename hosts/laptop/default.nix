@@ -86,6 +86,7 @@
   };
 
   hardware.bluetooth = {enable = true;};
+  hardware.enableRedistributableFirmware = true;
 
   # Allow unfree packages
 
