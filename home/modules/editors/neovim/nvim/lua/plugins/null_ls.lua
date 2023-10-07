@@ -1,7 +1,7 @@
 return {
-  { "davidmh/cspell.nvim", dependencies = "jose-elias-alvarez/null-ls.nvim" },
+  { "davidmh/cspell.nvim", dependencies = "nvimtools/none-ls.nvim" },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {},
     enable = true,
@@ -56,6 +56,7 @@ return {
           -- text
           nls.builtins.hover.dictionary,
           nls.builtins.code_actions.proselint,
+          nls.builtins.completion.spell,
           nls.builtins.hover.printenv,
           cspell.diagnostics,
           cspell.code_actions,

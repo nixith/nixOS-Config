@@ -35,22 +35,13 @@ return {
     "simrat39/rust-tools.nvim",
     lazy = true,
     opts = function()
-      local ok, mason_registry = pcall(require, "mason-registry")
       local adapter ---@type any
-      if ok then
-        -- rust tools configuration for debugging support
-        local extension_path = vim.env.HOME .. "/.nix-profile/share/vscode/extensions/vadimcn.vscode-lldb/"
-        local codelldb_path = extension_path .. "adapter/codelldb"
-        local liblldb_path = ""
-        if vim.loop.os_uname().sysname:find("Windows") then
-          liblldb_path = extension_path .. "lldb\\bin\\liblldb.dll"
-        elseif vim.fn.has("mac") == 1 then
-          liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
-        else
-          liblldb_path = extension_path .. "lldb/lib/liblldb.so"
-        end
-        adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path)
-      end
+      -- rust tools configuration for debugging support
+      local extension_path = vim.env.HOME .. "/.nix-profile/share/vscode/extensions/vadimcn.vscode-lldb"
+      local codelldb_path = extension_path .. "/adapter/codelldb"
+      local liblldb_path = ""
+      liblldb_path = extension_path .. "/lldb/lib/liblldb.so"
+      adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path)
       return {
         dap = {
           adapter = adapter,
@@ -76,7 +67,6 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        -- Ensure mason installs the server
         rust_analyzer = {
           keys = {
             { "K", "<cmd>RustHoverActions<cr>", desc = "Hover Actions (Rust)" },
