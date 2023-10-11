@@ -13,6 +13,7 @@
   prismlauncher,
   neovim-nightly-overlay,
   alejandra,
+  sops-nix,
   ...
 }: let
   windowManager = ./modules/desktops/Wayland/hyprland/default.nix;
@@ -82,7 +83,7 @@ in {
     #./modules/shells/shellApps/carapace.nix
     ./modules/shells/shellApps/zoxide.nix
     ./modules/shells/shellApps/direnv.nix
-    ./modules/Gui/spotify
+    #./modules/Gui/spotify
     # Gui Tools
     ./modules/Gui
     ./modules/Gui/xournalpp
@@ -96,6 +97,7 @@ in {
     ./modules/Terminals/Wezterm
     ./modules/Terminals/Rio
     ./modules/Terminals/Kitty
+    ./nix/secrets.nix
     #./modules/languages/python
     #./modules/Meta/cachix.nix
     nix-colors.homeManagerModule

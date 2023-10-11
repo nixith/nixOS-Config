@@ -1,32 +1,42 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [spotify-tui];
+{
+  computer,
+  inputs,
+  pkgs,
+  ...
+}: let
+  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
+in {
+  imports = [inputs.spicetify-nix.homeManagerModule];
 
-  services.spotifyd = {
+  programs.spicetify = {
     enable = true;
-    settings = {
-      global = {
-        audio_format = "S16";
-        autoplay = true;
-        backend = "pulseaudio";
-        bitrate = 320;
-        cache_path = "cache_directory";
-        dbus_type = "session";
-        device = "default";
-        device_name = "nixos";
-        device_type = "computer";
-        initial_volume = "90";
-        max_cache_size = 1000000000;
-        mixer = "PCM";
-        no_audio_cache = true;
-        normalisation_pregain = -10;
-        on_song_change_hook = "command_to_run_on_playback_events";
-        # proxy = "http://proxy.example.org:8080";
-        use_keyring = true;
-        use_mpris = true;
-        volume_controller = "alsa";
-        volume_normalisation = true;
-        # zeroconf_port = 1234;
-      };
+    theme = {
+      name = "catppuccin";
+      appendName = true;
+      src = inputs.catppuccin-spicetify;
+      injectCss = true;
+      replaceColors = true;
+      overwriteAssets = true;
+      sidebarConfig = false;
     };
+    colorScheme = "mocha";
+
+    enabledExtensions = with spicePkgs.extensions; [
+      fullAppDisplayMod
+      bookmark
+      keyboardShortcut
+      popupLyrics
+      shuffle
+      powerBar
+      wikify
+      songStats
+      autoVolume
+    ];
+
+    enabledCustomApps = with spicePkgs.apps; [
+      new-releases
+      lyrics-plus
+      marketplace
+    ];
   };
 }
