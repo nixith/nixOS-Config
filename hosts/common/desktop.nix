@@ -77,6 +77,10 @@
   };
   services.flatpak.enable = true;
   services.upower.enable = true;
+  services.dbus = {
+    enable = true;
+    implementation = "broker";
+  };
 
   # Enable sound with pipewire.
   sound.enable = true;
