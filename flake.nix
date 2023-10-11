@@ -140,7 +140,14 @@
       specialArgs.inputs = inputs;
     }; # Imports ./hosts/default.nix
 
-    homeConfigurations = {
+    homeConfigurations = let
+      commonModules = [
+        ./home/home.nix
+        anyrun.homeManagerModules.default
+        inputs.spicetify-nix.homeManagerModules.default
+        sops-nix.homeManagerModules.sops
+      ];
+    in {
       HmInputs = overlays system alejandra neovim-nightly-overlay;
       nixpkgs.overlays = overlays;
       home-manager.useGlobalPkgs = true;
@@ -152,11 +159,7 @@
           config.allowUnfree = true;
         };
 
-        modules = [
-          ./home/home.nix
-          anyrun.homeManagerModules.default
-          sops-nix.homeManagerModules.sops
-        ];
+        modules = commonModules;
 
         extraSpecialArgs = {
           inherit nix-colors;
@@ -172,11 +175,7 @@
           config.allowUnfree = true;
         };
 
-        modules = [
-          ./home/home.nix
-          anyrun.homeManagerModules.default
-          inputs.spicetify-nix.homeManagerModules.default
-        ];
+        modules = commonModules;
 
         extraSpecialArgs = {
           inherit nix-colors;
