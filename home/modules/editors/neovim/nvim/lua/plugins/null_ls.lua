@@ -1,5 +1,5 @@
 return {
-  { "davidmh/cspell.nvim", dependencies = "nvimtools/none-ls.nvim" },
+  --{ "davidmh/cspell.nvim", dependencies = "nvimtools/none-ls.nvim" },
   {
     "nvimtools/none-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -7,7 +7,7 @@ return {
     enable = true,
     opts = function(_, opts)
       local nls = require("null-ls")
-      local cspell = require("cspell")
+      -- local cspell = require("cspell")
       return {
         root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
         sources = {
@@ -58,8 +58,8 @@ return {
           nls.builtins.code_actions.proselint,
           nls.builtins.completion.spell,
           nls.builtins.hover.printenv,
-          cspell.diagnostics,
-          cspell.code_actions,
+          --cspell.diagnostics,
+          --cspell.code_actions,
           nls.builtins.diagnostics.textlint,
           nls.builtins.diagnostics.typos,
 
