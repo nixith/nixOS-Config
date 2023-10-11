@@ -39,6 +39,12 @@
       flake = false;
     };
 
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
+    catppuccin-spicetify = {
+      url = "github:catppuccin/spicetify";
+      flake = false;
+    };
+
     nix-gaming.url = "github:fufexan/nix-gaming";
     fenix = {
       url = "github:nix-community/fenix";
@@ -118,6 +124,13 @@
       (final: prev: {
         discord = prev.discord.override {withOpenASAR = true;};
       })
+      (final: prev: {
+        spotifyd = prev.spotifyd.override {
+          withKeyring = true;
+          withPulseAudio = true;
+          withMpris = true;
+        };
+      })
     ];
   in {
     formatter.x86_64-linux = alejandra.defaultPackage.${system};
@@ -142,6 +155,7 @@
         modules = [
           ./home/home.nix
           anyrun.homeManagerModules.default
+          sops-nix.homeManagerModules.sops
         ];
 
         extraSpecialArgs = {
@@ -161,6 +175,7 @@
         modules = [
           ./home/home.nix
           anyrun.homeManagerModules.default
+          inputs.spicetify-nix.homeManagerModules.default
         ];
 
         extraSpecialArgs = {
