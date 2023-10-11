@@ -19,7 +19,7 @@ let
     inherit system self inputs;
   };
 
-  common = [inputs.flakeProgramsSqlite.nixosModules.programs-sqlite];
+  common = [inputs.flakeProgramsSqlite.nixosModules.programs-sqlite inputs.sops-nix.nixosModules.sops];
 
   lib = nixpkgs.lib;
 in {
@@ -29,13 +29,13 @@ in {
 
     modules =
       [
-        sops-nix.nixosModules.sops
-
         ./laptop
+        ./modules/tailscale.nix
         #./modules/calibre.nix
         ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
         ./common/desktop.nix # Default for graphical desktops
         ./common/tlp.nix
+        ./common/secrets.nix
         ./common/security.nix
         ./common/virtualisation.nix
 
@@ -62,6 +62,7 @@ in {
         ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
         ./common/desktop.nix # Default for graphical desktops
         ./common/security.nix
+        ./common/secrets.nix
         ./common/virtualisation.nix
 
         hyprland.nixosModules.default
