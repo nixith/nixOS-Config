@@ -46,7 +46,6 @@ in {
       git
       zellij
       python3
-      spotify
       webcord-vencord
       gnome.gnome-disk-utility
       partition-manager
@@ -83,7 +82,7 @@ in {
     #./modules/shells/shellApps/carapace.nix
     ./modules/shells/shellApps/zoxide.nix
     ./modules/shells/shellApps/direnv.nix
-    #./modules/Gui/spotify
+    ./modules/Gui/spotify
     # Gui Tools
     ./modules/Gui
     ./modules/Gui/xournalpp
