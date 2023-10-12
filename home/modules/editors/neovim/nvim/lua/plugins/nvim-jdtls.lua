@@ -143,6 +143,8 @@ return {
 
       local function attach_jdtls()
         local fname = vim.api.nvim_buf_get_name(0)
+        require("lint.linters.checkstyle").config_file = vim.env.HOME
+          .. "/.local/share/nvim/lintConfig/csc116_checks_jenkins.xml"
 
         -- Configuration can be augmented and overridden by opts.jdtls
         local config = extend_or_override({
