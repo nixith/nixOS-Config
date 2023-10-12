@@ -2,8 +2,8 @@ local languages = {
   lua = {},
   java = {
     lintCommand = "checkstyle -c"
-        .. vim.env.HOME
-        .. "~/.local/share/nvim/lintConfig/csc116_checks_jenkins.xml ${INPUT}",
+      .. vim.env.HOME
+      .. "~/.local/share/nvim/lintConfig/csc116_checks_jenkins.xml ${INPUT}",
     lintFormats = "[%tARN] %f:%l:%c: %m [%r]",
   },
 }
@@ -14,14 +14,15 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "simrat39/rust-tools.nvim" },
-      { "folke/neoconf.nvim",      cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
-      { "folke/neodev.nvim",       opts = {} },
+      { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
+      { "folke/neodev.nvim", opts = {} },
     },
     opts = {
       -- add any global capabilities here
       capabilities = {},
       -- Automatically format on save
-      autoformat = true,
+      --autoformat = true,
+
       -- options for vim.lsp.buf.format
       -- `bufnr` and `filter` is handled by the LazyVim formatter,
       -- but can be also overridden when specified
