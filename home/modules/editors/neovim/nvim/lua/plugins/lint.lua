@@ -18,7 +18,7 @@ return {
 
       linters = {
         checkstyle = {
-          config_file = { vim.env.HOME .. "/.local/share/nvim/lintConfig/csc116_checks_jenkins.xml" },
+          config_file = vim.env.HOME .. "/.local/share/nvim/lintConfig/csc116_checks_jenkins.xml",
         },
       },
     },
