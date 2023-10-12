@@ -40,20 +40,14 @@ in {
     tree-sitter
     libstdcxx5
 
-    ## nullLS requirements ##
-    stylua
-    selene
-
     ### Python ###
     # Linter
-    ruff
 
     # LSP
     ruff-lsp
     pylyzer
     # yaml
     nodePackages_latest.yaml-language-server
-    yamllint
     yamlfmt
     nodePackages_latest.vscode-json-languageserver
     sumneko-lua-language-server
@@ -78,13 +72,21 @@ in {
     vscode-extensions.vadimcn.vscode-lldb
 
     # tomly thing I use for rust
-    taplo
 
     ### Formatters: ###
     stylua
+    alejandra.defaultPackage.${system}
+    beautysh
+    bibtex-tidy
+    shellcheck
+    shellharden
+    shfmt
+    ruff
+    nodePackages_latest.stylelint
+    taplo
+    yamlfmt
 
     #nix
-    alejandra.defaultPackage.${system}
     statix
     nixd
     deadnix
@@ -93,16 +95,11 @@ in {
     typst
     typst-lsp
 
-    #linters, formatters, and more
-    efm-langserver
-
-    ## css
-    nodePackages_latest.stylelint
-
-    # shell
-    shfmt
-    shellcheck
-    beautysh
+    #linters
+    stylua
+    nodePackages_latest.jsonlint
+    languagetool
+    selene
 
     # spelling
     proselint
