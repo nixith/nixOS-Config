@@ -5,7 +5,7 @@ return {
     opts = {
       events = { "BufWritePost", "BufReadPost", "InsertLeave" },
       linters_by_ft = {
-        nix = { { "nix", "statix" } },
+        nix = { "nix", "statix" },
         fish = { "fish" },
         java = { "checkstyle" },
         json = { "jsonlint" },
@@ -16,11 +16,7 @@ return {
         ["*"] = { "languagetool" },
       },
 
-      linters = {
-        checkstyle = {
-          config_file = vim.env.HOME .. "/.local/share/nvim/lintConfig/csc116_checks_jenkins.xml",
-        },
-      },
+      -- linters = {},
     },
   },
 }
