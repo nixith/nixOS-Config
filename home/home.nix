@@ -1,19 +1,8 @@
 {
-  config,
-  lib,
   pkgs,
-  hyprland,
-  user,
-  inputs,
   nix-colors,
-  systemType,
-  spicetify-nix,
   computer,
   overlays,
-  prismlauncher,
-  neovim-nightly-overlay,
-  alejandra,
-  sops-nix,
   ...
 }: let
   windowManager = ./modules/desktops/Wayland/hyprland/default.nix;
@@ -28,12 +17,18 @@ in {
   nixpkgs.overlays = overlays;
   #cachic
 
-  home.stateVersion = "22.11";
   programs.home-manager.enable = true; # enable home manager and allow it to manage itself
 
   systemd.user.startServices = "sd-switch"; # reload systemd units on config reload
 
   home = {
+    stateVersion = "22.11";
+
+    sessionVariables = {
+      EDITOR = "nvim";
+      SHELL = "fish";
+    };
+
     inherit username homeDirectory;
     packages = with pkgs; [
       thunderbirdPackages.thunderbird-115
@@ -55,19 +50,17 @@ in {
       obsidian
     ];
   };
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    SHELL = "fish";
-  };
   # User Configuration
 
-  xdg.userDirs = {
-    enable = true;
-    createDirectories = true;
-  };
+  xdg = {
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+    };
 
-  xdg.systemDirs = {
-    data = ["${homeDirectory}/.local/share"];
+    systemDirs = {
+      data = ["${homeDirectory}/.local/share"];
+    };
   };
 
   imports = [
