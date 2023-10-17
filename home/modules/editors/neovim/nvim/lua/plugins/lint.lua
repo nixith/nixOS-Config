@@ -13,7 +13,7 @@ return {
         lua = { "selene" },
         css = { "stylelint" },
         ["*sh"] = { "ShellCheck" },
-        ["*"] = { "languagetool" },
+        --["*"] = { "languagetool" },
       },
 
       -- linters = {},
