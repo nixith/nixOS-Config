@@ -16,6 +16,7 @@
     open = true;
     modesetting.enable = true;
     powerManagement.enable = true;
+    package = pkgs.config.boot.kernelPackages.nvidia_x11_beta_open;
   };
 
   environment.sessionVariables = {
