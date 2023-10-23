@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: {
+  boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemory"];
   services.xserver.videoDrivers = ["nvidia"];
   hardware.opengl = {
     enable = true;
@@ -16,7 +17,7 @@
     open = true;
     modesetting.enable = true;
     powerManagement.enable = true;
-    package = pkgs.config.boot.kernelPackages.nvidia_x11_beta_open;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   environment.sessionVariables = {
