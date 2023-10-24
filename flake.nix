@@ -38,6 +38,10 @@
       url = "github:jethrokuan/z";
       flake = false;
     };
+    fish-fzf = {
+      url = "github:PatrickF1/fzf.fish";
+      flake = false;
+    };
 
     spicetify-nix.url = "github:the-argus/spicetify-nix";
     catppuccin-spicetify = {

@@ -23,6 +23,10 @@
         name = "z";
         src = inputs.fish-z;
       }
+      {
+        name = "fzf";
+        src = inputs.fish-fzf;
+      }
     ];
   };
 }
