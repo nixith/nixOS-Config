@@ -3,6 +3,7 @@ return {
     "stevearc/conform.nvim",
     dependencies = {},
     opts = {
+      lsp_fallback = true,
       formatters_by_ft = {
         nix = { "alejandra" },
         lua = { "stylua" },
@@ -14,7 +15,7 @@ return {
         toml = { "taplo" },
         yaml = { "yamlfmt" },
         ["*sh"] = { { "shellcheck", "shellharden", "shfmt" } },
-        ["*"] = { "injected" },
+        -- ["*"] = { "injected" }, -- commented out so that LSP formatting will load
       },
     },
   },
