@@ -4,11 +4,7 @@
   alejandra,
   nil,
   ...
-}: let
-  plugins = with pkgs; [
-    vimPlugins.nvim-treesitter.withAllGrammars
-  ];
-in {
+}: {
   # move config files to .config
 
   home.file.nvim = {
@@ -23,10 +19,13 @@ in {
     #package = neovim-nightly;
     withPython3 = true;
     withNodeJs = true;
-    inherit plugins;
+    plugins = with pkgs; [
+      vimPlugins.nvim-treesitter.withAllGrammars
+    ];
   };
 
   home.packages = with pkgs; [
+    tree-sitter-grammars.tree-sitter-typst
     # extension dependencies
     luajitPackages.jsregexp
     ripgrep
@@ -61,7 +60,7 @@ in {
       "rustfmt"
     ])
     #
-    rust-analyzer-nightly
+    rust-analyzer
 
     ### Java ###
     jdt-language-server
