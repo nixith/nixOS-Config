@@ -45,7 +45,7 @@
       kb_layout=
       kb_variant=
       kb_model=
-      kb_options=
+      kb_options=ctrl:nocaps
       kb_rules=
       numlock_by_default=true
       follow_mouse=1
