@@ -1,7 +1,9 @@
-{_}: {
+{...}: {
   programs.firefox = {
+    enable = true;
+
     nativeMessagingHosts = {
-      fxcast = true;
+      fxCast = true;
       ff2mpv = true;
       tridactyl = true;
     };
