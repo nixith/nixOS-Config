@@ -11,6 +11,7 @@
     bat.enable = true; # cat clone
     fzf = {
       enable = true;
+      enableFishIntegration = false; # handled with plugin
       changeDirWidgetCommand = ''
         fd . --type d --follow --exclude '*.direnv/*'
       '';
