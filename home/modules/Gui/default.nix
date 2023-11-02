@@ -33,7 +33,6 @@ in {
     calf
     rnnoise-plugin # Denoiser plugin
     distrho
-    cadence
     noisetorch
     pavucontrol
     gimp
