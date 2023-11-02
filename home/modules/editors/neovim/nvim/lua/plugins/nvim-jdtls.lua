@@ -153,6 +153,10 @@ return {
           settings = {
             completion = completion,
             java = {
+              format = {
+                enabled = true,
+                tabSize = 4,
+              },
               project = {
                 referencesLibraries = {
                   vim.fn.glob(vim.fn.getcwd() .. "/*/lib/*.jar"),
