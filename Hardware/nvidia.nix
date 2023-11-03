@@ -4,7 +4,7 @@
   services.xserver.videoDrivers = ["nvidia"];
   boot.blacklistedKernelModules = ["nouveau"];
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidia_x11;
+    package = config.boot.kernelPackages.nvidia_x11_beta;
     # package = config.boot.kernelPackages.nvidia_x11_vulkan_beta;
     # modesetting should resolve tearing, but it doesn't seem to do
     # anything.
