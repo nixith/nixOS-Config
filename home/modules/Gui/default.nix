@@ -14,7 +14,6 @@ in {
   home.packages = with pkgs; [
     # note taking
     xournalpp
-    logseq
 
     # Gaming
     #steamcmd
