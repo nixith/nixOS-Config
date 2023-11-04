@@ -103,6 +103,10 @@ in {
     enable = true;
     package = pkgs.swaylock-effects;
     settings = {
+      color = "1e1e2e";
+      indicator-caps-lock = true;
+      font = "Lilex Nerd Font Regular";
+      clock = true;
     };
   };
 
