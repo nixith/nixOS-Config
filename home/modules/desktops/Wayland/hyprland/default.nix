@@ -114,7 +114,7 @@ in {
     enable = true;
     events = [
       {
-        event = "before-sleep";
+        event = "after-resume";
         command = "${pkgs.swaylock}/bin/swaylock";
       }
       {
