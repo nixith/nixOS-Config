@@ -113,20 +113,34 @@ in {
   services.swayidle = {
     enable = true;
     events = [
-      {
-        event = "after-resume";
-        command = "${pkgs.swaylock}/bin/swaylock";
-      }
+      # {
+      #   event = "after-resume";
+      #   command = "";
+      # }
       {
         event = "lock";
-        command = "lock";
+        command = "${config.programs.swaylock.package}/bin/swaylock -fF -C ${config.xdg.configFile."swaylock/config".source}";
+      }
+      {
+        event = "before-sleep";
+        command = "loginctl lock-session $XDG_SESSION_ID";
       }
     ];
-
+    #brillo -A 20 -u 500000
     timeouts = [
       {
+        timeout = 300;
+        command = "systemctl suspend";
+      }
+      {
+        timeout = 180;
+        command = "hyprctl dispatch dpms off && loginctl lock-session $XDG_SESSION_ID";
+        resumeCommand = "hyprctl dispatch dpms on";
+      }
+      {
         timeout = 120;
-        command = "${pkgs.swaylock}/bin/swaylock -fF";
+        command = "brillo -O && brillo -S 20 -u 500000";
+        resumeCommand = "brillo -I -u 500000";
       }
     ];
   };
