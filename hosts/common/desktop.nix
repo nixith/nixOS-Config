@@ -16,7 +16,7 @@
     enable = true;
     style = "gtk2";
   };
-  environment.systemPackages = with pkgs; [usbutils android-udev-rules libva-utils jack2];
+  environment.systemPackages = with pkgs; [usbutils android-udev-rules libva-utils jack2 brillo];
 
   # steam has to be done here
   programs.steam = {
@@ -135,6 +135,8 @@
     wireless.enable = true;
     wireless.enableGraphical = true;
   };
+
+  hardware.brillo.enable = true;
 
   programs.gamemode = {
     enable = true;
