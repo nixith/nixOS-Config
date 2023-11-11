@@ -147,9 +147,11 @@ return {
           .. "/.local/share/nvim/lintConfig/csc116_checks_jenkins.xml"
 
         -- Configuration can be augmented and overridden by opts.jdtls
+        local root_dir = opts.root_dir(fname)
+        local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
         local config = extend_or_override({
           cmd = opts.full_cmd(opts),
-          root_dir = opts.root_dir(fname),
+          root_dir = root_dir,
           settings = {
             completion = completion,
             java = {
@@ -159,7 +161,7 @@ return {
               },
               project = {
                 referencesLibraries = {
-                  vim.fn.glob(vim.fn.getcwd() .. "/*/lib/*.jar"),
+                  vim.fn.glob(require("jdtls.setup").find_root(root_markers) .. "/*/lib/*.jar"),
                 },
               },
             },
