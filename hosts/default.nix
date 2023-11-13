@@ -19,7 +19,12 @@ let
     inherit system self inputs;
   };
 
-  common = [inputs.flakeProgramsSqlite.nixosModules.programs-sqlite inputs.sops-nix.nixosModules.sops];
+  common = [
+    inputs.flakeProgramsSqlite.nixosModules.programs-sqlite
+    inputs.sops-nix.nixosModules.sops
+    ./modules/greetd.nix
+    ./modules/console.nix
+  ];
 
   lib = nixpkgs.lib;
 in {
@@ -31,7 +36,6 @@ in {
       [
         ./laptop
         ./modules/tailscale.nix
-        ./modules/greetd.nix
         #./modules/firefox.nix
         #./modules/calibre.nix
         ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
