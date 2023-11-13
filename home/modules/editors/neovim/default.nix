@@ -43,7 +43,7 @@
     # Linter
 
     # LSP
-    ruff-lsp
+    ruff
     pylyzer
     # yaml
     nodePackages_latest.yaml-language-server
@@ -92,6 +92,7 @@
 
     #typst
     typst
+    typst-fmt
     typst-lsp
 
     #linters
