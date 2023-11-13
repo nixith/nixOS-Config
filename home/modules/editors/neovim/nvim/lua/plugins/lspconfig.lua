@@ -71,7 +71,6 @@ return {
           },
         },
         -- python
-        ruff_lsp = {},
         pylyzer = {},
 
         -- typst
