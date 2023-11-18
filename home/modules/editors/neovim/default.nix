@@ -49,7 +49,7 @@
     nodePackages_latest.yaml-language-server
     yamlfmt
     nodePackages_latest.vscode-json-languageserver
-    sumneko-lua-language-server
+    lua-language-server
     nodePackages_latest.pyright
     ### Rust ###
     (fenix.complete.withComponents [
