@@ -3,10 +3,10 @@
     colors = [
       "1e1e2e"
       "45475a"
-      "f38ba8"
+      "a6e3a1"
       "eba0ac"
       "94e2d5"
-      "a6e3a1"
+      "f38ba8"
       "fab387"
       "f9e2af"
       "89b4fa"
