@@ -14,8 +14,8 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "simrat39/rust-tools.nvim" },
-      { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
-      { "folke/neodev.nvim", opts = {} },
+      { "folke/neoconf.nvim", cmd = "Neoconf", config = false },
+      { "folke/neodev.nvim", opts = {}, dependencies = { "folke/neoconf.nvim" } },
     },
     opts = {
       -- add any global capabilities here
