@@ -28,7 +28,7 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   boot = {
-    supportedFilesystems = ["bcachefs" "btrfs"];
+    supportedFilesystems = ["btrfs"];
 
     loader.efi = {
       canTouchEfiVariables = true;
