@@ -70,10 +70,12 @@
     enable = true;
     extraPortals = [
       #pkgs.xdg-desktop-portal-wlr
+      inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal
       #inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
     ];
+    config.common.default = "*";
   };
   services.flatpak.enable = true;
   services.upower.enable = true;
