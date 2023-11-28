@@ -6,7 +6,6 @@
   ...
 }: {
   wayland.windowManager.hyprland = {
-    enableNvidiaPatches = true;
     extraConfig = ''
       env = GBM_BACKEND,nvidia-drm
       env = __GLX_VENDOR_LIBRARY_NAME,nvidia

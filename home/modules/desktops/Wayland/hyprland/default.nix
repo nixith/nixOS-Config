@@ -22,15 +22,7 @@
       monitor=,preferred,auto,auto
     '';
 
-  nvidiaPatches =
-    if computer == "Galaxia"
-    then true
-    else false;
-
-  hyprlandPackage =
-    if computer == "Galaxia"
-    then inputs.hyprland.packages.${pkgs.system}.hyprland-nvidia
-    else inputs.hyprland.packages.${pkgs.system}.hyprland;
+  hyprlandPackage = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
   HyprEnv = ''
     env = XDG_CURRENT_DESKTOP,Hyprland
@@ -62,7 +54,6 @@ in {
     xwayland = {
       enable = true;
     };
-    enableNvidiaPatches = nvidiaPatches;
   };
 
   home.packages = with pkgs; [
