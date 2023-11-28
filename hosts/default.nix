@@ -22,7 +22,6 @@ let
   common = [
     inputs.flakeProgramsSqlite.nixosModules.programs-sqlite
     inputs.sops-nix.nixosModules.sops
-    ./modules/greetd.nix
     ./modules/console.nix
   ];
 
@@ -64,6 +63,8 @@ in {
     modules =
       [
         ./desktop
+        ./modules/greetd.nix
+
         # ./common/kmscon.nix # alternate tty, need to figure out how to turn off gpu so wayland can take it
         ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
         ./common/desktop.nix # Default for graphical desktops
