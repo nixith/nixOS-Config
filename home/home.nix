@@ -47,7 +47,6 @@ in {
       gum
       glfw-wayland
       hyfetch
-      obsidian
     ];
   };
   # User Configuration
