@@ -90,10 +90,10 @@
     nixd
     deadnix
 
-    #typst
-    typst
-    typst-fmt
-    typst-lsp
+    #typst # breaking builds as of now, rely on direnv
+    # typst
+    # typst-fmt
+    # typst-lsp
 
     #linters
     stylua
