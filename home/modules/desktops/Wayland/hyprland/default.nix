@@ -114,24 +114,24 @@ in {
       }
       {
         event = "before-sleep";
-        command = "loginctl lock-session $XDG_SESSION_ID";
+        command = "${pkgs.systemd}/bin/loginctl lock-session $XDG_SESSION_ID";
       }
     ];
     #brillo -A 20 -u 500000
     timeouts = [
       {
         timeout = 300;
-        command = "systemctl suspend";
+        command = "${pkgs.systemd}/bin/systemctl suspend";
       }
       {
         timeout = 180;
-        command = "hyprctl dispatch dpms off && loginctl lock-session $XDG_SESSION_ID";
-        resumeCommand = "hyprctl dispatch dpms on";
+        command = "${hyprlandPackage}/bin/hyprctl dispatch dpms off && ${pkgs.systemd}/bin/loginctl lock-session $XDG_SESSION_ID";
+        resumeCommand = "${hyprlandPackage}/bin/hyprctl dispatch dpms on";
       }
       {
         timeout = 120;
-        command = "brillo -O && brillo -S 20 -u 500000";
-        resumeCommand = "brillo -I -u 500000";
+        command = "${pkgs.brillo}/bin/brillo -O && ${pkgs.brillo}/bin/brillo -S 20 -u 500000";
+        resumeCommand = "${pkgs.brillo}/bin/brillo -I -u 500000";
       }
     ];
   };
