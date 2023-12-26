@@ -70,8 +70,8 @@
     enable = true;
     extraPortals = [
       #pkgs.xdg-desktop-portal-wlr
-      inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal
+      #inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
+      #pkgs.xdg-desktop-portal
       #inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
     ];
@@ -81,7 +81,8 @@
   services.upower.enable = true;
   services.dbus = {
     enable = true;
-    implementation = "broker";
+    implementation = "dbus";
+    apparmor = "enabled";
   };
 
   # Enable sound with pipewire.
