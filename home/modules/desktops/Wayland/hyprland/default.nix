@@ -121,7 +121,10 @@ in {
     timeouts = [
       {
         timeout = 300;
-        command = "${pkgs.systemd}/bin/systemctl suspend";
+        command =
+          if computer == "Nebula" #only suspend on laptop
+          then "${pkgs.systemd}/bin/systemctl suspend"
+          else "";
       }
       {
         timeout = 180;
