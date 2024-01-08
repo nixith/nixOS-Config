@@ -102,7 +102,7 @@ in {
   };
 
   services.swayidle = {
-    enable = true;
+    enable = false; #TODO DPMS won't turn on and lock occurs after resume, not before dpms turns off.
     events = [
       # {
       #   event = "after-resume";
