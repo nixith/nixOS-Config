@@ -78,13 +78,14 @@ in {
     # Gui Tools
     ./modules/Gui
     ./modules/Gui/xournalpp
-    ./modules/Gui/newsboat
+    #./modules/Gui/newsboat
     ./modules/Gui/firefox
     ./modules/Gui/zathura/default.nix
     ./modules/editors/helix
     ./modules/Gui/QT/default.nix
     ./modules/editors/vscode
     ./modules/editors/neovim
+    ./modules/editors/eclipse
     ./modules/Terminals/Wezterm
     ./modules/Terminals/Rio
     ./modules/Terminals/Kitty
