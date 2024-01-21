@@ -55,6 +55,8 @@ in {
       enable = true;
     };
   };
+  # secret management
+  services.gnome-keyring.enable = true;
 
   home.packages = with pkgs; [
     slurp
