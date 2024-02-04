@@ -76,10 +76,14 @@
   decoration {
       rounding=10
       blur {
+      popups = true
       enabled=1
-      size=3 # minimum 1
+      #xray = 1
+      size=8 # minimum 1
       passes=1 # minimum 1
       new_optimizations=1
+      noise = 0.015
+      vibrancy = 0.18
       }
   }
 
