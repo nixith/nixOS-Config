@@ -80,6 +80,10 @@
       url = "github:hyprwm/Hyprland";
     };
 
+    niri = {
+      url = "github:sodiboo/niri-flake";
+    };
+
     #Hyprland-Desktop-Portal = {
     #  url = "github:hyprwm/xdg-desktop-portal-hyprland";
     #};
@@ -116,6 +120,7 @@
     nix-gaming,
     prismlauncher,
     flakeProgramsSqlite,
+    niri,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -169,7 +174,7 @@
           inherit nix-colors;
           computer = "Nebula";
           inherit overlays system inputs;
-          inherit alejandra neovim-nightly-overlay hyprland;
+          inherit alejandra neovim-nightly-overlay hyprland niri;
         };
       };
 

@@ -90,6 +90,7 @@ in {
     ./modules/Terminals/Rio
     ./modules/Terminals/Kitty
     ./nix/secrets.nix
+    ./modules/desktops/Wayland/niri
     #./modules/languages/python
     #./modules/Meta/cachix.nix
     nix-colors.homeManagerModule
