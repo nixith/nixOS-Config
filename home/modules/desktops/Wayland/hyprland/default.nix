@@ -60,9 +60,6 @@ in {
 
   home.packages = with pkgs; [
     slurp
-    xdg-desktop-portal
-    xdg-desktop-portal-wlr
-    xdg-desktop-portal-gtk
     xdg-dbus-proxy
     swww
     polkit_gnome
@@ -139,5 +136,11 @@ in {
         resumeCommand = "${pkgs.brillo}/bin/brillo -I -u 500000";
       }
     ];
+  };
+
+  services.wob = {
+    enable = true;
+    #settings = {}; #TODO: configure wob
+    systemd = true;
   };
 }

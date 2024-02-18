@@ -56,11 +56,6 @@
       }
   }
 
-  device {
-    hanvon-ugee-deco-lw-pen {
-        output = DP-2
-    }
-  }
   general {
       sensitivity=1.0 # for mouse cursor
 
