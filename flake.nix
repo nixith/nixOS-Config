@@ -31,6 +31,7 @@
     auto-optimise-store = true;
     allowUnfree = true;
     accept-flake-config = true;
+    allow-import-from-derivation = true;
   };
 
   inputs = {
@@ -145,12 +146,13 @@
     formatter.x86_64-linux = alejandra.defaultPackage.${system};
     nixosConfigurations = import ./hosts {
       inherit (nixpkgs) lib;
-      inherit inputs nixpkgs hyprland nixos-hardware user self sops-nix;
+      inherit inputs nixpkgs hyprland nixos-hardware user self sops-nix niri;
       specialArgs.inputs = inputs;
     }; # Imports ./hosts/default.nix
 
     homeConfigurations = let
       commonModules = [
+        niri.homeModules.config
         ./home/home.nix
         anyrun.homeManagerModules.default
         inputs.spicetify-nix.homeManagerModules.default

@@ -80,6 +80,7 @@ in {
       ];
 
       auto-optimise-store = true; # Optimise syslinks
+      allow-import-from-derivation = true;
       experimental-features = ["nix-command" "flakes"];
       trusted-users = ["root" "@wheel"];
     };

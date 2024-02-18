@@ -52,6 +52,10 @@ in {
             package = inputs.hyprland.packages.${pkgs.system}.hyprland;
           };
         }
+        inputs.niri.nixosModules.niri
+        {
+          programs.niri.enable = true;
+        }
         nixos-hardware.nixosModules.lenovo-thinkpad-l13
       ]
       ++ common;
@@ -78,6 +82,7 @@ in {
           programs.hyprland = {
             enable = true;
             package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+            portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
           };
         }
         #nixos-hardware.nixosModules.lenovo-thinkpad-l13
