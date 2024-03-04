@@ -31,17 +31,21 @@ in {
   };
 
   networking.networkmanager.enable = true;
-  services.resolved = {
-    # works better with tailscale
-    enable = true;
-    extraConfig = ''
-      ReadEtcHosts=yes
-    '';
-    fallbackDns = [
-      "1.1.1.1"
-      "1.0.0.1"
-      "9.9.9.9"
-    ];
+  services = {
+    resolved = {
+      # works better with tailscale
+      enable = true;
+      extraConfig = ''
+        ReadEtcHosts=yes
+      '';
+      fallbackDns = [
+        "1.1.1.1"
+        "1.0.0.1"
+        "9.9.9.9"
+      ];
+    };
+
+    fwupd.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;
