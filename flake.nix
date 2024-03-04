@@ -126,6 +126,12 @@
   } @ inputs: let
     system = "x86_64-linux";
 
+    forAllSystems = function:
+      nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        "aarch64-linux"
+      ] (system: function nixpkgs.legacyPackages.${system});
+
     #nixpkgs.config.allowUnfree = true;
     user = "ryan";
     overlays = [
@@ -196,5 +202,9 @@
         };
       };
     };
+
+    packages = forAllSystems (pkgs: {
+      pmd = pkgs.callPackage ./packages/pmd.nix {};
+    });
   };
 }
