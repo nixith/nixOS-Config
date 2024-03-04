@@ -31,6 +31,7 @@ in {
 
     inherit username homeDirectory;
     packages = with pkgs; [
+      signal-desktop
       thunderbirdPackages.thunderbird-115
       ntfs3g
       pulseaudio
