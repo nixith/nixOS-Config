@@ -82,7 +82,7 @@ return {
 
         -- How to run jdtls. This can be overridden to a full java command-line
         -- if the Python wrapper script doesn't suffice.
-        cmd = { "jdt-language-server" },
+        cmd = { "jdtls" },
         full_cmd = function(opts)
           --local fname = vim.api.nvim_buf_get_name(0)
           --local root_dir = opts.root_dir(fname)
@@ -149,8 +149,7 @@ return {
         vim.opt_local.autoindent = true
         vim.opt_local.smarttab = true
 
-        require("lint.linters.checkstyle").config_file = vim.env.HOME
-          .. "/.local/share/nvim/lintConfig/csc116_checks_jenkins.xml"
+        require("lint.linters.checkstyle").config_file = vim.env.HOME .. "/.local/share/nvim/lintConfig/checkstyle.xml"
 
         -- Configuration can be augmented and overridden by opts.jdtls
         local root_dir = opts.root_dir(fname)
