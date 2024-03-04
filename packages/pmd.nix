@@ -31,9 +31,11 @@ stdenv.mkDerivation rec {
         --prefix PATH : ${jre}/bin \
         --set LIB_DIR $out/lib/pmd
 
-    for app in pmd cpd cpdgui designer bgastviewer designerold ast-dump; do
+    for app in cpd designer cpd-gui ast-dump; do
         makeWrapper $out/libexec/pmd $out/bin/$app --argv0 $app --add-flags $app
     done
+    # make PMD the check subcommand
+    makeWrapper $out/libexec/pmd $out/bin/'pmd' --argv0 'check' --add-flags 'check'
 
     runHook postInstall
   '';
