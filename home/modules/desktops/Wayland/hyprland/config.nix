@@ -208,7 +208,7 @@
   exec=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
   exec-once=wlsunset -l 35.6 -L -78.8 # Screen dimmer/oranger based on sunrise and sunset
   exec=eww daemon -c ~/.config/eww/
-  exec=eww open-many $(eww windows | grep '^[^\*]')
+  exec=eww open-many $(eww list-windows | grep '^[^\*]')
   exec=~/.config/hyprland/scripts/ewwVolUpdate.sh
   exec-once=swww init
   exec=swww img ~/.config/hypr/Assets/tropic_island_night.jpg
