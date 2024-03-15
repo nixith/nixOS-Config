@@ -48,6 +48,7 @@ in {
       gum
       glfw-wayland
       hyfetch
+      jetbrains.idea-community
     ];
   };
   # User Configuration
