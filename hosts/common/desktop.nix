@@ -5,7 +5,15 @@
   user,
   inputs,
   ...
-}: {
+}: let
+  gamescopeEnv = {
+    # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  };
+  gamescopeArgs = [
+    "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0"
+    "-e"
+  ];
+in {
   zramSwap.enable = true;
 
   # Graphical Necesities
@@ -28,21 +36,35 @@
         with pkgs; [
           openssl
           gamemode
+          xorg.libXcursor
+          xorg.libXi
+          xorg.libXinerama
+          xorg.libXScrnSaver
+          libpng
+          pipewire
+          libpulseaudio
+          libvorbis
+          stdenv.cc.cc.lib
+          libkrb5
+          openssl_legacy
+          keyutils
         ];
+      # ++ [config.programs.gamescope.package];
       extraProfile = "export STEAM_EXTRA_COMPAT_TOOLS_PATHS='${inputs.nix-gaming.packages.${pkgs.system}.proton-ge}'";
     };
     enable = true;
     gamescopeSession = {
       enable = true;
+      env = gamescopeEnv;
+      args = gamescopeArgs;
     };
   };
 
   programs.gamescope = {
     enable = true;
     capSysNice = true;
-    env = {
-      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    };
+    env = gamescopeEnv;
+    args = gamescopeArgs;
   };
 
   # Configure keymap in X11
