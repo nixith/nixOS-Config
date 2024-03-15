@@ -165,7 +165,7 @@
         "car" = "";
         "default" = ["" "" ""];
       };
-      "on-click" = "pavucontrol";
+      "on-click" = "pwvucontrol";
     };
     "custom/media" = {
       "format" = "{icon} {}";
