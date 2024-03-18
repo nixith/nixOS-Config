@@ -16,15 +16,41 @@
 in {
   zramSwap.enable = true;
 
+  boot = {
+    extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback #OBS virtual camera
+    ];
+    extraModprobeConfig = ''
+      options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+    '';
+  };
+
   # Graphical Necesities
   programs.dconf.enable = true;
   security.polkit.enable = true;
   qt = {
-    platformTheme = "gtk2";
+    platformTheme = "gnome";
     enable = true;
-    style = "gtk2";
+    style = "adwaita-dark";
   };
-  environment.systemPackages = with pkgs; [usbutils android-udev-rules libva-utils jack2 brillo];
+
+  environment.systemPackages = with pkgs; [
+    ffmpeg_5-full
+    usbutils
+    android-udev-rules
+    libva-utils
+    brillo
+    (pkgs.wrapOBS {
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-vkcapture
+        obs-vaapi
+        obs-backgroundremoval
+        droidcam-obs
+        obs-pipewire-audio-capture
+      ];
+    })
+  ];
 
   # steam has to be done here
   programs.steam = {
@@ -136,7 +162,7 @@ in {
     description = "Me!";
     extraGroups = ["networkmanager" "wheel" "video" "audio" "plugdev" "fuse" "jack"];
     # import modules
-    packages = with pkgs; [ffmpeg glibc libredirect libdrm mesa];
+    packages = with pkgs; [glibc libredirect libdrm mesa];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPLMtBjXvadChqa2pZIvJ6eHrkcYD87/skfl3Kjwg6dO ryan@nixos"
