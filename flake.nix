@@ -35,6 +35,10 @@
   };
 
   inputs = {
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     fish-z = {
       url = "github:jethrokuan/z";
       flake = false;
@@ -115,6 +119,7 @@
     hyprland,
     home-manager,
     nixos-hardware,
+    nixos-generators,
     nix-colors,
     neovim-nightly-overlay,
     alejandra,
@@ -205,6 +210,18 @@
 
     packages = forAllSystems (pkgs: {
       pmd = pkgs.callPackage ./packages/pmd.nix {};
+      iso = nixos-generators.nixosGenerate {
+        system = pkgs.system;
+        modules = [
+          ./isoBuilder/iso.nix
+          (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
+
+          # Provide an initial copy of the NixOS channel so that the user
+          # doesn't need to run "nix-channel --update" first.
+          (nixpkgs + "/nixos/modules/installer/cd-dvd/channel.nix")
+        ];
+        format = "install-iso";
+      };
     });
   };
 }
