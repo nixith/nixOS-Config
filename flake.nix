@@ -121,6 +121,7 @@
     nixos-hardware,
     nixos-generators,
     nix-colors,
+    nixd,
     neovim-nightly-overlay,
     alejandra,
     nix-gaming,
@@ -152,6 +153,7 @@
           withMpris = true;
         };
       })
+      nixd.overlays.default
     ];
   in {
     formatter.x86_64-linux = alejandra.defaultPackage.${system};
@@ -209,7 +211,7 @@
     };
 
     packages = forAllSystems (pkgs: {
-      pmd = pkgs.callPackage ./packages/pmd.nix {};
+      pmd = pkgs.callPackage ./packages/pmd/pmd.nix {};
       iso = nixos-generators.nixosGenerate {
         system = pkgs.system;
         modules = [
