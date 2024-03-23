@@ -33,7 +33,8 @@ in {
     rnnoise-plugin # Denoiser plugin
     distrho
     noisetorch
-    pwvucontrol
+    pavucontrol
+    #pwvucontrol
     gimp
     playerctl
     # bluetooth
