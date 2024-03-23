@@ -72,6 +72,13 @@ return {
         },
         -- python
         pylyzer = {},
+        basedpyright = {
+          analysis = {
+            -- autoSearchPaths = true,
+            -- diagnosticMode = "openFilesOnly",
+            -- useLibraryCodeForTypes = true,
+          },
+        },
 
         -- typst
         typst_lsp = {
