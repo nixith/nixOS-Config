@@ -1,0 +1,1 @@
+{"eval":{"depth":10,"target":{"args":["--expr","with import <nixpkgs> { }; callPackage ./pmd.nix { }"],"installable":""}},"formatting":{"command":"nixpkgs-fmt"},"options":{"enable":false,"target":{"args":[],"installable":".#homeConfigurations.Galaxia.options"}}}
