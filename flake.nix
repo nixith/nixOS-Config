@@ -214,6 +214,7 @@
 
     packages = forAllSystems (pkgs: {
       pmd = pkgs.callPackage ./packages/pmd/pmd.nix {};
+      ollama = pkgs.callPackage ./packages/ollama-cuda/ollama-cuda.nix {};
       iso = nixos-generators.nixosGenerate {
         system = pkgs.system;
         modules = [
