@@ -44,7 +44,7 @@
 
     # LSP
     ruff
-    pylyzer
+    #pylyzer
     # yaml
     nodePackages_latest.yaml-language-server
     yamlfmt
