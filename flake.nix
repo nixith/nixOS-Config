@@ -138,7 +138,11 @@
       nixpkgs.lib.genAttrs [
         "x86_64-linux"
         "aarch64-linux"
-      ] (system: function nixpkgs.legacyPackages.${system});
+      ] (system:
+        function (import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        }));
 
     #nixpkgs.config.allowUnfree = true;
     user = "ryan";
@@ -214,7 +218,7 @@
 
     packages = forAllSystems (pkgs: {
       pmd = pkgs.callPackage ./packages/pmd/pmd.nix {};
-      ollama = pkgs.callPackage ./packages/ollama-cuda/ollama-cuda.nix {};
+      ollama-cuda = pkgs.callPackage ./packages/ollama-cuda/ollama-cuda.nix {};
       iso = nixos-generators.nixosGenerate {
         system = pkgs.system;
         modules = [
