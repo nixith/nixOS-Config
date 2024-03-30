@@ -68,6 +68,11 @@
       apply_sens_to_raw=0 # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
   }
 
+  xwayland {
+    force_zero_scaling = true
+  }
+
+
   decoration {
       rounding=10
       blur {
