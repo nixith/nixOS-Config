@@ -40,7 +40,6 @@ in {
       #bitwarden #Marked as insecure due to nodeJS
       bitwarden-cli
       git
-      zellij
       python3
       webcord-vencord
       gnome.gnome-disk-utility
@@ -70,6 +69,7 @@ in {
     ./modules/gtk/adw-gtk3.nix
     ./modules/CLI/Tools.nix
     ./modules/CLI/btop
+    ./modules/CLI/tmux
     ./modules/shells/Fish
     ./modules/shells/nushell
     ./modules/shells/shellApps/Starship
