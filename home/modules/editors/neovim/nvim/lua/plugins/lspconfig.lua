@@ -59,6 +59,8 @@ return {
         nixd = {},
 
         --- programming lanugages
+        -- C
+        clangd = {},
         -- lua
         lua_ls = {
           filetypes = { "lua" },
@@ -87,6 +89,7 @@ return {
             -- serverPath = "~/.nix-profile/bin/typst-lsp", -- Normally, there is no need to uncomment it.
           },
         },
+        tinymist = {},
         ltex = {
           settings = {
             ltex = {

@@ -5,6 +5,7 @@ return {
     opts = {
       lsp_fallback = true,
       formatters_by_ft = {
+        c = { "clang-format" },
         nix = { "alejandra" },
         lua = { "stylua" },
         bib = { "bibtex-tidy" },

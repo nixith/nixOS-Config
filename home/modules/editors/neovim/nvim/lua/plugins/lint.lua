@@ -7,6 +7,7 @@ return {
     opts = {
       events = { "BufWritePost", "BufReadPost", "InsertLeave" },
       linters_by_ft = {
+        c = { "lang-tidy" },
         nix = { "nix", "statix" },
         fish = { "fish" },
         java = { "checkstyle", "pmd" },
