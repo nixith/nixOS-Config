@@ -76,6 +76,7 @@ in {
         ./common/security.nix
         ./common/secrets.nix
         ./common/virtualisation.nix
+        ./modules/tailscale.nix
 
         hyprland.nixosModules.default
         {
