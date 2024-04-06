@@ -81,6 +81,12 @@ return {
             -- useLibraryCodeForTypes = true,
           },
         },
+        -- julia
+        julials = {},
+        -- gleam
+        gleam = {
+          cmd = { "glas", "--stdio" },
+        },
 
         -- typst
         typst_lsp = {
