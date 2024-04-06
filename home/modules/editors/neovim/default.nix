@@ -44,7 +44,8 @@
 
     # LSP
     ruff
-    #pylyzer
+    python312Packages.debugpy
+
     # yaml
     nodePackages_latest.yaml-language-server
     yamlfmt

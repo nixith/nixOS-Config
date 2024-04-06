@@ -57,3 +57,5 @@ end
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
 -- Add any additional options here
+--
+vim.g.lazyvim_python_lsp = "basedpyright"
