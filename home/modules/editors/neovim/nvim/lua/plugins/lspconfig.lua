@@ -49,7 +49,7 @@ return {
                 maxMemoryMB = 5120,
                 flake = {
                   autoArchive = true,
-                  autoEvalInputs = true,
+                  autoEvalInputs = false,
                 },
               },
             },
@@ -73,6 +73,7 @@ return {
           },
         },
         -- python
+        pylsp = {},
         pylyzer = {},
         basedpyright = {
           analysis = {
