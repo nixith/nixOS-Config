@@ -164,11 +164,6 @@ return {
                 enabled = true,
                 tabSize = 4,
               },
-              project = {
-                referencesLibraries = {
-                  vim.fn.glob(require("jdtls.setup").find_root(root_markers) .. "/*/lib/*.jar"),
-                },
-              },
             },
           },
           init_options = {
