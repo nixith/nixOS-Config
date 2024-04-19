@@ -54,6 +54,7 @@ in {
 
   # steam has to be done here
   programs.steam = {
+    extraCompatPackages = with pkgs; [proton-ge-bin];
     package = pkgs.steam.override {
       extraEnv = {
         RADV_TEX_ANISO = 16;
@@ -75,20 +76,19 @@ in {
           openssl_legacy
           keyutils
         ];
-      # ++ [config.programs.gamescope.package];
-      extraProfile = "export STEAM_EXTRA_COMPAT_TOOLS_PATHS='${inputs.nix-gaming.packages.${pkgs.system}.proton-ge}'";
     };
+    extest.enable = true;
     enable = true;
-    gamescopeSession = {
-      enable = true;
-      env = gamescopeEnv;
-      args = gamescopeArgs;
-    };
+    # gamescopeSession = {
+    #   enable = true;
+    #   env = gamescopeEnv;
+    #   args = gamescopeArgs;
+    # };
   };
 
   programs.gamescope = {
     enable = true;
-    capSysNice = true;
+    #capSysNice = true;
     env = gamescopeEnv;
     args = gamescopeArgs;
   };
@@ -96,8 +96,8 @@ in {
   # Configure keymap in X11
   services.xserver = {
     enable = true;
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
     displayManager.startx.enable = true;
   };
   services.gpm = {
@@ -108,7 +108,7 @@ in {
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.avahi.enable = true;
-  services.avahi.nssmdns = true;
+  services.avahi.nssmdns4 = true;
   # for a WiFi printer
   services.avahi.openFirewall = true;
 
@@ -167,7 +167,6 @@ in {
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPLMtBjXvadChqa2pZIvJ6eHrkcYD87/skfl3Kjwg6dO ryan@nixos"
     ];
-    initialPassword = "password"; # TODO fix later with sops-nix
   };
   programs.kdeconnect.enable = true;
   services.udisks2 = {enable = true;};

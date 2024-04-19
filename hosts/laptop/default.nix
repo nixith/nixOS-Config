@@ -82,7 +82,6 @@
       distrobox
       virt-manager
     ];
-    initialPassword = "password"; # TODO fix later with sops-nix
   };
 
   hardware.bluetooth = {enable = true;};
