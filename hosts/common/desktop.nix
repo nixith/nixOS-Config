@@ -65,6 +65,7 @@ in {
       extraLibraries = pkgs:
         with pkgs; [
           openssl
+          mangohud
           gamemode
           xorg.libXcursor
           xorg.libXi
@@ -82,19 +83,19 @@ in {
     };
     extest.enable = true;
     enable = true;
-    # gamescopeSession = {
-    #   enable = true;
-    #   env = gamescopeEnv;
-    #   args = gamescopeArgs;
-    # };
+    gamescopeSession = {
+      enable = true;
+      env = gamescopeEnv;
+      args = gamescopeArgs;
+    };
   };
 
-  programs.gamescope = {
-    enable = true;
-    #capSysNice = true;
-    env = gamescopeEnv;
-    args = gamescopeArgs;
-  };
+  # programs.gamescope = {
+  #   enable = true;
+  #   #capSysNice = true;
+  #   env = gamescopeEnv;
+  #   args = gamescopeArgs;
+  # };
 
   # Configure keymap in X11
   services.xserver = {
