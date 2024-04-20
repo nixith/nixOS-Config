@@ -25,6 +25,8 @@
   };
 
   home.packages = with pkgs; [
+    # needed for luarocks
+    luajit
     tree-sitter-grammars.tree-sitter-typst
     # extension dependencies
     luajitPackages.jsregexp
