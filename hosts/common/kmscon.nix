@@ -1,14 +1,17 @@
 {pkgs, ...}: {
   services.kmscon = {
     enable = true;
-    extraConfig = "drm=off";
-    hwRender = false;
+    hwRender = true;
     fonts = [
       {
-        name = "Inconsolata";
-        package = pkgs.inconsolata-nerdfont;
+        name = "Lilex Nerd Font Regular";
+        package = pkgs.nerdfonts.override {
+          fonts = ["Lilex"];
+        };
       }
     ];
+    extraConfig = "font-size=14";
+    extraOptions = "--term xterm-256color";
   };
 
   services.gpm = {
