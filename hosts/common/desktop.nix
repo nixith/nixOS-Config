@@ -52,6 +52,9 @@ in {
     })
   ];
 
+  # keyring stuff
+  services.gnome.gnome-keyring.enable = true;
+
   # steam has to be done here
   programs.steam = {
     extraCompatPackages = with pkgs; [proton-ge-bin];
