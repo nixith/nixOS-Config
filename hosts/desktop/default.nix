@@ -122,4 +122,13 @@ in {
     };
     stateVersion = "22.11";
   };
+
+  # appimage compat
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+    package = pkgs.appimage-run.override {
+      extraPkgs = pkgs: [pkgs.ffmpeg pkgs.imagemagick];
+    };
+  };
 }
