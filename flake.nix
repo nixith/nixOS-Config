@@ -217,10 +217,10 @@
     };
 
     packages = forAllSystems (pkgs: {
-      pmd = pkgs.callPackage ./packages/pmd/pmd.nix {};
+      my-pmd = pkgs.callPackage ./packages/pmd/pmd.nix {};
       ollama-cuda = pkgs.callPackage ./packages/ollama-cuda/ollama-cuda.nix {};
       iso = nixos-generators.nixosGenerate {
-        system = pkgs.system;
+        inherit system;
         modules = [
           ./isoBuilder/iso.nix
           (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
@@ -230,6 +230,13 @@
           (nixpkgs + "/nixos/modules/installer/cd-dvd/channel.nix")
         ];
         format = "install-iso";
+      };
+    });
+    overlays = forAllSystems (pkgs: {
+      default = final: prev: {
+        inherit system;
+        # final is top level results, let the new stuff exist on top
+        #
       };
     });
   };
