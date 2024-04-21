@@ -1,8 +1,4 @@
-{
-  self,
-  super,
-  ...
-}: {
+{ self, super, ... }: {
   xournalpp = super.xournalpp.overrideAttrs (old: {
     # Override src with the version you want
     src = super.fetchFromGitHub {

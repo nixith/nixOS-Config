@@ -1,8 +1,4 @@
-{
-  home,
-  pkgs,
-  ...
-}: {
+{ home, pkgs, ... }: {
   programs.vscode = {
     enable = false;
     mutableExtensionsDir = true;

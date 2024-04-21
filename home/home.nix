@@ -1,15 +1,7 @@
-{
-  pkgs,
-  nix-colors,
-  computer,
-  overlays,
-  ...
-}: let
+{ pkgs, nix-colors, computer, overlays, ... }:
+let
   windowManager = ./modules/desktops/Wayland/hyprland/default.nix;
-  Nvidia =
-    if computer == "Galaxia"
-    then true
-    else false;
+  Nvidia = if computer == "Galaxia" then true else false;
   username = "ryan";
   homeDirectory = "/home/${username}";
 in {
@@ -17,9 +9,11 @@ in {
   nixpkgs.overlays = overlays;
   #cachic
 
-  programs.home-manager.enable = true; # enable home manager and allow it to manage itself
+  programs.home-manager.enable =
+    true; # enable home manager and allow it to manage itself
 
-  systemd.user.startServices = "sd-switch"; # reload systemd units on config reload
+  systemd.user.startServices =
+    "sd-switch"; # reload systemd units on config reload
 
   home = {
     stateVersion = "22.11";
@@ -58,9 +52,7 @@ in {
       createDirectories = true;
     };
 
-    systemDirs = {
-      data = ["${homeDirectory}/.local/share"];
-    };
+    systemDirs = { data = [ "${homeDirectory}/.local/share" ]; };
   };
 
   imports = [
@@ -96,11 +88,7 @@ in {
     #./modules/languages/python
     #./modules/Meta/cachix.nix
     nix-colors.homeManagerModule
-    (
-      if Nvidia
-      then ./NvidiaHome.nix
-      else windowManager
-    )
+    (if Nvidia then ./NvidiaHome.nix else windowManager)
   ];
   #caches.cachix = [ "nix-community" "hyprland" ];
   fonts.fontconfig.enable = true;

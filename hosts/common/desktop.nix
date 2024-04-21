@@ -1,25 +1,18 @@
 # File that contains the defaults for graphical desktops
-{
-  config,
-  pkgs,
-  user,
-  inputs,
-  ...
-}: let
+{ config, pkgs, user, inputs, ... }:
+let
   gamescopeEnv = {
     # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
-  gamescopeArgs = [
-    "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0"
-    "-e"
-  ];
+  gamescopeArgs = [ "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0" "-e" ];
 in {
   zramSwap.enable = true;
 
   boot = {
-    extraModulePackages = with config.boot.kernelPackages; [
-      v4l2loopback #OBS virtual camera
-    ];
+    extraModulePackages = with config.boot.kernelPackages;
+      [
+        v4l2loopback # OBS virtual camera
+      ];
     extraModprobeConfig = ''
       options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
     '';
@@ -57,11 +50,9 @@ in {
 
   # steam has to be done here
   programs.steam = {
-    extraCompatPackages = with pkgs; [proton-ge-bin];
+    extraCompatPackages = with pkgs; [ proton-ge-bin ];
     package = pkgs.steam.override {
-      extraEnv = {
-        RADV_TEX_ANISO = 16;
-      };
+      extraEnv = { RADV_TEX_ANISO = 16; };
       extraLibraries = pkgs:
         with pkgs; [
           openssl
@@ -158,31 +149,28 @@ in {
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  environment.shells = with pkgs; [fish bash];
+  environment.shells = with pkgs; [ fish bash ];
   programs.fish.enable = true;
 
   users.users.${user} = {
     isNormalUser = true;
     description = "Me!";
-    extraGroups = ["networkmanager" "wheel" "video" "audio" "plugdev" "fuse" "jack"];
+    extraGroups =
+      [ "networkmanager" "wheel" "video" "audio" "plugdev" "fuse" "jack" ];
     # import modules
-    packages = with pkgs; [glibc libredirect libdrm mesa];
+    packages = with pkgs; [ glibc libredirect libdrm mesa ];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPLMtBjXvadChqa2pZIvJ6eHrkcYD87/skfl3Kjwg6dO ryan@nixos"
     ];
   };
   programs.kdeconnect.enable = true;
-  services.udisks2 = {enable = true;};
+  services.udisks2 = { enable = true; };
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udev = {
     enable = true;
-    packages = [
-      pkgs.udisks2
-      pkgs.platformio
-      pkgs.openocd
-    ];
+    packages = [ pkgs.udisks2 pkgs.platformio pkgs.openocd ];
   };
 
   hardware.logitech = {
@@ -196,9 +184,7 @@ in {
     enable = true;
     enableRenice = true;
     settings = {
-      general = {
-        renice = 10;
-      };
+      general = { renice = 10; };
 
       # Warning: GPU optimisations have the potential to damage hardware
       gpu = {
@@ -212,31 +198,28 @@ in {
   # video acceleration
   hardware.opengl = {
     enable = true;
-    extraPackages = with pkgs; [
-      libvdpau-va-gl
-      vaapiVdpau
-      libvdpau
-    ];
+    extraPackages = with pkgs; [ libvdpau-va-gl vaapiVdpau libvdpau ];
   };
 
   # Install Fonts
   fonts = {
     enableDefaultPackages = true;
-    packages = with pkgs; [
-      (nerdfonts.override {
-        fonts = [
-          "FiraCode"
-          "JetBrainsMono"
-          "Iosevka"
-          "Inconsolata"
-          "ComicShannsMono"
-          "DaddyTimeMono"
-          "FantasqueSansMono"
-          "Lilex"
-          "Monofur"
-        ];
-        enableWindowsFonts = true;
-      })
-    ];
+    packages = with pkgs;
+      [
+        (nerdfonts.override {
+          fonts = [
+            "FiraCode"
+            "JetBrainsMono"
+            "Iosevka"
+            "Inconsolata"
+            "ComicShannsMono"
+            "DaddyTimeMono"
+            "FantasqueSansMono"
+            "Lilex"
+            "Monofur"
+          ];
+          enableWindowsFonts = true;
+        })
+      ];
   };
 }

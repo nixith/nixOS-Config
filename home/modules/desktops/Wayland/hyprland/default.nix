@@ -1,26 +1,13 @@
-{
-  inputs,
-  system,
-  self,
-  user,
-  hyprland,
-  home-manager,
-  config,
-  pkgs,
-  computer,
-  ...
-}: let
+{ inputs, system, self, user, hyprland, home-manager, config, pkgs, computer
+, ... }:
+let
   user = user;
 
-  monitors =
-    if computer == "Galaxia"
-    then
-      (
-        import ./snippets/DesktopMonitors.nix {}
-      )
-    else ''
-      monitor=,preferred,auto,auto
-    '';
+  monitors = if computer == "Galaxia" then
+    (import ./snippets/DesktopMonitors.nix { })
+  else ''
+    monitor=,preferred,auto,auto
+  '';
 
   hyprlandPackage = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
@@ -38,7 +25,7 @@
   '';
 in {
   # actually enable hyprland
-  imports = [../General/eww ../General/anyrun ../General/Dunst];
+  imports = [ ../General/eww ../General/anyrun ../General/Dunst ];
 
   # Fix waybar
 
@@ -51,9 +38,7 @@ in {
       inherit HyprEnv;
       inherit computer;
     };
-    xwayland = {
-      enable = true;
-    };
+    xwayland = { enable = true; };
   };
   # secret management
 
@@ -76,7 +61,8 @@ in {
     longitude = "-78.83";
   };
 
-  xdg.configFile."hypr/Assets/tropic_island_night.jpg".source = ./Assets/tropic_island_night.jpg;
+  xdg.configFile."hypr/Assets/tropic_island_night.jpg".source =
+    ./Assets/tropic_island_night.jpg;
 
   home.file = {
     scripts = {
@@ -100,7 +86,8 @@ in {
   };
 
   services.swayidle = {
-    enable = false; #TODO DPMS won't turn on and lock occurs after resume, not before dpms turns off.
+    enable =
+      false; # TODO DPMS won't turn on and lock occurs after resume, not before dpms turns off.
     events = [
       # {
       #   event = "after-resume";
@@ -108,7 +95,9 @@ in {
       # }
       {
         event = "lock";
-        command = "${config.programs.swaylock.package}/bin/swaylock -fF -C ${config.xdg.configFile."swaylock/config".source}";
+        command = "${config.programs.swaylock.package}/bin/swaylock -fF -C ${
+            config.xdg.configFile."swaylock/config".source
+          }";
       }
       {
         event = "before-sleep";
@@ -119,19 +108,22 @@ in {
     timeouts = [
       {
         timeout = 300;
-        command =
-          if computer == "Nebula" #only suspend on laptop
-          then "${pkgs.systemd}/bin/systemctl suspend"
-          else "";
+        command = if computer == "Nebula" # only suspend on laptop
+        then
+          "${pkgs.systemd}/bin/systemctl suspend"
+        else
+          "";
       }
       {
         timeout = 180;
-        command = "${hyprlandPackage}/bin/hyprctl dispatch dpms off && ${pkgs.systemd}/bin/loginctl lock-session $XDG_SESSION_ID";
+        command =
+          "${hyprlandPackage}/bin/hyprctl dispatch dpms off && ${pkgs.systemd}/bin/loginctl lock-session $XDG_SESSION_ID";
         resumeCommand = "${hyprlandPackage}/bin/hyprctl dispatch dpms on";
       }
       {
         timeout = 120;
-        command = "${pkgs.brillo}/bin/brillo -O && ${pkgs.brillo}/bin/brillo -S 20 -u 500000";
+        command =
+          "${pkgs.brillo}/bin/brillo -O && ${pkgs.brillo}/bin/brillo -S 20 -u 500000";
         resumeCommand = "${pkgs.brillo}/bin/brillo -I -u 500000";
       }
     ];

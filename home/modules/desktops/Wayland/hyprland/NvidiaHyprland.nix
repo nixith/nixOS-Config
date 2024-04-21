@@ -1,10 +1,4 @@
-{
-  inputs,
-  self,
-  user,
-  nvidia,
-  ...
-}: {
+{ inputs, self, user, nvidia, ... }: {
   wayland.windowManager.hyprland = {
     extraConfig = ''
       env = GBM_BACKEND,nvidia-drm
@@ -13,5 +7,5 @@
       env = WLR_NO_HARDWARE_CURSORS,1
     '';
   };
-  imports = [./default.nix];
+  imports = [ ./default.nix ];
 }

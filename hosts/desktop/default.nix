@@ -1,10 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  user,
-  ...
-}: let
+{ config, lib, pkgs, user, ... }:
+let
   hostname = "Galaxia";
   kernel = pkgs.linuxPackages_latest;
 in {
@@ -15,20 +10,18 @@ in {
 
   # btrfs options
   fileSystems = {
-    "/".options = ["compress=zstd"];
-    "/home".options = ["compress=zstd"];
-    "/nix".options = ["compress=zstd" "noatime"];
+    "/".options = [ "compress=zstd" ];
+    "/home".options = [ "compress=zstd" ];
+    "/nix".options = [ "compress=zstd" "noatime" ];
     #"/swap".options = [ "noatime" ];
   };
 
   # some weird workarounds for hyprland and hostname detection
-  environment.variables = {
-    HOSTNAME = hostname;
-  };
+  environment.variables = { HOSTNAME = hostname; };
   nixpkgs.config.allowUnfree = true;
 
   boot = {
-    supportedFilesystems = ["btrfs"];
+    supportedFilesystems = [ "btrfs" ];
 
     loader.efi = {
       canTouchEfiVariables = true;
@@ -42,7 +35,7 @@ in {
       #useOSProber = true; # enables dual boot;
     };
 
-    loader.systemd-boot = {enable = true;};
+    loader.systemd-boot = { enable = true; };
   };
 
   networking = {
@@ -65,13 +58,14 @@ in {
   users.users.${user} = {
     isNormalUser = true;
     description = "Me!";
-    extraGroups = ["networkmanager" "wheel" "video" "audio" "podman"];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "podman" ];
     # import modules
-    packages = with pkgs; [];
-    hashedPassword = "$6$8a7Hgdgv5zOp6w5u$Kro/9wAni3mtXOGhc8bWxYCa8aijTqowdA1lXucHiLxtct/9ZGAr9bzwePv5cfjnQSUG2YOvJOMYpVF0j75G91"; #TODO fix with sops-nix
+    packages = with pkgs; [ ];
+    hashedPassword =
+      "$6$8a7Hgdgv5zOp6w5u$Kro/9wAni3mtXOGhc8bWxYCa8aijTqowdA1lXucHiLxtct/9ZGAr9bzwePv5cfjnQSUG2YOvJOMYpVF0j75G91"; # TODO fix with sops-nix
   };
 
-  environment.shells = with pkgs; [fish bash dash];
+  environment.shells = with pkgs; [ fish bash dash ];
   # Allow unfree packages
 
   # List packages installed in system profile. To search, run:
@@ -92,18 +86,14 @@ in {
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
-  networking.firewall.allowedTCPPortRanges = [
-    {
-      from = 1714;
-      to = 1764;
-    }
-  ];
-  networking.firewall.allowedUDPPortRanges = [
-    {
-      from = 1714;
-      to = 1764;
-    }
-  ];
+  networking.firewall.allowedTCPPortRanges = [{
+    from = 1714;
+    to = 1764;
+  }];
+  networking.firewall.allowedUDPPortRanges = [{
+    from = 1714;
+    to = 1764;
+  }];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -128,7 +118,7 @@ in {
     enable = true;
     binfmt = true;
     package = pkgs.appimage-run.override {
-      extraPkgs = pkgs: [pkgs.ffmpeg pkgs.imagemagick];
+      extraPkgs = pkgs: [ pkgs.ffmpeg pkgs.imagemagick ];
     };
   };
 }

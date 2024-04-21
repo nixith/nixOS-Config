@@ -1,17 +1,16 @@
-{...}: {
+{ ... }: {
   programs.rio = {
     enable = true;
     settings = {
       cursor = "|";
       blinking-cursor = true;
       performance = "High";
-      background = {
-        opacity = 0.1;
-      };
+      background = { opacity = 0.1; };
       fonts = {
         size = 12;
         regular = {
-          family = "Lilex Nerd Font"; # Uncomment when nixpkgs updates rio to 0.20 for font config
+          family =
+            "Lilex Nerd Font"; # Uncomment when nixpkgs updates rio to 0.20 for font config
         };
       };
       colors = {

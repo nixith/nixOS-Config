@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     slurp
     xdg-dbus-proxy
@@ -12,7 +12,5 @@
     sway-contrib.grimshot
   ];
 
-  programs.niri = {
-    config = builtins.readFile ./config.kdl;
-  };
+  programs.niri = { config = builtins.readFile ./config.kdl; };
 }

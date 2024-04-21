@@ -1,7 +1,5 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    qt6.qtwayland
-  ];
+{ pkgs, ... }: {
+  home.packages = with pkgs; [ qt6.qtwayland ];
   qt = {
     enable = true;
     platformTheme = "gnome";

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   nixpkgs.config.firefox = {
     enableTridactylNative = true;
     enableFxCastBridge = true;

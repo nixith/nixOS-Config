@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   programs.caraapace = {
     enable = true;
     enableFishIntegration = true;

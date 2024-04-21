@@ -1,12 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  user,
-  inputs,
-  nixpkgs,
-  ...
-}: let
+{ config, lib, pkgs, user, inputs, nixpkgs, ... }:
+let
   #prismlauncher = inputs.prismlauncher.packages.${pkgs.system}.prismlauncher.override {glfw = pkgs.glfw-wayland;};
 in {
   nixpkgs.config.allowUnfree = true;
@@ -21,8 +14,7 @@ in {
     mesa
     dxvk
     #itch #(commented due to InsecurePackage)
-    (prismlauncher.override
-      {glfw = pkgs.glfw-wayland-minecraft;})
+    (prismlauncher.override { glfw = pkgs.glfw-wayland-minecraft; })
 
     # Utilities
     cinnamon.nemo-with-extensions

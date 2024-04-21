@@ -1,13 +1,7 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{ pkgs, lib, ... }: {
   ### apparmor
 
-  security.apparmor = {
-    enable = true;
-  };
+  security.apparmor = { enable = true; };
 
   services.dbus.apparmor = "enabled";
 

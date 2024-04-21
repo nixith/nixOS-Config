@@ -7,9 +7,9 @@
     #"spacing" = 4, # Gaps between modules (4px)
     # Choose the order of the modules
 
-    "modules-left" = ["hyprland/workspaces"];
+    "modules-left" = [ "hyprland/workspaces" ];
     # "modules-left" = [ "hyprland/workspaces" "hyprland/window" ];
-    "modules-center" = [];
+    "modules-center" = [ ];
     "modules-right" = [
       "pulseaudio"
       "network"
@@ -61,24 +61,20 @@
       "separate-outputs" = true;
     };
     "mpd" = {
-      "format" = "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime =%M =%S}/{totalTime =%M =%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ";
+      "format" =
+        "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime =%M =%S}/{totalTime =%M =%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ";
       "format-disconnected" = "Disconnected ";
-      "format-stopped" = "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ";
+      "format-stopped" =
+        "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ";
       "unknown-tag" = "N/A";
       "interval" = 2;
-      "consume-icons" = {
-        "on" = " ";
-      };
+      "consume-icons" = { "on" = " "; };
       "random-icons" = {
-        "off" = "<span color=\"#f53c3c\"></span> ";
+        "off" = ''<span color="#f53c3c"></span> '';
         "on" = " ";
       };
-      "repeat-icons" = {
-        "on" = " ";
-      };
-      "single-icons" = {
-        "on" = "1 ";
-      };
+      "repeat-icons" = { "on" = " "; };
+      "single-icons" = { "on" = "1 "; };
       "state-icons" = {
         "paused" = "";
         "playing" = "";
@@ -99,28 +95,28 @@
     };
     "clock" = {
       # "timezone" = "America/New_York";
-      "tooltip-format" = "<big>{ =%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+      "tooltip-format" = ''
+        <big>{ =%Y %B}</big>
+        <tt><small>{calendar}</small></tt>'';
       "format-alt" = "{ =%Y-%m-%d}";
     };
     "cpu" = {
       "format" = " {usage}%";
       "tooltip" = false;
     };
-    "memory" = {
-      "format" = "{}% ";
-    };
+    "memory" = { "format" = "{}% "; };
     "temperature" = {
       # "thermal-zone" = 2;
       # "hwmon-path" = "/sys/class/hwmon/hwmon2/temp1_input";
       "critical-threshold" = 80;
       # "format-critical" = "{temperatureC}°C {icon}";
       "format" = "{icon} {temperatureC}°C";
-      "format-icons" = ["" "" ""];
+      "format-icons" = [ "" "" "" ];
     };
     "backlight" = {
       # "device" = "acpi_video1";
       "format" = "{percent}% {icon}";
-      "format-icons" = ["" "" "" "" "" "" "" "" ""];
+      "format-icons" = [ "" "" "" "" "" "" "" "" "" ];
     };
     "battery" = {
       "states" = {
@@ -131,14 +127,12 @@
       "format" = "{capacity}% {icon}";
       "format-charging" = "{capacity}% ";
       "format-plugged" = "{capacity}% 🗲";
-      "format-alt" = ''{time} {icon}'';
+      "format-alt" = "{time} {icon}";
       # "format-good" = ""; # An empty format will hide the module
       # "format-full" = "";
-      "format-icons" = ["" "" "" "" ""];
+      "format-icons" = [ "" "" "" "" "" ];
     };
-    "battery#bat2" = {
-      "bat" = "BAT2";
-    };
+    "battery#bat2" = { "bat" = "BAT2"; };
     "network" = {
       # "interface" = "wlp2*", # (Optional) To force the use of this interface
       "format-wifi" = " {essid} ({signalStrength}%)";
@@ -163,7 +157,7 @@
         "phone" = "";
         "portable" = "";
         "car" = "";
-        "default" = ["" "" ""];
+        "default" = [ "" "" "" ];
       };
       "on-click" = "pwvucontrol";
     };
@@ -176,7 +170,8 @@
         "default" = "🎜";
       };
       "escape" = true;
-      "exec" = "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"; # Script in resources folder
+      "exec" =
+        "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"; # Script in resources folder
       # "exec" = "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" # Filter player based on name
     };
   };

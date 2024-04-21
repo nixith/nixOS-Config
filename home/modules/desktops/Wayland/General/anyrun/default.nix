@@ -1,9 +1,4 @@
-{
-  inputs,
-  pkgs,
-  anyrun,
-  ...
-}: {
+{ inputs, pkgs, anyrun, ... }: {
   programs.anyrun = {
     enable = true;
     config = {
@@ -16,9 +11,9 @@
         inputs.anyrun.packages.${pkgs.system}.translate
         inputs.anyrun.packages.${pkgs.system}.dictionary
       ];
-      width = {fraction = 0.4;};
-      x = {fraction = 0.5;};
-      y = {fraction = 0.05;};
+      width = { fraction = 0.4; };
+      x = { fraction = 0.5; };
+      y = { fraction = 5.0e-2; };
       #position = "top";
       #verticalOffset = {absolute = 0;};
       hideIcons = false;

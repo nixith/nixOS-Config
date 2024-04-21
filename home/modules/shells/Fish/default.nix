@@ -1,11 +1,8 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
-  home.packages = with pkgs; [
-    vivid # generate LS_COLORS for catppuccin
-  ];
+{ inputs, pkgs, ... }: {
+  home.packages = with pkgs;
+    [
+      vivid # generate LS_COLORS for catppuccin
+    ];
   programs.fish = {
     enable = true;
     shellAbbrs = {

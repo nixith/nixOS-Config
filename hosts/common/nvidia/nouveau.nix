@@ -1,13 +1,7 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
-  services.xserver.videoDrivers = ["nouveau"];
+{ config, pkgs, ... }: {
+  services.xserver.videoDrivers = [ "nouveau" ];
 
-  environment.systemPackages = with pkgs; [
-    mesa
-  ];
+  environment.systemPackages = with pkgs; [ mesa ];
 
   hardware.opengl = {
     enable = true;

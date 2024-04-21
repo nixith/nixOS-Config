@@ -1,10 +1,4 @@
-{
-  pkgs,
-  system,
-  alejandra,
-  nil,
-  ...
-}: {
+{ pkgs, system, alejandra, nil, ... }: {
   # move config files to .config
 
   home.file.nvim = {
@@ -19,9 +13,7 @@
     #package = neovim-nightly;
     withPython3 = true;
     withNodeJs = true;
-    plugins = with pkgs; [
-      vimPlugins.nvim-treesitter.withAllGrammars
-    ];
+    plugins = with pkgs; [ vimPlugins.nvim-treesitter.withAllGrammars ];
   };
 
   home.packages = with pkgs; [

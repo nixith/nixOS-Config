@@ -1,13 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  user,
-  inputs,
-  ...
-}: {
-  home.pointerCursor = let
-    pkg = pkgs.catppuccin-cursors.mochaDark;
+{ config, lib, pkgs, user, inputs, ... }: {
+  home.pointerCursor = let pkg = pkgs.catppuccin-cursors.mochaDark;
   in {
     name = pkg.pname;
     package = pkg;
@@ -17,8 +9,7 @@
   gtk = {
     enable = true;
 
-    cursorTheme = let
-      pkg = pkgs.catppuccin-cursors.mochaDark;
+    cursorTheme = let pkg = pkgs.catppuccin-cursors.mochaDark;
     in {
       name = pkg.pname;
       package = pkg;
@@ -36,7 +27,7 @@
 
     theme = let
       pkg = pkgs.catppuccin-gtk.override {
-        accents = ["mauve"];
+        accents = [ "mauve" ];
         variant = "mocha";
       };
     in {

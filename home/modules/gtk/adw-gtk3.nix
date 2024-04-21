@@ -1,16 +1,8 @@
-{
-  config,
-  lib,
-  pkgs,
-  user,
-  inputs,
-  ...
-}: {
+{ config, lib, pkgs, user, inputs, ... }: {
   gtk = {
     enable = true;
 
-    cursorTheme = let
-      pkg = pkgs.catppuccin-cursors.mochaDark;
+    cursorTheme = let pkg = pkgs.catppuccin-cursors.mochaDark;
     in {
       name = pkg.pname;
       package = pkg;
@@ -28,8 +20,7 @@
       package = pkg;
     };
 
-    theme = let
-      pkg = pkgs.adw-gtk3;
+    theme = let pkg = pkgs.adw-gtk3;
     in {
       name = pkg.pname;
       package = pkg;

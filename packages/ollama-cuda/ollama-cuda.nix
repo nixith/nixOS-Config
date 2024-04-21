@@ -1,2 +1,1 @@
-{ollama}:
-ollama.override {acceleration = "cuda";}
+{ ollama }: ollama.override { acceleration = "cuda"; }

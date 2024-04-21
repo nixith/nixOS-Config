@@ -1,11 +1,5 @@
-{
-  pkgs,
-  home,
-  ...
-}: {
+{ pkgs, home, ... }: {
   programs.starship.enableNushellIntegration = true;
 
-  programs.nushell = {
-    enable = true;
-  };
+  programs.nushell = { enable = true; };
 }

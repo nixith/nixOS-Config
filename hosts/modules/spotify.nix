@@ -1,4 +1,5 @@
-{config, ...}: let
+{ config, ... }:
+let
   usernamePath = "/var/lib/spotifyd/username";
   passwordPath = "/var/lib/spotifyd/password";
 in {
@@ -12,10 +13,8 @@ in {
     #  group = "spotifyd";
     #  mode = "0440";
   };
-  systemd.services.spotifyd.serviceConfig.LoadCredential = [
-    "username:${usernamePath}"
-    "password:${passwordPath}"
-  ];
+  systemd.services.spotifyd.serviceConfig.LoadCredential =
+    [ "username:${usernamePath}" "password:${passwordPath}" ];
 
   services.spotifyd = {
     enable = true;

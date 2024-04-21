@@ -1,5 +1,1 @@
-{home, ...}: {
-  programs.zoxide = {
-    enable = true;
-  };
-}
+{ home, ... }: { programs.zoxide = { enable = true; }; }

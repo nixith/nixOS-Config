@@ -3,7 +3,10 @@
   eval = {
     # Example target for writing a package.
     target = {
-      args = ["--expr" "with import <nixpkgs> { }; lib.forEach (lib.filesystem.listFilesRecursive ./packages) (x: callPackage x { })"];
+      args = [
+        "--expr"
+        "with import <nixpkgs> { }; lib.forEach (lib.filesystem.listFilesRecursive ./packages) (x: callPackage x { })"
+      ];
       installable = "";
     };
     # Force thunks
@@ -13,7 +16,7 @@
   options = {
     enable = true;
     target = {
-      args = [];
+      args = [ ];
       # Example installable for flake-parts, nixos, and home-manager
 
       # nixOS configuration

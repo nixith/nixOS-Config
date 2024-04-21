@@ -1,12 +1,5 @@
 # Various Useful CLI Tools
-{
-  config,
-  lib,
-  pkgs,
-  user,
-  inputs,
-  ...
-}: {
+{ config, lib, pkgs, user, inputs, ... }: {
   programs = {
     bat.enable = true; # cat clone
     fzf = {
@@ -15,30 +8,24 @@
       changeDirWidgetCommand = ''
         fd . --type d --follow --exclude '*.direnv/*'
       '';
-      changeDirWidgetOptions = [
-        "--preview 'eza {} -F --icons --color=always -T -L 4'"
-      ];
+      changeDirWidgetOptions =
+        [ "--preview 'eza {} -F --icons --color=always -T -L 4'" ];
       fileWidgetCommand = ''
         fd . --type f --follow --exclude '*.direnv/*'
       '';
-      fileWidgetOptions = [
-        "--preview 'bat {} --paging never --color always'"
-      ];
+      fileWidgetOptions =
+        [ "--preview 'bat {} --paging never --color always'" ];
 
       defaultCommand = ''
         fd . --type d --follow --exclude '*.direnv/*'
       '';
 
-      defaultOptions = [
-      ];
+      defaultOptions = [ ];
     };
 
     eza = {
       enable = true;
-      extraOptions = [
-        "-F"
-        "--header"
-      ];
+      extraOptions = [ "-F" "--header" ];
       icons = true;
       git = true;
     };

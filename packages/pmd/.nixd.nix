@@ -3,7 +3,8 @@
   eval = {
     # Example target for writing a package.
     target = {
-      args = ["--expr" "with import <nixpkgs> { }; callPackage ./pmd.nix { }"];
+      args =
+        [ "--expr" "with import <nixpkgs> { }; callPackage ./pmd.nix { }" ];
       installable = "";
     };
     # Force thunks
@@ -13,7 +14,7 @@
   options = {
     enable = false;
     target = {
-      args = [];
+      args = [ ];
       # Example installable for flake-parts, nixos, and home-manager
 
       # nixOS configuration

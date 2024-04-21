@@ -1,4 +1,4 @@
-{home, ...}: {
+{ home, ... }: {
   programs.zathura = {
     enable = true;
     extraConfig = ''

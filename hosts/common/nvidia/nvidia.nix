@@ -1,17 +1,9 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
-  boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemory"];
-  services.xserver.videoDrivers = ["nvidia"];
+{ config, pkgs, ... }: {
+  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemory" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl = {
     enable = true;
-    extraPackages = with pkgs; [
-      nvidia-vaapi-driver
-      vaapiVdpau
-      libva
-    ];
+    extraPackages = with pkgs; [ nvidia-vaapi-driver vaapiVdpau libva ];
   };
   hardware.nvidia = {
     open = true;

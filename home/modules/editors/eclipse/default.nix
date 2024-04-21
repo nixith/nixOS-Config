@@ -1,6 +1,5 @@
-{pkgs, ...}: {
-  programs.eclipse = let
-    eclipsePlugins = pkgs.eclipses.plugins;
+{ pkgs, ... }: {
+  programs.eclipse = let eclipsePlugins = pkgs.eclipses.plugins;
   in {
     enable = true;
     package = pkgs.eclipses.eclipse-java;
@@ -9,15 +8,17 @@
       #eclipsePlugins.color-theme #figure out catppuccin
       (eclipsePlugins.buildEclipsePlugin rec {
         name = "color-theme-${version}";
-        version = "1.0.0.201410260308"; #TODO: update
+        version = "1.0.0.201410260308"; # TODO: update
 
         srcFeature = pkgs.fetchurl {
-          url = "https://eclipse-color-theme.github.io/update/features/com.github.eclipsecolortheme.feature_${version}.jar";
+          url =
+            "https://eclipse-color-theme.github.io/update/features/com.github.eclipsecolortheme.feature_${version}.jar";
           sha256 = "128b9b1cib5ff0w1114ns5mrbrhj2kcm358l4dpnma1s8gklm8g2";
         };
 
         srcPlugin = pkgs.fetchurl {
-          url = "https://eclipse-color-theme.github.io/update/plugins/com.github.eclipsecolortheme_${version}.jar";
+          url =
+            "https://eclipse-color-theme.github.io/update/plugins/com.github.eclipsecolortheme_${version}.jar";
           sha256 = "0wz61909bhqwzpqwll27ia0cn3anyp81haqx3rj1iq42cbl42h0y";
         };
       })
@@ -42,7 +43,8 @@
 
         src = pkgs.fetchzip {
           stripRoot = false;
-          url = "https://github.com/spotbugs/spotbugs/releases/download/${version}/eclipsePlugin.zip";
+          url =
+            "https://github.com/spotbugs/spotbugs/releases/download/${version}/eclipsePlugin.zip";
           sha256 = "sha256-n2Koq5Cnl4z7jJMP8Dvrh8jPhvqINMAI9ML57If0JIs=";
         };
       })
@@ -52,7 +54,8 @@
         version = "7.0.0.v20230930-1814-rc4";
         src = pkgs.fetchzip {
           stripRoot = false;
-          url = "https://github.com/pmd/pmd-eclipse-plugin/releases/download/${version}/net.sourceforge.pmd.eclipse.p2updatesite-${version}.zip";
+          url =
+            "https://github.com/pmd/pmd-eclipse-plugin/releases/download/${version}/net.sourceforge.pmd.eclipse.p2updatesite-${version}.zip";
           sha256 = "sha256-LZ1IMbDQndCg1Svfcw0cUWaTvRZH+s8sNTF2W8y1c78=";
         };
       })
