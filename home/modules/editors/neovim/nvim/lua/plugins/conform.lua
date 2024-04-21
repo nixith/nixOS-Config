@@ -6,7 +6,7 @@ return {
       lsp_fallback = true,
       formatters_by_ft = {
         c = { "clang-format" },
-        nix = { "alejandra" },
+        nix = { "nixfmt" },
         lua = { "stylua" },
         bib = { "bibtex-tidy" },
         fish = { "fish_indent" },

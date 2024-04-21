@@ -79,7 +79,7 @@
 
     ### Formatters: ###
     stylua
-    alejandra.defaultPackage.${system}
+    nixfmt
     beautysh
     bibtex-tidy
     shellcheck
