@@ -162,7 +162,7 @@
       nixd.overlays.default
     ];
   in {
-    formatter.x86_64-linux = alejandra.defaultPackage.${system};
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
     nixosConfigurations = import ./hosts {
       inherit (nixpkgs) lib;
       inherit inputs nixpkgs hyprland nixos-hardware user self sops-nix niri;
