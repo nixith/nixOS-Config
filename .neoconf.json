@@ -1,0 +1,24 @@
+{  
+  "lspconfig": {
+    "nixd": {
+      "nixd": {
+      "nixpkgs": {
+        "expr": "import (builtins.getFlake (\"git+file://\" + toString ./.)).inputs.nixpkgs { }   "
+      },
+      "formatting": {
+        "command": [
+          "nix, fmt"
+        ]
+      },
+      "options": {
+        "nixos": {
+          "expr": "(builtins.getFlake (\"git+file://\" + toString ./.)).nixosConfigurations.desktop.options"
+        },
+        "home": {
+          "expr": "(builtins.getFlake (\"git+file://\" + toString ./.)).homeConfigurations.Galaxia.options"
+        }
+      }
+    }
+  }
+}
+}
