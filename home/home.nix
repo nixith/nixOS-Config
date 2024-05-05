@@ -8,7 +8,6 @@ in {
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = overlays;
   #cachic
-
   programs.home-manager.enable =
     true; # enable home manager and allow it to manage itself
 
@@ -83,6 +82,7 @@ in {
     ./modules/Terminals/Wezterm
     ./modules/Terminals/Rio
     ./modules/Terminals/Kitty
+    ./modules/Terminals/foot
     ./nix/secrets.nix
     ./modules/desktops/Wayland/niri
     #./modules/languages/python
