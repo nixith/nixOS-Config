@@ -7,19 +7,25 @@ local languages = {
     lintFormats = "[%tARN] %f:%l:%c: %m [%r]",
   },
 }
-
 return {
 
   {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "simrat39/rust-tools.nvim" },
-      { "folke/neoconf.nvim", cmd = "Neoconf", config = false },
+      { "folke/neoconf.nvim" },
       { "folke/neodev.nvim", opts = {}, dependencies = { "folke/neoconf.nvim" } },
     },
     opts = {
       -- add any global capabilities here
       capabilities = {},
+
+      diagnostics = {
+        float = {
+          border = "rounded",
+        },
+      },
+
       -- Automatically format on save
       --autoformat = true,
 
@@ -36,7 +42,11 @@ return {
 
         --- configuration languages
         -- json
-        jsonls = {},
+        jsonls = {
+          schemas = require("schemastore").json.schemas(),
+          validate = { enable = true },
+          cmd = { "vscode-json-languageserver", "--stdio" },
+        },
         --yaml
         yamlls = {},
 
@@ -49,7 +59,7 @@ return {
                 maxMemoryMB = 5120,
                 flake = {
                   autoArchive = true,
-                  autoEvalInputs = false,
+                  autoEvalInputs = true,
                 },
               },
             },

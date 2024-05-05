@@ -10,7 +10,7 @@
 
   programs.neovim = {
     enable = true;
-    #package = neovim-nightly;
+    #package = pkgs.neovim-nightly;
     withPython3 = true;
     withNodeJs = true;
     plugins = with pkgs; [ vimPlugins.nvim-treesitter.withAllGrammars ];

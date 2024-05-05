@@ -1,4 +1,6 @@
-{ pkgs, monitors, HyprEnv, computer, ... }: ''
+{ pkgs, monitors, HyprEnv, computer, ... }:
+let term = "foot";
+in ''
   ${HyprEnv}
 
   exec= systemctl --user import-environment
@@ -98,7 +100,7 @@
 
   misc {
       enable_swallow = true
-      swallow_regex = kitty
+      swallow_regex = ${term}
       disable_hyprland_logo=true
       disable_splash_rendering=true
   }
@@ -126,7 +128,7 @@
   bind=SUPERSHIFT,D,exec,anyrun
   bind=SUPER,C,exec, rofi -show calc
   bind=SUPER,P,pseudo,
-  bind=SUPER,Return,exec,kitty
+  bind=SUPER,Return,exec,${term}
   bind=SUPER,F,fullscreen,
   bind=SUPER,W,exec,firefox
   bindl=SUPER,X,exec, systemctl suspend
