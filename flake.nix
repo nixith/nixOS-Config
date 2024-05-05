@@ -79,7 +79,7 @@
       #inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = { url = "github:hyprwm/Hyprland"; };
+    hyprland = { url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; };
 
     niri = { url = "github:sodiboo/niri-flake"; };
 
@@ -120,6 +120,7 @@
 
       #nixpkgs.config.allowUnfree = true;
       user = "ryan";
+
       overlays = [
         (_: super:
           let pkgs = fenix.inputs.nixpkgs.legacyPackages.${super.system};
@@ -136,6 +137,7 @@
           };
         })
         nixd.overlays.default
+        neovim-nightly-overlay.overlays.default
       ];
     in {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
