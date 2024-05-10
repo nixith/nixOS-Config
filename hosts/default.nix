@@ -42,8 +42,6 @@ in {
           package = inputs.hyprland.packages.${pkgs.system}.hyprland;
         };
       }
-      inputs.niri.nixosModules.niri
-      { programs.niri.enable = true; }
       nixos-hardware.nixosModules.lenovo-thinkpad-l13
     ] ++ common;
     specialArgs = { inherit inputs user; };

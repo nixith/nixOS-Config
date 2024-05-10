@@ -84,7 +84,7 @@ in {
     ./modules/Terminals/Kitty
     ./modules/Terminals/foot
     ./nix/secrets.nix
-    ./modules/desktops/Wayland/niri
+    #./modules/desktops/Wayland/niri
     #./modules/languages/python
     #./modules/Meta/cachix.nix
     nix-colors.homeManagerModule

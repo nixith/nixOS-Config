@@ -81,8 +81,6 @@
 
     hyprland = { url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; };
 
-    niri = { url = "github:sodiboo/niri-flake"; };
-
     #Hyprland-Desktop-Portal = {
     #  url = "github:hyprwm/xdg-desktop-portal-hyprland";
     #};
@@ -106,9 +104,9 @@
 
   outputs = { self, fenix, anyrun, nixpkgs, sops-nix, hyprland, home-manager
     , nixos-hardware, nixos-generators, nix-colors, nixd, neovim-nightly-overlay
-    , alejandra, nix-gaming, prismlauncher, flakeProgramsSqlite, niri, ...
+    , alejandra, nix-gaming, prismlauncher, flakeProgramsSqlite, ...
     }@inputs:
-    let
+     let
       system = "x86_64-linux";
 
       forAllSystems = function:
@@ -143,13 +141,12 @@
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
       nixosConfigurations = import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs hyprland nixos-hardware user self sops-nix niri;
+        inherit inputs nixpkgs hyprland nixos-hardware user self sops-nix;
         specialArgs.inputs = inputs;
       }; # Imports ./hosts/default.nix
 
       homeConfigurations = let
         commonModules = [
-          niri.homeModules.config
           ./home/home.nix
           anyrun.homeManagerModules.default
           inputs.spicetify-nix.homeManagerModules.default
@@ -173,7 +170,7 @@
             inherit nix-colors;
             computer = "Nebula";
             inherit overlays system inputs;
-            inherit alejandra neovim-nightly-overlay hyprland niri;
+            inherit alejandra neovim-nightly-overlay hyprland;
           };
         };
 
@@ -221,3 +218,4 @@
       });
     };
 }
+
