@@ -2,7 +2,7 @@
 let
   termfont = {
     font = "LilexNerdFont";
-    size = 14;
+    size = 10;
   };
 in {
   programs.foot = {
@@ -10,7 +10,7 @@ in {
     settings = {
       main = {
         shell = "fish";
-        font = with termfont; "${font}:${builtins.toString size}";
+        font = with termfont; "${font}:size=${builtins.toString size}";
       };
       colors = { # catppuccin colors
         background = "1e1e2e";
