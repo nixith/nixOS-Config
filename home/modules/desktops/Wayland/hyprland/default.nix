@@ -38,6 +38,10 @@ in {
       inherit HyprEnv;
       inherit computer;
     };
+    systemd = {
+      enable = true;
+      variables = [ "--all" ];
+    };
     xwayland = { enable = true; };
   };
   # secret management
