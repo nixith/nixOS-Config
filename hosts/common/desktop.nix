@@ -55,7 +55,9 @@ in {
       extraEnv = { RADV_TEX_ANISO = 16; };
       extraLibraries = pkgs:
         with pkgs; [
+          bubblewrap
           openssl
+          openssl_legacy
           mangohud
           gamemode
           xorg.libXcursor
@@ -72,7 +74,7 @@ in {
           keyutils
         ];
     };
-    extest.enable = true;
+    #extest.enable = true;
     enable = true;
     gamescopeSession = {
       enable = true;
