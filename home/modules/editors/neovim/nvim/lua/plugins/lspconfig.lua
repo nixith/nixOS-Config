@@ -49,6 +49,8 @@ return {
         },
         --yaml
         yamlls = {},
+        terraformls = {},
+        ansiblels = {},
 
         -- nix
         nil_ls = {

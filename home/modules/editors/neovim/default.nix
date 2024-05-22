@@ -33,6 +33,9 @@
     tree-sitter
     libstdcxx5
 
+    ansible-language-server
+    terraform-ls
+
     ### Python ###
     # Linter
 
