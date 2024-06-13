@@ -122,9 +122,12 @@ in {
   };
 
   specialisation."nvidia".configuration = {
+    environment.etc."specialisation".text = "nvidia";
     imports = [ ../common/nvidia/nvidia.nix ];
   };
   specialisation."nvk".configuration = {
+    environment.systemPackages = with pkgs; [ mesa ];
+    environment.etc."specialisation".text = "nvk";
     boot.kernelParams = [ "nouveau.config=NvGspRm=1" ];
     services.xserver.videoDrivers = [ "nvk" "nouveau" "modesetting" "fbdev" ];
   };

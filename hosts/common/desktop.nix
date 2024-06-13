@@ -28,6 +28,7 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
+    dxvk
     ffmpeg_5-full
     usbutils
     android-udev-rules
@@ -56,8 +57,7 @@ in {
       extraLibraries = pkgs:
         with pkgs; [
           bubblewrap
-          openssl
-          openssl_legacy
+          dxvk
           mangohud
           gamemode
           xorg.libXcursor
@@ -70,7 +70,6 @@ in {
           libvorbis
           stdenv.cc.cc.lib
           libkrb5
-          openssl_legacy
           keyutils
         ];
     };
