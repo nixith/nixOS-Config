@@ -1,4 +1,4 @@
-{ pkgs, monitors, HyprEnv, computer, ... }:
+{ pkgs, monitors, HyprEnv, ... }:
 let term = "foot";
 in ''
   ${HyprEnv}
@@ -111,10 +111,6 @@ in ''
   windowrulev2 = float,class:^(flameshot)$
   windowrulev2 = fakefullscreen,class:^(flameshot)$
   layerrule = noanim, anyrun
-  ${if computer == "Galaxia" then
-    "windowrulev2 = monitor 2,class:^(flameshot)$"
-  else
-    ""}
   windowrulev2 = move 0 0,class:^(flameshot)$
   windowrulev2 = noborder,class:^(flameshot)$
 
@@ -187,18 +183,15 @@ in ''
   binde=,XF86MonBrightnessDown,exec,brightnessctl set 10%-
   binde=,XF86MonBrightnessUp,exec,brightnessctl set +10%
 
-  ${if computer == "Galaxia" then ''
-    exec-once=pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=my-virtualmic channel_map=front-left,front-right
-    exec-once=carla --no-gui ~/Music/Patchbay/VoiceFilter.carxp
-  '' else ''
-    #mute audio upon start
-    exec-once=wpctl set-mute @DEFAULT_AUDIO_SINK@ 1
-    exec-once=wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 1
-  ''}
+  exec-once=pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=my-virtualmic channel_map=front-left,front-right
+  exec-once=carla --no-gui ~/Music/Patchbay/VoiceFilter.carxp
+  #mute audio upon start
+  exec-once=wpctl set-mute @DEFAULT_AUDIO_SINK@ 1
+  exec-once=wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 1
 
 
-   bindm=SUPER,mouse:272,movewindow
-   bindm=SUPER,mouse:273,resizewindow
+  bindm=SUPER,mouse:272,movewindow
+  bindm=SUPER,mouse:273,resizewindow
 
   exec-once=XDG_CURRENT_DESKTOP=Sway flameshot
   exec=${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
