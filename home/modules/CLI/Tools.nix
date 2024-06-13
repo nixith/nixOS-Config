@@ -43,6 +43,8 @@ in {
 
     home.packages = with pkgs; [
       coreutils-full
+      gh
+      git
       #  Archive Tools
       unzip
       gzip
