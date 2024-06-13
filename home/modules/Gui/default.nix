@@ -1,52 +1,40 @@
-{ config, lib, pkgs, user, inputs, nixpkgs, ... }:
-let
-  #prismlauncher = inputs.prismlauncher.packages.${pkgs.system}.prismlauncher.override {glfw = pkgs.glfw-wayland;};
+{ config, lib, pkgs, ... }:
+let cfg = config.nixith.gui;
 in {
-  nixpkgs.config.allowUnfree = true;
-  # Apps without Home Manager Modules
-  home.packages = with pkgs; [
-    # note taking
-    xournalpp
 
-    # Gaming
-    #steamcmd
-    #steam-tui
-    mesa
-    dxvk
-    #itch #(commented due to InsecurePackage)
-    (prismlauncher.override { glfw = pkgs.glfw-wayland-minecraft; })
+  options = { enable = lib.mkEnableOption "enable various GUI items"; };
 
-    # Utilities
-    cinnamon.nemo-with-extensions
-    flameshot
-    carla
-    csa
-    calf
-    rnnoise-plugin # Denoiser plugin
-    distrho
-    noisetorch
-    pavucontrol
-    #pwvucontrol
-    gimp
-    playerctl
-    # bluetooth
-    bluez
-    bluez-tools
-    blueberry
+  config = lib.mkIf cfg.enable {
+    # Apps without Home Manager Modules
+    home.packages = with pkgs; [
+      # Gaming
+      #itch #(commented due to InsecurePackage)
+      (prismlauncher.override { glfw = pkgs.glfw-wayland-minecraft; })
 
-    # Productivity
-    libreoffice
-    calibre
+      # Utilities
+      cinnamon.nemo-with-extensions
+      flameshot
+      carla
+      csa
+      calf
+      rnnoise-plugin # Denoiser plugin
+      pavucontrol
+      #pwvucontrol
+      gimp
+      playerctl
+      # bluetooth
+      bluez
+      bluez-tools
+      blueberry
 
-    # Media
-    mpv
-    imv
+      # Productivity
+      libreoffice
+      calibre
 
-    #art
-    pixelorama
+      # Media
+      mpv
+      imv
+    ];
 
-    #Libs
-    xorg.libxcb
-  ];
-  #++ [prismlauncher];
+  };
 }
