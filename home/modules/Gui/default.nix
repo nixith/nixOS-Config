@@ -2,10 +2,14 @@
 let cfg = config.nixith.gui;
 in {
 
-  options = { enable = lib.mkEnableOption "enable various GUI items"; };
+  options = {
+    nixith.gui.enable = lib.mkEnableOption "enable various GUI items";
+  };
 
   config = lib.mkIf cfg.enable {
     # Apps without Home Manager Modules
+    #
+    fonts.fontconfig.enable = true;
     home.packages = with pkgs; [
       # Gaming
       #itch #(commented due to InsecurePackage)
