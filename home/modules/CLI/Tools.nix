@@ -37,10 +37,10 @@ in {
         icons = true;
         git = true;
       };
-      nixith.btop.enable = true;
-      nixith.zellij.enable = true;
     };
 
+    nixith.btop.enable = true;
+    nixith.zellij.enable = true;
     home.packages = with pkgs; [
       coreutils-full
       gh
