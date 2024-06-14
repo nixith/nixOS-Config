@@ -28,7 +28,6 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
-    dxvk
     ffmpeg_5-full
     usbutils
     android-udev-rules
@@ -57,7 +56,6 @@ in {
       extraLibraries = pkgs:
         with pkgs; [
           bubblewrap
-          dxvk
           mangohud
           gamemode
           xorg.libXcursor
