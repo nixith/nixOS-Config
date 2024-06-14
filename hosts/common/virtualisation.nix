@@ -5,7 +5,6 @@ let
 in {
   virtualisation = {
     # enable nvidia stuff for containers. Any CDI container spec supports this.
-    containers.cdi.dynamic.nvidia.enable = isNvidia;
     libvirtd = {
       enable = true;
       qemu = {

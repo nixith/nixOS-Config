@@ -124,6 +124,7 @@ in {
   specialisation."nvidia".configuration = {
     environment.etc."specialisation".text = "nvidia";
     imports = [ ../common/nvidia/nvidia.nix ];
+    hardware.nvidia-container-toolkit.enable = true;
   };
   specialisation."nvk".configuration = {
     environment.systemPackages = with pkgs; [ mesa ];
