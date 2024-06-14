@@ -71,8 +71,7 @@
   };
 
   outputs = { self, anyrun, nixpkgs, sops-nix, hyprland, home-manager
-    , nixos-hardware, nixos-generators, nixd, flake-programs-sqlite, ...
-    }@inputs:
+    , nixos-hardware, nixos-generators, nixd, flakeProgramsSqlite, ... }@inputs:
     let
       system = "x86_64-linux";
 
@@ -90,7 +89,8 @@
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
       nixosConfigurations = import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs hyprland nixos-hardware user self home-manager;
+        inherit inputs nixpkgs hyprland nixos-hardware user self home-manager
+          flakeProgramsSqlite;
         specialArgs.inputs = inputs;
       }; # Imports ./hosts/default.nix
       homeManagerModules = {
