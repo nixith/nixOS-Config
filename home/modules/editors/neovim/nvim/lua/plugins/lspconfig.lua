@@ -14,7 +14,7 @@ return {
     dependencies = {
       { "simrat39/rust-tools.nvim" },
       { "folke/neoconf.nvim" },
-      { "folke/neodev.nvim", opts = {}, dependencies = { "folke/neoconf.nvim" } },
+      -- { "folke/neodev.nvim", opts = {}, dependencies = { "folke/neoconf.nvim" } },
     },
     opts = {
       -- add any global capabilities here
@@ -85,8 +85,6 @@ return {
           },
         },
         -- python
-        pylsp = {},
-        pylyzer = {},
         basedpyright = {
           analysis = {
             -- autoSearchPaths = true,
