@@ -1,8 +1,11 @@
-{ inputs, config, lib, pkgs, ... }:
+{ hyprland, anyrun }:
+{ config, lib, pkgs, ... }:
 let
-  cfg = config.nixith.hyprland;
 
-  hyprlandPackage = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  cfg = config.nixith.hyprland;
+  anyrun_conf = import ../General/anyrun anyrun;
+
+  hyprlandPackage = hyprland.packages.${pkgs.system}.hyprland;
 
   HyprEnv = ''
     env = XDG_CURRENT_DESKTOP,Hyprland
@@ -17,13 +20,13 @@ let
     env = NIXOS_OZONE_WL, 1
   '';
   NvidiaEnv = ''
-      env = LIBVA_DRIVER_NAME,nvidia
-      env = XDG_SESSION_TYPE,wayland
-      env = GBM_BACKEND,nvidia-drm
-      env = __GLX_VENDOR_LIBRARY_NAME,nvidia
-'';
+    env = LIBVA_DRIVER_NAME,nvidia
+    env = XDG_SESSION_TYPE,wayland
+    env = GBM_BACKEND,nvidia-drm
+    env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+  '';
 in {
-  imports = [ ../General/eww ../General/anyrun ../General/Dunst ];
+  imports = [ ../General/eww anyrun_conf ../General/Dunst ];
   options.nixith.hyprland = {
     enable = lib.mkEnableOption "enable hyprland";
     monitors = lib.mkOption {
@@ -50,7 +53,8 @@ in {
     nvidia = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "if extra nvidia considerations should be used"};
+      description = "if extra nvidia considerations should be used";
+    };
   };
   # actually enable hyprland
 
@@ -59,10 +63,12 @@ in {
     wayland.windowManager.hyprland = {
       package = hyprlandPackage;
       enable = true;
+      #TODO: move to nix-based config
       extraConfig = import ./config.nix {
         inherit pkgs;
         inherit (cfg) monitors;
-        HyprEnv = lib.concatLines [ HyprEnv (lib.strings.optionals cfg.nvidia nvididaEnv )];
+        HyprEnv =
+          lib.concatLines [ HyprEnv (lib.optionalString cfg.nvidia NvidiaEnv) ];
       };
       systemd = {
         enable = true;

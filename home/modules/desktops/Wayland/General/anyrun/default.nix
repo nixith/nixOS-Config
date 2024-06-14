@@ -1,15 +1,18 @@
-{ inputs, pkgs, anyrun, ... }: {
+anyrun:
+{ pkgs, ... }: {
+
+  imports = [ anyrun.homeManagerModules.default ];
   programs.anyrun = {
     enable = true;
     config = {
       plugins = [
         # An array of all the plugins you want, which either can be paths to the .so files, or their packages
-        inputs.anyrun.packages.${pkgs.system}.applications
-        inputs.anyrun.packages.${pkgs.system}.symbols
-        inputs.anyrun.packages.${pkgs.system}.rink
-        inputs.anyrun.packages.${pkgs.system}.shell
-        inputs.anyrun.packages.${pkgs.system}.translate
-        inputs.anyrun.packages.${pkgs.system}.dictionary
+        anyrun.packages.${pkgs.system}.applications
+        anyrun.packages.${pkgs.system}.symbols
+        anyrun.packages.${pkgs.system}.rink
+        anyrun.packages.${pkgs.system}.shell
+        anyrun.packages.${pkgs.system}.translate
+        anyrun.packages.${pkgs.system}.dictionary
       ];
       width = { fraction = 0.4; };
       x = { fraction = 0.5; };
