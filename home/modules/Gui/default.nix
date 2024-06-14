@@ -2,6 +2,9 @@
 let cfg = config.nixith.gui;
 in {
 
+  #TODO: Modularize gui components
+  imports = [ ./QT ./gtk/adw-gtk3.nix ./firefox ./zathura ];
+
   options = {
     nixith.gui.enable = lib.mkEnableOption "enable various GUI items";
   };
