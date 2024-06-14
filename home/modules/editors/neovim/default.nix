@@ -1,4 +1,5 @@
-{ pkgs, lib, config, nixd, ... }:
+nixd:
+{ pkgs, lib, config, ... }:
 let cfg = config.nixith.neovim;
 in {
 
@@ -94,6 +95,8 @@ in {
       #nix
       statix
       deadnix
+      #nixd
+      nixd.packages.${pkgs.system}.nixd
 
       #typst # breaking builds as of now, rely on direnv
       # typst
@@ -106,17 +109,17 @@ in {
       languagetool
       selene
 
-        # spelling
-        proselint
-        nodePackages_latest.textlint
-        typos
-        vale
-        ltex-ls
+      # spelling
+      proselint
+      nodePackages_latest.textlint
+      typos
+      vale
+      ltex-ls
 
-        ## markdown
-        nodePackages_latest.cspell
-        nodePackages_latest.markdownlint-cli2
-        nodePackages_latest.markdownlint-cli
-      ] ++ [ nixd.packages.${pkgs.system}.nixd ];
+      ## markdown
+      nodePackages_latest.cspell
+      nodePackages_latest.markdownlint-cli2
+      nodePackages_latest.markdownlint-cli
+    ];
   };
 }
