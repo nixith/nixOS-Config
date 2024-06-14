@@ -9,9 +9,7 @@ in {
 
   imports = [ ];
 
-  time.timeZone = "America/New_York";
-
-  # Select internationalisation properties.
+  time.timeZone = "America/New_York"; # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -54,6 +52,12 @@ in {
   services = {
     auto-cpufreq.enable = true;
     thermald.enable = true;
+  };
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep 5 --keep-since 3d";
   };
 
   nix = {
