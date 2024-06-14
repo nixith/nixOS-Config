@@ -1,6 +1,5 @@
 {
   description = "nixith's nix config";
-
   nixConfig = {
     # allow building without passing flags on first run
     extra-experimental-features = "nix-command flakes";
@@ -35,29 +34,11 @@
     accept-flake-config = true;
     allow-import-from-derivation = true;
   };
-
   inputs = {
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    fish-z = {
-      url = "github:jethrokuan/z";
-      flake = false;
-    };
-    fish-fzf = {
-      url = "github:PatrickF1/fzf.fish";
-      flake = false;
-    };
-
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
-    catppuccin-spicetify = {
-      url = "github:catppuccin/spicetify";
-      flake = false;
-    };
-
-    nix-gaming.url = "github:fufexan/nix-gaming";
-    fenix = { url = "github:nix-community/fenix"; };
 
     flakeProgramsSqlite = { url = "github:wamserma/flake-programs-sqlite"; };
 
@@ -67,16 +48,9 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    prismlauncher = {
-      url = "github:prismlauncher/prismlauncher";
-      #inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprland = { url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; };
@@ -92,21 +66,13 @@
 
     nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; };
 
-    nix-colors = { url = "github:misterio77/nix-colors"; };
-
     nixd = { url = "github:nix-community/nixd"; };
 
-    alejandra = {
-      url = "github:kamadorueda/alejandra";
-      #inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, fenix, anyrun, nixpkgs, sops-nix, hyprland, home-manager
-    , nixos-hardware, nixos-generators, nix-colors, nixd, neovim-nightly-overlay
-    , alejandra, nix-gaming, prismlauncher, flakeProgramsSqlite, ...
-    }@inputs:
-     let
+  outputs = { self, anyrun, nixpkgs, sops-nix, hyprland, home-manager
+    , nixos-hardware, nixos-generators, nixd, ... }@inputs:
+    let
       system = "x86_64-linux";
 
       forAllSystems = function:
@@ -119,77 +85,16 @@
       #nixpkgs.config.allowUnfree = true;
       user = "ryan";
 
-      overlays = [
-        (_: super:
-          let pkgs = fenix.inputs.nixpkgs.legacyPackages.${super.system};
-          in fenix.overlays.default pkgs pkgs)
-        #neovim-nightly-overlay.overlay
-        (final: prev: {
-          discord = prev.discord.override { withOpenASAR = true; };
-        })
-        (final: prev: {
-          spotifyd = prev.spotifyd.override {
-            withKeyring = true;
-            withPulseAudio = true;
-            withMpris = true;
-          };
-        })
-        nixd.overlays.default
-        neovim-nightly-overlay.overlays.default
-      ];
     in {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
       nixosConfigurations = import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs hyprland nixos-hardware user self sops-nix;
+        inherit inputs nixpkgs hyprland nixos-hardware user self home-manager;
         specialArgs.inputs = inputs;
       }; # Imports ./hosts/default.nix
 
-      homeConfigurations = let
-        commonModules = [
-          ./home/home.nix
-          anyrun.homeManagerModules.default
-          inputs.spicetify-nix.homeManagerModules.default
-          sops-nix.homeManagerModules.sops
-        ];
-      in {
-        HmInputs = overlays system alejandra neovim-nightly-overlay;
-        nixpkgs.overlays = overlays;
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-
-        Nebula = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
-
-          modules = commonModules;
-
-          extraSpecialArgs = {
-            inherit nix-colors;
-            computer = "Nebula";
-            inherit overlays system inputs;
-            inherit alejandra neovim-nightly-overlay hyprland;
-          };
-        };
-
-        Galaxia = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
-
-          modules = commonModules;
-
-          extraSpecialArgs = {
-            inherit nix-colors;
-            computer = "Galaxia";
-            inherit overlays system inputs;
-            inherit alejandra neovim-nightly-overlay hyprland;
-          };
-        };
-      };
+      homeModules.default =
+        import ./home/modules/modules.nix { inherit anyrun hyprland nixd; };
 
       packages = forAllSystems (pkgs: {
         my-pmd = pkgs.callPackage ./packages/pmd/pmd.nix { };
