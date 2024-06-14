@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, nixos-hardware, self, user, hyprland, sops-nix, ... }:
+{ inputs, nixpkgs, nixos-hardware, self, user, hyprland, home-manager, ... }:
 # This essentially extends the flake
 # do hostname - lib.nixosSystem {} to define a config Make a subfolder for each config
 # Build with nixos-rebuild --flake .#{configName} (I think)
@@ -9,13 +9,9 @@ let
     inherit system self inputs;
   };
 
-  common = [
-    inputs.flakeProgramsSqlite.nixosModules.programs-sqlite
-    inputs.sops-nix.nixosModules.sops
-    ./modules/console.nix
-  ];
+  common = [ inputs.sops-nix.nixosModules.sops ./modules/console.nix ];
 
-  lib = nixpkgs.lib;
+  inherit (nixpkgs) lib;
 in {
   laptop = nixpkgs.lib.nixosSystem {
     # Laptop profile
@@ -42,9 +38,16 @@ in {
           package = inputs.hyprland.packages.${pkgs.system}.hyprland;
         };
       }
+      home-manager.nixosModules.default
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager = {
+          users.${user} = import ./desktop/home.nix { inherit self user pkgs; };
+        };
+      }
       nixos-hardware.nixosModules.lenovo-thinkpad-l13
     ] ++ common;
-    specialArgs = { inherit inputs user; };
+    specialArgs = { inherit inputs user self; };
   };
   desktop = nixpkgs.lib.nixosSystem {
     # Desktop profile
@@ -53,7 +56,6 @@ in {
     modules = [
       ./desktop
       ./modules/greetd.nix
-
       # ./common/kmscon.nix # alternate tty, need to figure out how to turn off gpu so wayland can take it
       ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
       ./common/desktop.nix # Default for graphical desktops
@@ -69,6 +71,13 @@ in {
           package = inputs.hyprland.packages.${pkgs.system}.hyprland;
           portalPackage =
             inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+        };
+      }
+      home-manager.nixosModules.default
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager = {
+          users.${user} = import ./desktop/home.nix { inherit self user pkgs; };
         };
       }
       #nixos-hardware.nixosModules.lenovo-thinkpad-l13
