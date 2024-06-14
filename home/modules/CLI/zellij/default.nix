@@ -5,11 +5,6 @@ in {
     nixith.zellij.enable = lib.mkEnableOption "Enable zellij config";
   };
 
-  config = lib.mkIf cfg.enable {
-    programs.zellij = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-  };
+  config = lib.mkIf cfg.enable { programs.zellij = { enable = true; }; };
 
 }
