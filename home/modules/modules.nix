@@ -15,6 +15,7 @@ in {
     ./Gui/default.nix
     ./shells/Fish
     ./shells/shellApps/Starship
+    ./Terminals/foot
     hyprland-wm
   ];
 }

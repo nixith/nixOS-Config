@@ -22,7 +22,7 @@ in {
       plugins = let
         fishPlugin = plugin_name: {
           name = plugin_name;
-          inherit (pkgs.fishPlugin.${plugin_name}) src;
+          inherit (pkgs.fishPlugins.${plugin_name}) src;
         };
       in [
         #{
@@ -31,7 +31,7 @@ in {
         #}
         (fishPlugin "pisces")
         (fishPlugin "z")
-        (fishPlugin "fish-fzf")
+        (fishPlugin "fzf-fish")
       ];
     };
 
