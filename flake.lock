@@ -80,11 +80,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1718277775,
-        "narHash": "sha256-KBjEcdiLU6UvNSNXboNgwKjFdRk5fbyvP537Oxp1nlU=",
+        "lastModified": 1718298918,
+        "narHash": "sha256-7PTv9bs1rl3DaJugaKuH5vT6WiOP6eOqAYto0y8SHQc=",
         "owner": "wamserma",
         "repo": "flake-programs-sqlite",
-        "rev": "a012a7f3e8c31fa56e7b073beb78d340c8d67f74",
+        "rev": "b5bec369d0de2deee5ab626b710df9cbba897f07",
         "type": "github"
       },
       "original": {
@@ -153,11 +153,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1718292752,
-        "narHash": "sha256-NFioPAqyQIOuQMPcDezGCpngCP5ShrudUHfFCfN0d7o=",
+        "lastModified": 1718313803,
+        "narHash": "sha256-xyptaxC172FB/m4fSCSEYaCVYp6e8IWLDHvDLiSuu6M=",
         "ref": "refs/heads/main",
-        "rev": "5de273a14427cb4a4cad9ac57a22b418bcd4248d",
-        "revCount": 4821,
+        "rev": "8055b1c00a102f5419e40f5eddfb6ee8be693f33",
+        "revCount": 4822,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"

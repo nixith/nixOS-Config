@@ -1,4 +1,5 @@
-{ inputs, nixpkgs, nixos-hardware, self, user, hyprland, home-manager, ... }:
+{ inputs, nixpkgs, nixos-hardware, self, user, hyprland, home-manager
+, flake-programs-sqlite, ... }:
 # This essentially extends the flake
 # do hostname - lib.nixosSystem {} to define a config Make a subfolder for each config
 # Build with nixos-rebuild --flake .#{configName} (I think)
@@ -9,7 +10,11 @@ let
     inherit system self inputs;
   };
 
-  common = [ inputs.sops-nix.nixosModules.sops ./modules/console.nix ];
+  common = [
+    inputs.sops-nix.nixosModules.sops
+    ./modules/console.nix
+    flake-programs-sqlite.nixosModules.default
+  ];
 
   inherit (nixpkgs) lib;
 in {

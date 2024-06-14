@@ -71,7 +71,8 @@
   };
 
   outputs = { self, anyrun, nixpkgs, sops-nix, hyprland, home-manager
-    , nixos-hardware, nixos-generators, nixd, ... }@inputs:
+    , nixos-hardware, nixos-generators, nixd, flake-programs-sqlite, ...
+    }@inputs:
     let
       system = "x86_64-linux";
 
