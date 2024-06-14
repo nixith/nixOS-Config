@@ -92,9 +92,10 @@
         inherit inputs nixpkgs hyprland nixos-hardware user self home-manager;
         specialArgs.inputs = inputs;
       }; # Imports ./hosts/default.nix
-
-      homeModules.default =
-        import ./home/modules/modules.nix { inherit anyrun hyprland nixd; };
+      homeManagerModules = {
+        modules = import ./home/modules/modules.nix { inherit self; };
+        default = self.homeManagerModules.modules;
+      };
 
       packages = forAllSystems (pkgs: {
         my-pmd = pkgs.callPackage ./packages/pmd/pmd.nix { };
