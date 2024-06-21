@@ -59,5 +59,5 @@ vim.g.markdown_recommended_style = 0
 -- Add any additional options here
 --
 -- Set to "basedpyright" to use basedpyright instead of pyright.
-vim.g.lazyvim_python_lsp = "pyright"
+vim.g.lazyvim_python_lsp = "basedpyright"
 vim.g.lazyvim_python_ruff = "ruff_lsp"
