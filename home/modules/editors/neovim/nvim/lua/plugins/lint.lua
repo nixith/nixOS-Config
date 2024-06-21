@@ -3,7 +3,7 @@ local format_pmd = "%f:%l: %m"
 return {
   {
     "mfussenegger/nvim-lint",
-    event = "LazyFile",
+    --event = "LazyFile", lazyvim has reccomended options
     opts = {
       events = { "BufWritePost", "BufReadPost", "InsertLeave" },
       linters_by_ft = {
@@ -20,17 +20,13 @@ return {
       },
 
       linters = {
-        pmd = {
-
-          cmd = "pmd",
-          stdin = false, -- or false if it doesn't support content input via stdin. In that case the filename is automatically added to the arguments.
-          append_fname = true, -- Automatically append the file name to `args` if `stdin = false` (default: true)
-          args = { "-R", vim.env.HOME .. "/.local/share/nvim/lintConfig/csc_pmd.xml", "-f", "emacs", "-d" }, -- list of arguments. Can contain functions with zero arguments that will be evaluated once the linter is used.
-          ignore_exitcode = true, -- set this to true if the linter exits with a code != 0 and that's considered normal.
-          parser = require("lint.parser").from_errorformat(format_pmd, {
-            source = "pmd",
-            severity = "W",
-          }),
+        -- Example of using selene only when a selene.toml file is present
+        selene = {
+          -- `condition` is another LazyVim extension that allows you to
+          -- dynamically enable/disable linters based on the context.
+          condition = function(ctx)
+            return vim.fs.find({ "selene.toml" }, { path = ctx.filename, upward = true })[1]
+          end,
         },
       },
     },
