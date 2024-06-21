@@ -115,6 +115,22 @@ in ''
   windowrulev2 = noborder,class:^(flameshot)$
 
 
+  # KDE CONNECT Presentation Mode
+  windowrule=opacity 1, title:KDE Connect Daemon
+  windowrule=noblur, title:KDE Connect Daemon
+  windowrule=noborder, title:KDE Connect Daemon
+  windowrule=noshadow, title:KDE Connect Daemon
+  windowrule=noanim, title:KDE Connect Daemon
+  windowrule=noblur, title:KDE Connect Daemon
+  windowrule=nofocus, title:KDE Connect Daemon
+  windowrule=suppressevent fullscreen, title:KDE Connect Daemon
+  windowrule=float, title:KDE Connect Daemon
+  windowrule=pin, title:KDE Connect Daemon
+  windowrule=xray on, title:KDE Connect Daemon
+  windowrule=minsize 1920 1080, title:KDE Connect Daemon
+  windowrule=move 0 0, title:KDE Connect Daemon
+  windowrule=size 100% 100%, title:KDE Connect Daemon
+
   bind=SUPER,Q,killactive,
   #bind=SUPERSHIFT,L,exit,
   bind=SUPERSHIFT,End,exit
