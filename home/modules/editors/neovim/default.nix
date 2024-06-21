@@ -47,8 +47,9 @@ in {
       # Linter
 
       # LSP
-      ruff
-      python312Packages.debugpy
+      ruff-lsp
+      (python3.withPackages
+        (python-pkgs: with python-pkgs; [ debugpy ipython ]))
 
       # yaml
       nodePackages_latest.yaml-language-server
@@ -99,9 +100,11 @@ in {
       nixd.packages.${pkgs.system}.nixd
 
       #typst # breaking builds as of now, rely on direnv
-      # typst
-      # typst-fmt
-      # typst-lsp
+      typst
+      typst-preview
+      websocat
+      tinymist
+      typstyle
 
       #linters
       stylua
