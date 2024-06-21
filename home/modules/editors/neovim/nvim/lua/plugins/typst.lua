@@ -1,5 +1,5 @@
+local BIN_PATH = vim.env.HOME .. "/.nix-profile/bin/"
 return {
-
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -15,8 +15,8 @@ return {
     ft = "typst",
     opts = {
       dependencies_bin = {
-        ["typst-preview"] = nil,
-        ["websocat"] = nil,
+        ["typst-preview"] = BIN_PATH .. "typst-preview",
+        ["websocat"] = BIN_PATH .. "websocat",
       },
     },
   },
