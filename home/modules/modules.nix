@@ -16,6 +16,7 @@ in {
     ./shells/Fish
     ./shells/shellApps/Starship
     ./Terminals/foot
+    ./Terminals/rio
     hyprland-wm
   ];
 }
