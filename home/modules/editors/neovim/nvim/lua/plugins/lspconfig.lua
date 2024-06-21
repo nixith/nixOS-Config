@@ -7,8 +7,8 @@ local languages = {
     lintFormats = "[%tARN] %f:%l:%c: %m [%r]",
   },
 }
-return {
 
+return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -18,12 +18,21 @@ return {
     },
     opts = {
       -- add any global capabilities here
-      capabilities = {},
 
       diagnostics = {
+        underline = true,
+        update_in_insert = true,
+        virutal_text = false,
+        virtual_lines = true,
+
         float = {
           border = "rounded",
+          source = "always",
         },
+      },
+      codelens = {
+        enable = true,
+        enabled = true, -- for some reason both exist
       },
 
       -- Automatically format on save
@@ -106,7 +115,6 @@ return {
             -- serverPath = "~/.nix-profile/bin/typst-lsp", -- Normally, there is no need to uncomment it.
           },
         },
-        tinymist = {},
         ltex = {
           settings = {
             ltex = {
@@ -138,5 +146,25 @@ return {
       },
     },
   },
-  { "jay-babu/mason-nvim-dap.nvim", enabled = false },
+  {
+    "jay-babu/mason-nvim-dap.nvim",
+    enabled = false,
+    opts = function()
+      local M = {}
+      M.ensure_installed = {}
+      M.automatic_installation = false
+      return M
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    enabled = false,
+    opts = function()
+      local M = {}
+      M.ensure_installed = {}
+      M.automatic_installation = false
+      return M
+    end,
+  },
+  { "williamboman/mason.nvim", enabled = false },
 }
