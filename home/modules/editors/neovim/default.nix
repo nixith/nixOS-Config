@@ -42,6 +42,8 @@ in {
 
       ansible-language-server
       terraform-ls
+      fennel-ls
+      fennel
 
       ### Python ###
       # Linter
