@@ -4,7 +4,7 @@
 
     cursorTheme = let pkg = pkgs.catppuccin-cursors.mochaDark;
     in {
-      name = pkg.pname;
+      name = "catppuccin-mocha-dark-cursors";
       package = pkg;
     };
 
@@ -22,7 +22,7 @@
 
     theme = let pkg = pkgs.adw-gtk3;
     in {
-      name = pkg.pname;
+      name = "${pkg.pname}-dark";
       package = pkg;
     };
   };

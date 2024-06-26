@@ -36,11 +36,14 @@ in {
 
       hyprland.nixosModules.default
       {
-        programs.hyprland = {
-          enable = true;
-          portalPackage =
-            inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-          package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+        programs = {
+          hyprland = {
+            enable = true;
+            portalPackage =
+              inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+            package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+          };
+          hyprlock.enable = true;
         };
       }
       home-manager.nixosModules.default
@@ -71,11 +74,14 @@ in {
 
       hyprland.nixosModules.default
       {
-        programs.hyprland = {
-          enable = true;
-          package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-          portalPackage =
-            inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+        programs = {
+          hyprland = {
+            enable = true;
+            package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+            portalPackage =
+              inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+          };
+          hyprlock.enable = true;
         };
       }
       home-manager.nixosModules.default

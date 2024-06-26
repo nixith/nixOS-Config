@@ -1,12 +1,16 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [ qt6.qtwayland ];
+  home.packages = with pkgs; [
+    qt6.qtwayland
+    (catppuccin-kvantum.override {
+      accent = "Mauve";
+      variant = "Mocha";
+    })
+  ];
   qt = {
     enable = true;
-    platformTheme = "gnome";
-    style = {
-      package = pkgs.adwaita-qt6;
-      name = "adwaita-dark";
-    };
+
+    #platformTheme.name = "";
+    style = { name = "kvantum"; };
   };
 
   #  home.sessionVariables = {
