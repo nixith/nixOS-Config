@@ -1,5 +1,5 @@
 { hyprland, anyrun }:
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, osConfig, ... }:
 let
 
   cfg = config.nixith.hyprland;
@@ -72,7 +72,7 @@ in {
       };
       systemd = {
         enable = true;
-        variables = [ "--all" ];
+        enableXdgAutostart = true;
       };
       xwayland = { enable = true; };
     };
@@ -91,14 +91,8 @@ in {
       sway-contrib.grimshot
     ];
 
-    services.wlsunset = {
-      enable = true;
-      latitude = "35.65";
-      longitude = "-78.83";
-    };
-
-    xdg.configFile."hypr/Assets/tropic_island_night.jpg".source =
-      ./Assets/tropic_island_night.jpg;
+    # xdg.configFile."hypr/Assets/tropic_island_night.jpg".source =
+    #   ./Assets/tropic_island_night.jpg;
 
     home.file = {
       scripts = {
@@ -110,63 +104,129 @@ in {
       };
     };
 
-    programs.swaylock = {
-      enable = true;
-      package = pkgs.swaylock-effects;
-      settings = {
-        color = "1e1e2e";
-        indicator-caps-lock = true;
-        font = "Lilex Nerd Font Regular";
-        clock = true;
-      };
-    };
-
     #TODO: hyprcursor
     #TODO: swap over to hyprIDLE
-    services.swayidle = {
-      enable =
-        false; # TODO DPMS won't turn on and lock occurs after resume, not before dpms turns off.
-      events = [
-        # {
-        #   event = "after-resume";
-        #   command = "";
-        # }
-        {
-          event = "lock";
-          command = "${config.programs.swaylock.package}/bin/swaylock -fF -C ${
-              config.xdg.configFile."swaylock/config".source
-            }";
-        }
-        {
-          event = "before-sleep";
-          command = "${pkgs.systemd}/bin/loginctl lock-session $XDG_SESSION_ID";
-        }
-      ];
-      #brillo -A 20 -u 500000
-      timeouts = [
-        (lib.mkIf cfg.autosuspend {
-          timeout = 300;
-          command = "${pkgs.systemd}/bin/systemctl suspend";
-        })
-        {
-          timeout = 180;
-          command =
-            "${hyprlandPackage}/bin/hyprctl dispatch dpms off && ${pkgs.systemd}/bin/loginctl lock-session $XDG_SESSION_ID";
-          resumeCommand = "${hyprlandPackage}/bin/hyprctl dispatch dpms on";
-        }
-        {
-          timeout = 120;
-          command =
-            "${pkgs.brillo}/bin/brillo -O && ${pkgs.brillo}/bin/brillo -S 20 -u 500000";
-          resumeCommand = "${pkgs.brillo}/bin/brillo -I -u 500000";
-        }
-      ];
-    };
+    # services.swayidle = {
+    #   enable =
+    #     false; # TODO DPMS won't turn on and lock occurs after resume, not before dpms turns off.
+    #   events = [
+    #     # {
+    #     #   event = "after-resume";
+    #     #   command = "";
+    #     # }
+    #     {
+    #       event = "lock";
+    #       command = "${config.programs.swaylock.package}/bin/swaylock -fF -C ${
+    #           config.xdg.configFile."swaylock/config".source
+    #         }";
+    #     }
+    #     {
+    #       event = "before-sleep";
+    #       command = "${pkgs.systemd}/bin/loginctl lock-session $XDG_SESSION_ID";
+    #     }
+    #   ];
+    #   #brillo -A 20 -u 500000
+    #   timeouts = [
+    #     (lib.mkIf cfg.autosuspend {
+    #       timeout = 300;
+    #       command = "${pkgs.systemd}/bin/systemctl suspend";
+    #     })
+    #     {
+    #       timeout = 180;
+    #       command =
+    #         "${hyprlandPackage}/bin/hyprctl dispatch dpms off && ${pkgs.systemd}/bin/loginctl lock-session $XDG_SESSION_ID";
+    #       resumeCommand = "${hyprlandPackage}/bin/hyprctl dispatch dpms on";
+    #     }
+    #     {
+    #       timeout = 120;
+    #       command =
+    #         "${pkgs.brillo}/bin/brillo -O && ${pkgs.brillo}/bin/brillo -S 20 -u 500000";
+    #       resumeCommand = "${pkgs.brillo}/bin/brillo -I -u 500000";
+    #     }
+    #   ];
+    # };
 
-    services.wob = {
-      enable = true;
-      #settings = {}; #TODO: configure wob
-      systemd = true;
+    services = {
+      wob = {
+        enable = true;
+        #settings = {}; #TODO: configure wob
+        systemd = true;
+      };
+      wlsunset = {
+        enable = true;
+        latitude = "35.65";
+        longitude = "-78.83";
+      };
+      hyprpaper = {
+        enable = true;
+        settings = {
+          ipc = "on";
+          splash = false;
+          preload = [ "${./Assets/tropic_island_night.jpg}" ];
+          wallpaper = [ ",${./Assets/tropic_island_night.jpg}" ];
+        };
+      };
+      hypridle = {
+        enable = true;
+        settings = {
+          general = {
+            before_sleep_cmd = "loginctl lock-session";
+            after_sleep_cmd = "hyprctl dispatch dpms on";
+            ignore_dbus_inhibit = false;
+            lock_cmd = "pidof hyprlock || hyprlock";
+          };
+
+          listener = [
+            {
+              timeout = 180;
+              on-timeout =
+                "${pkgs.brillo}/bin/brillo -O && ${pkgs.brillo}/bin/brillo -S 20 -u 500000";
+              on-resume = "${pkgs.brillo}/bin/brillo -I -u 500000";
+            }
+            (lib.mkIf
+              (builtins.isAttrs osConfig.security.pam.services.hyprlock) {
+                timeout = 300;
+                on-timeout = "loginctl lock-session";
+              })
+            {
+              timeout = 360;
+              on-timeout = "hyprctl dispatch dpms off";
+              on-resume = "hyprctl dispatch dpms on";
+            }
+          ];
+        };
+      };
+    };
+    programs.hyprlock = {
+      enable = builtins.isAttrs osConfig.security.pam.services.hyprlock;
+      settings = {
+        general = {
+          disable_loading_bar = true;
+          grace = 300;
+          hide_cursor = true;
+          no_fade_in = false;
+        };
+
+        background = [{
+          path = "screenshot";
+          blur_passes = 3;
+          blur_size = 8;
+        }];
+
+        input-field = [{
+          size = "200, 50";
+          position = "0, -80";
+          monitor = "";
+          dots_center = true;
+          fade_on_empty = false;
+          font_color = "rgb(202, 211, 245)";
+          inner_color = "rgb(91, 96, 120)";
+          outer_color = "rgb(24, 25, 38)";
+          outline_thickness = 5;
+          # placeholder_text = '\'Password...'\';
+          shadow_passes = 2;
+        }];
+      };
     };
   };
 }
