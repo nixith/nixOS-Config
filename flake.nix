@@ -16,6 +16,7 @@
       "https://nix-gaming.cachix.org"
       "https://anyrun.cachix.org"
       "https://cuda-maintainers.cachix.org"
+      "https://niri.cachix.org"
     ];
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -25,6 +26,7 @@
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=" # Me, Prism Launcher,
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+      "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
     ];
     http-connections = 0; # No limit on number of connections
 
@@ -39,8 +41,17 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    niri = { url = "github:sodiboo/niri-flake"; };
 
-    flakeProgramsSqlite = { url = "github:wamserma/flake-programs-sqlite"; };
+    lix = {
+      url =
+        "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0-rc1.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flakeProgramsSqlite = {
+      url = "github:wamserma/flake-programs-sqlite";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     anyrun.url = "github:Kirottu/anyrun";
 
@@ -70,8 +81,8 @@
 
   };
 
-  outputs = { self, anyrun, nixpkgs, sops-nix, hyprland, home-manager
-    , nixos-hardware, nixos-generators, nixd, flakeProgramsSqlite, ... }@inputs:
+  outputs = { self, nixpkgs, hyprland, home-manager, nixos-hardware, niri
+    , nixos-generators, flakeProgramsSqlite, ... }@inputs:
     let
       system = "x86_64-linux";
 
@@ -90,7 +101,7 @@
       nixosConfigurations = import ./hosts {
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs hyprland nixos-hardware user self home-manager
-          flakeProgramsSqlite;
+          niri flakeProgramsSqlite;
         specialArgs.inputs = inputs;
       }; # Imports ./hosts/default.nix
       homeManagerModules = {

@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, nixos-hardware, self, user, hyprland, home-manager
+{ inputs, nixpkgs, nixos-hardware, self, user, hyprland, home-manager, niri
 , flakeProgramsSqlite, ... }:
 # This essentially extends the flake
 # do hostname - lib.nixosSystem {} to define a config Make a subfolder for each config
@@ -69,9 +69,11 @@ in {
       ./common/desktop.nix # Default for graphical desktops
       ./common/security.nix
       ./common/secrets.nix
+      ./common/system76-scheduler.nix
       ./common/virtualisation.nix
       ./modules/tailscale.nix
 
+      inputs.lix.nixosModules.default
       hyprland.nixosModules.default
       {
         programs = {
@@ -90,6 +92,11 @@ in {
         home-manager = {
           users.${user} = import ./desktop/home.nix { inherit self user pkgs; };
         };
+      }
+      {
+        nixpkgs.overlays = [ niri.overlays.niri ];
+        environment.systemPackages =
+          [ niri.packages.${pkgs.system}.xwayland-satellite ];
       }
       #nixos-hardware.nixosModules.lenovo-thinkpad-l13
     ] ++ common;

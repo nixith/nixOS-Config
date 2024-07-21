@@ -16,6 +16,7 @@
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
   home.sessionVariables = { EDITOR = "neovim"; };
+  #programs.niri = { enable = true; };
 
   nixith = {
     neovim.enable = true;
@@ -23,8 +24,10 @@
     cli.enable = true;
     fish.enable = true;
     starship.enable = true;
+    niri.enable = true;
+    anyrun.enable = true;
     hyprland = {
-      enable = true;
+      enable = false;
       nvidia = true;
       monitors = ''
         monitor=HDMI-A-1,1920x1080@60,0x0,1,vrr,2

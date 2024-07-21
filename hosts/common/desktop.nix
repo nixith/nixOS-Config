@@ -18,6 +18,10 @@ in {
     '';
   };
 
+  programs.nix-ld = {
+    enable = true;
+    libraries = pkgs.steam-run.fhsenv.args.multiPkgs pkgs;
+  };
   # Graphical Necesities
   programs.dconf.enable = true;
   security.polkit.enable = true;
@@ -33,6 +37,9 @@ in {
     android-udev-rules
     libva-utils
     brillo
+    # nix-ld
+    (lib.hiPrio (writeShellScriptBin "python3" ''
+      LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH exec -a $0 ${python3}/bin/python3 "$@"''))
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
         wlrobs
@@ -55,6 +62,7 @@ in {
       extraEnv = { RADV_TEX_ANISO = 16; };
       extraLibraries = pkgs:
         with pkgs; [
+          vulkan-tools
           bubblewrap
           mangohud
           gamemode
@@ -82,7 +90,8 @@ in {
 
   # programs.gamescope = {
   #   enable = true;
-  #   #capSysNice = true;
+  #   capSysNice = true;
+  #   package = pkgs.gamescope-wsi;
   #   env = gamescopeEnv;
   #   args = gamescopeArgs;
   # };

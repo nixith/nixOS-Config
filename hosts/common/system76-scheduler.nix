@@ -1,13 +1,14 @@
-{ pkgs, config, ... }: {
+{ ... }: {
   services.system76-scheduler = {
     enable = true;
     useStockConfig = true;
-    settings = {
-      processScheduler = {
-        pipewireBoost.enable = true;
-        foregroundBoost = true;
+    assignments = {
+      nix-builds = {
+        nice = 15;
+        class = "batch";
+        ioClass = "idle";
+        matchers = [ "nix-daemon" ];
       };
-      cfsProfiles.enable = true;
     };
   };
 }

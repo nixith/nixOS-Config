@@ -1,9 +1,8 @@
-{ hyprland, anyrun }:
+hyprland:
 { config, lib, pkgs, osConfig, ... }:
 let
 
   cfg = config.nixith.hyprland;
-  anyrun_conf = import ../General/anyrun anyrun;
 
   hyprlandPackage = hyprland.packages.${pkgs.system}.hyprland;
 
@@ -26,7 +25,7 @@ let
     env = __GLX_VENDOR_LIBRARY_NAME,nvidia
   '';
 in {
-  imports = [ ../General/eww anyrun_conf ../General/Dunst ];
+  imports = [ ../General/eww ../General/Dunst ];
   options.nixith.hyprland = {
     enable = lib.mkEnableOption "enable hyprland";
     monitors = lib.mkOption {
@@ -60,6 +59,8 @@ in {
 
   # Fix waybar
   config = lib.mkIf cfg.enable {
+
+    nixith.anyrun.enable = true;
     wayland.windowManager.hyprland = {
       package = hyprlandPackage;
       enable = true;
