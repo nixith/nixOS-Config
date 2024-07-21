@@ -103,7 +103,7 @@ in {
 
       #typst # breaking builds as of now, rely on direnv
       typst
-      typst-preview
+      #typst-preview
       websocat
       tinymist
       typstyle

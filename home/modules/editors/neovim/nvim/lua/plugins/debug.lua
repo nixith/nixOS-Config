@@ -1,5 +1,5 @@
 local BIN_PATH = vim.env.HOME .. "/.nix-profile/bin"
-local LIB_PATH = vim.env.HOME .. "/.nix-profile/lib"
+local SHARE_PATH = vim.env.HOME .. "/.nix-profile/share"
 return {
   {
     "mfussenegger/nvim-dap",
@@ -40,6 +40,18 @@ return {
       vscode.json_decode = function(str)
         return vim.json.decode(json.json_strip_comments(str))
       end
+
+      -- setup adapters (we don't use Mason)
+      local adapters = require("dap").adapters
+      adapters.codelldb = {
+        type = "server",
+        port = "${port}",
+        executable = {
+          -- CHANGE THIS to your path!
+          command = SHARE_PATH .. "/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb",
+          args = { "--port", "${port}" },
+        },
+      }
     end,
   },
 }

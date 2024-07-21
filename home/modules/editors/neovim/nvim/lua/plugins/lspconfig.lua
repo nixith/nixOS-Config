@@ -22,7 +22,7 @@ return {
       diagnostics = {
         underline = true,
         update_in_insert = true,
-        virutal_text = false,
+        virutal_text = true,
         virtual_lines = true,
 
         float = {
@@ -103,9 +103,7 @@ return {
         -- julia
         julials = {},
         -- gleam
-        gleam = {
-          cmd = { "glas", "--stdio" },
-        },
+        gleam = {},
 
         -- typst
         typst_lsp = {
@@ -172,26 +170,9 @@ return {
     "jmbuhr/otter.nvim",
     dependencies = {
       {
-        "neovim/nvim-lspconfig",
         "nvim-treesitter/nvim-treesitter",
-        "hrsh7th/nvim-cmp",
       },
     },
-    config = function(_, opts)
-      local otter = require("otter")
-      otter.setup(opts)
-      otter.activate(nil, true, true, nil)
-    end,
-  },
-  {
-    "hrsh7th/nvim-cmp",
-    optional = true,
-    dependencies = {
-      "jmbuhr/otter.nvim",
-    },
-    opts = function(_, opts)
-      opts.sources = opts.sources or {}
-      table.insert(opts.sources, { name = "otter" })
-    end,
+    opts = {},
   },
 }
