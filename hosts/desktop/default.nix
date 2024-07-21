@@ -59,7 +59,8 @@ in {
   users.users.${user} = {
     isNormalUser = true;
     description = "Me!";
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" "podman" ];
+    extraGroups =
+      [ "networkmanager" "wheel" "video" "audio" "podman" "render" ];
     # import modules
     packages = with pkgs; [ ];
     hashedPassword =
