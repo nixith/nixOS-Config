@@ -5,7 +5,13 @@ in {
 
   imports = [ ../General/eww ../General/mako niri.homeModules.niri ];
 
-  options.nixith.niri = { enable = lib.mkEnableOption "enable niri"; };
+  options.nixith.niri = {
+    enable = lib.mkEnableOption "enable niri";
+    config = lib.mkOption {
+      type = lib.types.str;
+      description = "niri config (make into nix config eventually)";
+    };
+  };
 
   config = lib.mkIf cfg.enable {
     # osConfig = {
@@ -22,7 +28,7 @@ in {
     programs.niri = {
       enable = true;
       package = pkgs.niri-unstable;
-      config = builtins.readFile ./config.kdl;
+      inherit (cfg) config;
     };
   };
 

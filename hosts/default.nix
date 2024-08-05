@@ -55,6 +55,11 @@ in {
           users.${user} = import ./desktop/home.nix { inherit self user pkgs; };
         };
       }
+      {
+        nixpkgs.overlays = [ niri.overlays.niri ];
+        environment.systemPackages =
+          [ niri.packages.${pkgs.system}.xwayland-satellite ];
+      }
       nixos-hardware.nixosModules.lenovo-thinkpad-l13
     ] ++ common;
     specialArgs = { inherit inputs user self; };
