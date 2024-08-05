@@ -23,6 +23,7 @@ in {
       cinnamon.nemo-with-extensions
       flameshot
       carla
+      signal-desktop-beta
       csa
       calf
       rnnoise-plugin # Denoiser plugin

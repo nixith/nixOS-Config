@@ -32,7 +32,7 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
-    ffmpeg_5-full
+    ffmpeg
     usbutils
     android-udev-rules
     libva-utils
@@ -137,7 +137,6 @@ in {
   };
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {

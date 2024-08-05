@@ -1,7 +1,7 @@
 { user, self, ... }:
 
 {
-  imports = [ self.homeManagerModules.default self.homeManagerModules.nvim ];
+  imports = [ self.homeManagerModules.default ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "${user}";
@@ -15,7 +15,7 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
-  home.sessionVariables = { EDITOR = "neovim"; };
+  home.sessionVariables = { EDITOR = "nvim"; };
 
   nixith = {
     neovim.enable = true;
@@ -23,10 +23,11 @@
     cli.enable = true;
     fish.enable = true;
     starship.enable = true;
-    # hyprland = {
-    #   enable = true;
-    #   autosuspend = true;
-    # };
+    niri = {
+      enable = true;
+      config = builtins.readFile ./config.kdl;
+    };
+    foot.enable = true;
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

@@ -48,6 +48,8 @@ in {
       }
       home-manager.nixosModules.default
       {
+        home-manager.backupFileExtension = "backup";
+
         home-manager.useGlobalPkgs = true;
         home-manager = {
           users.${user} = import ./desktop/home.nix { inherit self user pkgs; };
@@ -88,6 +90,8 @@ in {
       }
       home-manager.nixosModules.default
       {
+        home-manager.backupFileExtension = "backup";
+
         home-manager.useGlobalPkgs = true;
         home-manager = {
           users.${user} = import ./desktop/home.nix { inherit self user pkgs; };

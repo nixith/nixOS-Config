@@ -15,7 +15,7 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
-  home.sessionVariables = { EDITOR = "neovim"; };
+  home.sessionVariables = { EDITOR = "nvim"; };
   #programs.niri = { enable = true; };
 
   nixith = {
@@ -24,7 +24,10 @@
     cli.enable = true;
     fish.enable = true;
     starship.enable = true;
-    niri.enable = true;
+    niri = {
+      enable = true;
+      config = builtins.readFile ./config.kdl;
+    };
     anyrun.enable = true;
     # hyprland = {
     #   enable = false;
