@@ -15,15 +15,15 @@ return {
     config = true,
   },
 
-  {
-    "MeanderingProgrammer/markdown.nvim",
-    name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("render-markdown").setup({})
-    end,
-    ft = "markdown",
-  },
+  -- {
+  --   "MeanderingProgrammer/markdown.nvim",
+  --   name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+  --   dependencies = { "nvim-treesitter/nvim-treesitter" },
+  --   config = function()
+  --     require("render-markdown").setup({})
+  --   end,
+  --   ft = "markdown",
+  -- },
   -- {
   --   "sontungexpt/better-diagnostic-virtual-text",
   --   event = "LspAttach",

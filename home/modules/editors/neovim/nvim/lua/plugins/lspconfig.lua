@@ -143,27 +143,27 @@ return {
       },
     },
   },
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    enabled = false,
-    opts = function()
-      local M = {}
-      M.ensure_installed = {}
-      M.automatic_installation = false
-      return M
-    end,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    enabled = false,
-    opts = function()
-      local M = {}
-      M.ensure_installed = {}
-      M.automatic_installation = false
-      return M
-    end,
-  },
-  { "williamboman/mason.nvim", enabled = false },
+  -- {
+  --   "jay-babu/mason-nvim-dap.nvim",
+  --   enabled = false,
+  --   opts = function()
+  --     local M = {}
+  --     M.ensure_installed = {}
+  --     M.automatic_installation = false
+  --     return M
+  --   end,
+  -- },
+  -- {
+  --   "williamboman/mason-lspconfig.nvim",
+  --   enabled = false,
+  --   opts = function()
+  --     local M = {}
+  --     M.ensure_installed = {}
+  --     M.automatic_installation = false
+  --     return M
+  --   end,
+  -- },
+  -- { "williamboman/mason.nvim", enabled = false },
   {
 
     -- for lsp features in code cells / embedded code
