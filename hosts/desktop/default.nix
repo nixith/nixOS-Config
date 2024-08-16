@@ -16,11 +16,24 @@ in {
     #"/swap".options = [ "noatime" ];
   };
 
+  networking = { useNetworkd = true; };
+  systemd.network = {
+    networks."lan" = {
+      matchConfig.Name = "enp0s31f6";
+      DHCP = "yes";
+      networkConfig = {
+        Description = "Ethernet";
+        IPv6AcceptRA = "yes";
+        DHCP = "yes";
+        #LLDP = "yes";
+        #EmitLLDP = "customer-bridge";
+      };
+    };
+  };
   # some weird workarounds for hyprland and hostname detection
   environment.variables = { HOSTNAME = hostname; };
   nixpkgs.config.allowUnfree = true;
   boot.extraSystemdUnitPaths = [ "/etc/systemd-mutable/system" ];
-
   boot = {
     supportedFilesystems = [ "btrfs" ];
 
@@ -88,14 +101,14 @@ in {
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
-  networking.firewall.allowedTCPPortRanges = [{
-    from = 1714;
-    to = 1764;
-  }];
-  networking.firewall.allowedUDPPortRanges = [{
-    from = 1714;
-    to = 1764;
-  }];
+  # networking.firewall.allowedTCPPortRanges = [{
+  #   from = 1714;
+  #   to = 1764;
+  # }];
+  # networking.firewall.allowedUDPPortRanges = [{
+  #   from = 1714;
+  #   to = 1764;
+  # }];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -125,6 +138,7 @@ in {
   };
   specialisation."nvk".configuration = {
     environment.systemPackages = with pkgs; [ mesa ];
+
     environment.etc."specialisation".text = "nvk";
     boot.kernelParams = [ "nouveau.config=NvGspRm=1" ];
     services.xserver.videoDrivers = [ "nvk" "nouveau" "modesetting" "fbdev" ];
