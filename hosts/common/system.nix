@@ -24,11 +24,11 @@ in {
     LC_TIME = "en_US.UTF-8";
   };
 
-  networking.networkmanager.enable = true;
   services = {
     resolved = {
       # works better with tailscale
       enable = true;
+
       extraConfig = ''
         ReadEtcHosts=yes
       '';
