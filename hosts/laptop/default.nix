@@ -75,6 +75,7 @@
 
   hardware.bluetooth = { enable = true; };
   hardware.enableRedistributableFirmware = true;
+  networking.networkmanager.enable = true;
 
   # Allow unfree packages
 
