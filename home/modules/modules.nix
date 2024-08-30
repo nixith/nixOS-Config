@@ -19,6 +19,7 @@ in {
     nvim
     ./Gui/default.nix
     ./shells/Fish
+    ./services/syncthing
     ./shells/shellApps/Starship
     ./Terminals/foot
     ./Terminals/rio
