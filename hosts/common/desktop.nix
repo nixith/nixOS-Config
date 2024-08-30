@@ -22,6 +22,7 @@ in {
     enable = true;
     libraries = pkgs.steam-run.fhsenv.args.multiPkgs pkgs;
   };
+  programs.thunderbird.enable = true;
   # Graphical Necesities
   programs.dconf.enable = true;
   security.polkit.enable = true;
@@ -54,39 +55,6 @@ in {
 
   # keyring stuff
   services.gnome.gnome-keyring.enable = true;
-
-  # steam has to be done here
-  programs.steam = {
-    extraCompatPackages = with pkgs; [ proton-ge-bin ];
-    package = pkgs.steam.override {
-      extraEnv = { RADV_TEX_ANISO = 16; };
-      extraLibraries = pkgs:
-        with pkgs; [
-          vulkan-tools
-          bubblewrap
-          mangohud
-          gamemode
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXScrnSaver
-          libpng
-          pipewire
-          libpulseaudio
-          libvorbis
-          stdenv.cc.cc.lib
-          libkrb5
-          keyutils
-        ];
-    };
-    #extest.enable = true;
-    enable = true;
-    gamescopeSession = {
-      enable = true;
-      env = gamescopeEnv;
-      args = gamescopeArgs;
-    };
-  };
 
   # programs.gamescope = {
   #   enable = true;
