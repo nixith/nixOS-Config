@@ -20,6 +20,29 @@ in {
       #package = pkgs.neovim-nightly;
       withPython3 = true;
       withNodeJs = true;
+      extraPackages = with pkgs;
+        [
+          # ... other packages
+          imagemagick # for image rendering
+        ];
+
+      extraLuaPackages = ps:
+        with ps;
+        [
+          # ... other lua packages
+          magick # for image rendering
+        ];
+
+      extraPython3Packages = ps:
+        with ps; [
+          # ... other python packages
+          pynvim
+          jupyter-client
+          cairosvg # for image rendering
+          pnglatex # for image rendering
+          plotly # for image rendering
+          pyperclip
+        ];
       plugins = with pkgs; [ vimPlugins.nvim-treesitter.withAllGrammars ];
     };
 
@@ -110,21 +133,21 @@ in {
 
       #linters
       stylua
-      nodePackages_latest.jsonlint
+      #nodePackages_latest.jsonlint
       languagetool
       selene
 
       # spelling
       proselint
-      nodePackages_latest.textlint
+      #nodePackages_latest.textlint
       typos
       vale
       ltex-ls
 
       ## markdown
-      nodePackages_latest.cspell
-      nodePackages_latest.markdownlint-cli2
-      nodePackages_latest.markdownlint-cli
+      # nodePackages_latest.cspell
+      # nodePackages_latest.markdownlint-cli2
+      # nodePackages_latest.markdownlint-cli
     ];
   };
 }
