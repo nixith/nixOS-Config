@@ -21,6 +21,7 @@
     neovim.enable = true;
     gui.enable = true;
     cli.enable = true;
+    rio.enable = true;
     fish.enable = true;
     starship.enable = true;
     niri = {
