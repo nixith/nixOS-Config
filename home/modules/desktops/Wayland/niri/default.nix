@@ -24,7 +24,11 @@ in {
     #   security.pam.services.swaylock = { };
     # };
     nixith.anyrun.enable = true;
-    home.packages = with pkgs; [ webcord-vencord easyeffects wl-clipboard-rs ];
+    home.packages = with pkgs; [
+      webcord-vencord
+      #easyeffects
+      wl-clipboard-rs
+    ];
     programs.niri = {
       enable = true;
       package = pkgs.niri-unstable;
