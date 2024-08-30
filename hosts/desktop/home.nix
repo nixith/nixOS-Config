@@ -29,6 +29,7 @@
       config = builtins.readFile ./config.kdl;
     };
     anyrun.enable = true;
+    syncthing.enable = true;
     # hyprland = {
     #   enable = false;
     #   nvidia = true;
