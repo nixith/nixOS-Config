@@ -164,15 +164,4 @@ return {
   --   end,
   -- },
   -- { "williamboman/mason.nvim", enabled = false },
-  {
-
-    -- for lsp features in code cells / embedded code
-    "jmbuhr/otter.nvim",
-    dependencies = {
-      {
-        "nvim-treesitter/nvim-treesitter",
-      },
-    },
-    opts = {},
-  },
 }
