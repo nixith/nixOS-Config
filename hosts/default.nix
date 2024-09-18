@@ -58,7 +58,7 @@ in {
       {
         nixpkgs.overlays = [ niri.overlays.niri ];
         environment.systemPackages =
-          [ niri.packages.${pkgs.system}.xwayland-satellite ];
+          [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
       }
       nixos-hardware.nixosModules.lenovo-thinkpad-l13
     ] ++ common;
@@ -105,7 +105,7 @@ in {
       {
         nixpkgs.overlays = [ niri.overlays.niri ];
         environment.systemPackages =
-          [ niri.packages.${pkgs.system}.xwayland-satellite ];
+          [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
       }
       #nixos-hardware.nixosModules.lenovo-thinkpad-l13
     ] ++ common;

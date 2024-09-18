@@ -58,8 +58,8 @@ in {
     enable = true;
     gamescopeSession = {
       enable = true;
-      env = gamescopeEnv;
-      args = gamescopeArgs;
+      # env = gamescopeEnv;
+      # args = gamescopeArgs;
     };
   };
   # some weird workarounds for hyprland and hostname detection
