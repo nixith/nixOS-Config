@@ -15,7 +15,7 @@ return {
     ft = "typst",
     opts = {
       dependencies_bin = {
-        ["typst-preview"] = BIN_PATH .. "typst-preview",
+        ["typst-preview"] = "tinymist",
         ["websocat"] = BIN_PATH .. "websocat",
       },
     },
