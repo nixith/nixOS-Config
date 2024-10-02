@@ -61,10 +61,17 @@ input {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "DP-2" {
-    transform "90"
-   position x=-1080 y=0
+output "Dell Inc. DELL P2312H XTK9N275GLYL" {
+  transform "90"
+  position x=-1080 y=0
+}
 
+output "Samsung Electric Company S24E450 HCHN203427" {
+  position x=0 y=0
+}
+
+output "Ancor Communications Inc ASUS VS247 D9LMTF289673" {
+  position x=1920 y=0
 }
 
 /-output "HDMI-A-1" {
