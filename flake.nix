@@ -4,7 +4,7 @@
     # allow building without passing flags on first run
     extra-experimental-features = "nix-command flakes";
     # Add me to trusted users
-    trusted-users = [ "root" "@wheel" "ryan" ];
+    trusted-users = [ "root" "@wheel" "alice" ];
     builders-use-substitutes = true;
 
     # Grab binaries faster from sources
@@ -92,7 +92,7 @@
           }));
 
       #nixpkgs.config.allowUnfree = true;
-      user = "ryan";
+      user = "alice";
 
     in {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
