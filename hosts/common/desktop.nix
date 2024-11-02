@@ -97,6 +97,7 @@ in {
     config.common.default = "*";
   };
   services.flatpak.enable = true;
+  services.seatd.enable = true;
   services.upower.enable = true;
   services.dbus = {
     enable = true;
@@ -129,14 +130,23 @@ in {
 
   users.users.${user} = {
     isNormalUser = true;
+    uid = 1000;
     description = "Me!";
-    extraGroups =
-      [ "networkmanager" "wheel" "video" "audio" "plugdev" "fuse" "jack" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "video"
+      "audio"
+      "plugdev"
+      "fuse"
+      "jack"
+      "seatd"
+    ];
     # import modules
     packages = with pkgs; [ glibc libredirect libdrm mesa ];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPLMtBjXvadChqa2pZIvJ6eHrkcYD87/skfl3Kjwg6dO ryan@nixos"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPLMtBjXvadChqa2pZIvJ6eHrkcYD87/skfl3Kjwg6dO alice@nixos"
     ];
   };
   programs.kdeconnect.enable = true;
