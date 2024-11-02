@@ -23,6 +23,7 @@ in {
     ./shells/shellApps/Starship
     ./Terminals/foot
     ./Terminals/rio
+    ./desktops/Wayland/river
     hyprland-wm
     niri-wm
     anyrun-module
