@@ -25,7 +25,7 @@ in {
     modules = [
       ./laptop
       ./modules/tailscale.nix
-      #./modules/firefox.nix
+      ./modules/firefox.nix
       #./modules/calibre.nix
       ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
       ./common/desktop.nix # Default for graphical desktops
@@ -34,33 +34,44 @@ in {
       ./common/security.nix
       ./common/virtualisation.nix
 
-      hyprland.nixosModules.default
-      {
-        programs = {
-          hyprland = {
-            enable = true;
-            portalPackage =
-              inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-            package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-          };
-          hyprlock.enable = true;
-        };
-      }
+      # hyprland.nixosModules.default
+      # {
+      #   programs = {
+      #     hyprland = {
+      #       enable = true;
+      #       portalPackage =
+      #         inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+      #       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      #     };
+      #     hyprlock.enable = true;
+      #   };
+      # }
       home-manager.nixosModules.default
+      ({ config, user, ... }:
+        lib.mkIf config.home-manager.users.${user}.xdg.portal.enable {
+          environment.pathsToLink =
+            [ "/share/xdg-desktop-portal" "/share/applications" ];
+        })
       {
+
         home-manager.backupFileExtension = "backup";
 
         home-manager.useGlobalPkgs = true;
         home-manager = {
-          users.${user} = import ./desktop/home.nix { inherit self user pkgs; };
+          users.${user} = import ./laptop/home.nix { inherit self user pkgs; };
         };
       }
-      {
-        nixpkgs.overlays = [ niri.overlays.niri ];
-        environment.systemPackages =
-          [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
-      }
+      # {
+      #   nixpkgs.overlays = [ niri.overlays.niri ];
+      #   environment.systemPackages =
+      #     [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
+      # }
       nixos-hardware.nixosModules.lenovo-thinkpad-l13
+      { hardware.intelgpu.driver = "xe"; }
+      {
+        programs.river.enable = true;
+        environment.systemPackages = with pkgs; [ rivercarro ];
+      }
     ] ++ common;
     specialArgs = { inherit inputs user self; };
   };
@@ -81,18 +92,18 @@ in {
       ./modules/tailscale.nix
 
       inputs.lix.nixosModules.default
-      hyprland.nixosModules.default
-      {
-        programs = {
-          hyprland = {
-            enable = true;
-            package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-            portalPackage =
-              inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-          };
-          hyprlock.enable = true;
-        };
-      }
+      # hyprland.nixosModules.default
+      # {
+      #   programs = {
+      #     hyprland = {
+      #       enable = true;
+      #       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      #       portalPackage =
+      #         inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+      #     };
+      #     hyprlock.enable = true;
+      #   };
+      # }
       home-manager.nixosModules.default
       {
         home-manager.backupFileExtension = "backup";
