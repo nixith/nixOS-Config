@@ -17,6 +17,8 @@
   home.stateVersion = "24.05"; # Please read the comment before changing.
   home.sessionVariables = { EDITOR = "nvim"; };
 
+  wayland.windowManager.river = { enable = true; };
+
   nixith = {
     neovim.enable = true;
     gui.enable = true;
@@ -24,8 +26,9 @@
     rio.enable = true;
     fish.enable = true;
     starship.enable = true;
+    river.enable = true;
     niri = {
-      enable = true;
+      enable = false;
       config = builtins.readFile ./config.kdl;
     };
     foot.enable = true;

@@ -4,7 +4,7 @@
   ];
 
   boot = {
-    #initrd.kernelModules = [ "nvidia" "nvidia_modset" "nvidia_uvm" "nvidia_drm" ];
+    # initrd.kernelModules = [ "xe" ];
     kernelPackages = pkgs.linuxPackages_zen;
 
     loader.efi = {
@@ -49,12 +49,46 @@
   #hardware acceleration
   hardware.graphics = {
     enable = true;
-    extraPackages = with pkgs; [
-      vaapiIntel
-      intel-media-driver
-      vaapiVdpau
-      libva
-    ];
+    # extraPackages = with pkgs; [
+    #   vpl-gpu-rt
+    #   vaapiIntel
+    #   # intel-vaapi-driver
+    #   # intel-media-driver
+    # ];
+  };
+  # environment.sessionVariables = {
+  #   LIBVA_DRIVER_NAME = "iHD";
+  # }; # Force intel-media-driver
+  programs.steam = {
+    extraCompatPackages = with pkgs; [ proton-ge-bin ];
+    package = pkgs.steam.override {
+      extraEnv = { RADV_TEX_ANISO = 16; };
+      extraLibraries = pkgs:
+        with pkgs; [
+          vulkan-tools
+          bubblewrap
+          mangohud
+          gamemode
+          xorg.libXcursor
+          xorg.libXi
+          xorg.libXinerama
+          xorg.libXScrnSaver
+          libpng
+          pipewire
+          libpulseaudio
+          libvorbis
+          stdenv.cc.cc.lib
+          libkrb5
+          keyutils
+        ];
+    };
+    #extest.enable = true;
+    enable = true;
+    gamescopeSession = {
+      enable = true;
+      # env = gamescopeEnv;
+      # args = gamescopeArgs;
+    };
   };
 
   programs.dconf.enable = true;
