@@ -33,6 +33,7 @@ in {
       ./common/secrets.nix
       ./common/security.nix
       ./common/virtualisation.nix
+      ./modules/stylix
 
       # hyprland.nixosModules.default
       # {
@@ -81,6 +82,8 @@ in {
 
     modules = [
       ./desktop
+
+      ./modules/firefox.nix
       ./modules/greetd.nix
       # ./common/kmscon.nix # alternate tty, need to figure out how to turn off gpu so wayland can take it
       ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
@@ -90,7 +93,7 @@ in {
       ./common/system76-scheduler.nix
       ./common/virtualisation.nix
       ./modules/tailscale.nix
-
+      ./modules/stylix
       inputs.lix.nixosModules.default
       # hyprland.nixosModules.default
       # {
