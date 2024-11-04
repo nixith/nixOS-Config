@@ -7,6 +7,7 @@ let
   gamescopeArgs = [ "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0" "-e" ];
 in {
   zramSwap.enable = true;
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   boot = {
     extraModulePackages = with config.boot.kernelPackages;
