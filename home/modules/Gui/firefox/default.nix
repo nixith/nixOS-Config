@@ -7,7 +7,6 @@
   programs.firefox = {
     enable = true;
     nativeMessagingHosts = with pkgs; [ tridactyl-native fx-cast-bridge ];
-    #package = pkgs.firefox.override {
-    #};
+    package = pkgs.firefox-bin;
   };
 }
