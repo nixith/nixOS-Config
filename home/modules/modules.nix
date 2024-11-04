@@ -24,6 +24,7 @@ in {
     ./Terminals/foot
     ./Terminals/rio
     ./desktops/Wayland/river
+    ./desktops/Wayland/General/kanshi
     hyprland-wm
     niri-wm
     anyrun-module
