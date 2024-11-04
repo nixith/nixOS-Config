@@ -40,6 +40,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = { url = "github:sodiboo/niri-flake"; };
+    styli.url = "github:danth/stylix";
 
     lix = {
       url =
@@ -101,10 +102,19 @@
         inherit inputs nixpkgs hyprland nixos-hardware user self home-manager
           niri flakeProgramsSqlite;
         specialArgs.inputs = inputs;
-      }; # Imports ./hosts/default.nix
+      };
+
+      # Imports ./hosts/default.nix
       homeManagerModules = {
         modules = import ./home/modules/modules.nix { inherit self; };
         default = self.homeManagerModules.modules;
+      };
+      homeConfigurations = {
+        laptop = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          modules = [ ./hosts/laptop/home.nix ];
+          extraSpecialArgs = { inherit self user; };
+        };
       };
 
       packages = forAllSystems (pkgs: {
