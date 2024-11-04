@@ -2,8 +2,8 @@
   home.packages = with pkgs; [
     qt6.qtwayland
     (catppuccin-kvantum.override {
-      accent = "Mauve";
-      variant = "Mocha";
+      accent = "mauve";
+      variant = "mocha";
     })
   ];
   qt = {
