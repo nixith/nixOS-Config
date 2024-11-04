@@ -13,7 +13,6 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "simrat39/rust-tools.nvim" },
-      { "folke/neoconf.nvim" },
       -- { "folke/neodev.nvim", opts = {}, dependencies = { "folke/neoconf.nvim" } },
     },
     opts = {
