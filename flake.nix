@@ -40,7 +40,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = { url = "github:sodiboo/niri-flake"; };
-    styli.url = "github:danth/stylix";
+    stylix.url = "github:danth/stylix";
 
     lix = {
       url =
