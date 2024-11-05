@@ -26,9 +26,9 @@
     rio.enable = true;
     fish.enable = true;
     starship.enable = true;
-    river.enable = true;
+    river.enable = false;
     niri = {
-      enable = false;
+      enable = true;
       config = builtins.readFile ./config.kdl;
     };
     foot.enable = true;
