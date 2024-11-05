@@ -9,6 +9,10 @@ in {
       enable = true;
       #package = rio.packages.${pkgs.system}.rio;
       settings = {
+        fonts = {
+          size = 12;
+          family = "JuliaMono";
+        };
         colors = {
           "background" = "#1e1e2e";
           "black" = "#45475a";

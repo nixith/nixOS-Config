@@ -190,22 +190,22 @@ in {
   # Install Fonts
   fonts = {
     enableDefaultPackages = true;
-    packages = with pkgs;
-      [
-        (nerdfonts.override {
-          fonts = [
-            "FiraCode"
-            "JetBrainsMono"
-            "Iosevka"
-            "Inconsolata"
-            "ComicShannsMono"
-            "DaddyTimeMono"
-            "FantasqueSansMono"
-            "Lilex"
-            "Monofur"
-          ];
-          enableWindowsFonts = true;
-        })
-      ];
+    packages = with pkgs; [
+      (nerdfonts.override {
+        fonts = [
+          "FiraCode"
+          "JetBrainsMono"
+          "Iosevka"
+          "Inconsolata"
+          "ComicShannsMono"
+          "DaddyTimeMono"
+          "FantasqueSansMono"
+          "Lilex"
+          "Monofur"
+        ];
+        enableWindowsFonts = true;
+      })
+      julia-mono
+    ];
   };
 }
