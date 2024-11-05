@@ -98,7 +98,7 @@ in {
       ./common/system76-scheduler.nix
       ./common/virtualisation.nix
       ./modules/tailscale.nix
-      ./modules/stylix
+      ./modules/stylix.nix
       inputs.lix.nixosModules.default
       # hyprland.nixosModules.default
       # {
