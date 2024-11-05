@@ -33,8 +33,13 @@ in {
       ./common/secrets.nix
       ./common/security.nix
       ./common/virtualisation.nix
-      ./modules/stylix
+      ./modules/stylix.nix
 
+      {
+        nixpkgs.overlays = [ niri.overlays.niri ];
+        environment.systemPackages =
+          [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
+      }
       # hyprland.nixosModules.default
       # {
       #   programs = {
