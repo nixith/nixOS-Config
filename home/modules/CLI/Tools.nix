@@ -1,4 +1,4 @@
-# Various Useful CLI Tools
+# Vrious Useful CLI Tools
 { config, lib, pkgs, ... }:
 let cfg = config.nixith.cli;
 
@@ -37,6 +37,8 @@ in {
         icons = true;
         git = true;
       };
+
+      lazygit = { enable = true; };
     };
 
     nixith.btop.enable = true;
@@ -50,6 +52,8 @@ in {
       gzip
       _7zz
       dash
+      fd
+      ripgrep
     ];
   };
 
