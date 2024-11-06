@@ -25,6 +25,13 @@ in {
       enable = true;
       profiles = {
         laptop = { outputs = [{ criteria = "eDP-1"; }]; };
+        wDock = {
+
+          outputs = [
+            { criteria = "eDP-1"; }
+            { criteria = "Dell Inc. DELL U2723QE 1V17WN3"; }
+          ];
+        };
         desktop = {
           outputs = [
             {
