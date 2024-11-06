@@ -76,6 +76,10 @@ in {
           allow-when-locked = true;
           cooldown-ms = 50;
         };
+        "XF86AudioMute" = {
+          action.spawn = [ "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle" ];
+          allow-when-locked = true;
+        };
 
         # Media Controls
         "XF86AudioMedia" = {
