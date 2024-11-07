@@ -41,6 +41,10 @@
     };
     niri = { url = "github:sodiboo/niri-flake"; };
     stylix.url = "github:danth/stylix";
+    nixivim = {
+      url = "git+ssh://git@github.com/nixith/nixivim.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     lix = {
       url =
@@ -106,8 +110,9 @@
 
       # Imports ./hosts/default.nix
       homeManagerModules = {
-        modules = import ./home/modules/modules.nix { inherit self; };
+        modules = import ./home/modules/modules.nix { inherit inputs; };
         default = self.homeManagerModules.modules;
+        extraSpecialArgs = { inherit inputs; };
       };
       homeConfigurations = {
         laptop = home-manager.lib.homeManagerConfiguration {

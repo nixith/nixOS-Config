@@ -1,20 +1,20 @@
-self:
-{ ... }:
+{ inputs, ... }:
 let
+  inherit (inputs) nixd;
+  inherit (inputs) hyprland;
+  inherit (inputs) niri;
+  inherit (inputs) anyrun;
+  inherit (inputs) nixivim;
 
-  realSelf = self.self;
-  inherit (realSelf.inputs) nixd;
-  inherit (realSelf.inputs) hyprland;
-  inherit (realSelf.inputs) niri;
-  inherit (realSelf.inputs) anyrun;
-
-  nvim = import ./editors/neovim nixd;
+  #nvim = import ./editors/neovim nixd;
   anyrun-module = import ./desktops/Wayland/General/anyrun anyrun;
   hyprland-wm = import ./desktops/Wayland/hyprland hyprland;
   niri-wm = import ./desktops/Wayland/niri niri;
+  nvim = import ./editors/neovim nixivim;
 in {
   imports = [
     ./CLI/Tools.nix
+    #./editors/neovim
     ./CLI/btop
     nvim
     ./Gui/default.nix
