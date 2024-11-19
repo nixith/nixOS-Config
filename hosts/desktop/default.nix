@@ -38,6 +38,7 @@ in {
       extraLibraries = pkgs:
         with pkgs; [
           vulkan-tools
+          coreutils
           bubblewrap
           mangohud
           gamemode
@@ -45,6 +46,9 @@ in {
           xorg.libXi
           xorg.libXinerama
           xorg.libXScrnSaver
+          xorg.libxcb
+          libxkbcommon
+          wayland
           libpng
           pipewire
           libpulseaudio
