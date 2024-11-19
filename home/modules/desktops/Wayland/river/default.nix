@@ -26,6 +26,7 @@ in {
     nixith.anyrun.enable = true;
     home.packages = with pkgs; [
       webcord-vencord
+      rivercarro
       easyeffects
       wl-clipboard-rs
       pamixer
