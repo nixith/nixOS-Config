@@ -2,11 +2,11 @@
   gtk = {
     enable = true;
 
-    cursorTheme = let pkg = pkgs.catppuccin-cursors.mochaDark;
-    in {
-      name = "catppuccin-mocha-dark-cursors";
-      package = pkg;
-    };
+    # cursorTheme = let pkg = pkgs.catppuccin-cursors.mochaDark;
+    # in {
+    #   name = "catppuccin-mocha-dark-cursors";
+    #   package = pkg;
+    # };
 
     iconTheme = let
       flavor = "mocha";
