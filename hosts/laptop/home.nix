@@ -26,6 +26,7 @@
     rio.enable = true;
     fish.enable = true;
     starship.enable = true;
+    syncthing.enable = true;
     river.enable = false;
     niri = {
       enable = true;
