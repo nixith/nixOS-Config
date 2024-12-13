@@ -335,7 +335,7 @@ in {
         };
         insert-hint = {
           enable = true;
-          color = "rgb(166 227 161 20%)";
+          display.color = "rgb(166 227 161 20%)";
         };
       };
 

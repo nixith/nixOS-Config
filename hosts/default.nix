@@ -99,7 +99,7 @@ in {
       ./common/virtualisation.nix
       ./modules/tailscale.nix
       ./modules/stylix.nix
-      inputs.lix.nixosModules.default
+      # inputs.lix.nixosModules.default
       # hyprland.nixosModules.default
       # {
       #   programs = {

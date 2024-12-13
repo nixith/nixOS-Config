@@ -21,7 +21,8 @@ in {
 
   programs.nix-ld = {
     enable = true;
-    libraries = pkgs.steam-run.fhsenv.args.multiPkgs pkgs;
+    libraries = (pkgs.steam.args.multiPkgs pkgs)
+      ++ (with pkgs; [ xorg.libxcb libxkbcommon wayland ]);
   };
   programs.thunderbird.enable = true;
   # Graphical Necesities

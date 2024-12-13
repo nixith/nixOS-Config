@@ -1,11 +1,11 @@
-{ ... }: {
+{ pkgs, ... }: {
   programs.firefox = {
     enable = true;
 
-    nativeMessagingHosts = {
-      fxCast = true;
-      ff2mpv = true;
-      tridactyl = true;
-    };
+    nativeMessagingHosts.packages = with pkgs; [
+      fx-cast-bridge
+      ff2mpv-rust
+      tridactyl-native
+    ];
   };
 }
