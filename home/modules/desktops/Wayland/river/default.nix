@@ -26,6 +26,7 @@ in {
     nixith.anyrun.enable = true;
     home.packages = with pkgs; [
       goofcord
+      rivercarro
       easyeffects
       wl-clipboard-rs
       pamixer
