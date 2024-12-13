@@ -26,7 +26,11 @@ in {
 
       # Utilities
       cinnamon.nemo-with-extensions
-      flameshot
+      (pkgs.flameshot.overrideAttrs (finalAttrs: previousAttrs: {
+        cmakeFlags = previousAttrs.cmakeFlags
+          ++ [ (pkgs.lib.cmakeBool "USE_WAYLAND_GRIM" true) ];
+      }))
+      lib.cmakeBool
       carla
       signal-desktop-beta
       csa
