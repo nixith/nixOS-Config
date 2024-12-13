@@ -25,7 +25,7 @@ in {
     #xdg.portal = { enable = true; };
     nixith.anyrun.enable = true;
     home.packages = with pkgs; [
-      webcord-vencord
+      goofcord
       easyeffects
       wl-clipboard-rs
       pamixer

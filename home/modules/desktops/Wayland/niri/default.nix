@@ -27,7 +27,7 @@ in {
     nixith.kanshi.enable = true;
     services.kanshi.systemdTarget = "niri.service";
     home.packages = with pkgs; [
-      webcord-vencord
+      goofcord
       easyeffects
       wl-clipboard-rs
       satty
@@ -65,13 +65,15 @@ in {
       binds = {
         # Volume
         "XF86AudioRaiseVolume" = {
-          action.spawn = [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+" ];
+          action.spawn =
+            [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+" "-l" "1.0" ];
           repeat = true;
           allow-when-locked = true;
           cooldown-ms = 50;
         };
         "XF86AudioLowerVolume" = {
-          action.spawn = [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-" ];
+          action.spawn =
+            [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-" "-l" "1.0" ];
           repeat = true;
           allow-when-locked = true;
           cooldown-ms = 50;
