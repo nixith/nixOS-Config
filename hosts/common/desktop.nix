@@ -87,7 +87,7 @@ in {
 
   # Enable flatpak
   xdg.portal = {
-    xdgOpenUsePortal = true;
+    #xdgOpenUsePortal = true;
     enable = true;
     extraPortals = [
       #pkgs.xdg-desktop-portal-wlr
@@ -96,7 +96,7 @@ in {
       #inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
     ];
-    config.common.default = "*";
+    #config.common.default = "*";
   };
   services.flatpak.enable = true;
   services.seatd.enable = true;
@@ -191,22 +191,16 @@ in {
   # Install Fonts
   fonts = {
     enableDefaultPackages = true;
-    packages = with pkgs; [
-      (nerdfonts.override {
-        fonts = [
-          "FiraCode"
-          "JetBrainsMono"
-          "Iosevka"
-          "Inconsolata"
-          "ComicShannsMono"
-          "DaddyTimeMono"
-          "FantasqueSansMono"
-          "Lilex"
-          "Monofur"
-        ];
-        enableWindowsFonts = true;
-      })
-      julia-mono
-    ];
+    packages = with pkgs;
+      [ julia-mono corefonts ] ++ (with pkgs.nerd-fonts; [
+        fira-code
+        jetbrains-mono
+        iosevka
+        inconsolata
+        comic-shanns-mono
+        fantasque-sans-mono
+        lilex
+        monofur
+      ]);
   };
 }

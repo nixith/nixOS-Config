@@ -39,6 +39,7 @@ in {
         nixpkgs.overlays = [ niri.overlays.niri ];
         environment.systemPackages =
           [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
+        programs.niri.enable = true;
       }
       # hyprland.nixosModules.default
       # {
@@ -67,11 +68,12 @@ in {
           users.${user} = import ./laptop/home.nix { inherit self user pkgs; };
         };
       }
-      # {
-      #   nixpkgs.overlays = [ niri.overlays.niri ];
-      #   environment.systemPackages =
-      #     [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
-      # }
+      {
+        nixpkgs.overlays = [ niri.overlays.niri ];
+        environment.systemPackages =
+          [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
+        programs.niri.enable = true;
+      }
       nixos-hardware.nixosModules.lenovo-thinkpad-l13
       { hardware.intelgpu.driver = "xe"; }
       {
@@ -125,6 +127,8 @@ in {
         nixpkgs.overlays = [ niri.overlays.niri ];
         environment.systemPackages =
           [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
+
+        programs.niri.enable = true;
       }
       #nixos-hardware.nixosModules.lenovo-thinkpad-l13
     ] ++ common;

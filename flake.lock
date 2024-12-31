@@ -602,11 +602,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1734005819,
-        "narHash": "sha256-CuMZHLveDk6Ouv0l3h86tdCjj3r+h1nj1/s2gEistHI=",
+        "lastModified": 1734107644,
+        "narHash": "sha256-NSLyaFzRbNSsb86MMl0uEE+V6xFNU0Tq5CtQFPquQpY=",
         "ref": "refs/heads/main",
-        "rev": "aefaeedf5e3f773c923373795267c1633141566c",
-        "revCount": 5535,
+        "rev": "61a51bb4ef5ff38a8482933da1756bf31d4475be",
+        "revCount": 5536,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -894,11 +894,11 @@
         "plugins-termim-nvim": "plugins-termim-nvim"
       },
       "locked": {
-        "lastModified": 1734105788,
-        "narHash": "sha256-1Mzwr4wWdyXjZ9hgLXlFnxBx7LO/oeUMjsof6jkAWqc=",
+        "lastModified": 1734111835,
+        "narHash": "sha256-A91imaY3HRYXM18ezYAYk6Xcxgc5whfpnuk98Fm5BzA=",
         "ref": "refs/heads/main",
-        "rev": "8f6bfcd4ea6f6a96cb62d45ccbd60a8c28beda9f",
-        "revCount": 14,
+        "rev": "a29c81a4589d06c07f7b9da1e1741b0dc4143338",
+        "revCount": 15,
         "type": "git",
         "url": "ssh://git@github.com/nixith/nixivim.git"
       },
@@ -1394,11 +1394,11 @@
         "tinted-tmux": "tinted-tmux"
       },
       "locked": {
-        "lastModified": 1734012548,
-        "narHash": "sha256-72z7fZNeFtG+UWmbMn5by4K47HHBxk3JtV91D/qZEhg=",
+        "lastModified": 1734110168,
+        "narHash": "sha256-Q0eeLYn45ErXlqGQyXmLLHGe1mqnUiK0Y9wZRa1SNFI=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "ccee633284cde8a9f825004e00dd84a31b10e6c6",
+        "rev": "a9e3779949925ef22f5a215c5f49cf520dea30b1",
         "type": "github"
       },
       "original": {

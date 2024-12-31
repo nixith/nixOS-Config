@@ -16,7 +16,7 @@
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
   home.sessionVariables = { EDITOR = "nvim"; };
-  #programs.niri = { enable = true; };
+  programs.niri = { enable = true; };
 
   nixith = {
     neovim.enable = true;
@@ -30,7 +30,7 @@
     };
     anyrun.enable = true;
     syncthing.enable = true;
-    river.enable = true;
+    #river.enable = true;
     # hyprland = {
     #   enable = true;
     #   nvidia = true;

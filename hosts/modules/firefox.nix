@@ -4,7 +4,7 @@
 
     nativeMessagingHosts.packages = with pkgs; [
       fx-cast-bridge
-      ff2mpv-rust
+      ff2mpv
       tridactyl-native
     ];
   };
