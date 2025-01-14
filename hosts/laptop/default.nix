@@ -5,7 +5,7 @@
 
   boot = {
     # initrd.kernelModules = [ "xe" ];
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
 
     loader.efi = {
       canTouchEfiVariables = true;
