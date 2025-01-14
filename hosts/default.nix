@@ -75,11 +75,13 @@ in {
         programs.niri.enable = true;
       }
       nixos-hardware.nixosModules.lenovo-thinkpad-l13
-      { hardware.intelgpu.driver = "xe"; }
       {
-        programs.river.enable = true;
-        environment.systemPackages = with pkgs; [ rivercarro ];
+        hardware.intelgpu.driver = "xe";
       }
+      # {
+      #   programs.river.enable = true;
+      #   environment.systemPackages = with pkgs; [ rivercarro ];
+      # }
     ] ++ common;
     specialArgs = { inherit inputs user self; };
   };
