@@ -73,6 +73,7 @@ in {
   boot = {
     supportedFilesystems = [ "btrfs" ];
 
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;
     loader.efi = {
       canTouchEfiVariables = true;
       #efiSysMountPoint = "/boot/";
@@ -172,11 +173,11 @@ in {
       extraPkgs = pkgs: [ pkgs.ffmpeg pkgs.imagemagick ];
     };
   };
-  specialisation."nvk".configuration = {
-    environment.systemPackages = with pkgs; [ mesa ];
-
-    environment.etc."specialisation".text = "nvk";
-    boot.kernelParams = [ "nouveau.config=NvGspRm=1" ];
-    services.xserver.videoDrivers = [ "nvk" "nouveau" "modesetting" "fbdev" ];
-  };
+  # specialisation."nvk".configuration = {
+  #   environment.systemPackages = with pkgs; [ mesa ];
+  #
+  #   environment.etc."specialisation".text = "nvk";
+  #   boot.kernelParams = [ "nouveau.config=NvGspRm=1" ];
+  #   services.xserver.videoDrivers = [ "nvk" "nouveau" "modesetting" "fbdev" ];
+  # };
 }
