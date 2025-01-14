@@ -35,17 +35,19 @@ in {
         desktop = {
           outputs = [
             {
-              criteria = "Dell Inc. DELL P2312H XTK9N275GLYL";
+              #criteria = "Dell Inc. DELL P2312H XTK9N275GLYL";
+              criteria = "HDMI-A-1";
               transform = "90";
-              position = "-1080,0";
+              position = "2970,0";
             }
             {
-              criteria = "Samsung Electric Company S24E450 HCHN203427";
+              criteria = "DP-1";
+              position = "1050,300";
+            }
+            {
+              criteria = "DP-2";
               position = "0,0";
-            }
-            {
-              criteria = "Ancor Communications Inc ASUS VS247 D9LMTF289673";
-              position = "1920,0";
+              transform = "90";
             }
           ];
         };
