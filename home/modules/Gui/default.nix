@@ -25,14 +25,15 @@ in {
       #(prismlauncher.override { glfw = pkgs.glfw-wayland-minecraft; })
 
       # Utilities
-      cinnamon.nemo-with-extensions
-      (pkgs.flameshot.overrideAttrs (finalAttrs: previousAttrs: {
-        cmakeFlags = previousAttrs.cmakeFlags
-          ++ [ (pkgs.lib.cmakeBool "USE_WAYLAND_GRIM" true) ];
-      }))
-      lib.cmakeBool
+      #nemo
+      # (pkgs.flameshot.overrideAttrs (finalAttrs: previousAttrs: {
+      #   cmakeFlags = previousAttrs.cmakeFlags
+      #     ++ [ (pkgs.lib.cmakeBool "USE_WAYLAND_GRIM" true) ];
+      # }))
+      grimblast
+      #lib.cmakeBool
       carla
-      signal-desktop-beta
+      signal-desktop
       csa
       calf
       rnnoise-plugin # Denoiser plugin
@@ -50,6 +51,7 @@ in {
       #calibre
 
       # Media
+
       mpv
       imv
     ];
