@@ -121,6 +121,10 @@ in {
         "Mod+J" = { action.focus-window-or-monitor-down = { }; };
         "Mod+K" = { action.focus-window-or-monitor-up = { }; };
         "Mod+L" = { action.focus-column-or-monitor-right = { }; };
+        "Mod+V" = { action.toggle-window-floating = { }; };
+        "Mod+Shift+V" = {
+          action.switch-focus-between-floating-and-tiling = { };
+        };
 
         "Mod+Ctrl+H" = { action.move-column-left-or-to-monitor-left = { }; };
         "Mod+Ctrl+J" = { action.move-window-down-or-to-workspace-down = { }; };
