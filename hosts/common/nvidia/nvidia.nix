@@ -10,7 +10,7 @@
     open = true;
     modesetting.enable = true;
     powerManagement.enable = true;
-    #package = config.boot.kernelPackages.nvidia_x11_beta;
+    package = config.boot.kernelPackages.nvidia_x11_beta;
   };
 
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "nvidia"; };
