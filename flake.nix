@@ -85,7 +85,7 @@
   };
 
   outputs = { self, nixpkgs, hyprland, home-manager, nixos-hardware, niri
-    , nixos-generators, flakeProgramsSqlite, ... }@inputs:
+    , nixos-generators, flakeProgramsSqlite, stylix, ... }@inputs:
     let
       system = "x86_64-linux";
 

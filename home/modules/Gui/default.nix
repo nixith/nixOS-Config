@@ -4,11 +4,11 @@ in {
 
   #TODO: Modularize gui components
   imports = [
-    ./QT
-    ./gtk/adw-gtk3.nix
-    #./firefox
-    ./zathura
-    ./pointer/pointer.nix
+    # ./QT
+    # ./gtk/adw-gtk3.nix
+    ./firefox
+    # ./zathura
+    # ./pointer/pointer.nix
   ];
 
   options = {
@@ -45,6 +45,11 @@ in {
       bluez
       bluez-tools
       blueberry
+
+      mumble
+      gajim
+
+      finamp
 
       # Productivity
       libreoffice

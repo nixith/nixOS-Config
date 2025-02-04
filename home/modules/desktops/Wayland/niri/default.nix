@@ -3,7 +3,7 @@ niri:
 let cfg = config.nixith.niri;
 in {
 
-  imports = [ ../General/eww ../General/mako niri.homeModules.niri ];
+  imports = [ ../General/mako niri.homeModules.niri ];
 
   options.nixith.niri = {
     enable = lib.mkEnableOption "enable niri";
@@ -23,8 +23,9 @@ in {
     #   };
     #   security.pam.services.swaylock = { };
     # };
-    nixith.anyrun.enable = true;
     nixith.kanshi.enable = true;
+    nixith.waybar.enable = true;
+    nixith.fuzzel.enable = true;
     services.kanshi.systemdTarget = "niri.service";
     home.packages = with pkgs; [
       goofcord
@@ -305,9 +306,9 @@ in {
         "Mod+Shift+P" = { action.power-off-monitors = { }; };
 
         # Application keybinds
-        "Mod+D" = { action.spawn = [ "anyrun" ]; };
+        "Mod+D" = { action.spawn = [ "fuzzel" ]; };
         "Mod+W" = { action.spawn = [ "firefox" ]; };
-        "Mod+Return" = { action.spawn = [ "foot" ]; };
+        "Mod+Return" = { action.spawn = [ "ghostty" ]; };
       };
 
       switch-events = {

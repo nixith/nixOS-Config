@@ -9,7 +9,7 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
       [
-        vivid # generate LS_COLORS for catppuccin
+        vivid # generate LS_COLORS for scheme
       ];
     programs.fish = {
       enable = true;

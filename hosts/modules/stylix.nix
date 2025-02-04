@@ -1,12 +1,27 @@
-{ inputs, ... }:
-{
-  #imports = [ inputs.stylix.nixosModules ];
-  # stylix = {
-  #   enable = false;
-  #   wallpaper =
-  #     ../../home/modules/desktops/Wayland/hyprland/Assets/tropic_island_night.jpg;
-  #   polarity = "dark";
-  #
-  # };
+{ inputs, pkgs, ... }: {
+  imports = [ inputs.stylix.nixosModules.stylix ];
+  stylix = {
+    image = ../../resources/wallpapers/everforest.webp;
+    base16Scheme =
+      "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
+    enable = true;
+    autoEnable = true;
+    #polarity = "either";
+    fonts = {
+      monospace = {
+        name = "Lilex Nerd Font Regular";
+        package = pkgs.nerd-fonts.lilex;
+      };
+      emoji = {
+        package = pkgs.noto-fonts-monochrome-emoji;
+        name = "Noto Emoji";
+      };
+    };
+    homeManagerIntegration = {
+      autoImport = true;
+      followSystem = true;
+    };
+
+  };
 
 }

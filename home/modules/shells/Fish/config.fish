@@ -81,7 +81,7 @@ function cd
     builtin cd $argv; and ls
 end
 
-export LS_COLORS="$(vivid generate catppuccin-mocha)"
+#export LS_COLORS="$(vivid generate catppuccin-mocha)"
 
 ### ALIASES ###
 
