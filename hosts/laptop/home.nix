@@ -23,7 +23,6 @@
     neovim.enable = true;
     gui.enable = true;
     cli.enable = true;
-    rio.enable = true;
     fish.enable = true;
     starship.enable = true;
     syncthing.enable = true;
@@ -32,7 +31,7 @@
       enable = true;
       config = builtins.readFile ./config.kdl;
     };
-    foot.enable = true;
+    ghostty.enable = true;
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

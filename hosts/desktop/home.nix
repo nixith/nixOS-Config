@@ -42,7 +42,7 @@
     #     monitor=DP-1,transform,1
     #   '';
     # };
-    foot.enable = true;
+    ghostty.enable = true;
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
