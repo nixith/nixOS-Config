@@ -12,10 +12,10 @@
         name = "Lilex Nerd Font Regular";
         package = pkgs.nerd-fonts.lilex;
       };
-      emoji = {
-        package = pkgs.noto-fonts-monochrome-emoji;
-        name = "Noto Emoji";
-      };
+      # emoji = {
+      #   package = pkgs.noto-fonts-monochrome-emoji;
+      #   name = "Noto Emoji";
+      # };
     };
     homeManagerIntegration = {
       autoImport = true;
