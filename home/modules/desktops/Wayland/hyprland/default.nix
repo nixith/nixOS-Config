@@ -25,7 +25,7 @@ let
     env = __GLX_VENDOR_LIBRARY_NAME,nvidia
   '';
 in {
-  imports = [ ../General/eww ];
+  #imports = [ ../General/eww ];
   options.nixith.hyprland = {
     enable = lib.mkEnableOption "enable hyprland";
     monitors = lib.mkOption {

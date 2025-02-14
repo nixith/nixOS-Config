@@ -2,7 +2,10 @@
 let cfg = config.nixith.river;
 in {
 
-  imports = [ ../General/eww ../General/mako ];
+  imports = [
+    #../General/eww
+    ../General/mako
+  ];
 
   options.nixith.river = {
     enable = lib.mkEnableOption "enable river";
