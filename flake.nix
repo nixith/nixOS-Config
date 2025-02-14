@@ -42,7 +42,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lix = {
+    lix-modules = {
       url = "git+https://git.lix.systems/lix-project/nixos-module?ref=stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -80,7 +80,7 @@
   };
 
   outputs = { self, nixpkgs, hyprland, home-manager, nixos-hardware, niri
-    , nixos-generators, flakeProgramsSqlite, stylix, lix, ... }@inputs:
+    , nixos-generators, flakeProgramsSqlite, stylix, lix-modules, ... }@inputs:
     let
       system = "x86_64-linux";
 
