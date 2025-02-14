@@ -15,6 +15,7 @@ let
     ./modules/console.nix
     flakeProgramsSqlite.nixosModules.programs-sqlite
     inputs.lix-modules.nixosModules.default
+    ./modules/greetd.nix
   ];
 
   inherit (nixpkgs) lib;
@@ -94,7 +95,6 @@ in {
       ./desktop
 
       ./modules/firefox.nix
-      ./modules/greetd.nix
       # ./common/kmscon.nix # alternate tty, need to figure out how to turn off gpu so wayland can take it
       ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
       ./common/desktop.nix # Default for graphical desktops
