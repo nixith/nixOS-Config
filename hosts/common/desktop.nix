@@ -34,7 +34,7 @@ in {
   qt = {
     platformTheme = "gnome";
     enable = true;
-    style = "adwaita-dark";
+    # style = "adwaita-dark";
   };
 
   environment.systemPackages = with pkgs; [
