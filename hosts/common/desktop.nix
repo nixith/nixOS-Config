@@ -17,7 +17,10 @@ in {
     extraModprobeConfig = ''
       options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
     '';
+    kernelModules = [ "nfs" ];
+    supportedFilesystems = { nfs = true; };
   };
+  services.rpcbind.enable = true;
 
   programs.nix-ld = {
     enable = true;
@@ -40,6 +43,7 @@ in {
     android-udev-rules
     libva-utils
     brillo
+    nfs-utils
     # nix-ld
     (lib.hiPrio (writeShellScriptBin "python3" ''
       LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH exec -a $0 ${python3}/bin/python3 "$@"''))
