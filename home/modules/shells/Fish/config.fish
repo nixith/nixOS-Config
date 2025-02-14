@@ -11,7 +11,8 @@ set fish_greeting
 # Prevent directories names from being shortened
 set fish_prompt_pwd_dir_length 0
 # "bat" as manpager
-set -x MANPAGER "bat -l man -p'"
+set -x MANROFFOPT '-c'
+set -x MANPAGER "sh -c 'col -b | bat -p -l man'"
 set -g theme_nerd_fonts yes
 
 
