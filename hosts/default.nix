@@ -14,6 +14,7 @@ let
     inputs.sops-nix.nixosModules.sops
     ./modules/console.nix
     flakeProgramsSqlite.nixosModules.programs-sqlite
+    inputs.lix.nixosModules.default
   ];
 
   inherit (nixpkgs) lib;
