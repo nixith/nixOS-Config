@@ -21,7 +21,10 @@
       autoImport = true;
       followSystem = true;
     };
-
+    targets.qt = {
+      platform = "gnome";
+      # style = "adwaita-dark";
+    };
   };
 
 }

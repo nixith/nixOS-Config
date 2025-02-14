@@ -31,11 +31,6 @@ in {
   # Graphical Necesities
   programs.dconf.enable = true;
   security.polkit.enable = true;
-  qt = {
-    platformTheme = "gnome";
-    enable = true;
-    # style = "adwaita-dark";
-  };
 
   environment.systemPackages = with pkgs; [
     ffmpeg
