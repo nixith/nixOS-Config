@@ -4,7 +4,7 @@
     nativeMessagingHosts = with pkgs; [ tridactyl-native fx-cast-bridge ];
     package = pkgs.firefox;
     #TODO: make declarative profile
-    profiles."main" = {
+    profiles."test" = {
 
     };
   };
