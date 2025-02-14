@@ -3,39 +3,37 @@
     aggressiveResize = true;
     clock24 = true;
     enable = true;
+    mouse = true;
     keyMode = "vi";
     newSession = true;
-    plugins = with pkgs; [
-      {
-        # plugin = tmuxPlugins.catppuccin;
-        # extraConfig = ''
-        #   set-option -g status-position top
-        #   set -g @catppuccin_window_left_separator ""
-        #   set -g @catppuccin_window_right_separator " "
-        #   set -g @catppuccin_window_middle_separator " █"
-        #   set -g @catppuccin_window_number_position "right"
-        #
-        #   set -g @catppuccin_window_default_fill "number"
-        #   set -g @catppuccin_window_default_text "#W"
-        #
-        #   set -g @catppuccin_window_current_fill "number"
-        #   set -g @catppuccin_window_current_text "#W"
-        #
-        #   set -g @catppuccin_status_modules_right "directory user host session"
-        #   set -g @catppuccin_status_left_separator  " "
-        #   set -g @catppuccin_status_right_separator ""
-        #   set -g @catppuccin_status_right_separator_inverse "no"
-        #   set -g @catppuccin_status_fill "icon"
-        #   set -g @catppuccin_status_connect_separator "no"
-        #
-        #   set -g @catppuccin_directory_text "#{pane_current_path}"
-        # '';
-      }
-      tmuxPlugins.better-mouse-mode
-      tmuxPlugins.tmux-fzf
-      tmuxPlugins.sensible
-    ];
+    plugins = with pkgs; [ tmuxPlugins.better-mouse-mode tmuxPlugins.tmux-fzf ];
     shortcut = "s";
+    extraConfig = # tmux
+      ''
+        set -g history-limit 50000
+
+        # Increase tmux messages display duration from 750ms to 4s
+        set -g display-time 4000
+
+        # Refresh 'status-left' and 'status-right' more often, from every 15s to 5s
+        set -g status-interval 5
+
+        set -g extended-keys on # ctrl and shift binds
+        set -g allow-passthrough all 
+
+        #Control + Space keybind
+        unbind C-Space
+        set -g prefix C-Space
+        bind C-Space send-prefix
+
+        # quick vertical split
+        bind-key v split-window -h  #split is horizontal, window is vertical
+
+        # quick horizontal split 
+        bind-key h split-window -v
+
+        set-option -g allow-passthrough all
+      '';
   };
   programs.fzf.tmux.enableShellIntegration = true;
 }

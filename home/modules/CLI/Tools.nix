@@ -4,7 +4,7 @@ let cfg = config.nixith.cli;
 
 in {
 
-  imports = [ ./btop ./zellij ];
+  imports = [ ./btop ./zellij ./tmux ];
   options = { nixith.cli.enable = lib.mkEnableOption "Enable cli tools"; };
   config = lib.mkIf cfg.enable {
 
