@@ -99,7 +99,7 @@
       nixosConfigurations = import ./hosts {
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs hyprland nixos-hardware user self home-manager
-          niri flakeProgramsSqlite lix;
+          niri flakeProgramsSqlite;
         specialArgs.inputs = inputs;
       };
 

@@ -402,11 +402,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1739494892,
-        "narHash": "sha256-TqZr9hrtRESHY0T0R4kSFBDpRux2qbf9ROdpe7PSOGE=",
+        "lastModified": 1739528173,
+        "narHash": "sha256-R3/YWfo6qjXXeTLRh+amC87gqc43a3sTAN7GSuG7raQ=",
         "owner": "wamserma",
         "repo": "flake-programs-sqlite",
-        "rev": "945b442783b0e25182249ef6157cb7f42011ec48",
+        "rev": "f85d486f6e430818e74194a34089a0accdebd53b",
         "type": "github"
       },
       "original": {
@@ -855,10 +855,24 @@
       }
     },
     "lix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1737234286,
+        "narHash": "sha256-CCKIAE84dzkrnlxJCKFyffAxP3yfsOAbdvydUGqq24g=",
+        "rev": "2837da71ec1588c1187d2e554719b15904a46c8b",
+        "type": "tarball",
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/2837da71ec1588c1187d2e554719b15904a46c8b.tar.gz?rev=2837da71ec1588c1187d2e554719b15904a46c8b"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://git.lix.systems/lix-project/lix/archive/2.92.0.tar.gz"
+      }
+    },
+    "lix-modules": {
       "inputs": {
         "flake-utils": "flake-utils",
         "flakey-profile": "flakey-profile",
-        "lix": "lix_2",
+        "lix": "lix",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -878,20 +892,6 @@
         "url": "https://git.lix.systems/lix-project/nixos-module"
       }
     },
-    "lix_2": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1737234286,
-        "narHash": "sha256-CCKIAE84dzkrnlxJCKFyffAxP3yfsOAbdvydUGqq24g=",
-        "rev": "2837da71ec1588c1187d2e554719b15904a46c8b",
-        "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/2837da71ec1588c1187d2e554719b15904a46c8b.tar.gz?rev=2837da71ec1588c1187d2e554719b15904a46c8b"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://git.lix.systems/lix-project/lix/archive/2.92.0.tar.gz"
-      }
-    },
     "niri": {
       "inputs": {
         "niri-stable": "niri-stable",
@@ -902,11 +902,11 @@
         "xwayland-satellite-unstable": "xwayland-satellite-unstable"
       },
       "locked": {
-        "lastModified": 1739496005,
-        "narHash": "sha256-qr7v18JupLdyjUhC3zczdYzUEC4zzsxGjxsVGgYzwYg=",
+        "lastModified": 1739516087,
+        "narHash": "sha256-X3WTcaL/9O3C03TZ+8PmXcn3sqCgig1RIYY/J27ZsLQ=",
         "owner": "sodiboo",
         "repo": "niri-flake",
-        "rev": "e072f4a57cad4fb92e656fd69a340c8d372cacac",
+        "rev": "9669e839805737ce7c66c9c05a3f97017f84cf24",
         "type": "github"
       },
       "original": {
@@ -935,11 +935,11 @@
     "niri-unstable": {
       "flake": false,
       "locked": {
-        "lastModified": 1739432365,
-        "narHash": "sha256-uQm3OhhgUQHA5eV+0v/qAFmFHly8yHg2P+BVVy/3DcY=",
+        "lastModified": 1739513000,
+        "narHash": "sha256-LDSApEzhz3I9441ocnkkEVJu18OnGSj4a4MaxvuJYMk=",
         "owner": "YaLTeR",
         "repo": "niri",
-        "rev": "4c98b874862c2e6df7f71bdf36df0ba527690fbb",
+        "rev": "7816f20e6a3ddc4057aa1ab35742dc7f67453bc2",
         "type": "github"
       },
       "original": {
@@ -1381,7 +1381,7 @@
         "flakeProgramsSqlite": "flakeProgramsSqlite",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
-        "lix": "lix",
+        "lix-modules": "lix-modules",
         "niri": "niri",
         "nixd": "nixd",
         "nixivim": "nixivim",
