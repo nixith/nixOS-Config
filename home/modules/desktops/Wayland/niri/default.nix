@@ -126,6 +126,7 @@ in {
         "Mod+Shift+V" = {
           action.switch-focus-between-floating-and-tiling = { };
         };
+        # "Mod+T" = { action.toggle-column-tabbed-display = { }; };
 
         "Mod+Ctrl+H" = { action.move-column-left-or-to-monitor-left = { }; };
         "Mod+Ctrl+J" = { action.move-window-down-or-to-workspace-down = { }; };
