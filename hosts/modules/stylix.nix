@@ -6,7 +6,7 @@
       "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
     enable = true;
     autoEnable = true;
-    #polarity = "either";
+    polarity = "dark";
     fonts = {
       monospace = {
         name = "Lilex Nerd Font Regular";
