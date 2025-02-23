@@ -37,7 +37,7 @@ in {
       csa
       calf
       rnnoise-plugin # Denoiser plugin
-      pavucontrol
+      pwvucontrol
       #pwvucontrol
       gimp
       playerctl
