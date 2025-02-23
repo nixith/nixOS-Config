@@ -27,7 +27,8 @@ in {
     libraries = (pkgs.steam.args.multiPkgs pkgs)
       ++ (with pkgs; [ xorg.libxcb libxkbcommon wayland ]);
   };
-  programs.thunderbird.enable = true;
+  # programs.thunderbird.enable = true;
+  programs.evolution.enable = true;
   # Graphical Necesities
   programs.dconf.enable = true;
   security.polkit.enable = true;
