@@ -49,7 +49,7 @@ in {
       mumble
       gajim
 
-      finamp
+      feishin
 
       # Productivity
       libreoffice
