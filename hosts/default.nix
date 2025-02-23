@@ -16,6 +16,12 @@ let
     flakeProgramsSqlite.nixosModules.programs-sqlite
     inputs.lix-modules.nixosModules.default
     ./modules/greetd.nix
+    home-manager.nixosModules.default
+    ({ config, user, ... }:
+      lib.mkIf config.home-manager.users.${user}.xdg.portal.enable {
+        environment.pathsToLink =
+          [ "/share/xdg-desktop-portal" "/share/applications" ];
+      })
   ];
 
   overlays = [ inputs.nixivim.overlays.default ];
@@ -57,12 +63,6 @@ in {
       #     hyprlock.enable = true;
       #   };
       # }
-      home-manager.nixosModules.default
-      ({ config, user, ... }:
-        lib.mkIf config.home-manager.users.${user}.xdg.portal.enable {
-          environment.pathsToLink =
-            [ "/share/xdg-desktop-portal" "/share/applications" ];
-        })
       {
 
         home-manager.backupFileExtension = "backup";
@@ -126,7 +126,8 @@ in {
 
         home-manager.useGlobalPkgs = true;
         home-manager = {
-          users.${user} = import ./desktop/home.nix { inherit self user pkgs; };
+          users.${user} =
+            import ./desktop/home.nix { inherit self user pkgs inputs; };
         };
       }
       {
