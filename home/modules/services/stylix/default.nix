@@ -1,4 +1,3 @@
-stylix:
 { pkgs, ... }: {
   stylix = {
     enable = true;

@@ -1,9 +1,9 @@
-niri:
+# niri:
 { config, lib, pkgs, ... }:
 let cfg = config.nixith.niri;
 in {
 
-  imports = [ ../General/mako niri.homeModules.niri ];
+  imports = [ ../General/mako ];
 
   options.nixith.niri = {
     enable = lib.mkEnableOption "enable niri";
@@ -26,6 +26,16 @@ in {
     nixith.kanshi.enable = true;
     nixith.waybar.enable = true;
     nixith.fuzzel.enable = true;
+    services.gnome-keyring = { enable = true; };
+    xdg.portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome
+        gnome-keyring
+      ];
+    };
     services.kanshi.systemdTarget = "niri.service";
     home.packages = with pkgs; [
       goofcord
@@ -333,16 +343,16 @@ in {
           { proportion = 1.0 / 2.0; }
           { proportion = 2.0 / 3.0; }
         ];
-        focus-ring = {
-          enable = true;
-          width = 4;
-          inactive.color = "rgb(88 91 112)";
-          active.color = "rgb(166 227 161)";
-        };
-        insert-hint = {
-          enable = true;
-          display.color = "rgb(166 227 161 20%)";
-        };
+        # focus-ring = {
+        #   enable = true;
+        #   width = 4;
+        #   inactive.color = "rgb(88 91 112)";
+        #   active.color = "rgb(166 227 161)";
+        # };
+        # insert-hint = {
+        #   enable = true;
+        #   display.color = "rgb(166 227 161 20%)";
+        # };
       };
 
       window-rules = [{
@@ -360,7 +370,7 @@ in {
     programs.niri = {
       enable = true;
       package = pkgs.niri-unstable;
-      #inherit (cfg) config;
+      # inherit (cfg) config;
     };
   };
 

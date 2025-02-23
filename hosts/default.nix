@@ -18,6 +18,8 @@ let
     ./modules/greetd.nix
   ];
 
+  overlays = [ inputs.nixivim.overlays.default ];
+
   inherit (nixpkgs) lib;
 in {
   laptop = nixpkgs.lib.nixosSystem {
@@ -25,6 +27,7 @@ in {
     inherit system;
 
     modules = [
+      # niri.nixosModules.niri
       ./laptop
       ./modules/tailscale.nix
       ./modules/firefox.nix
@@ -36,9 +39,8 @@ in {
       ./common/security.nix
       ./common/virtualisation.nix
       ./modules/stylix.nix
-
       {
-        nixpkgs.overlays = [ niri.overlays.niri ];
+        nixpkgs.overlays = [ niri.overlays.niri ] ++ overlays;
         environment.systemPackages =
           [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
         programs.niri.enable = true;
@@ -67,11 +69,12 @@ in {
 
         home-manager.useGlobalPkgs = true;
         home-manager = {
-          users.${user} = import ./laptop/home.nix { inherit self user pkgs; };
+          users.${user} =
+            import ./laptop/home.nix { inherit self user pkgs inputs; };
         };
       }
       {
-        nixpkgs.overlays = [ niri.overlays.niri ];
+        nixpkgs.overlays = [ niri.overlays.niri ] ++ overlays;
         environment.systemPackages =
           [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
         programs.niri.enable = true;
@@ -127,7 +130,7 @@ in {
         };
       }
       {
-        nixpkgs.overlays = [ niri.overlays.niri ];
+        nixpkgs.overlays = [ niri.overlays.niri ] ++ overlays;
         environment.systemPackages =
           [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
 

@@ -26,7 +26,7 @@ in {
     #   security.pam.services.swaylock = { };
     # };
     #xdg.portal = { enable = true; };
-    nixith.anyrun.enable = true;
+    #nixith.anyrun.enable = true;
     home.packages = with pkgs; [
       goofcord
       rivercarro

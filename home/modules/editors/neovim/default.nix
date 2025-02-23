@@ -1,4 +1,4 @@
-nixivim:
+# nixivim:
 { pkgs, lib, config, ... }:
 let cfg = config.nixith.neovim;
 in {
@@ -8,6 +8,12 @@ in {
   };
   # move config files to .config
   config = lib.mkIf cfg.enable {
-    home.packages = [ nixivim.packages.${pkgs.system}.default ];
+    # programs.neovim = {
+    #   enable = true;
+    #   defaultEditor = true;
+    #   vimAlias = true;
+    #   package = pkgs.nvim;
+    # };
+    home.packages = [ pkgs.nvim ];
   };
 }

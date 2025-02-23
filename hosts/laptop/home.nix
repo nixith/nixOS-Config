@@ -1,7 +1,10 @@
-{ user, self, ... }:
+{ user, self, inputs, ... }: {
+  imports = [
+    ../../home/modules/modules.nix
+    inputs.niri.homeModules.niri
+    inputs.niri.homeModules.stylix
+  ];
 
-{
-  imports = [ self.homeManagerModules.default ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "${user}";
