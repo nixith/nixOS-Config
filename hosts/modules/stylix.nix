@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, lib, ... }: {
   imports = [ inputs.stylix.nixosModules.stylix ];
   stylix = {
     image = ../../resources/wallpapers/everforest.webp;
@@ -21,10 +21,7 @@
       autoImport = true;
       followSystem = true;
     };
-    targets.qt = {
-      platform = "gnome";
-      # style = "adwaita-dark";
-    };
+    targets.qt = { platform = (lib.mkForce "gnome"); };
   };
 
 }

@@ -11,5 +11,9 @@
       light = "Everforest-Light";
       package = pkgs.everforest-gtk-theme;
     };
+    targets.qt = {
+      platform = "gnome";
+      # style = "adwaita-dark";
+    };
   };
 }

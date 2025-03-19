@@ -32,8 +32,8 @@
       enable = true;
       config = builtins.readFile ./config.kdl;
     };
-    anyrun.enable = true;
-    syncthing.enable = true;
+    # anyrun.enable = true;
+    # syncthing.enable = true;
     #river.enable = true;
     # hyprland = {
     #   enable = true;

@@ -25,7 +25,7 @@ in {
   programs.nix-ld = {
     enable = true;
     libraries = (pkgs.steam.args.multiPkgs pkgs)
-      ++ (with pkgs; [ xorg.libxcb libxkbcommon wayland ]);
+      ++ (with pkgs; [ xorg.libxcb libxkbcommon wayland alsa-lib ]);
   };
   # programs.thunderbird.enable = true;
   programs.evolution.enable = true;
@@ -49,7 +49,7 @@ in {
         obs-vkcapture
         obs-vaapi
         obs-backgroundremoval
-        droidcam-obs
+        #droidcam-obs
         obs-pipewire-audio-capture
       ];
     })
