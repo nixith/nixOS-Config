@@ -4,7 +4,11 @@
     # allow building without passing flags on first run
     extra-experimental-features = "nix-command flakes";
     # Add me to trusted users
-    trusted-users = [ "root" "@wheel" "alice" ];
+    trusted-users = [
+      "root"
+      "@wheel"
+      "alice"
+    ];
     builders-use-substitutes = true;
 
     # Grab binaries faster from sources
@@ -35,7 +39,9 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri = { url = "github:sodiboo/niri-flake"; };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+    };
     stylix.url = "github:danth/stylix";
     nixivim = {
       url = "git+ssh://git@github.com/nixith/nixivim.git";
@@ -51,8 +57,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    anyrun.url = "github:Kirottu/anyrun";
-
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     sops-nix.url = "github:Mic92/sops-nix";
@@ -62,44 +66,62 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = { url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+    };
 
-    #Hyprland-Desktop-Portal = {
-    #  url = "github:hyprwm/xdg-desktop-portal-hyprland";
-    #};
-
-    #Hyprland-Waybar = {
-    #  url = "github:r-clifford/Waybar-Hyprland";
-    #  #inputs.nixpkgs.follows = "nixpkgs";
-    #};
-
-    nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; };
-
-    nixd = { url = "github:nix-community/nixd"; };
+    nixd = {
+      url = "github:nix-community/nixd";
+    };
 
   };
 
-  outputs = { self, nixpkgs, hyprland, home-manager, nixos-hardware, niri
-    , nixos-generators, flakeProgramsSqlite, stylix, lix-modules, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      nixos-hardware,
+      niri,
+      nixos-generators,
+      flakeProgramsSqlite,
+      stylix,
+      lix-modules,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
 
-      forAllSystems = function:
-        nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-linux" ] (system:
-          function (import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          }));
+      forAllSystems =
+        function:
+        nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-linux" ] (
+          system:
+          function (
+            import nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
+            }
+          )
+        );
 
       #nixpkgs.config.allowUnfree = true;
       user = "alice";
 
-    in {
+    in
+    {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
       nixosConfigurations = import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs hyprland nixos-hardware user self home-manager
-          niri flakeProgramsSqlite;
+        inherit
+          inputs
+          nixpkgs
+          nixos-hardware
+          user
+          self
+          home-manager
+          niri
+          flakeProgramsSqlite
+          ;
         specialArgs.inputs = inputs;
       };
 
@@ -119,14 +141,12 @@
 
       packages = forAllSystems (pkgs: {
         my-pmd = pkgs.callPackage ./packages/pmd/pmd.nix { };
-        ollama-cuda =
-          pkgs.callPackage ./packages/ollama-cuda/ollama-cuda.nix { };
+        ollama-cuda = pkgs.callPackage ./packages/ollama-cuda/ollama-cuda.nix { };
         iso = nixos-generators.nixosGenerate {
           inherit system;
           modules = [
             ./isoBuilder/iso.nix
-            (nixpkgs
-              + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
+            (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
 
             # Provide an initial copy of the NixOS channel so that the user
             # doesn't need to run "nix-channel --update" first.
@@ -144,4 +164,3 @@
       });
     };
 }
-
