@@ -13,6 +13,7 @@ let
   common = [
     inputs.sops-nix.nixosModules.sops
     ./modules/console.nix
+    ./common/yubikey.nix
     flakeProgramsSqlite.nixosModules.programs-sqlite
     inputs.lix-modules.nixosModules.default
     ./modules/greetd.nix
