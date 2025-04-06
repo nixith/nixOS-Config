@@ -2,7 +2,8 @@
 let
   usernamePath = "/var/lib/spotifyd/username";
   passwordPath = "/var/lib/spotifyd/password";
-in {
+in
+{
   sops.secrets."spotifyd/password" = {
     path = passwordPath;
     #  group = "spotifyd";
@@ -13,8 +14,10 @@ in {
     #  group = "spotifyd";
     #  mode = "0440";
   };
-  systemd.services.spotifyd.serviceConfig.LoadCredential =
-    [ "username:${usernamePath}" "password:${passwordPath}" ];
+  systemd.services.spotifyd.serviceConfig.LoadCredential = [
+    "username:${usernamePath}"
+    "password:${passwordPath}"
+  ];
 
   services.spotifyd = {
     enable = true;
@@ -47,4 +50,3 @@ in {
     };
   };
 }
-

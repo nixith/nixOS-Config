@@ -1,12 +1,24 @@
-{ inputs, nixpkgs, nixos-hardware, self, user, hyprland, home-manager, niri
-, flakeProgramsSqlite, ... }:
+{
+  inputs,
+  nixpkgs,
+  nixos-hardware,
+  self,
+  user,
+  hyprland,
+  home-manager,
+  niri,
+  flakeProgramsSqlite,
+  ...
+}:
 # This essentially extends the flake
 # do hostname - lib.nixosSystem {} to define a config Make a subfolder for each config
 # Build with nixos-rebuild --flake .#{configName} (I think)
 let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
-    config = { allowUnfree = true; };
+    config = {
+      allowUnfree = true;
+    };
     inherit system self inputs;
   };
 
@@ -18,17 +30,22 @@ let
     inputs.lix-modules.nixosModules.default
     ./modules/greetd.nix
     home-manager.nixosModules.default
-    ({ config, user, ... }:
+    (
+      { config, user, ... }:
       lib.mkIf config.home-manager.users.${user}.xdg.portal.enable {
-        environment.pathsToLink =
-          [ "/share/xdg-desktop-portal" "/share/applications" ];
-      })
+        environment.pathsToLink = [
+          "/share/xdg-desktop-portal"
+          "/share/applications"
+        ];
+      }
+    )
   ];
 
   overlays = [ inputs.nixivim.overlays.default ];
 
   inherit (nixpkgs) lib;
-in {
+in
+{
   laptop = nixpkgs.lib.nixosSystem {
     # Laptop profile
     inherit system;
@@ -48,8 +65,7 @@ in {
       ./modules/stylix.nix
       {
         nixpkgs.overlays = [ niri.overlays.niri ] ++ overlays;
-        environment.systemPackages =
-          [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
+        environment.systemPackages = [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
         programs.niri.enable = true;
       }
       # hyprland.nixosModules.default
@@ -70,14 +86,19 @@ in {
 
         home-manager.useGlobalPkgs = true;
         home-manager = {
-          users.${user} =
-            import ./laptop/home.nix { inherit self user pkgs inputs; };
+          users.${user} = import ./laptop/home.nix {
+            inherit
+              self
+              user
+              pkgs
+              inputs
+              ;
+          };
         };
       }
       {
         nixpkgs.overlays = [ niri.overlays.niri ] ++ overlays;
-        environment.systemPackages =
-          [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
+        environment.systemPackages = [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
         programs.niri.enable = true;
       }
       nixos-hardware.nixosModules.lenovo-thinkpad-l13
@@ -127,14 +148,19 @@ in {
 
         home-manager.useGlobalPkgs = true;
         home-manager = {
-          users.${user} =
-            import ./desktop/home.nix { inherit self user pkgs inputs; };
+          users.${user} = import ./desktop/home.nix {
+            inherit
+              self
+              user
+              pkgs
+              inputs
+              ;
+          };
         };
       }
       {
         nixpkgs.overlays = [ niri.overlays.niri ] ++ overlays;
-        environment.systemPackages =
-          [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
+        environment.systemPackages = [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
 
         programs.niri.enable = true;
       }

@@ -1,7 +1,11 @@
 { lib, config, ... }:
-let cfg = config.nixith.btop;
-in {
-  options = { nixith.btop.enable = lib.mkEnableOption "Enable cli items"; };
+let
+  cfg = config.nixith.btop;
+in
+{
+  options = {
+    nixith.btop.enable = lib.mkEnableOption "Enable cli items";
+  };
   config = lib.mkIf cfg.enable {
     programs.btop = {
       enable = true;

@@ -1,4 +1,9 @@
-{ user, self, inputs, ... }:
+{
+  user,
+  self,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -19,8 +24,12 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
-  home.sessionVariables = { EDITOR = "nvim"; };
-  programs.niri = { enable = true; };
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
+  programs.niri = {
+    enable = true;
+  };
 
   nixith = {
     neovim.enable = true;

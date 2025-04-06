@@ -1,8 +1,14 @@
-{ pkgs, monitors, HyprEnv, ... }:
+{
+  pkgs,
+  monitors,
+  HyprEnv,
+  ...
+}:
 let
   term = "foot";
-  # hyprlang
-in ''
+in
+# hyprlang
+''
     ${HyprEnv}
 
     exec= systemctl --user import-environment

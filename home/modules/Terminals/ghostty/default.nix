@@ -1,6 +1,8 @@
 { config, lib, ... }:
-let cfg = config.nixith.ghostty;
-in {
+let
+  cfg = config.nixith.ghostty;
+in
+{
   options = {
     nixith.ghostty.enable = lib.mkEnableOption "enable the foot terminal";
   };

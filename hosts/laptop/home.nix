@@ -1,4 +1,10 @@
-{ user, self, inputs, ... }: {
+{
+  user,
+  self,
+  inputs,
+  ...
+}:
+{
   imports = [
     ../../home/modules/modules.nix
     inputs.niri.homeModules.niri
@@ -18,9 +24,13 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
-  home.sessionVariables = { EDITOR = "nvim"; };
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
 
-  wayland.windowManager.river = { enable = true; };
+  wayland.windowManager.river = {
+    enable = true;
+  };
 
   nixith = {
     neovim.enable = true;

@@ -1,6 +1,8 @@
 { config, lib, ... }:
-let cfg = config.nixith.starship;
-in {
+let
+  cfg = config.nixith.starship;
+in
+{
   options = {
     nixith.starship.enable = lib.mkEnableOption "enable starship prompt";
   };
@@ -24,7 +26,9 @@ in {
           "$character"
         ];
 
-        directory = { style = "blue"; };
+        directory = {
+          style = "blue";
+        };
 
         character = {
           success_symbol = "[❯](purple)";
@@ -38,8 +42,7 @@ in {
         };
 
         git_status = {
-          format =
-            "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)";
+          format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)";
           style = "cyan";
           conflicted = "​";
           untracked = "​";

@@ -1,1 +1,6 @@
-{ config, ... }: { services.tlp = { enable = true; }; }
+{ config, ... }:
+{
+  services.tlp = {
+    enable = true;
+  };
+}

@@ -1,5 +1,11 @@
 hyprland:
-{ config, lib, pkgs, osConfig, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  osConfig,
+  ...
+}:
 let
 
   cfg = config.nixith.hyprland;
@@ -24,7 +30,8 @@ let
     env = GBM_BACKEND,nvidia-drm
     env = __GLX_VENDOR_LIBRARY_NAME,nvidia
   '';
-in {
+in
+{
   #imports = [ ../General/eww ];
   options.nixith.hyprland = {
     enable = lib.mkEnableOption "enable hyprland";
@@ -68,14 +75,18 @@ in {
       extraConfig = import ./config.nix {
         inherit pkgs;
         inherit (cfg) monitors;
-        HyprEnv =
-          lib.concatLines [ HyprEnv (lib.optionalString cfg.nvidia NvidiaEnv) ];
+        HyprEnv = lib.concatLines [
+          HyprEnv
+          (lib.optionalString cfg.nvidia NvidiaEnv)
+        ];
       };
       systemd = {
         enable = true;
         enableXdgAutostart = true;
       };
-      xwayland = { enable = true; };
+      xwayland = {
+        enable = true;
+      };
     };
     # secret management
 
@@ -180,15 +191,13 @@ in {
           listener = [
             {
               timeout = 180;
-              on-timeout =
-                "${pkgs.brillo}/bin/brillo -O && ${pkgs.brillo}/bin/brillo -S 20 -u 500000";
+              on-timeout = "${pkgs.brillo}/bin/brillo -O && ${pkgs.brillo}/bin/brillo -S 20 -u 500000";
               on-resume = "${pkgs.brillo}/bin/brillo -I -u 500000";
             }
-            (lib.mkIf
-              (builtins.isAttrs osConfig.security.pam.services.hyprlock) {
-                timeout = 300;
-                on-timeout = "loginctl lock-session";
-              })
+            (lib.mkIf (builtins.isAttrs osConfig.security.pam.services.hyprlock) {
+              timeout = 300;
+              on-timeout = "loginctl lock-session";
+            })
             {
               timeout = 360;
               on-timeout = "hyprctl dispatch dpms off";
@@ -208,25 +217,29 @@ in {
           no_fade_in = false;
         };
 
-        background = [{
-          path = "screenshot";
-          blur_passes = 3;
-          blur_size = 8;
-        }];
+        background = [
+          {
+            path = "screenshot";
+            blur_passes = 3;
+            blur_size = 8;
+          }
+        ];
 
-        input-field = [{
-          size = "200, 50";
-          position = "0, -80";
-          monitor = "";
-          dots_center = true;
-          fade_on_empty = false;
-          font_color = "rgb(202, 211, 245)";
-          inner_color = "rgb(91, 96, 120)";
-          outer_color = "rgb(24, 25, 38)";
-          outline_thickness = 5;
-          # placeholder_text = '\'Password...'\';
-          shadow_passes = 2;
-        }];
+        input-field = [
+          {
+            size = "200, 50";
+            position = "0, -80";
+            monitor = "";
+            dots_center = true;
+            fade_on_empty = false;
+            font_color = "rgb(202, 211, 245)";
+            inner_color = "rgb(91, 96, 120)";
+            outer_color = "rgb(24, 25, 38)";
+            outline_thickness = 5;
+            # placeholder_text = '\'Password...'\';
+            shadow_passes = 2;
+          }
+        ];
       };
     };
   };

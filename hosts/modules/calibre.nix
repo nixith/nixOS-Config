@@ -1,7 +1,10 @@
-{ config, ... }: {
+{ config, ... }:
+{
   services.calibre-web = {
     enable = true;
-    listen = { ip = "0.0.0.0"; };
+    listen = {
+      ip = "0.0.0.0";
+    };
     options = {
       calibreLibrary = /home/ryan/CalibreLibrary;
       enableKepubify = true;

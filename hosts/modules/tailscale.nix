@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
   services = {
     tailscale = {
       useRoutingFeatures = "both";

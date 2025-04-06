@@ -1,10 +1,19 @@
-{ pkgs, config, lib, ... }:
-let cfg = config.nixith.waybar;
-in {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+let
+  cfg = config.nixith.waybar;
+in
+{
 
   #imports = [ waybar.homeManagerModules.default ];
 
-  options.nixith.waybar = { enable = lib.mkEnableOption "enable waybar"; };
+  options.nixith.waybar = {
+    enable = lib.mkEnableOption "enable waybar";
+  };
   config = lib.mkIf cfg.enable {
     programs = {
       #cava.enable = true;
@@ -16,12 +25,20 @@ in {
             layer = "top";
             position = "top";
             height = 15;
-            output = [ "eDP-1" "HDMI-A-1" ];
+            output = [
+              "eDP-1"
+              "HDMI-A-1"
+            ];
             modules-left = [ "niri/workspaces" ];
             modules-center = [
-              #"mpris" 
+              #"mpris"
             ];
-            modules-right = [ "tray" "wireplumber" "battery" "clock" ];
+            modules-right = [
+              "tray"
+              "wireplumber"
+              "battery"
+              "clock"
+            ];
           };
         };
       };

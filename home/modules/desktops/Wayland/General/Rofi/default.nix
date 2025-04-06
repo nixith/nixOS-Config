@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [ oranchelo-icon-theme ];
   programs.rofi = {
     package = pkgs.rofi-wayland;
@@ -23,6 +24,9 @@
     theme = ./Themes/catppuccin-mocha.rasi;
     font = "JetBrains Mono";
 
-    plugins = with pkgs; [ rofi-calc rofimoji ];
+    plugins = with pkgs; [
+      rofi-calc
+      rofimoji
+    ];
   };
 }

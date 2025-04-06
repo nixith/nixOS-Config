@@ -1,6 +1,12 @@
-{ config, pkgs, ... }: {
-  environment.systemPackages =
-    [ pkgs.neovim pkgs.fish pkgs.git pkgs.tldr pkgs.curl ];
+{ config, pkgs, ... }:
+{
+  environment.systemPackages = [
+    pkgs.neovim
+    pkgs.fish
+    pkgs.git
+    pkgs.tldr
+    pkgs.curl
+  ];
 
   zramSwap = {
     enable = true;

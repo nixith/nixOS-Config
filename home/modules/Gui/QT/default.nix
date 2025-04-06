@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     qt6.qtwayland
     (catppuccin-kvantum.override {
@@ -10,7 +11,9 @@
     enable = true;
 
     #platformTheme.name = "";
-    style = { name = "kvantum"; };
+    style = {
+      name = "kvantum";
+    };
   };
 
   #  home.sessionVariables = {

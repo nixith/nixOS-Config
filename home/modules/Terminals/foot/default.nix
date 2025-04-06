@@ -5,7 +5,8 @@ let
     font = "LilexNerdFont";
     size = 10;
   };
-in {
+in
+{
   options = {
     nixith.foot.enable = lib.mkEnableOption "enable the foot terminal";
   };
@@ -17,7 +18,8 @@ in {
           shell = "fish";
           font = with termfont; "${font}:size=${builtins.toString size}";
         };
-        colors = { # catppuccin colors
+        colors = {
+          # catppuccin colors
           background = "1e1e2e";
           bright0 = "a6adc8";
           bright1 = "f38ba8";

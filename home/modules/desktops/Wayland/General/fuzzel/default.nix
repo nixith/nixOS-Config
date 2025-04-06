@@ -1,8 +1,17 @@
-{ pkgs, config, lib, ... }:
-let cfg = config.nixith.fuzzel;
-in {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+let
+  cfg = config.nixith.fuzzel;
+in
+{
 
-  options.nixith.fuzzel = { enable = lib.mkEnableOption "enable fuzzel"; };
+  options.nixith.fuzzel = {
+    enable = lib.mkEnableOption "enable fuzzel";
+  };
   config = lib.mkIf cfg.enable {
     programs.fuzzel = {
       enable = true;

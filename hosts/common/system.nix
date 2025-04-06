@@ -1,9 +1,15 @@
 # Edit this configuration file to define what should be installed oncon
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config, inputs, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 let
-in {
+in
+{
   # NTFS Support
   boot.supportedFilesystems = [ "ntfs" ];
 
@@ -32,7 +38,11 @@ in {
       extraConfig = ''
         ReadEtcHosts=yes
       '';
-      fallbackDns = [ "1.1.1.1" "1.0.0.1" "9.9.9.9" ];
+      fallbackDns = [
+        "1.1.1.1"
+        "1.0.0.1"
+        "9.9.9.9"
+      ];
     };
 
     fwupd.enable = true;
@@ -81,8 +91,14 @@ in {
 
       auto-optimise-store = true; # Optimise syslinks
       allow-import-from-derivation = true;
-      experimental-features = [ "nix-command" "flakes" ];
-      trusted-users = [ "root" "@wheel" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
     };
     gc = {
       automatic = true;

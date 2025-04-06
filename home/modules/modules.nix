@@ -7,13 +7,14 @@ let
   # inherit (inputs) nixivim;
   # inherit (inputs) stylix;
 
-  #nvim = import ./editors/neovim nixd;
-  # anyrun-module = import ./desktops/Wayland/General/anyrun;
-  # hyprland-wm = import ./desktops/Wayland/hyprland hyprland;
-  # niri-wm = import ./desktops/Wayland/niri niri;
-  # nvim = import ./editors/neovim;
-  # stylix-module = import ./services/stylix;
-in {
+in
+#nvim = import ./editors/neovim nixd;
+# anyrun-module = import ./desktops/Wayland/General/anyrun;
+# hyprland-wm = import ./desktops/Wayland/hyprland hyprland;
+# niri-wm = import ./desktops/Wayland/niri niri;
+# nvim = import ./editors/neovim;
+# stylix-module = import ./services/stylix;
+{
   imports = [
     ./CLI/Tools.nix
     #./editors/neovim

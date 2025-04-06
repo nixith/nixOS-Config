@@ -1,11 +1,24 @@
 # Vrious Useful CLI Tools
-{ config, lib, pkgs, ... }:
-let cfg = config.nixith.cli;
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.nixith.cli;
 
-in {
+in
+{
 
-  imports = [ ./btop ./zellij ./tmux ];
-  options = { nixith.cli.enable = lib.mkEnableOption "Enable cli tools"; };
+  imports = [
+    ./btop
+    ./zellij
+    ./tmux
+  ];
+  options = {
+    nixith.cli.enable = lib.mkEnableOption "Enable cli tools";
+  };
   config = lib.mkIf cfg.enable {
 
     programs = {
@@ -16,13 +29,11 @@ in {
         changeDirWidgetCommand = ''
           fd . --type d --follow --exclude '*.direnv/*'
         '';
-        changeDirWidgetOptions =
-          [ "--preview 'eza {} -F --icons --color=always -T -L 4'" ];
+        changeDirWidgetOptions = [ "--preview 'eza {} -F --icons --color=always -T -L 4'" ];
         fileWidgetCommand = ''
           fd . --type f --follow --exclude '*.direnv/*'
         '';
-        fileWidgetOptions =
-          [ "--preview 'bat {} --paging never --color always'" ];
+        fileWidgetOptions = [ "--preview 'bat {} --paging never --color always'" ];
 
         defaultCommand = ''
           fd . --type d --follow --exclude '*.direnv/*'
@@ -33,12 +44,17 @@ in {
 
       eza = {
         enable = true;
-        extraOptions = [ "-F" "--header" ];
+        extraOptions = [
+          "-F"
+          "--header"
+        ];
         icons = true;
         git = true;
       };
 
-      lazygit = { enable = true; };
+      lazygit = {
+        enable = true;
+      };
     };
 
     nixith.btop.enable = true;

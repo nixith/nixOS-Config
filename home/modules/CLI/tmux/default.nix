@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.tmux = {
     aggressiveResize = true;
     clock24 = true;
@@ -6,7 +7,10 @@
     mouse = true;
     keyMode = "vi";
     newSession = true;
-    plugins = with pkgs; [ tmuxPlugins.better-mouse-mode tmuxPlugins.tmux-fzf ];
+    plugins = with pkgs; [
+      tmuxPlugins.better-mouse-mode
+      tmuxPlugins.tmux-fzf
+    ];
     shortcut = "s";
     extraConfig = # tmux
       ''
@@ -19,12 +23,13 @@
         set -g status-interval 5
 
         set -g extended-keys on # ctrl and shift binds
-        set -g allow-passthrough all 
 
         #Control + Space keybind
         unbind C-Space
         set -g prefix C-Space
         bind C-Space send-prefix
+
+        set-window-option -g mode-keys vi
 
         # quick vertical split
         bind-key v split-window -h  #split is horizontal, window is vertical
@@ -32,7 +37,8 @@
         # quick horizontal split 
         bind-key h split-window -v
 
-        set-option -g allow-passthrough all
+        set -gq allow-passthrough on
+        set-option -g allow-passthrough on
       '';
   };
   programs.fzf.tmux.enableShellIntegration = true;

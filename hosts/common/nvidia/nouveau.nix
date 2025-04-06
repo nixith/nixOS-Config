@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   services.xserver.videoDrivers = [ "nouveau" ];
 
   environment.systemPackages = with pkgs; [ mesa ];

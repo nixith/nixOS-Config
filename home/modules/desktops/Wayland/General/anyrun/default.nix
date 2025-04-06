@@ -1,11 +1,20 @@
 anyrun:
-{ pkgs, config, lib, ... }:
-let cfg = config.nixith.anyrun;
-in {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+let
+  cfg = config.nixith.anyrun;
+in
+{
 
   imports = [ anyrun.homeManagerModules.default ];
 
-  options.nixith.anyrun = { enable = lib.mkEnableOption "enable anyrun"; };
+  options.nixith.anyrun = {
+    enable = lib.mkEnableOption "enable anyrun";
+  };
   config = lib.mkIf cfg.enable {
     programs.anyrun = {
       enable = true;
@@ -19,9 +28,15 @@ in {
           anyrun.packages.${pkgs.system}.translate
           anyrun.packages.${pkgs.system}.dictionary
         ];
-        width = { fraction = 0.4; };
-        x = { fraction = 0.5; };
-        y = { fraction = 5.0e-2; };
+        width = {
+          fraction = 0.4;
+        };
+        x = {
+          fraction = 0.5;
+        };
+        y = {
+          fraction = 5.0e-2;
+        };
         #position = "top";
         #verticalOffset = {absolute = 0;};
         hideIcons = false;

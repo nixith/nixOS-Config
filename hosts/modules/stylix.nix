@@ -1,9 +1,14 @@
-{ inputs, pkgs, lib, ... }: {
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
+{
   imports = [ inputs.stylix.nixosModules.stylix ];
   stylix = {
     image = ../../resources/wallpapers/everforest.webp;
-    base16Scheme =
-      "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
     enable = true;
     autoEnable = true;
     polarity = "dark";
@@ -21,7 +26,9 @@
       autoImport = true;
       followSystem = true;
     };
-    targets.qt = { platform = (lib.mkForce "gnome"); };
+    targets.qt = {
+      platform = (lib.mkForce "gnome");
+    };
   };
 
 }

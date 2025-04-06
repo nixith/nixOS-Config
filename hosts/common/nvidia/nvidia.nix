@@ -1,8 +1,12 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemory" ];
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl = {
-    extraPackages = with pkgs; [ nvidia-vaapi-driver libvdpau-va-gl ];
+    extraPackages = with pkgs; [
+      nvidia-vaapi-driver
+      libvdpau-va-gl
+    ];
   };
 
   hardware.nvidia-container-toolkit.enable = true;
@@ -13,5 +17,7 @@
     package = config.boot.kernelPackages.nvidia_x11_beta;
   };
 
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "nvidia"; };
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "nvidia";
+  };
 }

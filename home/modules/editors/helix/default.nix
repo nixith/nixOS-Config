@@ -1,11 +1,17 @@
-{ lib, pkgs, ... }: {
-  home.packages = with pkgs; [ nil nixpkgs-fmt ];
+{ lib, pkgs, ... }:
+{
+  home.packages = with pkgs; [
+    nil
+    nixpkgs-fmt
+  ];
   programs.helix = {
     enable = true;
     settings = {
       theme = "catppuccin_Transparent";
 
-      editor.lsp = { display-messages = true; };
+      editor.lsp = {
+        display-messages = true;
+      };
 
       editor = {
         line-number = "relative";
@@ -17,12 +23,13 @@
         normal = "block";
         select = "underline";
       };
-      editor.indent-guides = { render = true; };
+      editor.indent-guides = {
+        render = true;
+      };
     };
 
     themes = {
-      catppuccin_Transparent =
-        builtins.fromTOML (builtins.readFile ./themes/catppuccin_mocha.toml);
+      catppuccin_Transparent = builtins.fromTOML (builtins.readFile ./themes/catppuccin_mocha.toml);
     };
   };
 }

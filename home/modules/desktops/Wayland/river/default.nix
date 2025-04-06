@@ -1,6 +1,13 @@
-{ config, lib, pkgs, ... }:
-let cfg = config.nixith.river;
-in {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.nixith.river;
+in
+{
 
   imports = [
     #../General/eww

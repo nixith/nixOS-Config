@@ -1,7 +1,14 @@
 # nixivim:
-{ pkgs, lib, config, ... }:
-let cfg = config.nixith.neovim;
-in {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+let
+  cfg = config.nixith.neovim;
+in
+{
 
   options = {
     nixith.neovim.enable = lib.mkEnableOption "enable neovim config";

@@ -1,6 +1,13 @@
-{ config, lib, pkgs, ... }:
-let cfg = config.nixith.gui;
-in {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.nixith.gui;
+in
+{
 
   #TODO: Modularize gui components
   imports = [

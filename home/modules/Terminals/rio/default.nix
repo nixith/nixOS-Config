@@ -1,6 +1,13 @@
-{ config, lib, pkgs, ... }:
-let cfg = config.nixith.rio;
-in {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.nixith.rio;
+in
+{
   options = {
     nixith.rio.enable = lib.mkEnableOption "enable the rio terminal";
   };

@@ -1,6 +1,13 @@
-{ config, lib, pkgs, ... }:
-let cfg = config.nixith.kanshi;
-in {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.nixith.kanshi;
+in
+{
 
   options.nixith.kanshi = {
     enable = lib.mkEnableOption "enable kanshi";
@@ -24,7 +31,9 @@ in {
     services.kanshi = {
       enable = true;
       profiles = {
-        laptop = { outputs = [{ criteria = "eDP-1"; }]; };
+        laptop = {
+          outputs = [ { criteria = "eDP-1"; } ];
+        };
         wDock = {
 
           outputs = [

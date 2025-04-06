@@ -1,31 +1,48 @@
 # File that contains the defaults for graphical desktops
-{ config, pkgs, user, inputs, ... }:
+{
+  config,
+  pkgs,
+  user,
+  inputs,
+  ...
+}:
 let
   gamescopeEnv = {
     # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
-  gamescopeArgs = [ "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0" "-e" ];
-in {
+  gamescopeArgs = [
+    "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0"
+    "-e"
+  ];
+in
+{
   zramSwap.enable = true;
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   boot = {
-    extraModulePackages = with config.boot.kernelPackages;
-      [
-        v4l2loopback # OBS virtual camera
-      ];
+    extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback # OBS virtual camera
+    ];
     extraModprobeConfig = ''
       options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
     '';
     kernelModules = [ "nfs" ];
-    supportedFilesystems = { nfs = true; };
+    supportedFilesystems = {
+      nfs = true;
+    };
   };
   services.rpcbind.enable = true;
 
   programs.nix-ld = {
     enable = true;
-    libraries = (pkgs.steam.args.multiPkgs pkgs)
-      ++ (with pkgs; [ xorg.libxcb libxkbcommon wayland alsa-lib ]);
+    libraries =
+      (pkgs.steam.args.multiPkgs pkgs)
+      ++ (with pkgs; [
+        xorg.libxcb
+        libxkbcommon
+        wayland
+        alsa-lib
+      ]);
   };
   # programs.thunderbird.enable = true;
   programs.evolution.enable = true;
@@ -41,8 +58,9 @@ in {
     brillo
     nfs-utils
     # nix-ld
-    (lib.hiPrio (writeShellScriptBin "python3" ''
-      LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH exec -a $0 ${python3}/bin/python3 "$@"''))
+    (lib.hiPrio (
+      writeShellScriptBin "python3" ''LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH exec -a $0 ${python3}/bin/python3 "$@"''
+    ))
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
         wlrobs
@@ -127,7 +145,10 @@ in {
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  environment.shells = with pkgs; [ fish bash ];
+  environment.shells = with pkgs; [
+    fish
+    bash
+  ];
   programs.fish.enable = true;
 
   users.users.${user} = {
@@ -145,19 +166,30 @@ in {
       "seatd"
     ];
     # import modules
-    packages = with pkgs; [ glibc libredirect libdrm mesa ];
+    packages = with pkgs; [
+      glibc
+      libredirect
+      libdrm
+      mesa
+    ];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPLMtBjXvadChqa2pZIvJ6eHrkcYD87/skfl3Kjwg6dO alice@nixos"
     ];
   };
   programs.kdeconnect.enable = true;
-  services.udisks2 = { enable = true; };
+  services.udisks2 = {
+    enable = true;
+  };
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udev = {
     enable = true;
-    packages = [ pkgs.udisks2 pkgs.platformio pkgs.openocd ];
+    packages = [
+      pkgs.udisks2
+      pkgs.platformio
+      pkgs.openocd
+    ];
   };
 
   hardware.logitech = {
@@ -171,7 +203,9 @@ in {
     enable = true;
     enableRenice = true;
     settings = {
-      general = { renice = 10; };
+      general = {
+        renice = 10;
+      };
 
       # Warning: GPU optimisations have the potential to damage hardware
       gpu = {
@@ -185,14 +219,23 @@ in {
   # video acceleration
   hardware.opengl = {
     enable = true;
-    extraPackages = with pkgs; [ libvdpau-va-gl vaapiVdpau libvdpau ];
+    extraPackages = with pkgs; [
+      libvdpau-va-gl
+      vaapiVdpau
+      libvdpau
+    ];
   };
 
   # Install Fonts
   fonts = {
     enableDefaultPackages = true;
-    packages = with pkgs;
-      [ julia-mono corefonts ] ++ (with pkgs.nerd-fonts; [
+    packages =
+      with pkgs;
+      [
+        julia-mono
+        corefonts
+      ]
+      ++ (with pkgs.nerd-fonts; [
         fira-code
         jetbrains-mono
         iosevka
