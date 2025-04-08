@@ -30,8 +30,9 @@ jobs:
       matrix:
       system: [desktop, laptop]
     steps:
+
+    - run: echo  ${{ format(.#nixosConfigurations.{0}.config.system.build.toplevel --accept-flake-config, matrix.system) }}
     - name: nix conf
-      run: echo  ${{ format(.#nixosConfigurations.{0}.config.system.build.toplevel --accept-flake-config, matrix.system) }}
       run: |
         echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
         echo "extra-experimental-features = nix-command flakes" >> /etc/nix/nix.conf
