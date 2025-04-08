@@ -29,8 +29,8 @@ jobs:
     strategy: 
       matrix:
       system:
-        - desktop
-        - laptop
+        - name: desktop
+        - name: laptop
     steps:
 
     - name: nix conf
@@ -48,8 +48,7 @@ jobs:
         nix profile install nixpkgs#attic-client
         attic login wonderland http://cache.wonderland:8080 ${{ secrets.ATTIC_KEY }}
         attic use server
-
     - run: |
-        nix build .#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel --accept-flake-config
+        nix build .#nixosConfigurations.${{ matrix.system.name }}.config.system.build.toplevel --accept-flake-config
     - run: |
         attic push server ./result
