@@ -550,15 +550,15 @@
       "locked": {
         "lastModified": 1743975084,
         "narHash": "sha256-G0sT3Rv6M7C4z+98vHQ2WW0PlpzEYn0Q0PAFM2t5Kuk=",
-        "ref": "refs/heads/main",
+        "owner": "nixith",
+        "repo": "nixivim",
         "rev": "c7788c2691d638560b26fd819f2f5d903ec2979e",
-        "revCount": 45,
-        "type": "git",
-        "url": "ssh://git@github.com/nixith/nixivim.git"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/nixith/nixivim.git"
+        "owner": "nixith",
+        "repo": "nixivim",
+        "type": "github"
       }
     },
     "nixlib": {

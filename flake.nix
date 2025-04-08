@@ -44,7 +44,7 @@
     };
     stylix.url = "github:danth/stylix";
     nixivim = {
-      url = "git+ssh://git@github.com/nixith/nixivim.git";
+      url = "github:nixith/nixivim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
