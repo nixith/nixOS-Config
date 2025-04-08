@@ -38,8 +38,6 @@ jobs:
       run: |
           nix profile install nixpkgs#nodejs_20
     - uses: https://code.forgejo.org/actions/checkout@v4
-      with:
-        ssh-key: ${{ secrets.GH_SSH_KEY }}
 
     # setup ssh key
     - name: attic setup
