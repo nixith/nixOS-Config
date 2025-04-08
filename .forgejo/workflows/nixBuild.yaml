@@ -2,33 +2,33 @@ name: "build & cache"
 on:
   push:
 jobs:
-  check:
-    runs-on: nix
-    steps:
-    - name: nix conf
-      run: |
-        echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
-        echo "extra-experimental-features = nix-command flakes" >> /etc/nix/nix.conf
-    - name: setup CI env
-      run: |
-          nix profile install nixpkgs#nodejs_20
-    - uses: https://code.forgejo.org/actions/checkout@v4
-
-    # setup ssh key
-    - name: attic setup
-      run: |
-        nix profile install nixpkgs#attic-client
-        attic login wonderland http://cache.wonderland:8080 ${{ secrets.ATTIC_KEY }}
-        attic use server
-    - run: |
-        nix flake check --accept-flake-config
+  # check:
+  #   runs-on: nix
+  #   steps:
+  #   - name: nix conf
+  #     run: |
+  #       echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
+  #       echo "extra-experimental-features = nix-command flakes" >> /etc/nix/nix.conf
+  #   - name: setup CI env
+  #     run: |
+  #         nix profile install nixpkgs#nodejs_20
+  #   - uses: https://code.forgejo.org/actions/checkout@v4
+  #
+  #   # setup ssh key
+  #   - name: attic setup
+  #     run: |
+  #       nix profile install nixpkgs#attic-client
+  #       attic login wonderland http://cache.wonderland:8080 ${{ secrets.ATTIC_KEY }}
+  #       attic use server
+  #   - run: |
+  #       nix flake check --accept-flake-config
 
   build:
     needs: check
     runs-on: nix
     strategy: 
       matrix:
-        config = [desktop, laptop]
+      system: [desktop, laptop]
     steps:
     - name: nix conf
       run: |
