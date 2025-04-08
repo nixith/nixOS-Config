@@ -31,6 +31,7 @@ jobs:
       system: [desktop, laptop]
     steps:
     - name: nix conf
+      run: echo  ${{ format(.#nixosConfigurations.{0}.config.system.build.toplevel --accept-flake-config, matrix.system) }}
       run: |
         echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
         echo "extra-experimental-features = nix-command flakes" >> /etc/nix/nix.conf
@@ -47,6 +48,8 @@ jobs:
         attic use server
 
     - run: |
-        nix build .#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel --accept-flake-config
+        format( string, replaceValue0, replaceValue1, ..., replaceValueN)
+        # nix build .#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel --accept-flake-config
+        nix build ${{ format(.#nixosConfigurations.{0}.config.system.build.toplevel --accept-flake-config, matrix.system) }}
     - run: |
         attic push server ./result
