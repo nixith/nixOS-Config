@@ -47,6 +47,6 @@ jobs:
         attic use server
 
     - run: |
-        nix build .#nixosConfigurations.${{ matrix.config }}.config.system.build.toplevel --accept-flake-config
+        nix build .#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel --accept-flake-config
     - run: |
         attic push server ./result
