@@ -24,7 +24,7 @@ jobs:
   #       nix flake check --accept-flake-config
 
   build:
-    needs: check
+    # needs: check
     runs-on: nix
     strategy: 
       matrix:
