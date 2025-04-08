@@ -4,7 +4,6 @@
   nixos-hardware,
   self,
   user,
-  hyprland,
   home-manager,
   niri,
   flakeProgramsSqlite,
