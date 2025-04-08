@@ -28,9 +28,9 @@ jobs:
     runs-on: nix
     strategy: 
       matrix:
-      system:
-        - name: desktop
-        - name: laptop
+        system:
+          - name: desktop
+          - name: laptop
     steps:
 
     - name: nix conf
