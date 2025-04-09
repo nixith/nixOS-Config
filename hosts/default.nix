@@ -26,7 +26,7 @@ let
     ./modules/console.nix
     ./common/yubikey.nix
     flakeProgramsSqlite.nixosModules.programs-sqlite
-    inputs.lix-modules.nixosModules.lixFromNixpkgs
+    inputs.lix-modules.nixosModules.default
     ./modules/greetd.nix
     home-manager.nixosModules.default
     (
