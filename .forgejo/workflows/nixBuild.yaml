@@ -20,7 +20,8 @@ jobs:
         nix profile install nixpkgs#attic-client
         attic login wonderland http://cache.wonderland:8080 ${{ secrets.ATTIC_KEY }}
         attic use server
-        attic watch-store server &
+        attic watch-store server >> $GITHUB_OUTPUT &
+        echo "store watched!" >> $GITHUB_OUTPUT
     - run: |
         nix flake check --accept-flake-config
 
@@ -50,6 +51,8 @@ jobs:
         nix profile install nixpkgs#attic-client
         attic login wonderland http://cache.wonderland:8080 ${{ secrets.ATTIC_KEY }}
         attic use server
+        attic watch-store server >> $GITHUB_OUTPUT &
+        echo "store watched!" >> $GITHUB_OUTPUT
     - run: |
         nix build .#nixosConfigurations.${{ matrix.system.name }}.config.system.build.toplevel --accept-flake-config
     - run: |
