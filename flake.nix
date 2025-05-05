@@ -77,17 +77,16 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      nixos-hardware,
-      niri,
-      nixos-generators,
-      flakeProgramsSqlite,
-      stylix,
-      lix-modules,
-      ...
+    { self
+    , nixpkgs
+    , home-manager
+    , nixos-hardware
+    , niri
+    , nixos-generators
+    , flakeProgramsSqlite
+    , stylix
+    , lix-modules
+    , ...
     }@inputs:
     let
       system = "x86_64-linux";

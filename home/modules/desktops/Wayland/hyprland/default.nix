@@ -1,10 +1,9 @@
 hyprland:
-{
-  config,
-  lib,
-  pkgs,
-  osConfig,
-  ...
+{ config
+, lib
+, pkgs
+, osConfig
+, ...
 }:
 let
 

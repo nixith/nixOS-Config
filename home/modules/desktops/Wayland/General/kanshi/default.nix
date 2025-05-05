@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 let
   cfg = config.nixith.kanshi;
@@ -32,7 +31,7 @@ in
       enable = true;
       profiles = {
         laptop = {
-          outputs = [ { criteria = "eDP-1"; } ];
+          outputs = [{ criteria = "eDP-1"; }];
         };
         wDock = {
 

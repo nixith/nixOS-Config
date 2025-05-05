@@ -1,9 +1,8 @@
 # niri:
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 let
   cfg = config.nixith.niri;
@@ -594,7 +593,7 @@ in
         }
       ];
 
-      spawn-at-startup = [ { command = [ "xwayland-satellite" ]; } ];
+      spawn-at-startup = [{ command = [ "xwayland-satellite" ]; }];
     };
     programs.niri = {
       enable = true;

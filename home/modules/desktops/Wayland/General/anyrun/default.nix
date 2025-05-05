@@ -1,9 +1,8 @@
 anyrun:
-{
-  pkgs,
-  config,
-  lib,
-  ...
+{ pkgs
+, config
+, lib
+, ...
 }:
 let
   cfg = config.nixith.anyrun;

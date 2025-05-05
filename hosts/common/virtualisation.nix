@@ -1,8 +1,7 @@
-{
-  pkgs,
-  user,
-  config,
-  ...
+{ pkgs
+, user
+, config
+, ...
 }:
 let
   isNvidia = pkgs.lib.any (driver: driver == "nvidia") config.services.xserver.videoDrivers;

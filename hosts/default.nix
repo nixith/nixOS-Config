@@ -1,13 +1,12 @@
-{
-  inputs,
-  nixpkgs,
-  nixos-hardware,
-  self,
-  user,
-  home-manager,
-  niri,
-  flakeProgramsSqlite,
-  ...
+{ inputs
+, nixpkgs
+, nixos-hardware
+, self
+, user
+, home-manager
+, niri
+, flakeProgramsSqlite
+, ...
 }:
 # This essentially extends the flake
 # do hostname - lib.nixosSystem {} to define a config Make a subfolder for each config

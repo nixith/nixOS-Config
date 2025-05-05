@@ -1,8 +1,7 @@
-{
-  pkgs,
-  monitors,
-  HyprEnv,
-  ...
+{ pkgs
+, monitors
+, HyprEnv
+, ...
 }:
 let
   term = "foot";

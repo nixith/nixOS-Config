@@ -9,8 +9,6 @@
     ];
     package = pkgs.firefox;
     #TODO: make declarative profile
-    profiles."test" = {
-
-    };
+    profiles."test" = { };
   };
 }
