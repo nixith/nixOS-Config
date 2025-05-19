@@ -46,8 +46,8 @@ in
             {
               #criteria = "Dell Inc. DELL P2312H XTK9N275GLYL";
               criteria = "HDMI-A-1";
-              transform = "90";
-              position = "2970,0";
+              transform = "normal";
+              position = "2970,300";
             }
             {
               criteria = "DP-1";
