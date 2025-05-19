@@ -1,9 +1,10 @@
 # File that contains the defaults for graphical desktops
-{ config
-, pkgs
-, user
-, inputs
-, ...
+{
+  config,
+  pkgs,
+  user,
+  inputs,
+  ...
 }:
 let
   gamescopeEnv = {

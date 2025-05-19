@@ -1,8 +1,9 @@
 # Vrious Useful CLI Tools
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 let
   cfg = config.nixith.cli;

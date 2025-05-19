@@ -1,7 +1,8 @@
-{ user
-, self
-, inputs
-, ...
+{
+  user,
+  self,
+  inputs,
+  ...
 }:
 
 {

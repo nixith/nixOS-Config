@@ -77,16 +77,17 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , home-manager
-    , nixos-hardware
-    , niri
-    , nixos-generators
-    , flakeProgramsSqlite
-    , stylix
-    , lix-modules
-    , ...
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      nixos-hardware,
+      niri,
+      nixos-generators,
+      flakeProgramsSqlite,
+      stylix,
+      lix-modules,
+      ...
     }@inputs:
     let
       system = "x86_64-linux";
@@ -108,7 +109,7 @@
 
     in
     {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
       nixosConfigurations = import ./hosts {
         inherit (nixpkgs) lib;
         inherit

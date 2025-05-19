@@ -1,9 +1,10 @@
-{ config
-, lib
-, pkgs
-, user
-, inputs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  user,
+  inputs,
+  ...
 }:
 {
   # home.pointerCursor = let pkg = pkgs.catppuccin-cursors.mochaDark;
