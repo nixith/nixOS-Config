@@ -70,6 +70,8 @@
       url = "github:NixOS/nixos-hardware/master";
     };
 
+    nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
+
     nixd = {
       url = "github:nix-community/nixd";
     };

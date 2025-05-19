@@ -117,6 +117,8 @@ in
 
     modules = [
       ./desktop
+      inputs.nixos-facter-modules.nixosModules.facter
+      { config.facter.reportPath = ./desktop/facter.json; }
 
       ./modules/firefox.nix
       # ./common/kmscon.nix # alternate tty, need to figure out how to turn off gpu so wayland can take it

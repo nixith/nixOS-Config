@@ -56,7 +56,7 @@ in
       mumble
       gajim
 
-      feishin
+      # feishin
 
       # Productivity
       libreoffice

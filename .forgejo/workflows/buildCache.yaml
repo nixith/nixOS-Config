@@ -1,0 +1,14 @@
+name: "build & cache"
+on:
+  push:
+jobs:
+  tests:
+    runs-on: docker
+    steps:
+    - uses: actions/checkout@v4
+    - uses: cachix/install-nix-action@v31
+      # with:
+      #   github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      #
+    - run: nix flake check
+    - run: nix build
