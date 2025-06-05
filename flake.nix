@@ -8,6 +8,7 @@
     trusted-users = [
       "root"
       "@wheel"
+      "nixos"
       "alice"
     ];
     builders-use-substitutes = true;
@@ -54,6 +55,7 @@
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     flakeProgramsSqlite = {
       url = "github:wamserma/flake-programs-sqlite";
       inputs.nixpkgs.follows = "nixpkgs";
