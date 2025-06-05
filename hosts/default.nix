@@ -112,6 +112,49 @@ in
     ] ++ common;
     specialArgs = { inherit inputs user self; };
   };
+
+  wsl = nixpkgs.lib.nixosSystem {
+    # Laptop profile
+    inherit system;
+
+    modules = [
+
+      inputs.nixos-wsl.nixosModules.default
+      {
+        wsl = {
+          enable = true;
+          defaultUser = "${user}";
+          #wslConf.user.default = "${user}";
+          # defautUser = "${user}";
+          startMenuLaunchers = true;
+        };
+      }
+      ./wsl
+      ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
+      ./common/security.nix
+      ./common/virtualisation.nix
+      ./modules/stylix.nix
+
+      {
+        nixpkgs.overlays = overlays;
+        home-manager.backupFileExtension = "backup";
+
+        home-manager.useGlobalPkgs = true;
+        home-manager = {
+          users.${user} = import ./wsl/home.nix {
+            inherit
+              self
+              user
+              pkgs
+              inputs
+              ;
+          };
+        };
+      }
+
+    ] ++ common;
+    specialArgs = { inherit inputs user self; };
+  };
   desktop = nixpkgs.lib.nixosSystem {
     # Desktop profile
     inherit system;
