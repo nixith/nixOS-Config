@@ -63,6 +63,8 @@ in
       coreutils-full
       gh
       git
+      jujutsu
+      jjui
       #  Archive Tools
       unzip
       gzip

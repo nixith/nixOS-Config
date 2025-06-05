@@ -194,6 +194,9 @@ in
         "Mod+L" = {
           action.focus-column-or-monitor-right = { };
         };
+        # "Mod+Shift+W" = {
+        #   action.toggle-column-tabbed-display = { };
+        # };
         "Mod+V" = {
           action.toggle-window-floating = { };
         };
@@ -214,6 +217,11 @@ in
         "Mod+Ctrl+L" = {
           action.move-column-right-or-to-monitor-right = { };
         };
+
+        # "Mod+O" = {
+        #   action.toggle-overview = { };
+        #   repeat = false;
+        # };
 
         "Mod+Home" = {
           action.focus-column-first = { };

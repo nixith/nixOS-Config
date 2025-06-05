@@ -1,6 +1,7 @@
 {
   description = "nixith's nix config";
   nixConfig = {
+    lazy-trees = true;
     # allow building without passing flags on first run
     extra-experimental-features = "nix-command flakes";
     # Add me to trusted users
@@ -47,9 +48,10 @@
       url = "github:nixith/nixivim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
     lix-modules = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-3.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flakeProgramsSqlite = {
@@ -70,6 +72,8 @@
       url = "github:NixOS/nixos-hardware/master";
     };
 
+    nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
+
     nixd = {
       url = "github:nix-community/nixd";
     };
@@ -87,6 +91,7 @@
       flakeProgramsSqlite,
       stylix,
       lix-modules,
+      # determinate,
       ...
     }@inputs:
     let
