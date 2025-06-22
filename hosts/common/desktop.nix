@@ -112,7 +112,7 @@ in
       #inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
       #pkgs.xdg-desktop-portal
       #inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal-gtk
+      # pkgs.xdg-desktop-portal-gtk
     ];
     #config.common.default = "*";
   };

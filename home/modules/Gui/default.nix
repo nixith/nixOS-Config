@@ -39,14 +39,14 @@ in
       # }))
       grimblast
       #lib.cmakeBool
-      carla
+      # carla
       signal-desktop
       csa
       calf
       rnnoise-plugin # Denoiser plugin
       pwvucontrol
       #pwvucontrol
-      gimp
+      gimp3
       playerctl
       # bluetooth
       bluez

@@ -72,7 +72,7 @@ in
           tap-button-map = "left-right-middle";
 
         };
-        warp-mouse-to-focus = true;
+        warp-mouse-to-focus.enable = true;
         focus-follows-mouse = {
           enable = true;
           max-scroll-amount = "0%";

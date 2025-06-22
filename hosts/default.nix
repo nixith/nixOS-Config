@@ -6,7 +6,7 @@
   user,
   home-manager,
   niri,
-  flakeProgramsSqlite,
+  # flakeProgramsSqlite,
   ...
 }:
 # This essentially extends the flake
@@ -25,10 +25,14 @@ let
     inputs.sops-nix.nixosModules.sops
     ./modules/console.nix
     ./common/yubikey.nix
-    flakeProgramsSqlite.nixosModules.programs-sqlite
+    # flakeProgramsSqlite.nixosModules.programs-sqlite
     inputs.lix-modules.nixosModules.default
     # inputs.determinate.nixosModules.default
     ./modules/greetd.nix
+    inputs.nix-index-database.nixosModules.nix-index
+    {
+      programs.nix-index-database.comma.enable = true;
+    }
     home-manager.nixosModules.default
     (
       { config, user, ... }:
