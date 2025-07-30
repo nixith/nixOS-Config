@@ -18,6 +18,11 @@ in
       type = lib.types.str;
       description = "niri config (make into nix config eventually)";
     };
+    extraConfig = lib.mkOption {
+      type = lib.types.attrs;
+      description = "extra config for niri to use";
+      default = { };
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -56,7 +61,7 @@ in
       playerctl
     ];
 
-    programs.niri.settings = {
+    programs.niri.settings = lib.recursiveUpdate {
       prefer-no-csd = true;
       environment = {
         QT_QPA_PLATFORM = "wayland";
@@ -603,7 +608,7 @@ in
       ];
 
       spawn-at-startup = [ { command = [ "xwayland-satellite" ]; } ];
-    };
+    } cfg.extraConfig;
     programs.niri = {
       enable = true;
       package = pkgs.niri-unstable;

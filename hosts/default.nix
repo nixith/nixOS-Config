@@ -100,14 +100,19 @@ in
           };
         };
       }
+      inputs.disko.nixosModules.disko
+      ./laptop/disko.nix
+
       {
         nixpkgs.overlays = [ niri.overlays.niri ] ++ overlays;
         environment.systemPackages = [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
         programs.niri.enable = true;
       }
-      nixos-hardware.nixosModules.lenovo-thinkpad-l13
+      nixos-hardware.nixosModules.framework-12th-gen-intel
       {
-        hardware.intelgpu.driver = "xe";
+        hardware.fw-fanctrl = {
+          enable = true;
+        };
       }
       # {
       #   programs.river.enable = true;

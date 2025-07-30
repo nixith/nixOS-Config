@@ -40,6 +40,12 @@
     niri = {
       enable = true;
       config = builtins.readFile ./config.kdl;
+      extraConfig = {
+        debug = {
+          wait-for-frame-completion-in-pipewire = { };
+        };
+      };
+
     };
     # anyrun.enable = true;
     # syncthing.enable = true;

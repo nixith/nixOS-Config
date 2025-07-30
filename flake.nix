@@ -55,7 +55,7 @@
     # determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
     lix-modules = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # flakeProgramsSqlite = {
@@ -80,6 +80,11 @@
 
     nixd = {
       url = "github:nix-community/nixd";
+    };
+
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
