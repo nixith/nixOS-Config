@@ -102,7 +102,6 @@ in
       }
       inputs.disko.nixosModules.disko
       ./laptop/disko.nix
-
       {
         nixpkgs.overlays = [ niri.overlays.niri ] ++ overlays;
         environment.systemPackages = [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
