@@ -175,7 +175,9 @@ in
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPLMtBjXvadChqa2pZIvJ6eHrkcYD87/skfl3Kjwg6dO alice@nixos"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID1YGb985IWR5Uxo0MwIJs7rotfzoxPIU3nEkvbWTvwd alice@Galaxia"
     ];
+    initialHashedPassword = "$y$j9T$PGjrMJ47Gj.rrnnnVGVoo/$.OtWSlist49peozshBgE/vUpokA6t5j.VLPXGtgOvCC";
   };
   programs.kdeconnect.enable = true;
   services.udisks2 = {
@@ -187,7 +189,6 @@ in
     enable = true;
     packages = [
       pkgs.udisks2
-      pkgs.platformio
       pkgs.openocd
     ];
   };

@@ -118,7 +118,8 @@ in
       #   programs.river.enable = true;
       #   environment.systemPackages = with pkgs; [ rivercarro ];
       # }
-    ] ++ common;
+    ]
+    ++ common;
     specialArgs = { inherit inputs user self; };
   };
   desktop = nixpkgs.lib.nixosSystem {
@@ -176,7 +177,8 @@ in
         programs.niri.enable = true;
       }
       #nixos-hardware.nixosModules.lenovo-thinkpad-l13
-    ] ++ common;
+    ]
+    ++ common;
     specialArgs = { inherit inputs user; };
   };
 }

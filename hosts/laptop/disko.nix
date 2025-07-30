@@ -29,10 +29,6 @@
                 content = {
                   type = "luks";
                   name = "crypted";
-                  postCreateHook = # TODO: look into tpm2 enrollment
-                    ''
-                      systemd-cryptenroll --fido2-device=auto ${dev}
-                    '';
                   # disable settings.keyFile if you want to use interactive password entry
                   passwordFile = "/tmp/secret.key"; # Interactive
                   settings = {
