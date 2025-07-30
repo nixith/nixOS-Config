@@ -28,7 +28,7 @@
                 size = "100%";
                 content = {
                   type = "luks";
-                  name = "crypted ";
+                  name = "crypted";
                   postCreateHook = # TODO: look into tpm2 enrollment
                     ''
                       systemd-cryptenroll --fido2-device=auto ${dev}
