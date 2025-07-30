@@ -38,8 +38,9 @@ in
     nixith.kanshi.enable = true;
     nixith.waybar.enable = true;
     nixith.fuzzel.enable = true;
-    services.gnome-keyring = {
-      enable = true;
+    services = {
+      gnome-keyring.enable = true;
+      polkit-gnome.enable = true;
     };
     xdg.portal = {
       enable = true;

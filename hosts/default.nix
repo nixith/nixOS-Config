@@ -62,7 +62,7 @@ in
       #./modules/calibre.nix
       ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
       ./common/desktop.nix # Default for graphical desktops
-      ./common/tlp.nix
+      # ./common/tlp.nix
       ./common/secrets.nix
       ./common/security.nix
       ./common/virtualisation.nix

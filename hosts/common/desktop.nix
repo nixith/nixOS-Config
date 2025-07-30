@@ -247,4 +247,14 @@ in
         monofur
       ]);
   };
+
+  services.systemd-lock-handler.enable = true;
+  programs.gtklock = {
+    enable = true;
+    modules = with pkgs; [
+      gtklock-playerctl-module
+      gtklock-powerbar-module
+      gtklock-userinfo-module
+    ];
+  };
 }
