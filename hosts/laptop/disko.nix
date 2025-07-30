@@ -43,6 +43,10 @@
                       mountpoint = "/";
                       mountOptions = [ "compress=zstd" ];
                     };
+                    "/home" = {
+                      mountpoint = "/";
+                      mountOptions = [ "compress=zstd" ];
+                    };
                     "/nix" = {
                       mountpoint = "/nix";
                       mountOptions = [
