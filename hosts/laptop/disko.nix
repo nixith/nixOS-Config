@@ -1,4 +1,5 @@
 {
+  boot.initrd.systemd.enable = true;
   disko.devices = {
     disk = {
       main =
@@ -33,6 +34,10 @@
                   passwordFile = "/tmp/secret.key"; # Interactive
                   settings = {
                     allowDiscards = true;
+                    crypttabExtraOpts = [
+                      "fido2-device=auto"
+                      "token-timeout=10"
+                    ];
                     #keyFile = "/tmp/secret.key";
                   };
                   #additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
