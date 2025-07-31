@@ -34,6 +34,7 @@ in
     ./desktops/Wayland/General/fuzzel
     ./desktops/Wayland/General/swayOSD
     ./desktops/Wayland/General/swayidle
+    ./desktops/Wayland/General/swaync
     # hyprland-wm
     # niri-wm
     ./desktops/Wayland/niri

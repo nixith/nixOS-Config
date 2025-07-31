@@ -10,8 +10,6 @@ let
 in
 {
 
-  imports = [ ../General/mako ];
-
   options.nixith.niri = {
     enable = lib.mkEnableOption "enable niri";
     config = lib.mkOption {
@@ -34,12 +32,15 @@ in
     #     icons.enable = true;
     #   };
     #   security.pam.services.swaylock = { };
+    #
     # };
     nixith.kanshi.enable = true;
     nixith.waybar.enable = true;
     nixith.fuzzel.enable = true;
     nixith.swayosd.enable = true;
     nixith.swayidle.enable = true;
+    nixith.swaync.enable = true;
+
     services = {
       gnome-keyring.enable = true;
       polkit-gnome.enable = true;
@@ -639,6 +640,24 @@ in
           };
           "Mod+Return" = {
             action.spawn = [ "ghostty" ];
+          };
+          "Mod+N" = lib.mkIf config.services.swaync.enable {
+            action.spawn = [
+              "${lib.getExe' config.services.swaync.package "swaync-client"}"
+              "-t"
+            ]; # toggle tray
+          };
+          "Mod+Shift+N" = lib.mkIf config.services.swaync.enable {
+            action.spawn = [
+              "${lib.getExe' config.services.swaync.package "swaync-client"}"
+              "-d"
+            ]; # toggle do-not-disturb
+          };
+          "Mod+Ctrl+N" = lib.mkIf config.services.swaync.enable {
+            action.spawn = [
+              "${lib.getExe' config.services.swaync.package "swaync-client"}"
+              "--hide-latest"
+            ]; # toggle do-not-disturb
           };
         };
 
