@@ -31,7 +31,7 @@ in
         {
           #TODO: figure out screen dimming earlier
           timeout = 560;
-          command = "${lib.getExe pkgs.systemd "systemctl"} suspend";
+          command = "${lib.getExe' pkgs.systemd "systemctl"} suspend";
         }
       ];
     };
