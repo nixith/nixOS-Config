@@ -36,6 +36,7 @@
     neovim.enable = true;
     gui.enable = true;
     cli.enable = true;
+    mpv.enable = true;
     fish.enable = true;
     starship.enable = true;
     # syncthing.enable = true;

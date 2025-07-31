@@ -64,7 +64,6 @@ in
 
       # Media
 
-      mpv
       imv
     ];
 

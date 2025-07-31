@@ -22,6 +22,7 @@ in
     # nvim
     ./editors/neovim
     ./Gui/default.nix
+    ./Gui/mpv
     ./shells/Fish
     ./services/syncthing
     ./shells/shellApps/Starship
