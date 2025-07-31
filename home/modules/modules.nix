@@ -32,6 +32,7 @@ in
     ./desktops/Wayland/General/kanshi
     ./desktops/Wayland/General/Waybar
     ./desktops/Wayland/General/fuzzel
+    ./desktops/Wayland/General/swayidle
     # hyprland-wm
     # niri-wm
     ./desktops/Wayland/niri

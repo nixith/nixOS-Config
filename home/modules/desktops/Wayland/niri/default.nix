@@ -38,6 +38,7 @@ in
     nixith.kanshi.enable = true;
     nixith.waybar.enable = true;
     nixith.fuzzel.enable = true;
+    nixith.swayidle.enable = true;
     services = {
       gnome-keyring.enable = true;
       polkit-gnome.enable = true;
