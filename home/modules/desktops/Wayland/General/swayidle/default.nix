@@ -20,7 +20,7 @@ in
         {
           # lock whenever we sleep
           event = "before-sleep";
-          command = "loginctl lock-session";
+          command = "${lib.getExe' pkgs.systemd "loginctl"} lock-session";
         }
         {
           event = "lock";
