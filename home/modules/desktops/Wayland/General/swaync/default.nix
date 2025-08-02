@@ -27,16 +27,14 @@ in
       };
     };
 
-    xdg.portal = {
-      config = {
-        common = {
-          screencast = [
-            ''exec_before=${lib.getExe config.services.swaync.package} --inhibitor-add "xdg-desktop-portal-screenshare"''
-            ''exec_after=${lib.getExe config.services.swaync.package} --inhibitor-remove "xdg-desktop-portal-screenshare"''
-          ];
-        };
-      };
-    };
+    # xdg.portal = {
+    #   config = {
+    #     "screencast" = {
+    #       exec_before = ''${lib.getExe' config.services.swaync.package "swaync-client"} --inhibitor-add "xdg-desktop-portal-screenshare"'';
+    #       exec_after = ''${lib.getExe' config.services.swaync.package "swaync-client"} --inhibitor-remove "xdg-desktop-portal-screenshare"'';
+    #     };
+    #   };
+    # };
   };
 
 }
