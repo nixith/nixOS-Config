@@ -707,6 +707,13 @@ in
           }
         ];
 
+        layer-rules = [
+          {
+            matches = [ { namespace = "^notifications$"; } ];
+            block-out-from = "screen-capture";
+          }
+        ];
+
         spawn-at-startup = [ { command = [ "xwayland-satellite" ]; } ];
       } cfg.extraConfig;
     programs.niri = {

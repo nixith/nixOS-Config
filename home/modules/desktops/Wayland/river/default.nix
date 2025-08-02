@@ -11,7 +11,6 @@ in
 
   imports = [
     #../General/eww
-    ../General/mako
   ];
 
   options.nixith.river = {
