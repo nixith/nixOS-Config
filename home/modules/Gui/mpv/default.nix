@@ -22,6 +22,14 @@ in
         sponsorblock
         quality-menu
       ];
+      config = {
+        hwdec = "auto-safe";
+        vo = "gpu";
+        profile = "gpu-hq";
+        gpu-context = "wayland";
+        ytdl-format = "bestvideo+bestaudio";
+        cache-default = 4000000;
+      };
     };
   };
 
