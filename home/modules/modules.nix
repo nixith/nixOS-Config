@@ -36,10 +36,12 @@ in
     ./desktops/Wayland/General/swayOSD
     ./desktops/Wayland/General/swayidle
     ./desktops/Wayland/General/swaync
+    ./desktops/Wayland/General/fnott
     # hyprland-wm
     # niri-wm
     ./desktops/Wayland/niri
     # anyrun-module
     ./services/stylix
+    ./services/music/default.nix
   ];
 }

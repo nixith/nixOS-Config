@@ -26,7 +26,7 @@ let
     ./modules/console.nix
     ./common/yubikey.nix
     # flakeProgramsSqlite.nixosModules.programs-sqlite
-    inputs.lix-modules.nixosModules.default
+    inputs.lix-modules.nixosModules.lixFromNixpkgs
     # inputs.determinate.nixosModules.default
     ./modules/greetd.nix
     inputs.nix-index-database.nixosModules.nix-index
@@ -84,22 +84,38 @@ in
       #     hyprlock.enable = true;
       #   };
       # }
-      {
 
-        home-manager.backupFileExtension = "backup";
+      (
+        { config, ... }:
+        {
 
-        home-manager.useGlobalPkgs = true;
-        home-manager = {
-          users.${user} = import ./laptop/home.nix {
-            inherit
-              self
-              user
-              pkgs
-              inputs
-              ;
+          sops.secrets = {
+            mopidy_spotify.owner = user;
+            mopidy_jellyfin.owner = user;
           };
-        };
-      }
+
+          home-manager =
+            let
+              extraMopidyConfigs = [
+                config.sops.secrets.mopidy_spotify.path
+                config.sops.secrets.mopidy_jellyfin.path
+              ];
+            in
+            {
+              backupFileExtension = "backup";
+              useGlobalPkgs = true;
+              users.${user} = import ./laptop/home.nix {
+                inherit
+                  self
+                  user
+                  pkgs
+                  inputs
+                  extraMopidyConfigs
+                  ;
+              };
+            };
+        }
+      )
       inputs.disko.nixosModules.disko
       ./laptop/disko.nix
       {

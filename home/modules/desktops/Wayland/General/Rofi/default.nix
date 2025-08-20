@@ -2,7 +2,6 @@
 {
   home.packages = with pkgs; [ oranchelo-icon-theme ];
   programs.rofi = {
-    package = pkgs.rofi-wayland;
     enable = true;
 
     extraConfig = {

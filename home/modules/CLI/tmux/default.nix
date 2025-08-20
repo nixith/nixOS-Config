@@ -7,9 +7,11 @@
     mouse = true;
     keyMode = "vi";
     newSession = true;
-    plugins = with pkgs; [
-      tmuxPlugins.better-mouse-mode
-      tmuxPlugins.tmux-fzf
+    plugins = with pkgs.tmuxPlugins; [
+      better-mouse-mode
+      tmux-fzf
+      tmux-thumbs
+
     ];
     shortcut = "s";
     extraConfig = # tmux
@@ -24,21 +26,19 @@
 
         set -g extended-keys on # ctrl and shift binds
 
-        #Control + Space keybind
-        unbind C-Space
-        set -g prefix C-Space
-        bind C-Space send-prefix
-
         set-window-option -g mode-keys vi
 
         # quick vertical split
         bind-key v split-window -h  #split is horizontal, window is vertical
 
         # quick horizontal split 
-        bind-key h split-window -v
+        bind-key C-v split-window -v
 
         set -gq allow-passthrough on
         set-option -g allow-passthrough on
+
+        # vim keys to move panes
+        bind-key C-v split-window -v
       '';
   };
   programs.fzf.tmux.enableShellIntegration = true;

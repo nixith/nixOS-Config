@@ -5,7 +5,7 @@
     settings = {
       default_session = {
         command =
-          "${pkgs.greetd.tuigreet}/bin/tuigreet --time "
+          "${pkgs.tuigreet}/bin/tuigreet --time "
           + "--cmd 'niri-session' "
           + "--greeting 'Trans Rights' "
           + "--remember "

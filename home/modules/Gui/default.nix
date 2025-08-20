@@ -65,6 +65,7 @@ in
       # Media
 
       imv
+      thunderbird
     ];
 
   };

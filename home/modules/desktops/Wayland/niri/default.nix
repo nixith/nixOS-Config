@@ -36,10 +36,22 @@ in
     # };
     nixith.kanshi.enable = true;
     nixith.waybar.enable = true;
-    nixith.fuzzel.enable = true;
+    nixith.fuzzel.enable = false;
     nixith.swayosd.enable = true;
     nixith.swayidle.enable = true;
     nixith.swaync.enable = true;
+
+    programs.rofi = {
+      enable = true;
+      plugins = with pkgs; [
+        rofi-calc
+        rofi-emoji
+        rofi-network-manager
+        rofi-rbw
+        rofi-mpd
+        rofi-power-menu
+      ];
+    };
 
     services = {
       gnome-keyring.enable = true;
@@ -56,6 +68,7 @@ in
     };
     services.kanshi.systemdTarget = "niri.service";
     home.packages = with pkgs; [
+      nautilus
       goofcord
       easyeffects
       wl-clipboard-rs
@@ -633,7 +646,32 @@ in
 
           # Application keybinds
           "Mod+D" = {
-            action.spawn = [ "fuzzel" ];
+            action.spawn = [
+              "rofi"
+              "-show"
+              "drun"
+            ];
+          };
+          "Mod+E" = {
+            action.spawn = [
+              "rofi"
+              "-show"
+              "emoji"
+            ];
+          };
+          "Mod+Shift+C" = {
+            action.spawn = [
+              "bash"
+              "-c"
+              ''rofi -show calc | wl-copy ''
+            ];
+          };
+          "Mod+S" = {
+            action.spawn = [
+              "rofi"
+              "-show"
+              "window"
+            ];
           };
           "Mod+W" = {
             action.spawn = [ "firefox" ];
