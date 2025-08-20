@@ -150,6 +150,14 @@
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.tlp.enable = pkgs.lib.mkForce false;
+  services.tuned = {
+    enable = true;
+    settings = {
+      dynamic_tuning = true;
+      recommend_command = true;
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

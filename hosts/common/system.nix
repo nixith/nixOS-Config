@@ -60,7 +60,7 @@ in
 
   # Systemd packages to enable (Enable when out of VM)
   services = {
-    auto-cpufreq.enable = true;
+    # auto-cpufreq.enable = true;
     thermald.enable = true;
   };
 
