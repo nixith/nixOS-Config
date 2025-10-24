@@ -34,10 +34,6 @@
   };
 
   nixith = {
-    music = {
-      enable = true;
-      extraConfigFiles = extraMopidyConfigs;
-    };
     neovim.enable = true;
     gui.enable = true;
     cli.enable = true;

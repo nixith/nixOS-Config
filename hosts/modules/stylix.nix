@@ -26,9 +26,9 @@
       autoImport = true;
       followSystem = true;
     };
-    targets.qt = {
-      platform = (lib.mkForce "gnome");
-    };
+    # targets.qt = {
+    #   platform = "gnome";
+    # };
   };
 
 }
