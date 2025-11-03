@@ -152,6 +152,14 @@
   services.openssh.enable = true;
   services.tlp.enable = pkgs.lib.mkForce false;
   services.tuned = {
+    ppdSettings = {
+      main.default = "balanced";
+      profiles = {
+        balanced = "balanced-battery";
+        performance = "throughput-performance";
+        power-saver = "laptop-battery-powersave";
+      };
+    };
     enable = true;
     settings = {
       dynamic_tuning = true;
