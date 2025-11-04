@@ -41,16 +41,27 @@ in
     nixith.swayidle.enable = true;
     nixith.swaync.enable = true;
 
-    programs.rofi = {
+    programs.vicinae = {
       enable = true;
-      plugins = with pkgs; [
-        rofi-calc
-        rofi-emoji
-        rofi-network-manager
-        rofi-rbw
-        rofi-mpd
-        rofi-power-menu
-      ];
+      systemd.enable = true;
+      settings = {
+        faviconService = "twenty";
+        font = {
+          size = 10;
+        };
+        popToRootOnClose = false;
+        rootSearch = {
+          searchFiles = false;
+        };
+        theme = {
+          name = "vicinae-dark";
+        };
+        window = {
+          csd = true;
+          opacity = 0.95;
+          rounding = 10;
+        };
+      };
     };
 
     services = {
@@ -647,30 +658,26 @@ in
           # Application keybinds
           "Mod+D" = {
             action.spawn = [
-              "rofi"
-              "-show"
-              "drun"
+              "${lib.getExe config.programs.vicinae.package}"
+              "vicinae://toggle"
             ];
           };
           "Mod+E" = {
             action.spawn = [
-              "rofi"
-              "-show"
-              "emoji"
+              "${lib.getExe config.programs.vicinae.package}"
+              "vicinae://extensions/vicinae/vicinae/search-emojis"
             ];
           };
           "Mod+Shift+C" = {
             action.spawn = [
-              "bash"
-              "-c"
-              ''rofi -show calc | wl-copy ''
+              "${lib.getExe config.programs.vicinae.package}"
+              "vicinae://extensions/vicinae/clipboard/history"
             ];
           };
           "Mod+S" = {
             action.spawn = [
-              "rofi"
-              "-show"
-              "window"
+              "${lib.getExe config.programs.vicinae.package}"
+              "vicinae://extensions/vicinae/wm/switch-windows"
             ];
           };
           "Mod+W" = {
