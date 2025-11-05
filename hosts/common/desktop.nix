@@ -53,7 +53,6 @@ in
   environment.systemPackages = with pkgs; [
     ffmpeg
     usbutils
-    android-udev-rules
     libva-utils
     brillo
     nfs-utils
@@ -222,7 +221,7 @@ in
     enable = true;
     extraPackages = with pkgs; [
       libvdpau-va-gl
-      vaapiVdpau
+      libva-vdpau-driver
       libvdpau
     ];
   };

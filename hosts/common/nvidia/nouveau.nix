@@ -9,8 +9,8 @@
     extraPackages = with pkgs; [
       mesa.drivers
       nvidia-vaapi-driver
-      vaapiVdpau
       libva
+      libva-vdpau-driver
     ];
   };
 }
