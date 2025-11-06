@@ -53,22 +53,28 @@ in
           #}
           (fishPlugin "pisces")
           (fishPlugin "z")
-          (fishPlugin "fzf-fish")
+          # (fishPlugin "fzf-fish")
         ];
     };
 
-    programs.yazi = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-    programs.carapace = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-    programs.direnv = {
-      enable = true;
-      nix-direnv = {
+    programs = {
+      yazi = {
         enable = true;
+        enableFishIntegration = true;
+      };
+      carapace = {
+        enable = true;
+        enableFishIntegration = true;
+      };
+      direnv = {
+        enable = true;
+        nix-direnv = {
+          enable = true;
+        };
+      };
+      mcfly = {
+        enable = true;
+        fzf.enable = true;
       };
     };
   };
