@@ -43,6 +43,10 @@
     niri = {
       url = "github:sodiboo/niri-flake";
     };
+    vicinae-extensions = {
+      url = "github:vicinaehq/extensions";
+      flake = false;
+    };
     stylix.url = "github:danth/stylix";
     nixivim = {
       url = "github:nixith/nixivim";
@@ -141,9 +145,9 @@
 
       # Imports ./hosts/default.nix
       homeManagerModules = {
-        modules = import ./home/modules/modules.nix { inherit inputs; };
+        modules = import ./home/modules/modules.nix { inputs = inputs; };
         default = self.homeManagerModules.modules;
-        extraSpecialArgs = { inherit inputs; };
+        #extraSpecialArgs = { inherit inputs; };
       };
       homeConfigurations = {
         laptop = home-manager.lib.homeManagerConfiguration {

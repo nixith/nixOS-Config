@@ -1,4 +1,5 @@
-{ inputs, ... }:
+inputs:
+{ ... }:
 let
   #inherit (inputs) nixd;
   # inherit (inputs) hyprland;
@@ -6,6 +7,7 @@ let
   # inherit (inputs) anyrun;
   # inherit (inputs) nixivim;
   # inherit (inputs) stylix;
+  vicinae-module = import ./desktops/Wayland/General/vicinae inputs.inputs.vicinae-extensions;
 
 in
 #nvim = import ./editors/neovim nixd;
@@ -15,6 +17,7 @@ in
 # nvim = import ./editors/neovim;
 # stylix-module = import ./services/stylix;
 {
+
   imports = [
     ./CLI/Tools.nix
     #./editors/neovim
@@ -40,6 +43,7 @@ in
     # hyprland-wm
     # niri-wm
     ./desktops/Wayland/niri
+    vicinae-module
     # anyrun-module
     ./services/stylix
     ./services/music/default.nix

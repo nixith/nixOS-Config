@@ -7,7 +7,7 @@
 }:
 {
   imports = [
-    ../../home/modules/modules.nix
+    (import ../../home/modules/modules.nix { inherit inputs; })
     inputs.niri.homeModules.niri
     inputs.niri.homeModules.stylix
   ];
@@ -46,6 +46,7 @@
       enable = true;
       config = builtins.readFile ./config.kdl;
     };
+    vicinae.enable = true;
     ghostty.enable = true;
   };
   # Let Home Manager install and manage itself.

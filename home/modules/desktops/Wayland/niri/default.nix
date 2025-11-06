@@ -41,29 +41,6 @@ in
     nixith.swayidle.enable = true;
     nixith.swaync.enable = true;
 
-    programs.vicinae = {
-      enable = true;
-      systemd.enable = true;
-      settings = {
-        faviconService = "twenty";
-        font = {
-          size = 10;
-        };
-        popToRootOnClose = false;
-        rootSearch = {
-          searchFiles = false;
-        };
-        theme = {
-          name = "vicinae-dark";
-        };
-        window = {
-          csd = true;
-          opacity = 0.95;
-          rounding = 10;
-        };
-      };
-    };
-
     services = {
       gnome-keyring.enable = true;
       polkit-gnome.enable = true;
