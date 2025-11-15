@@ -30,6 +30,7 @@ let
         package = niri.packages.${pkgs.system}.niri-unstable;
       };
     }
+    ./modules/run0.nix
     inputs.sops-nix.nixosModules.sops
     ./modules/console.nix
     ./common/yubikey.nix
