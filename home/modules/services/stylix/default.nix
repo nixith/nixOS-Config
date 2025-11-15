@@ -8,9 +8,9 @@
     };
     iconTheme = {
       enable = true;
-      dark = "Everforest-Dark";
-      light = "Everforest-Light";
-      package = pkgs.everforest-gtk-theme;
+      dark = "Adwaita";
+      light = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
     };
     # targets.qt = {
     #   platform = "gnome";
