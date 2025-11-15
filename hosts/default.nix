@@ -22,6 +22,14 @@ let
   };
 
   common = [
+    {
+      nixpkgs.overlays = [ niri.overlays.niri ] ++ overlays;
+      environment.systemPackages = [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
+      programs.niri = {
+        enable = true;
+        package = niri.packages.${pkgs.system}.niri-unstable;
+      };
+    }
     inputs.sops-nix.nixosModules.sops
     ./modules/console.nix
     ./common/yubikey.nix
@@ -67,11 +75,6 @@ in
       ./common/security.nix
       ./common/virtualisation.nix
       ./modules/stylix.nix
-      {
-        nixpkgs.overlays = [ niri.overlays.niri ] ++ overlays;
-        environment.systemPackages = [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
-        programs.niri.enable = true;
-      }
       # hyprland.nixosModules.default
       # {
       #   programs = {
