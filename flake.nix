@@ -45,7 +45,6 @@
     };
     vicinae-extensions = {
       url = "github:vicinaehq/extensions";
-      flake = false;
     };
     stylix.url = "github:danth/stylix";
     nixivim = {
