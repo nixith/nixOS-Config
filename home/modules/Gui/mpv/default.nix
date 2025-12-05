@@ -10,6 +10,7 @@ in
 {
   options = {
     nixith.mpv.enable = lib.mkEnableOption "Enable mpv config";
+    #nixith.mpv.codecs = ; #TODO: enable swapping codecs for non-av1 systems
   };
 
   config = lib.mkIf cfg.enable {
@@ -44,9 +45,9 @@ in
         vo = "gpu";
         profile = "gpu-hq";
         gpu-context = "wayland";
-        demuxer-max-bytes = "512MiB";
+        demuxer-max-bytes = "1024MiB";
         demuxer-readahead-secs = 20;
-        ytdl-format = "bestvideo[height<=1440]+bestaudio/best";
+        ytdl-format = "(bestvideo[height<=1440][vcodec^=av01]/bestvideo[height<=1440])+bestaudio/best"; # TODO: make vcodec extensible
         slang = "en";
         sub-auto = "fuzzy";
         ytdl-raw-options = "sub-lang=en,write-auto-sub=,write-subs=";
