@@ -46,7 +46,7 @@ in
         gpu-context = "wayland";
         demuxer-max-bytes = "512MiB";
         demuxer-readahead-secs = 20;
-        ytdl-format = "bestvideo+bestaudio/best";
+        ytdl-format = "bestvideo[height<=1440]+bestaudio/best";
         slang = "en";
         sub-auto = "fuzzy";
         ytdl-raw-options = "sub-lang=en,write-auto-sub=,write-subs=";
