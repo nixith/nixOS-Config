@@ -18,6 +18,8 @@ in
 {
   zramSwap.enable = true;
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+  services.firewalld.enable = true;
+  networking.nftables.enable = true;
 
   boot = {
     extraModulePackages = with config.boot.kernelPackages; [
