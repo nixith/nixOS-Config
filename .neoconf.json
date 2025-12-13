@@ -15,7 +15,7 @@
           "expr": "(builtins.getFlake (\"git+file://\" + toString ./.)).nixosConfigurations.desktop.options"
         },
         "home": {
-          "expr": "(builtins.getFlake (\"git+file://\" + toString ./.)).homeConfigurations.laptop.options"
+          "expr": "(builtins.getFlake (\"git+file://\" + toString ./.)).nixosConfigurations.laptop.options.home-manager.users.type.getSubOptions []"
         }
       }
     }
