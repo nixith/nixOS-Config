@@ -24,7 +24,8 @@ in
 
   config = lib.mkIf cfg.enable {
     # Apps without Home Manager Modules
-    #
+    xdg.terminal-exec.enable = true;
+
     fonts.fontconfig.enable = true;
     home.packages = with pkgs; [
       # Gaming
