@@ -38,7 +38,7 @@ in
     nixith.waybar.enable = true;
     nixith.fuzzel.enable = false;
     nixith.swayosd.enable = true;
-    nixith.swayidle.enable = true;
+    nixith.swayidle.enable = false;
     nixith.swaync.enable = true;
 
     services = {
@@ -683,9 +683,9 @@ in
           };
         };
 
-        switch-events = {
-          "lid-close".action.spawn = [ "systemctl suspend" ]; # TODO: Swaylock
-        };
+        # switch-events = {
+        #   "lid-close".action.spawn = [ "systemctl sleep" ]; # TODO: Swaylock
+        # };
 
         layout = {
           gaps = 8;

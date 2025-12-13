@@ -4,6 +4,7 @@
   pkgs,
   user,
   inputs,
+  lib,
   ...
 }:
 let
@@ -249,7 +250,6 @@ in
       ]);
   };
 
-  services.systemd-lock-handler.enable = true;
   programs.gtklock = {
     enable = true;
     modules = with pkgs; [
@@ -258,4 +258,42 @@ in
       gtklock-userinfo-module
     ];
   };
+
+  services.logind.settings = {
+    # this doesn't provide screen dimming,
+    # but does work everywhere it's not inhibited
+    # by another session manager
+    IdleAction = "sleep";
+    IdeActionSec = 560;
+    HandleLidSwitch = "sleep"; # I beleive more flexible than "suspend"
+  };
+  services.systemd-lock-handler.enable = true;
+  # Ideally this works with the above
+  systemd.user.services.gtklock = {
+    description = "${pkgs.gtklock.meta.description}";
+    documentation = [ "man:gtklock(1)" ];
+
+    # If gtklock exits cleanly, unlock the session:
+    onSuccess = [ "unlock.target" ];
+
+    # When lock.target is stopped, stops this too:
+    partOf = [ "lock.target" ];
+
+    # Delay lock.target until this service is ready:
+    before = [ "lock.target" ];
+    wantedBy = [ "lock.target" ];
+
+    serviceConfig = {
+      # systemd will consider this service started when gtklock forks...
+      Type = "forking";
+
+      # ... and gtklock will fork only after it has locked the screen.
+      ExecStart = "${lib.getExe pkgs.gtklock} -d";
+
+      # If gtklock crashes, always restart it immediately:
+      Restart = "on-failure";
+      RestartSec = 0;
+    };
+  };
+
 }
