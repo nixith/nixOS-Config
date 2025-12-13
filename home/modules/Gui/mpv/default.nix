@@ -32,16 +32,21 @@ in
     };
     programs.mpv = {
       enable = true;
-      scripts = with pkgs.mpvScripts; [
-        mpris
-        visualizer
-        thumbfast
-        sponsorblock
-        quality-menu
-        uosc
-      ];
+      scripts =
+        with pkgs.mpvScripts;
+        [
+          mpris
+          visualizer
+          thumbfast
+          sponsorblock
+          quality-menu
+          uosc
+        ]
+        ++ (with pkgs.mpvScripts.builtins; [
+          autoload
+        ]);
       config = {
-        hwdec = "auto-safe";
+        hwdec = "auto";
         vo = "gpu";
         profile = "gpu-hq";
         gpu-context = "wayland";
