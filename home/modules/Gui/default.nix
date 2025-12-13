@@ -42,6 +42,7 @@ in
       #lib.cmakeBool
       # carla
       signal-desktop
+      tuba
       csa
       calf
       rnnoise-plugin # Denoiser plugin
