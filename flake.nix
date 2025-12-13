@@ -46,6 +46,9 @@
     vicinae-extensions = {
       url = "github:vicinaehq/extensions";
     };
+    vicinae = {
+      url = "github:vicinaehq/vicinae";
+    };
     stylix.url = "github:danth/stylix";
     nixivim = {
       url = "github:nixith/nixivim";

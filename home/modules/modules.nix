@@ -44,6 +44,7 @@ in
     # niri-wm
     ./desktops/Wayland/niri
     vicinae-module
+    inputs.inputs.vicinae.homeManagerModules.default
     # anyrun-module
     ./services/stylix
     ./services/music/default.nix

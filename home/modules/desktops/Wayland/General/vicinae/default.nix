@@ -25,10 +25,14 @@ in
     #   security.pam.services.swaylock = { };
     #
     # };
+    home.packages = with pkgs; [
+      power-profiles-daemon
+    ];
 
     programs.vicinae = {
       enable = true;
       systemd.enable = true;
+
       extensions = with vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
         bluetooth
         nix

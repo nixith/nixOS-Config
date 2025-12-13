@@ -303,6 +303,24 @@
         "type": "github"
       }
     },
+    "glide-browser": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1767296967,
+        "narHash": "sha256-GqJ/2DjyWm9y9/htJv+7pGtqARyB5vGAK2qIVjBlsf8=",
+        "owner": "nixith",
+        "repo": "glide.nix",
+        "rev": "cc752e98ff1d39e407b3eeed372b91eb0c595750",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixith",
+        "repo": "glide.nix",
+        "type": "github"
+      }
+    },
     "gnome-shell": {
       "flake": false,
       "locked": {
