@@ -1,5 +1,5 @@
 inputs:
-{ ... }:
+{ pkgs, ... }:
 let
   #inherit (inputs) nixd;
   # inherit (inputs) hyprland;
@@ -8,7 +8,10 @@ let
   # inherit (inputs) nixivim;
   # inherit (inputs) stylix;
   vicinae-module = import ./desktops/Wayland/General/vicinae inputs.inputs.vicinae-extensions;
-
+  ff-module = import ./Gui/firefox {
+    inherit pkgs;
+    ff-package = inputs.inputs.glide-browser.packages.${pkgs.system}.default;
+  };
 in
 #nvim = import ./editors/neovim nixd;
 # anyrun-module = import ./desktops/Wayland/General/anyrun;
@@ -25,6 +28,9 @@ in
     # nvim
     ./editors/neovim
     ./Gui/default.nix
+
+    # ./Gui/firefox
+    ff-module
     ./Gui/mpv
     ./shells/Fish
     ./services/syncthing

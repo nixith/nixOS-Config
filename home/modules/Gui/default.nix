@@ -13,7 +13,7 @@ in
   imports = [
     # ./QT
     # ./gtk/adw-gtk3.nix
-    ./firefox
+    # ./firefox
     # ./zathura
     # ./pointer/pointer.nix
   ];

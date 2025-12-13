@@ -49,6 +49,9 @@
     vicinae = {
       url = "github:vicinaehq/vicinae";
     };
+    glide-browser = {
+      url = "github:nixith/glide.nix";
+    };
     stylix.url = "github:danth/stylix";
     nixivim = {
       url = "github:nixith/nixivim";

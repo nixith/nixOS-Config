@@ -237,7 +237,7 @@ in
                   "swayosd-client"
                   "--brightness"
                   "raise"
-                  "+5"
+                  "+1"
                 ]
               else
                 [
@@ -255,7 +255,7 @@ in
                   "swayosd-client"
                   "--brightness"
                   "lower"
-                  "+5"
+                  "+1"
                 ]
               else
                 [
@@ -658,7 +658,7 @@ in
             ];
           };
           "Mod+W" = {
-            action.spawn = [ "firefox" ];
+            action.spawn = [ "${lib.getExe config.programs.firefox.package}" ];
           };
           "Mod+Return" = {
             action.spawn = [ "ghostty" ];

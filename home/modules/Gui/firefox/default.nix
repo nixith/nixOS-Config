@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  ff-package ? pkgs.firefox,
+  ...
+}:
 {
   home.packages = with pkgs; [
     firefoxpwa
@@ -12,7 +16,7 @@
       ff2mpv
       firefoxpwa
     ];
-    package = pkgs.firefox;
+    package = ff-package;
     #TODO: make declarative profile
     # profiles."test" = { };
   };
