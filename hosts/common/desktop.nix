@@ -259,13 +259,15 @@ in
     ];
   };
 
-  services.logind.settings = {
+  services.logind.settings.Login = {
     # this doesn't provide screen dimming,
     # but does work everywhere it's not inhibited
     # by another session manager
     IdleAction = "sleep";
     IdeActionSec = 560;
     HandleLidSwitch = "sleep"; # I beleive more flexible than "suspend"
+    LidSwitchIgnoreInhibited = false; # I want inhibitors to work
+    HoldoffTimeoutSec = "5s"; # 30s is absurd for this
   };
   services.systemd-lock-handler.enable = true;
   # Ideally this works with the above
