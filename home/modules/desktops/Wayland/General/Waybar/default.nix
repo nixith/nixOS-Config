@@ -25,10 +25,10 @@ in
             layer = "top";
             position = "top";
             height = 15;
-            output = [
-              "eDP-1"
-              "HDMI-A-1"
-            ];
+            # output = [
+            #   "eDP-1"
+            #   "HDMI-A-1"
+            # ];
             modules-left = [ "niri/workspaces" ];
             modules-center = [
               #"mpris"
