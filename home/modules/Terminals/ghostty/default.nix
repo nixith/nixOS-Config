@@ -7,6 +7,10 @@ in
     nixith.ghostty.enable = lib.mkEnableOption "enable the foot terminal";
   };
   config = lib.mkIf cfg.enable {
+
+    xdg.terminal-exec.settings = {
+      default = [ "com.mitchellh.ghostty.desktop" ];
+    };
     programs.ghostty = {
       enable = true;
       enableFishIntegration = true;
