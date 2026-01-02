@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   services = {
     tailscale = {
@@ -6,6 +6,25 @@
       enable = true;
     };
   };
+
+  # make systray autostart
+  systemd = {
+
+    user.services."tailscale-systray" = {
+      enable = true;
+      requires = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      description = "Run the tailscale systray";
+      documentation = [ "https://tailscale.com/kb/1597/linux-systray" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${lib.getExe config.services.tailscale.package} systray";
+        Restart = "on-failure";
+      };
+
+    };
+  };
+
   networking.firewall = {
     enable = true;
     trustedInterfaces = [ "tailscale0" ];
