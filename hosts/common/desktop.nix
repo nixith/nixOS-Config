@@ -48,12 +48,13 @@ in
       ]);
   };
   # programs.thunderbird.enable = true;
-  programs.evolution.enable = true;
   # Graphical Necesities
   programs.dconf.enable = true;
   security.polkit.enable = true;
 
   environment.systemPackages = with pkgs; [
+    gnome-calendar
+    gnome-contacts
     ffmpeg
     usbutils
     libva-utils
@@ -76,7 +77,11 @@ in
   ];
 
   # keyring stuff
-  services.gnome.gnome-keyring.enable = true;
+  services.gnome = {
+    evolution-data-server.enable = true;
+    gnome-keyring.enable = true;
+    gnome-online-accounts.enable = true;
+  };
 
   # programs.gamescope = {
   #   enable = true;
