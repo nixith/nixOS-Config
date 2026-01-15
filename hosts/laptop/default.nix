@@ -11,6 +11,7 @@
   hardware.flipperzero.enable = true;
 
   nixith.run0.enable = true;
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   boot = {
     # initrd.kernelModules = [ "xe" ];
