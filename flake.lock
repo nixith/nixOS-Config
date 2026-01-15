@@ -559,11 +559,11 @@
         "rustowl": "rustowl"
       },
       "locked": {
-        "lastModified": 1768239079,
-        "narHash": "sha256-pTLAFY0Xq24AgS9jyaD2HfYRbUdyNbkMzfCvWWQNB0c=",
+        "lastModified": 1768484379,
+        "narHash": "sha256-PtdS1ve5ku9wh9eKX+a5Fcc4Grc5Lh0EQysk6mb2YmU=",
         "owner": "nixith",
         "repo": "nixivim",
-        "rev": "dcab727cb805ac221be7f4637c2f0330de3ba807",
+        "rev": "de0541fba989f4f6d829745774f2f890c7ea062a",
         "type": "github"
       },
       "original": {
