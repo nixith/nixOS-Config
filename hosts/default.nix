@@ -32,6 +32,12 @@ let
     }
     ./modules/run0.nix
     inputs.sops-nix.nixosModules.sops
+    inputs.dove.nixosModules.default
+    {
+      programs.thunderbird = {
+        enable = true;
+      };
+    }
     ./modules/console.nix
     ./common/yubikey.nix
     # flakeProgramsSqlite.nixosModules.programs-sqlite

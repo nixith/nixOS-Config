@@ -57,6 +57,17 @@
       url = "github:nixith/nixivim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    phoenix = {
+      url = "git+https://codeberg.org/celenity/Phoenix.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dove = {
+      url = "git+https://codeberg.org/celenity/Dove.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.phoenix.follows = "phoenix";
+      #inputs.phoenix.follows = "phoenix";
+      # no pheonix for now
+    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
