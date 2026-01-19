@@ -34,10 +34,9 @@ in
     resolved = {
       # works better with tailscale
       enable = true;
-
-      extraConfig = ''
-        ReadEtcHosts=yes
-      '';
+      settings.Resolve = {
+        ReadEtcHosts = "yes";
+      };
       fallbackDns = [
         "1.1.1.1"
         "1.0.0.1"
