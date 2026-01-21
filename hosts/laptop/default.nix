@@ -15,7 +15,7 @@
 
   boot = {
     # initrd.kernelModules = [ "xe" ];
-    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    kernelPackages = pkgs.linuxPackages_latest;
 
     loader.efi = {
       canTouchEfiVariables = true;
@@ -35,7 +35,7 @@
   };
 
   networking = {
-    hostName = "nixos"; # Define your hostname.
+    hostName = "laptop"; # Define your hostname.
     networkmanager = {
       wifi.powersave = true;
     };
@@ -108,6 +108,10 @@
   };
 
   programs.dconf.enable = true;
+
+  programs.nh = {
+    flake = "${config.users.users.alice.home}/nixos-config";
+  };
 
   #Distrobox
 

@@ -40,6 +40,10 @@
     mpv.enable = true;
     fish.enable = true;
     starship.enable = true;
+    music = {
+      enable = true;
+      extraConfigFiles = extraMopidyConfigs;
+    };
     # syncthing.enable = true;
     river.enable = false;
     niri = {

@@ -52,9 +52,8 @@ in
   environment.systemPackages = with pkgs; [
     # To manage the actual user configuration
     nix
-    thermald
-    auto-cpufreq
     cachix
+    git
   ];
 
   # Systemd packages to enable (Enable when out of VM)

@@ -23,29 +23,29 @@ in
       # dangerous games here lmao
       enable = false;
     };
-    environment.shellAliases = {
-      sudo = "run0 --background=\"\"";
+
+    security.run0 = {
+      enableSudoAlias = true;
     };
 
     # allow password caching for polkit >= 127, whenever that is
     security.polkit.extraConfig = /* javascript */ ''
-        polkit.addRule(function(action, subject) {
-            if (action.id == "org.freedesktop.systemd1.manage-units" && subject.isInGroup("wheel")) {
-                 
-                    return polkit.Result.AUTH_ADMIN_KEEP;
-                
-            }
-        });
+      polkit.addRule(function(action, subject) {
+          if (
+              action.id == "org.freedesktop.systemd1.run" &&
+              subject.isInGroup("wheel")
+          ) {
+              return polkit.Result.AUTH_KEEP;
+          }
+      });
 
-      // fix until run0 caches - cache the nixos switch
-        polkit.addRule(function(action, subject) {
-         if (subject.user == "alice") {
-           if (action.id.indexOf("org.nixos") == 0) {
-             polkit.log("Caching admin authentication for single NixOS operation");
-             return polkit.Result.AUTH_ADMIN_KEEP;
-           }
+      polkit.addRule(function(action, subject) {
+       if (subject.user == "alice") {
+         if (action.id.indexOf("org.nixos") == 0) {
+           polkit.log("Caching admin authentication for single NixOS operation");
+           return polkit.Result.AUTH_ADMIN_KEEP;
          }
-       });
+       }});
     '';
 
   };

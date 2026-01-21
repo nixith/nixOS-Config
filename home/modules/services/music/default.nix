@@ -26,13 +26,18 @@ in
     services.mopidy = {
       enable = true;
       extensionPackages = with pkgs; [
-        mopidy-spotify
+        #mopidy-spotify
         mopidy-mpd
         mopidy-somafm
         mopidy-jellyfin
         mopidy-ytmusic
       ];
       extraConfigFiles = cfg.extraConfigFiles;
+      settings = {
+        mpd = {
+          enabled = true;
+        };
+      };
     };
     home.packages = with pkgs; [
       euphonica

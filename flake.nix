@@ -51,6 +51,7 @@
     };
     glide-browser = {
       url = "github:glide-browser/glide.nix";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix.url = "github:danth/stylix";
     nixivim = {

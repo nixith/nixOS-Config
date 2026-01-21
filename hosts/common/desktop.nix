@@ -128,7 +128,7 @@ in
   services.upower.enable = true;
   services.dbus = {
     enable = true;
-    implementation = "dbus";
+    implementation = "broker";
     apparmor = "enabled";
   };
 
