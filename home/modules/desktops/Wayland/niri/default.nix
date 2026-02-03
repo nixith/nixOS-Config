@@ -236,7 +236,6 @@ in
                 [
                   "swayosd-client"
                   "--brightness"
-                  "raise"
                   "+1"
                 ]
               else
@@ -254,8 +253,7 @@ in
                 [
                   "swayosd-client"
                   "--brightness"
-                  "lower"
-                  "+1"
+                  "-1"
                 ]
               else
                 [
