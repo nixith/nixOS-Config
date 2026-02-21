@@ -39,6 +39,7 @@ in
       #     ++ [ (pkgs.lib.cmakeBool "USE_WAYLAND_GRIM" true) ];
       # }))
       grimblast
+      finamp
       #lib.cmakeBool
       # carla
       signal-desktop

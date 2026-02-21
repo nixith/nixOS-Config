@@ -85,10 +85,10 @@
           bubblewrap
           mangohud
           gamemode
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXScrnSaver
+          libXcursor
+          libXi
+          libXinerama
+          libXScrnSaver
           libpng
           pipewire
           libpulseaudio
