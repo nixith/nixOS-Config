@@ -12,9 +12,6 @@ in
     # enable nvidia stuff for containers. Any CDI container spec supports this.
     libvirtd = {
       enable = true;
-      qemu = {
-        package = pkgs.qemu_full;
-      };
     };
     spiceUSBRedirection.enable = true;
     #qemu = {
