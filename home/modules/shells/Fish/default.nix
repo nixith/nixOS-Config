@@ -61,6 +61,7 @@ in
       yazi = {
         enable = true;
         enableFishIntegration = true;
+        shellWrapperName = "y";
       };
       carapace = {
         enable = true;
