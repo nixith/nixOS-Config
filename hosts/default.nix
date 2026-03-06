@@ -42,7 +42,23 @@ let
     ./modules/console.nix
     ./common/yubikey.nix
     # flakeProgramsSqlite.nixosModules.programs-sqlite
-    inputs.lix-modules.nixosModules.lixFromNixpkgs
+    (
+      { pkgs, ... }:
+      {
+        nixpkgs.overlays = [
+          (final: prev: {
+            inherit (prev.lixPackageSets.stable)
+              nixpkgs-review
+              nix-eval-jobs
+              nix-fast-build
+              colmena
+              ;
+          })
+        ];
+
+        nix.package = pkgs.lixPackageSets.stable.lix;
+      }
+    )
     # inputs.determinate.nixosModules.default
     ./modules/greetd.nix
     inputs.nix-index-database.nixosModules.nix-index

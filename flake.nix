@@ -75,10 +75,6 @@
     };
     # determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
-    lix-modules = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # flakeProgramsSqlite = {
     #   url = "github:wamserma/flake-programs-sqlite";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -120,7 +116,6 @@
       nixos-generators,
       # flakeProgramsSqlite,
       stylix,
-      lix-modules,
       # determinate,
       ...
     }@inputs:
