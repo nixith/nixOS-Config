@@ -99,19 +99,6 @@ in
       ./common/security.nix
       ./common/virtualisation.nix
       ./modules/stylix.nix
-      # hyprland.nixosModules.default
-      # {
-      #   programs = {
-      #     hyprland = {
-      #       enable = true;
-      #       portalPackage =
-      #         inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-      #       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      #     };
-      #     hyprlock.enable = true;
-      #   };
-      # }
-
       (
         { config, ... }:
         {
@@ -184,18 +171,6 @@ in
       ./modules/tailscale.nix
       ./modules/stylix.nix
       # inputs.lix.nixosModules.default
-      # hyprland.nixosModules.default
-      # {
-      #   programs = {
-      #     hyprland = {
-      #       enable = true;
-      #       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      #       portalPackage =
-      #         inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-      #     };
-      #     hyprlock.enable = true;
-      #   };
-      # }
       home-manager.nixosModules.default
       {
         home-manager.backupFileExtension = "backup";

@@ -80,10 +80,6 @@ in
       # args = gamescopeArgs;
     };
   };
-  # some weird workarounds for hyprland and hostname detection
-  environment.variables = {
-    HOSTNAME = hostname;
-  };
   nixpkgs.config.allowUnfree = true;
   boot.extraSystemdUnitPaths = [ "/etc/systemd-mutable/system" ];
   boot = {
