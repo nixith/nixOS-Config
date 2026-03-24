@@ -54,7 +54,6 @@ in
       # bluetooth
       bluez
       bluez-tools
-      blueberry
 
       mumble
       gajim
