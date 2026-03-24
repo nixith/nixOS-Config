@@ -51,7 +51,6 @@ in
 
   environment.systemPackages = with pkgs; [
     # To manage the actual user configuration
-    nix
     cachix
     git
   ];
