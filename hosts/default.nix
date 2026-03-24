@@ -90,6 +90,7 @@ in
       # niri.nixosModules.niri
       ./laptop
       ./modules/iwd.nix
+      ./modules/wireshark.nix
       ./modules/networkd.nix
       ./modules/tailscale.nix
       ./modules/firefox.nix
