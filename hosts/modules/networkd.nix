@@ -1,17 +1,18 @@
 { lib, ... }:
 {
   networking.networkmanager.enable = lib.mkForce false;
+  #networking.useNetworkd = false; # so we just script with networkd
   systemd.network.enable = true;
   systemd.network = {
 
-    links."10-wan" = {
+    links."10-wlan" = {
       # Check systemd.link(5) for other matchers
       matchConfig.Path = "pci-0000:a6:00.0";
-      linkConfig.Name = "wan";
+      linkConfig.Name = "wlan";
     };
     networks = {
       "20-wireless" = {
-        matchConfig.Name = "wan";
+        matchConfig.Name = "wlan";
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
           DHCP = "ipv4";

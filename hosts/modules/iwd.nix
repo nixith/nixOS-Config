@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   networking = {
     wireless.iwd = {
@@ -7,10 +7,12 @@
         General = {
           ControlPortOverNL80211 = false;
           AddressRandomization = "network";
+          #DisableANQP = false;
         };
       };
     };
     networkmanager.wifi.backend = "iwd";
   };
   boot.kernelModules = [ "pkcs8_key_parser" ];
+  environment.systemPackages = with pkgs; [ impala ];
 }
