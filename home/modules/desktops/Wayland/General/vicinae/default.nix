@@ -60,6 +60,22 @@ in
           opacity = 0.95;
           rounding = 10;
         };
+
+        providers = {
+          "@Gelei/vicinae-extension-bluetooth-0" = {
+            preferences.connectionToggleable = true;
+          };
+          "@dagimg-dot/vicinae-extension-wifi-commander-0" = {
+            preferences.network-cli-tool = "iwctl";
+          };
+          "browser-extension".enabled = false;
+          core.entrypoints = {
+            report-bug.enabled = false;
+            sponsor.enabled = false;
+          };
+          developer.enabled = false;
+          raycast-compat.enabled = false;
+        };
       };
     };
 
