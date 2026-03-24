@@ -4,7 +4,10 @@
     wireless.iwd = {
       enable = true;
       settings = {
-        General.ControlPortOverNL80211 = false;
+        General = {
+          ControlPortOverNL80211 = false;
+          AddressRandomization = "network";
+        };
       };
     };
     networkmanager.wifi.backend = "iwd";
