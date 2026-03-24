@@ -89,7 +89,7 @@ in
     modules = [
       # niri.nixosModules.niri
       ./laptop
-      #./modules/iwd.nix
+      ./modules/iwd.nix
       ./modules/tailscale.nix
       ./modules/firefox.nix
       #./modules/calibre.nix
