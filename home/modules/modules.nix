@@ -6,7 +6,7 @@ let
   # inherit (inputs) anyrun;
   # inherit (inputs) nixivim;
   # inherit (inputs) stylix;
-  vicinae-module = import ./desktops/Wayland/General/vicinae inputs.inputs.vicinae-extensions;
+
   ff-module = import ./Gui/firefox {
     inherit pkgs;
     ff-package = inputs.inputs.glide-browser.packages.${pkgs.system}.default;
@@ -46,8 +46,7 @@ in
     ./desktops/Wayland/General/fnott
     # niri-wm
     ./desktops/Wayland/niri
-    vicinae-module
-    inputs.inputs.vicinae.homeManagerModules.default
+    ./desktops/Wayland/General/vicinae
     # anyrun-module
     ./services/stylix
     ./services/music/default.nix

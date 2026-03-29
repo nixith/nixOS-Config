@@ -1,4 +1,3 @@
-vicinae-extensions:
 {
   config,
   lib,
@@ -7,6 +6,25 @@ vicinae-extensions:
 }:
 let
   cfg = config.nixith.vicinae;
+
+  vicinae-extensions-repo = (import (../../../../../../npins)).vicinae-extensions;
+  vicinae-extensions = (
+    lib.pipe (builtins.readDir "${vicinae-extensions-repo}/extensions") [
+      (lib.filterAttrs (_name: type: type == "directory"))
+      (lib.mapAttrs (
+        name: _type:
+        config.lib.vicinae.mkExtension {
+          pname = "vicinae-extension-${name}";
+          version = "0";
+          src = ./extensions/${name};
+          postPatch = ''
+            substituteInPlace tsconfig.json --replace "../../" "${./.}/"
+          '';
+        }
+      ))
+    ]
+  );
+
 in
 {
 
@@ -36,7 +54,6 @@ in
       extensions = with vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
         bluetooth
         nix
-        niri
         html-symbol-finder
         player-pilot
         power-profile
