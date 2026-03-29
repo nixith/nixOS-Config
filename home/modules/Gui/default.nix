@@ -52,8 +52,7 @@ in
       gimp3
       playerctl
       # bluetooth
-      bluez
-      bluez-tools
+      blueman
 
       mumble
       gajim
