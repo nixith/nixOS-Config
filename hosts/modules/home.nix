@@ -5,12 +5,24 @@
   ...
 }:
 
+let
+  pins = import ../../npins;
+
+  niri-flake-repo = pins.niri;
+  compat = import pins.flake-compat;
+
+  niri = compat.load {
+    src = niri-flake-repo;
+  };
+in
 {
   imports = [
-    ../../home/modules/modules.nix
-    inputs.niri.homeModules.niri
-    inputs.niri.homeModules.stylix
+
+    (import ../../home/modules/modules.nix { inherit inputs; })
+    niri.homeModules.niri
+    niri.homeModules.stylix
   ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "${user}";
@@ -27,29 +39,19 @@
   home.sessionVariables = {
     EDITOR = "nvim";
   };
-  programs.niri = {
-    enable = true;
-  };
 
   nixith = {
     neovim.enable = true;
     gui.enable = true;
     cli.enable = true;
+    mpv.enable = true;
     fish.enable = true;
     starship.enable = true;
     niri = {
       enable = true;
       config = builtins.readFile ./config.kdl;
-      extraConfig = {
-        debug = {
-          wait-for-frame-completion-in-pipewire = { };
-        };
-      };
-
     };
-    # anyrun.enable = true;
-    # syncthing.enable = true;
-    #river.enable = true;
+    vicinae.enable = true;
     ghostty.enable = true;
   };
   # Let Home Manager install and manage itself.

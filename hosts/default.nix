@@ -22,6 +22,24 @@ let
   };
 
   common = [
+    home-manager.nixosModules.default
+    (
+      { config, ... }:
+      {
+        home-manager = {
+          backupFileExtension = "backup";
+          useGlobalPkgs = true;
+          users.${user} = import ./modules/home.nix {
+            inherit
+              self
+              user
+              pkgs
+              inputs
+              ;
+          };
+        };
+      }
+    )
     {
       nixpkgs.overlays = [ niri.overlays.niri ] ++ overlays;
       environment.systemPackages = [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
@@ -57,13 +75,11 @@ let
         nix.package = pkgs.lixPackageSets.stable.lix;
       }
     )
-    # inputs.determinate.nixosModules.default
     ./modules/greetd.nix
     inputs.nix-index-database.nixosModules.nix-index
     {
       programs.nix-index-database.comma.enable = true;
     }
-    home-manager.nixosModules.default
     (
       { config, user, ... }:
       lib.mkIf config.home-manager.users.${user}.xdg.portal.enable {
@@ -85,7 +101,6 @@ in
     inherit system;
 
     modules = [
-      # niri.nixosModules.niri
       ./laptop
       ./modules/iwd.nix
       ./modules/wireshark.nix
@@ -100,44 +115,8 @@ in
       ./common/security.nix
       ./common/virtualisation.nix
       ./modules/stylix.nix
-      (
-        { config, ... }:
-        {
-
-          sops.secrets = {
-            mopidy_spotify.owner = user;
-            mopidy_jellyfin.owner = user;
-          };
-
-          home-manager =
-            let
-              extraMopidyConfigs = [
-                config.sops.secrets.mopidy_spotify.path
-                config.sops.secrets.mopidy_jellyfin.path
-              ];
-            in
-            {
-              backupFileExtension = "backup";
-              useGlobalPkgs = true;
-              users.${user} = import ./laptop/home.nix {
-                inherit
-                  self
-                  user
-                  pkgs
-                  inputs
-                  extraMopidyConfigs
-                  ;
-              };
-            };
-        }
-      )
       inputs.disko.nixosModules.disko
       ./laptop/disko.nix
-      {
-        nixpkgs.overlays = [ niri.overlays.niri ] ++ overlays;
-        environment.systemPackages = [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
-        programs.niri.enable = true;
-      }
       nixos-hardware.nixosModules.framework-12th-gen-intel
       {
         hardware.fw-fanctrl = {
@@ -171,30 +150,6 @@ in
       ./common/virtualisation.nix
       ./modules/tailscale.nix
       ./modules/stylix.nix
-      # inputs.lix.nixosModules.default
-      home-manager.nixosModules.default
-      {
-        home-manager.backupFileExtension = "backup";
-
-        home-manager.useGlobalPkgs = true;
-        home-manager = {
-          users.${user} = import ./desktop/home.nix {
-            inherit
-              self
-              user
-              pkgs
-              inputs
-              ;
-          };
-        };
-      }
-      {
-        nixpkgs.overlays = [ niri.overlays.niri ] ++ overlays;
-        environment.systemPackages = [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
-
-        programs.niri.enable = true;
-      }
-      #nixos-hardware.nixosModules.lenovo-thinkpad-l13
     ]
     ++ common;
     specialArgs = { inherit inputs user; };

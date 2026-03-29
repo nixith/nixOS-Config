@@ -5,11 +5,24 @@
   extraMopidyConfigs ? [ ],
   ...
 }:
+
+let
+
+  pins = import ../../npins;
+
+  niri-flake-repo = pins.niri;
+  compat = import pins.flake-compat;
+
+  niri = compat.load {
+    src = niri-flake-repo;
+  };
+in
 {
   imports = [
+
     (import ../../home/modules/modules.nix { inherit inputs; })
-    inputs.niri.homeModules.niri
-    inputs.niri.homeModules.stylix
+    niri.homeModules.niri
+    niri.homeModules.stylix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

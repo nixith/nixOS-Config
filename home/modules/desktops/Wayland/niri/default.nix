@@ -1,4 +1,3 @@
-# niri:
 {
   config,
   lib,
