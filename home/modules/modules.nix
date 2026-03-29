@@ -1,22 +1,19 @@
 inputs:
 { pkgs, ... }:
 let
-  #inherit (inputs) nixd;
-  # # inherit (inputs) niri;
-  # inherit (inputs) anyrun;
-  # inherit (inputs) nixivim;
-  # inherit (inputs) stylix;
 
-  ff-module = import ./Gui/firefox {
-    inherit pkgs;
-    ff-package = inputs.inputs.glide-browser.packages.${pkgs.system}.default;
-  };
+  pins = import ../../npins;
+
+  ff-module =
+    let
+      ff-package = pkgs.wrapFirefox (pkgs.callPackage "${pins.glide-browser}/package.nix" { }) {
+        pname = "glide-browser";
+      };
+    in
+    import ./Gui/firefox { inherit pkgs ff-package; };
+
 in
-#nvim = import ./editors/neovim nixd;
-# anyrun-module = import ./desktops/Wayland/General/anyrun;
-# niri-wm = import ./desktops/Wayland/niri niri;
-# nvim = import ./editors/neovim;
-# stylix-module = import ./services/stylix;
+
 {
 
   imports = [
