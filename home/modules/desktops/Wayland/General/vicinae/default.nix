@@ -7,23 +7,14 @@
 let
   cfg = config.nixith.vicinae;
 
-  vicinae-extensions-repo = (import (../../../../../../npins)).vicinae-extensions;
-  vicinae-extensions = (
-    lib.pipe (builtins.readDir "${vicinae-extensions-repo}/extensions") [
-      (lib.filterAttrs (_name: type: type == "directory"))
-      (lib.mapAttrs (
-        name: _type:
-        config.lib.vicinae.mkExtension {
-          pname = "vicinae-extension-${name}";
-          version = "0";
-          src = ./extensions/${name};
-          postPatch = ''
-            substituteInPlace tsconfig.json --replace "../../" "${./.}/"
-          '';
-        }
-      ))
-    ]
-  );
+  pins = import ../../../../../../npins;
+
+  vicinae-extensions-repo = pins.vicinae-extensions;
+  compat = import pins.flake-compat;
+
+  vicinae-extensions = compat.load {
+    src = vicinae-extensions-repo;
+  };
 
 in
 {
