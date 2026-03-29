@@ -53,6 +53,8 @@ in
     # To manage the actual user configuration
     cachix
     git
+    jujutsu
+    npins
   ];
 
   # Systemd packages to enable (Enable when out of VM)
