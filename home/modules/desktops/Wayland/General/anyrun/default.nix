@@ -21,12 +21,12 @@ in
       config = {
         plugins = [
           # An array of all the plugins you want, which either can be paths to the .so files, or their packages
-          anyrun.packages.${pkgs.system}.applications
-          anyrun.packages.${pkgs.system}.symbols
-          anyrun.packages.${pkgs.system}.rink
-          anyrun.packages.${pkgs.system}.shell
-          anyrun.packages.${pkgs.system}.translate
-          anyrun.packages.${pkgs.system}.dictionary
+          anyrun.packages.${pkgs.stdenv.hostPlatform.system}.applications
+          anyrun.packages.${pkgs.stdenv.hostPlatform.system}.symbols
+          anyrun.packages.${pkgs.stdenv.hostPlatform.system}.rink
+          anyrun.packages.${pkgs.stdenv.hostPlatform.system}.shell
+          anyrun.packages.${pkgs.stdenv.hostPlatform.system}.translate
+          anyrun.packages.${pkgs.stdenv.hostPlatform.system}.dictionary
         ];
         width = {
           fraction = 0.4;

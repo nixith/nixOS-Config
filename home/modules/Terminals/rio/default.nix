@@ -14,7 +14,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.rio = {
       enable = true;
-      #package = rio.packages.${pkgs.system}.rio;
+      #package = rio.packages.${pkgs.stdenv.hostPlatform.system}.rio;
       settings = {
         fonts = {
           size = 12;

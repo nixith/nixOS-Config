@@ -79,10 +79,10 @@ let
           (import (pins.nixivim)).overlays.default
           niri.overlays.niri
         ];
-      environment.systemPackages = [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
+      environment.systemPackages = [ niri.packages.${pkgs.stdenv.hostPlatform.system}.xwayland-satellite-unstable ];
       programs.niri = {
         enable = true;
-        package = niri.packages.${pkgs.system}.niri-unstable;
+        package = niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
       };
     }
     ./modules/run0.nix
