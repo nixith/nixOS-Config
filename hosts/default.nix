@@ -69,7 +69,7 @@ let
         path = pins.nixpkgs;
       };
 
-      nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
+      nix.nixPath = [ "nixpkgs=${pins.nixpkgs}" ];
     }
     {
       nixpkgs.overlays =
