@@ -125,9 +125,9 @@
     },
     "nixpkgs": {
       "type": "Channel",
-      "name": "nixpkgs-unstable",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre971056.b63fe7f000ad/nixexprs.tar.xz",
-      "hash": "sha256-5QVei2IIfVO3GqMkiiXlrZtaniOkXyMWnqbTVkItrco="
+      "name": "nixos-unstable",
+      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre971119.8110df5ad7ab/nixexprs.tar.xz",
+      "hash": "sha256-D4ely1FsBcvtj/qSrNhSWpq+CUZKNiKwJIxpxnfy9o4="
     },
     "sops-nix": {
       "type": "Git",
