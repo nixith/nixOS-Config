@@ -1,9 +1,6 @@
 {
-  nixpkgs,
   self,
   user,
-  home-manager,
-  niri,
   # flakeProgramsSqlite,
   ...
 }:
@@ -11,8 +8,8 @@
 # do hostname - lib.nixosSystem {} to define a config Make a subfolder for each config
 # Build with nixos-rebuild --flake .#{configName} (I think)
 let
-
   pins = import ../npins;
+  niri = import pins.niri;
 
   system = "x86_64-linux";
   pkgs = import pins.nixpkgs {
@@ -23,7 +20,7 @@ let
   };
 
   common = [
-    home-manager.nixosModules.default
+    "${pins.home-manager}/nixos"
     (
       { config, ... }:
       {
@@ -41,7 +38,12 @@ let
       }
     )
     {
-      nix.nixPath = [ "nixpkgs=${pins.nixpkgs}" ];
+      nix.registry.nixpkgs.to = {
+        type = "path";
+        path = pins.nixpkgs;
+      };
+
+      nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
     }
     {
       nixpkgs.overlays = [ niri.overlays.niri ] ++ overlays;
@@ -85,7 +87,7 @@ let
     }
     (
       { config, user, ... }:
-      lib.mkIf config.home-manager.users.${user}.xdg.portal.enable {
+      pkgs.lib.mkIf config.home-manager.users.${user}.xdg.portal.enable {
         environment.pathsToLink = [
           "/share/xdg-desktop-portal"
           "/share/applications"
@@ -96,10 +98,9 @@ let
 
   overlays = [ (import (pins.nixivim)).overlays.default ];
 
-  inherit (nixpkgs) lib;
 in
 {
-  laptop = nixpkgs.lib.nixosSystem {
+  laptop = pkgs.lib.nixosSystem {
     # Laptop profile
     inherit system;
 
@@ -131,7 +132,7 @@ in
     specialArgs = { inherit user self; };
   };
 
-  desktop = nixpkgs.lib.nixosSystem {
+  desktop = pkgs.lib.nixosSystem {
     # Desktop profile
     inherit system;
 
