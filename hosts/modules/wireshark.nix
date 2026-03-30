@@ -1,4 +1,12 @@
-{ user, pkgs, ... }:
+{
+  user,
+  pkgs,
+  config,
+  ...
+}:
+let
+  user = config.nixith.user;
+in
 {
   programs.wireshark = {
     enable = true;

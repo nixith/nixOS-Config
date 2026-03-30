@@ -1,6 +1,5 @@
 {
-  self,
-  user,
+  config,
   # flakeProgramsSqlite,
   ...
 }:
@@ -8,18 +7,46 @@
 # do hostname - lib.nixosSystem {} to define a config Make a subfolder for each config
 # Build with nixos-rebuild --flake .#{configName} (I think)
 let
+  user = config.nixith.user;
   pins = import ../npins;
-  niri = import pins.niri;
+  niri-flake-repo = pins.niri;
+  compat = import pins.flake-compat;
+
+  niri = compat.load {
+    src = niri-flake-repo;
+  };
 
   system = "x86_64-linux";
   pkgs = import pins.nixpkgs {
     config = {
       allowUnfree = true;
     };
-    inherit system self;
+    inherit system;
   };
 
   common = [
+    ./module.nix
+    {
+      nix.settings = {
+        trusted-substituters = [
+          "https://hydra.nixos.org/"
+          "https://cache.nixos.org/"
+          "https://nix-community.cachix.org"
+          "https://anyrun.cachix.org"
+          "https://cuda-maintainers.cachix.org"
+          "https://niri.cachix.org"
+        ];
+        trusted-public-keys = [
+          "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
+          "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+          "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
+          "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+          "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+        ];
+
+      };
+    }
     "${pins.home-manager}/nixos"
     (
       { config, ... }:
@@ -29,7 +56,6 @@ let
           useGlobalPkgs = true;
           users.${user} = import ./modules/home.nix {
             inherit
-              self
               user
               pkgs
               ;
@@ -46,7 +72,12 @@ let
       nix.nixPath = [ "nixpkgs=flake:nixpkgs" ];
     }
     {
-      nixpkgs.overlays = [ niri.overlays.niri ] ++ overlays;
+      nixpkgs.overlays =
+
+        [
+          (import (pins.nixivim)).overlays.default
+          niri.overlays.niri
+        ];
       environment.systemPackages = [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
       programs.niri = {
         enable = true;
@@ -62,7 +93,13 @@ let
     }
     ./modules/console.nix
     ./common/yubikey.nix
-    # flakeProgramsSqlite.nixosModules.programs-sqlite
+    ./modules/tailscale.nix
+    ./modules/wireshark.nix
+    ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
+    ./common/desktop.nix # Default for graphical desktops
+    ./common/security.nix
+    ./modules/stylix.nix
+    ./common/virtualisation.nix
     (
       { pkgs, ... }:
       {
@@ -86,7 +123,7 @@ let
       programs.nix-index-database.comma.enable = true;
     }
     (
-      { config, user, ... }:
+      { config, ... }:
       pkgs.lib.mkIf config.home-manager.users.${user}.xdg.portal.enable {
         environment.pathsToLink = [
           "/share/xdg-desktop-portal"
@@ -95,63 +132,40 @@ let
       }
     )
   ];
-
-  overlays = [ (import (pins.nixivim)).overlays.default ];
-
 in
 {
-  laptop = pkgs.lib.nixosSystem {
-    # Laptop profile
-    inherit system;
 
-    modules = [
-      ./laptop
-      ./modules/iwd.nix
-      ./modules/wireshark.nix
-      ./modules/networkd.nix
-      ./modules/tailscale.nix
-      ./modules/firefox.nix
-      #./modules/calibre.nix
-      ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
-      ./common/desktop.nix # Default for graphical desktops
-      # ./common/tlp.nix
-      ./common/secrets.nix
-      ./common/security.nix
-      ./common/virtualisation.nix
-      ./modules/stylix.nix
-      "${pins.disko}/module.nix"
-      ./laptop/disko.nix
-      "${pins.nixos-hardware}/framework/13-inch/12th-gen-intel/"
-      {
-        hardware.fw-fanctrl = {
-          enable = true;
-        };
-      }
-    ]
-    ++ common;
-    specialArgs = { inherit user self; };
-  };
-
-  desktop = pkgs.lib.nixosSystem {
-    # Desktop profile
-    inherit system;
-
-    modules = [
-      ./desktop
-      { config.facter.reportPath = ./desktop/facter.json; }
-
-      ./modules/firefox.nix
-      # ./common/kmscon.nix # alternate tty, need to figure out how to turn off gpu so wayland can take it
-      ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
-      ./common/desktop.nix # Default for graphical desktops
-      ./common/security.nix
-      ./common/secrets.nix
-      ./common/system76-scheduler.nix
-      ./common/virtualisation.nix
-      ./modules/tailscale.nix
-      ./modules/stylix.nix
-    ]
-    ++ common;
-    specialArgs = { inherit user; };
-  };
+  imports = common;
+  # laptop = pkgs.lib.nixosSystem {
+  #   # Laptop profile
+  #   inherit system;
+  #
+  #   modules = [
+  #     ./laptop
+  #   ]
+  #   ++ common;
+  #   specialArgs = { inherit user self; };
+  # };
+  #
+  # desktop = pkgs.lib.nixosSystem {
+  #   # Desktop profile
+  #   inherit system;
+  #
+  #   modules = [
+  #     ./desktop
+  #     { config.facter.reportPath = ./desktop/facter.json; }
+  #
+  #     # ./common/kmscon.nix # alternate tty, need to figure out how to turn off gpu so wayland can take it
+  #     ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
+  #     ./common/desktop.nix # Default for graphical desktops
+  #     ./common/security.nix
+  #     ./common/secrets.nix
+  #     ./common/system76-scheduler.nix
+  #     ./common/virtualisation.nix
+  #     ./modules/tailscale.nix
+  #     ./modules/stylix.nix
+  #   ]
+  #   ++ common;
+  #   specialArgs = { inherit user; };
+  # };
 }

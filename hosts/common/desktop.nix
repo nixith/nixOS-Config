@@ -2,18 +2,11 @@
 {
   config,
   pkgs,
-  user,
   lib,
   ...
 }:
 let
-  gamescopeEnv = {
-    # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-  };
-  gamescopeArgs = [
-    "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0"
-    "-e"
-  ];
+  user = config.nixith.user;
 in
 {
   zramSwap.enable = true;
@@ -166,14 +159,8 @@ in
       "plugdev"
       "fuse"
       "jack"
+      "libvirtd"
       "seatd"
-    ];
-    # import modules
-    packages = with pkgs; [
-      glibc
-      libredirect
-      libdrm
-      mesa
     ];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [

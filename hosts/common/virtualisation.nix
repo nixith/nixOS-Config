@@ -1,10 +1,11 @@
 {
   pkgs,
-  user,
+
   config,
   ...
 }:
 let
+  user = config.nixith.user;
   isNvidia = pkgs.lib.any (driver: driver == "nvidia") config.services.xserver.videoDrivers;
 in
 {
