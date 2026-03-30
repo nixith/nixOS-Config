@@ -1,11 +1,10 @@
 {
-  inputs,
   nixpkgs,
-  nixos-hardware,
   self,
   user,
   home-manager,
   niri,
+  inputs,
   # flakeProgramsSqlite,
   ...
 }:
@@ -13,12 +12,15 @@
 # do hostname - lib.nixosSystem {} to define a config Make a subfolder for each config
 # Build with nixos-rebuild --flake .#{configName} (I think)
 let
+
+  pins = import ../npins;
+
   system = "x86_64-linux";
-  pkgs = import nixpkgs {
+  pkgs = import pins.nixpkgs {
     config = {
       allowUnfree = true;
     };
-    inherit system self inputs;
+    inherit system self;
   };
 
   common = [
@@ -49,7 +51,7 @@ let
       };
     }
     ./modules/run0.nix
-    inputs.sops-nix.nixosModules.sops
+    "${pins.sops-nix}/modules/sops"
     {
       programs.thunderbird = {
         enable = true;
@@ -76,7 +78,7 @@ let
       }
     )
     ./modules/greetd.nix
-    inputs.nix-index-database.nixosModules.nix-index
+    "${pins.nix-index-database}/nixos-module.nix"
     {
       programs.nix-index-database.comma.enable = true;
     }
@@ -91,7 +93,7 @@ let
     )
   ];
 
-  overlays = [ inputs.nixivim.overlays.default ];
+  overlays = [ (import (pins.nixivim)).overlays.default ];
 
   inherit (nixpkgs) lib;
 in
@@ -115,29 +117,25 @@ in
       ./common/security.nix
       ./common/virtualisation.nix
       ./modules/stylix.nix
-      inputs.disko.nixosModules.disko
+      "${pins.disko}/module.nix"
       ./laptop/disko.nix
-      nixos-hardware.nixosModules.framework-12th-gen-intel
+      "${pins.nixos-hardware}/framework/13-inch/12th-gen-intel/"
       {
         hardware.fw-fanctrl = {
           enable = true;
         };
       }
-      # {
-      #   programs.river.enable = true;
-      #   environment.systemPackages = with pkgs; [ rivercarro ];
-      # }
     ]
     ++ common;
-    specialArgs = { inherit inputs user self; };
+    specialArgs = { inherit user self inputs; };
   };
+
   desktop = nixpkgs.lib.nixosSystem {
     # Desktop profile
     inherit system;
 
     modules = [
       ./desktop
-      inputs.nixos-facter-modules.nixosModules.facter
       { config.facter.reportPath = ./desktop/facter.json; }
 
       ./modules/firefox.nix
@@ -152,6 +150,6 @@ in
       ./modules/stylix.nix
     ]
     ++ common;
-    specialArgs = { inherit inputs user; };
+    specialArgs = { inherit user; };
   };
 }
