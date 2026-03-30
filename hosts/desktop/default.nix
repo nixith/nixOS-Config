@@ -180,10 +180,6 @@ in
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   #  system.stateVersion = "22.11"; # Did you read the comment?
   system = {
-    autoUpgrade = {
-      enable = true;
-      channel = "https://nixos.org/channels/nixos-unstable";
-    };
     stateVersion = "22.11";
   };
 
