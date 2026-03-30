@@ -2,6 +2,9 @@
 {
   stylix = {
     enable = true;
+    targets.gtk = {
+      flatpakSupport.enable = true;
+    };
     targets.firefox = {
       firefoxGnomeTheme.enable = true;
       profileNames = [ "stylix" ];

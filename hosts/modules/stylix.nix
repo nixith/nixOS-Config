@@ -31,9 +31,6 @@ in
       light = "Adwaita";
       package = pkgs.adwaita-icon-theme;
     };
-    targets.gtk = {
-      flatpakSupport.enable = true;
-    };
     homeManagerIntegration = {
       autoImport = true;
       followSystem = true;

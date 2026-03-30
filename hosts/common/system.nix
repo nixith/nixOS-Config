@@ -65,7 +65,7 @@ in
   programs.nh = {
     enable = true;
     clean.enable = true;
-    clean.extraArgs = "--keep 5 --keep-since 3d";
+    clean.extraArgs = "--keep 5 --keep-since 5d";
   };
 
   nix = {
@@ -89,11 +89,6 @@ in
         "root"
         "@wheel"
       ];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 5d";
     };
   };
 }
