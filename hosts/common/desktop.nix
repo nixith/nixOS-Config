@@ -208,7 +208,7 @@ in
     };
   };
   # video acceleration
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       libvdpau-va-gl

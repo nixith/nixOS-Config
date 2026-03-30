@@ -2,7 +2,7 @@
 {
   boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemory" ];
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl = {
+  hardware.graphics = {
     extraPackages = with pkgs; [
       nvidia-vaapi-driver
       libvdpau-va-gl
