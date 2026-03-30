@@ -1,7 +1,6 @@
 {
   user,
-  self,
-  inputs,
+  pkgs,
   ...
 }:
 
@@ -18,7 +17,7 @@ in
 {
   imports = [
 
-    (import ../../home/modules/modules.nix { inherit inputs; })
+    (import ../../home/modules/modules.nix { inherit pkgs; })
     niri.homeModules.niri
     niri.homeModules.stylix
   ];
