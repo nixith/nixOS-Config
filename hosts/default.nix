@@ -4,7 +4,6 @@
   user,
   home-manager,
   niri,
-  inputs,
   # flakeProgramsSqlite,
   ...
 }:
@@ -36,7 +35,6 @@ let
               self
               user
               pkgs
-              inputs
               ;
           };
         };
@@ -130,7 +128,7 @@ in
       }
     ]
     ++ common;
-    specialArgs = { inherit user self inputs; };
+    specialArgs = { inherit user self; };
   };
 
   desktop = nixpkgs.lib.nixosSystem {
