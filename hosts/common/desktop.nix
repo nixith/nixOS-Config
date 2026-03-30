@@ -32,7 +32,7 @@ in
     libraries =
       (pkgs.steam.args.multiPkgs pkgs)
       ++ (with pkgs; [
-        xorg.libxcb
+        libxcb
         libxkbcommon
         wayland
         alsa-lib

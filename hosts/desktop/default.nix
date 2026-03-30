@@ -56,11 +56,11 @@ in
           bubblewrap
           mangohud
           gamemode
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXScrnSaver
-          xorg.libxcb
+          libXcursor
+          libXi
+          libXinerama
+          libXScrnSaver
+          libxcb
           libxkbcommon
           wayland
           libpng
