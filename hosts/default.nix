@@ -43,6 +43,9 @@ let
       }
     )
     {
+      nix.nixPath = [ "nixpkgs=${pins.nixpkgs}" ];
+    }
+    {
       nixpkgs.overlays = [ niri.overlays.niri ] ++ overlays;
       environment.systemPackages = [ niri.packages.${pkgs.system}.xwayland-satellite-unstable ];
       programs.niri = {
