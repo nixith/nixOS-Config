@@ -93,9 +93,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "e66218ba3c597e059847ef7e4f1f544055cd4ac8",
-      "url": "https://github.com/nixith/nixivim/archive/e66218ba3c597e059847ef7e4f1f544055cd4ac8.tar.gz",
-      "hash": "sha256-KlQ0ybbUpMCeGIdLbifGQwYRzIZEWbGNYvKzmxRX3Sc="
+      "revision": "0c67c5029fcf587e443ed7a0fbcada36b9ca1d7a",
+      "url": "https://github.com/nixith/nixivim/archive/0c67c5029fcf587e443ed7a0fbcada36b9ca1d7a.tar.gz",
+      "hash": "sha256-hUu1XYd9sbMtADPUR1BHQ1YDJdIoRhB9dqxVdM6X0Uo="
     },
     "nixos-facter-modules": {
       "type": "Git",
