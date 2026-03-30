@@ -48,7 +48,7 @@ in
           "-F"
           "--header"
         ];
-        icons = true;
+        icons = "auto";
         git = true;
       };
 
