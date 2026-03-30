@@ -3,7 +3,7 @@
     "nixd": {
       "nixd": {
         "nixpkgs": {
-          "expr": "import (import ./npins).nixpkgs { allowUnfree = true; } "
+          "expr": "(import ./npins).nixpkgs"
         },
         "formatting": {
           "command": [
