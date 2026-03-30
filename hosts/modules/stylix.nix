@@ -1,11 +1,14 @@
 {
   inputs,
   pkgs,
-  lib,
   ...
 }:
+let
+  pins = import ../../npins;
+  stylix = import pins.stylix;
+in
 {
-  imports = [ inputs.stylix.nixosModules.stylix ];
+  imports = [ stylix.nixosModules.stylix ];
   stylix = {
     image = ../../resources/wallpapers/everforest.webp;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
