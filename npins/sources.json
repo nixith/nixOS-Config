@@ -45,7 +45,7 @@
       "url": "https://github.com/glide-browser/glide.nix/archive/1a3dd001865f6ac5a3562d2cb484388672ad6eaf.tar.gz",
       "hash": "sha256-IvWd8A3MM2qASf2U5diOoYEc2dCxqR4BOhB5RuOQnZM="
     },
-    "home-manager_2": {
+    "home-manager": {
       "type": "Git",
       "repository": {
         "type": "GitHub",
@@ -84,19 +84,6 @@
       "url": "https://github.com/nix-community/nix-index-database/archive/bc13aeaed568be76eab84df88ff39261bb52ff70.tar.gz",
       "hash": "sha256-89Mh4Eb/5stVJX6kGagVMijcU2FmfeD8Qv7UXc5d92o="
     },
-    "nixd": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "nix-community",
-        "repo": "nixd"
-      },
-      "branch": "main",
-      "submodules": false,
-      "revision": "8ecf93d4d93745e05ea53534e8b94f5e9506e6bd",
-      "url": "https://github.com/nix-community/nixd/archive/8ecf93d4d93745e05ea53534e8b94f5e9506e6bd.tar.gz",
-      "hash": "sha256-49qb4QNMv77VOeEux+sMd0uBhPvvHgVc0r938Bulvbo="
-    },
     "nixivim": {
       "type": "Git",
       "repository": {
@@ -123,19 +110,6 @@
       "url": "https://github.com/nix-community/nixos-facter-modules/archive/139dcef4dfc97009629c445806f197883351ab4a.tar.gz",
       "hash": "sha256-oW0/lC0oRG5H5LaK6Rmh9L1wmkn9TbenM4bXwnIEDKA="
     },
-    "nixos-generators": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "nix-community",
-        "repo": "nixos-generators"
-      },
-      "branch": "master",
-      "submodules": false,
-      "revision": "8946737ff703382fda7623b9fab071d037e897d5",
-      "url": "https://github.com/nix-community/nixos-generators/archive/8946737ff703382fda7623b9fab071d037e897d5.tar.gz",
-      "hash": "sha256-nnVmNNKBi1YiBNPhKclNYDORoHkuKipoz7EtVnXO50A="
-    },
     "nixos-hardware": {
       "type": "Git",
       "repository": {
@@ -154,31 +128,6 @@
       "name": "nixpkgs-unstable",
       "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre971056.b63fe7f000ad/nixexprs.tar.xz",
       "hash": "sha256-5QVei2IIfVO3GqMkiiXlrZtaniOkXyMWnqbTVkItrco="
-    },
-    "nixpkgs_6": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "NixOS",
-        "repo": "nixpkgs"
-      },
-      "branch": "nixos-unstable",
-      "submodules": false,
-      "revision": "46db2e09e1d3f113a13c0d7b81e2f221c63b8ce9",
-      "url": "https://github.com/NixOS/nixpkgs/archive/46db2e09e1d3f113a13c0d7b81e2f221c63b8ce9.tar.gz",
-      "hash": "sha256-4hAV26quOxdC6iyG7kYaZcM3VOskcPUrdCQd/nx8obc="
-    },
-    "phoenix": {
-      "type": "Git",
-      "repository": {
-        "type": "Git",
-        "url": "https://codeberg.org/celenity/Phoenix.git"
-      },
-      "branch": "dev",
-      "submodules": false,
-      "revision": "99f9b1a1f8c35380ae642bcc4f57b4b844b9606e",
-      "url": null,
-      "hash": "sha256-BJOdyovQ1sigyzLeHOuydo5l7GvQ1PVxtx6tR7zeeIg="
     },
     "sops-nix": {
       "type": "Git",
