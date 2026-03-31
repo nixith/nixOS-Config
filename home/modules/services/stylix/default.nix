@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   stylix = {
-    enable = true;
+    enable = false;
     targets.gtk = {
       flatpakSupport.enable = true;
     };

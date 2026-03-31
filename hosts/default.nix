@@ -101,7 +101,7 @@ let
     ./common/system.nix # Default shared options - mostly nix configurationa nd making sure I always have git
     ./common/desktop.nix # Default for graphical desktops
     ./common/security.nix
-    ./modules/stylix.nix
+    # ./modules/stylix.nix
     ./common/virtualisation.nix
     (
       { pkgs, ... }:

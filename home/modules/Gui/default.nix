@@ -12,7 +12,7 @@ in
   #TODO: Modularize gui components
   imports = [
     # ./QT
-    # ./gtk/adw-gtk3.nix
+    ./gtk/adw-gtk3.nix
     # ./firefox
     # ./zathura
     # ./pointer/pointer.nix

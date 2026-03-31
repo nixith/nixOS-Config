@@ -44,6 +44,6 @@ in
     ./desktops/Wayland/niri
     ./desktops/Wayland/General/vicinae
     # anyrun-module
-    ./services/stylix
+    # ./services/stylix
   ];
 }

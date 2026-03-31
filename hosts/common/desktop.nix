@@ -102,15 +102,18 @@ in
   services.avahi.openFirewall = true;
 
   # Enable flatpak
-  xdg.portal = {
-    #xdgOpenUsePortal = true;
-    enable = true;
-    extraPortals = [
-      #pkgs.xdg-desktop-portal-wlr
-      #pkgs.xdg-desktop-portal
-      # pkgs.xdg-desktop-portal-gtk
-    ];
-    #config.common.default = "*";
+  xdg = {
+    icons.enable = true;
+    portal = {
+      #xdgOpenUsePortal = true;
+      enable = true;
+      extraPortals = [
+        #pkgs.xdg-desktop-portal-wlr
+        #pkgs.xdg-desktop-portal
+        # pkgs.xdg-desktop-portal-gtk
+      ];
+      #config.common.default = "*";
+    };
   };
   services.flatpak.enable = true;
   services.seatd.enable = true;

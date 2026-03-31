@@ -19,7 +19,7 @@ in
 
     (import ../../home/modules/modules.nix { inherit pkgs; })
     niri.homeModules.niri
-    niri.homeModules.stylix
+    #niri.homeModules.stylix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
