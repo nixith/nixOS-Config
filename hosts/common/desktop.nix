@@ -46,7 +46,7 @@ in
   environment.systemPackages = with pkgs; [
     gnome-calendar
     gnome-contacts
-    ffmpeg
+    ffmpeg-full
     usbutils
     libva-utils
     brillo
