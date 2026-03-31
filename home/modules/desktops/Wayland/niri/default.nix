@@ -633,7 +633,7 @@ in
           "Mod+D" = {
             action.spawn = [
               "${lib.getExe config.programs.vicinae.package}"
-              "vicinae://toggle"
+              "vicinae://open?popToRoot=true"
             ];
           };
           "Mod+E" = {
