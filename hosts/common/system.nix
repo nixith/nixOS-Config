@@ -30,18 +30,6 @@ in
   };
 
   services = {
-    resolved = {
-      # works better with tailscale
-      enable = true;
-      settings.Resolve = {
-        ReadEtcHosts = "yes";
-      };
-      fallbackDns = [
-        "1.1.1.1"
-        "1.0.0.1"
-        "9.9.9.9"
-      ];
-    };
 
     fwupd.enable = true;
   };
