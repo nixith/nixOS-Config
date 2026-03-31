@@ -30,10 +30,10 @@
         matchConfig.Path = "pci-0000:a6:00.0";
         linkConfig.Name = "wlan0";
       };
-      "20-eth0" = {
-        matchConfig.Path = "pci-0000:00:0d.0-usb-0:2.1.2:1.0";
-        linkConfig.Name = "eth0";
-      };
+      # "20-eth0" = {
+      #   matchConfig.Path = "pci-0000:00:0d.0-usb-0:2.1.2:1.0";
+      #   linkConfig.Name = "eth0";
+      # };
     };
 
     networks = {
