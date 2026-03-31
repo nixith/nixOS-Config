@@ -157,6 +157,7 @@ in
       "video"
       "audio"
       "plugdev"
+      "printer"
       "fuse"
       "jack"
       "libvirtd"
