@@ -20,6 +20,7 @@ in
     ../modules/iwd.nix
     ../modules/networkd.nix
     ../default.nix
+    ../modules/ime.nix
     "${pins.disko}/module.nix"
     "${pins.nixos-hardware}/framework/13-inch/12th-gen-intel/"
   ];
