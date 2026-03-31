@@ -24,7 +24,10 @@ in
 
   config = lib.mkIf cfg.enable {
     # Apps without Home Manager Modules
-    xdg.terminal-exec.enable = true;
+    xdg = {
+      terminal-exec.enable = true;
+      mime.enable = true;
+    };
 
     fonts.fontconfig.enable = true;
     home.packages = with pkgs; [
