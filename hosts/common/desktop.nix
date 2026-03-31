@@ -161,6 +161,7 @@ in
       "jack"
       "libvirtd"
       "seatd"
+      "dialout"
     ];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
