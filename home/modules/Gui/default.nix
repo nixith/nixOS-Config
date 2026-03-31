@@ -38,7 +38,6 @@ in
       #   cmakeFlags = previousAttrs.cmakeFlags
       #     ++ [ (pkgs.lib.cmakeBool "USE_WAYLAND_GRIM" true) ];
       # }))
-      grimblast
       finamp
       #lib.cmakeBool
       # carla
