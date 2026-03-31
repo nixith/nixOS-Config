@@ -24,6 +24,22 @@ in
     "${pins.disko}/module.nix"
     "${pins.nixos-hardware}/framework/13-inch/12th-gen-intel/"
   ];
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      cups-filters
+      cups-browsed
+    ];
+  };
+
+  programs.gnupg.agent.enable = true;
   hardware = {
     facter.reportPath = ./facter.json;
     fw-fanctrl = {
