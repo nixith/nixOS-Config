@@ -16,6 +16,9 @@ in
       enableFishIntegration = true;
       installBatSyntax = true;
       installVimSyntax = true;
+      settings = {
+        theme = "dark:Everforest Dark Hard,light:Everforest Light Med";
+      };
     };
   };
 }

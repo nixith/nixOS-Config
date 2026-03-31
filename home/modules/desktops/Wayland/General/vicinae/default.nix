@@ -11,10 +11,11 @@ let
 
   vicinae-extensions-repo = pins.vicinae-extensions;
   compat = import pins.flake-compat;
-
   vicinae-extensions = compat.load {
     src = vicinae-extensions-repo;
   };
+
+  # vicinae-extensions = import pins.vicinae-extensions;
 
 in
 {
@@ -61,7 +62,8 @@ in
           searchFiles = false;
         };
         theme = {
-          name = "vicinae-dark";
+          dark.name = "evergarden-spring";
+          light.name = "evergarden-summer";
         };
         window = {
           csd = true;

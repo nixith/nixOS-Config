@@ -13,7 +13,7 @@ in
     #image = ../../resources/wallpapers/everforest.webp;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
     enable = true;
-    autoEnable = true;
+    autoEnable = false;
     polarity = "dark";
     fonts = {
       monospace = {
@@ -35,6 +35,9 @@ in
       autoImport = true;
       followSystem = true;
     };
+    # targets.gtk = {
+    #   enable = false;
+    # };
     # targets.qt = {
     #   platform = "gnome";
     # };

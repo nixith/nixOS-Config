@@ -34,11 +34,11 @@ in
     #
     # };
     nixith.kanshi.enable = true;
-    nixith.waybar.enable = true;
+    nixith.waybar.enable = false;
     nixith.fuzzel.enable = false;
-    nixith.swayosd.enable = true;
+    nixith.swayosd.enable = false;
     nixith.swayidle.enable = false;
-    nixith.swaync.enable = true;
+    nixith.swaync.enable = false;
 
     services = {
       gnome-keyring.enable = true;
@@ -639,19 +639,19 @@ in
           "Mod+E" = {
             action.spawn = [
               "${lib.getExe config.programs.vicinae.package}"
-              "vicinae://extensions/vicinae/vicinae/search-emojis"
+              "vicinae://launch/core/search-emojis"
             ];
           };
           "Mod+Shift+C" = {
             action.spawn = [
               "${lib.getExe config.programs.vicinae.package}"
-              "vicinae://extensions/vicinae/clipboard/history"
+              "vicinae://launch/clipboard/history"
             ];
           };
           "Mod+S" = {
             action.spawn = [
               "${lib.getExe config.programs.vicinae.package}"
-              "vicinae://extensions/vicinae/wm/switch-windows"
+              "vicinae://launch/wm/switch-windows"
             ];
           };
           "Mod+W" = {
@@ -724,6 +724,17 @@ in
             };
             clip-to-geometry = true;
           }
+          # {
+          #
+          #   popups = {
+          #     geometry-corner-radius = 15;
+          #     opacity = 0.5; # TODO: set in GTK theme
+          #     background-effect = {
+          #       blur = true;
+          #     };
+          #
+          #   };
+          # }
         ];
 
         layer-rules = [
@@ -737,7 +748,7 @@ in
       } cfg.extraConfig;
     programs.niri = {
       enable = true;
-      package = pkgs.niri-unstable;
+      # package = pkgs.niri-unstable;
       # inherit (cfg) config;
     };
   };
