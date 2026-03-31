@@ -25,7 +25,7 @@ in
     "${pins.nixos-hardware}/framework/13-inch/12th-gen-intel/"
   ];
   hardware = {
-
+    facter.reportPath = ./facter.json;
     fw-fanctrl = {
       enable = true;
     };
