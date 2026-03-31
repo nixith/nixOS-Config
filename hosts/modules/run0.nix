@@ -24,30 +24,12 @@ in
       enable = false;
     };
 
+    system.tools.nixos-rebuild.enableRun0Elevation = true;
     security.run0 = {
-      enableSudoAlias = true;
+      enable = true;
+      sudo-shim.enable = true;
+      persistentAuth.enable = true;
     };
-
-    # allow password caching for polkit >= 127, whenever that is
-    security.polkit.extraConfig = /* javascript */ ''
-      polkit.addRule(function(action, subject) {
-          if (
-              action.id == "org.freedesktop.systemd1.run" &&
-              subject.isInGroup("wheel")
-          ) {
-              return polkit.Result.AUTH_KEEP;
-          }
-      });
-
-      polkit.addRule(function(action, subject) {
-       if (subject.user == "alice") {
-         if (action.id.indexOf("org.nixos") == 0) {
-           polkit.log("Caching admin authentication for single NixOS operation");
-           return polkit.Result.AUTH_ADMIN_KEEP;
-         }
-       }});
-    '';
-
   };
 
 }
