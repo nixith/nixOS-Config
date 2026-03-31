@@ -45,6 +45,5 @@ in
     ./desktops/Wayland/General/vicinae
     # anyrun-module
     ./services/stylix
-    ./services/music/default.nix
   ];
 }
