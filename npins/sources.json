@@ -75,17 +75,20 @@
       "hash": "sha256-muTc+WME6k3sfTr/Pvmw8hrK7zXrbl961TEF9wPeAnk="
     },
     "niri": {
-      "type": "Git",
+      "type": "GitRelease",
       "repository": {
         "type": "GitHub",
-        "owner": "sodiboo",
+        "owner": "epireyn",
         "repo": "niri-flake"
       },
-      "branch": "main",
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
       "submodules": false,
-      "revision": "f525d3b0a684d463dc9cf5c59359b9e67a372939",
-      "url": "https://github.com/sodiboo/niri-flake/archive/f525d3b0a684d463dc9cf5c59359b9e67a372939.tar.gz",
-      "hash": "sha256-jWlIT+uKqKZoz6rNweobs/h6FfI5dKnC5OO7/3T7Tdw="
+      "version": "v25.11",
+      "revision": "cd960fbbb758df8b40a2a49356f1e8023d7555b3",
+      "url": "https://api.github.com/repos/epireyn/niri-flake/tarball/refs/tags/v25.11",
+      "hash": "sha256-eGjWscHUUUrF39LBAuub/y/VxxudEIdSGmb6Ay87wwc="
     },
     "nix-index-database": {
       "type": "Git",
