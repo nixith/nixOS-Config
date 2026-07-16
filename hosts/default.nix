@@ -86,6 +86,10 @@ let
         enable = true;
         #package = niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
       };
+      xdg.portal.config.niri = {
+        "org.freedesktop.impl.portal.Secret" = pkgs.lib.mkForce "oo7-portal";
+      };
+
     }
     ./modules/run0.nix
     "${pins.sops-nix}/modules/sops"

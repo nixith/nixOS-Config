@@ -68,9 +68,10 @@ in
   ];
 
   # keyring stuff
+  services.oo7.enable = true;
   services.gnome = {
     evolution-data-server.enable = true;
-    gnome-keyring.enable = true;
+    gnome-keyring.enable = false;
     gnome-online-accounts.enable = true;
   };
 

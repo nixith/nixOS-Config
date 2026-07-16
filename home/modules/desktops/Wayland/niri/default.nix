@@ -41,7 +41,6 @@ in
     nixith.swaync.enable = false;
 
     services = {
-      gnome-keyring.enable = true;
       polkit-gnome.enable = true;
     };
     xdg.portal = {
@@ -50,7 +49,7 @@ in
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
         xdg-desktop-portal-gnome
-        gnome-keyring
+        oo7-portal
       ];
     };
     services.kanshi.systemdTarget = "niri.service";
