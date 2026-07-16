@@ -42,9 +42,8 @@ in
     programs.vicinae = {
       enable = true;
       systemd.enable = true;
-
       extensions = with vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
-        bluetooth
+        # bluetooth
         nix
         html-symbol-finder
         player-pilot
