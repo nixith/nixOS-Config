@@ -84,6 +84,7 @@ let
       ];
       programs.niri = {
         enable = true;
+        package = pkgs.niri;
         #package = niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
       };
       xdg.portal.config.niri = {

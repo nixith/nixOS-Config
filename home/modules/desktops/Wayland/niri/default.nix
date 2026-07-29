@@ -69,6 +69,16 @@ in
         swayosd = config.nixith.swayosd.enable;
       in
       lib.recursiveUpdate {
+        includes = [
+          {
+            path = "extra.kdl";
+            optional = true;
+          }
+          {
+            path = "noctalia.kdl";
+            optional = true;
+          }
+        ];
         prefer-no-csd = true;
         environment = {
           QT_QPA_PLATFORM = "wayland";
@@ -747,7 +757,7 @@ in
       } cfg.extraConfig;
     programs.niri = {
       enable = true;
-      # package = pkgs.niri-unstable;
+      package = pkgs.niri;
       # inherit (cfg) config;
     };
   };
