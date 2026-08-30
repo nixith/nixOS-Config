@@ -150,6 +150,12 @@ in
     bash
   ];
   programs.fish.enable = true;
+  programs.vellum = {
+    enable = true;
+    settings = {
+      clear_on_escape = true;
+    };
+  };
 
   users.users.${user} = {
     isNormalUser = true;

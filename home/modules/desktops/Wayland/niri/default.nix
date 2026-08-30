@@ -669,6 +669,8 @@ in
           "Mod+Return" = {
             action.spawn = [ "ghostty" ];
           };
+
+          #TODO: swap to noctalia
           "Mod+N" = lib.mkIf config.services.swaync.enable {
             action.spawn = [
               "${lib.getExe' config.services.swaync.package "swaync-client"}"
@@ -686,6 +688,18 @@ in
               "${lib.getExe' config.services.swaync.package "swaync-client"}"
               "--hide-latest"
             ]; # toggle do-not-disturb
+          };
+          "Mod+Shift+D" = {
+            action.spawn = [
+              "${lib.getExe pkgs.vellum}"
+              "toggle"
+            ];
+          };
+          "Mod+Ctrl+Shift+D" = {
+            action.spawn = [
+              "${lib.getExe pkgs.vellum}"
+              "clear"
+            ];
           };
         };
 
