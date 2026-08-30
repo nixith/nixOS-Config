@@ -150,6 +150,11 @@ in
     };
   };
 
+  services.mysql = {
+    enable = true;
+    package = pkgs.mysql84;
+  };
+
   programs.dconf.enable = true;
 
   #Distrobox
