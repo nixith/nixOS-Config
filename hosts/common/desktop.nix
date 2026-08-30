@@ -9,7 +9,6 @@ let
   user = config.nixith.user;
 in
 {
-  zramSwap.enable = true;
   services.firewalld.enable = true;
   networking.nftables.enable = true;
 
@@ -23,6 +22,11 @@ in
     kernelModules = [ "nfs" ];
     supportedFilesystems = {
       nfs = true;
+    };
+
+    zswap.enable = true;
+    kernel.sysctl = {
+      "vm.swappiness" = 100;
     };
   };
   services.rpcbind.enable = true;

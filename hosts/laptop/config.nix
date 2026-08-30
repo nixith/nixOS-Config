@@ -154,8 +154,6 @@ in
 
   #Distrobox
 
-  # ZRAM
-  zramSwap.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
   # Allow unfree packages
