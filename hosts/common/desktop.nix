@@ -164,7 +164,6 @@ in
       "printer"
       "fuse"
       "jack"
-      "libvirtd"
       "seatd"
       "dialout"
     ];

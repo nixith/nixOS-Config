@@ -1,31 +1,22 @@
 {
-  pkgs,
-
   config,
   ...
 }:
 let
   user = config.nixith.user;
-  isNvidia = pkgs.lib.any (driver: driver == "nvidia") config.services.xserver.videoDrivers;
 in
 {
-  virtualisation = {
-    # enable nvidia stuff for containers. Any CDI container spec supports this.
-    libvirtd = {
-      enable = true;
-    };
-    spiceUSBRedirection.enable = true;
-    #qemu = {
-    #    package = pkgs.qemu_kvm;
-    #    guestAgent.enable = true;
-    #  };
-  };
-
-  environment.systemPackages = [
-    pkgs.virt-manager
-    pkgs.distrobox
-    pkgs.shadow
-  ];
+  # virtualisation = {
+  #   # enable nvidia stuff for containers. Any CDI container spec supports this.
+  #   libvirtd = {
+  #     enable = true;
+  #   };
+  #   spiceUSBRedirection.enable = true;
+  #   #qemu = {
+  #   #    package = pkgs.qemu_kvm;
+  #   #    guestAgent.enable = true;
+  #   #  };
+  # };
 
   virtualisation.podman = {
     enable = true;
