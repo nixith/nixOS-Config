@@ -70,7 +70,7 @@ let
       };
 
       nix.channel.enable = false;
-      nix.nixPath = [ "nixpkgs=${pins.nixpkgs}:" ];
+      nix.nixPath = [ "nixpkgs=${pins.nixpkgs}" ];
     }
     {
       nixpkgs.overlays =
