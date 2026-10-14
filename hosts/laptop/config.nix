@@ -65,7 +65,11 @@ in
   };
 
   nixith.run0.enable = true;
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot.binfmt = {
+    emulatedSystems = [ "aarch64-linux" ];
+    preferStaticEmulators = true;
+    registrations.aarch64-linux.fixBinary = true;
+  };
 
   boot = {
     # initrd.kernelModules = [ "xe" ];
