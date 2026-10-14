@@ -56,10 +56,11 @@ in
       # bluetooth
       blueman
 
+      halloy
       mumble
       gajim
 
-      # feishin
+      feishin
 
       # Productivity
       libreoffice
