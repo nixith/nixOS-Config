@@ -253,14 +253,25 @@ in
       ]);
   };
 
-  programs.gtklock = {
+  programs.noctalia = {
     enable = true;
-    modules = with pkgs; [
-      gtklock-playerctl-module
-      gtklock-powerbar-module
-      gtklock-userinfo-module
-    ];
+    systemd.enable = true;
+    recommendedServices.enable = true;
   };
+
+  services.displayManager.noctalia-greeter = {
+    enable = true;
+    passwordlessSyncUsers = [ "alice" ];
+  };
+
+  # programs.gtklock = {
+  #   enable = true;
+  #   modules = with pkgs; [
+  #     gtklock-playerctl-module
+  #     gtklock-powerbar-module
+  #     gtklock-userinfo-module
+  #   ];
+  # };
 
   services.logind.settings.Login = {
     # this doesn't provide screen dimming,

@@ -9,10 +9,8 @@ in
 {
   virtualisation = {
     qemu = {
-
       firmware.enable = true;
     };
-    # useSecureBoot = true;
     podman = {
       enable = true;
       dockerCompat = true;

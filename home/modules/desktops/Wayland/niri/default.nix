@@ -40,9 +40,6 @@ in
     nixith.swayidle.enable = false;
     nixith.swaync.enable = false;
 
-    services = {
-      polkit-gnome.enable = true;
-    };
     xdg.portal = {
       enable = true;
       xdgOpenUsePortal = true;
@@ -641,26 +638,36 @@ in
           # Application keybinds
           "Mod+D" = {
             action.spawn = [
-              "${lib.getExe config.programs.vicinae.package}"
-              "vicinae://open?popToRoot=true"
+              "${lib.getExe config.programs.noctalia.package}"
+              "msg"
+              "panel-toggle"
+              "launcher"
             ];
           };
           "Mod+E" = {
             action.spawn = [
-              "${lib.getExe config.programs.vicinae.package}"
-              "vicinae://launch/core/search-emojis"
+              "${lib.getExe config.programs.noctalia.package}"
+              "msg"
+              "panel-toggle"
+              "launcher"
+              "/emo"
             ];
           };
           "Mod+Shift+C" = {
             action.spawn = [
-              "${lib.getExe config.programs.vicinae.package}"
-              "vicinae://launch/clipboard/history"
+              "${lib.getExe config.programs.noctalia.package}"
+              "msg"
+              "panel-toggle"
+              "history"
             ];
           };
           "Mod+S" = {
             action.spawn = [
-              "${lib.getExe config.programs.vicinae.package}"
-              "vicinae://launch/wm/switch-windows"
+              "${lib.getExe config.programs.noctalia.package}"
+              "msg"
+              "panel-toggle"
+              "launcher"
+              "/win"
             ];
           };
           "Mod+W" = {

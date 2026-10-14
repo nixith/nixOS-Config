@@ -50,7 +50,7 @@ in
       enable = true;
       config = builtins.readFile ./config.kdl;
     };
-    vicinae.enable = true;
+    # vicinae.enable = true;
     ghostty.enable = true;
   };
   # Let Home Manager install and manage itself.

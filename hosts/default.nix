@@ -125,7 +125,6 @@ let
         nix.package = pkgs.lixPackageSets.stable.lix;
       }
     )
-    ./modules/greetd.nix
     "${pins.nix-index-database}/nixos-module.nix"
     {
       programs.nix-index-database.comma.enable = true;
