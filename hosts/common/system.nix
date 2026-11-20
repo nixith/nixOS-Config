@@ -30,7 +30,7 @@ in
   };
 
   services = {
-
+    upki.enable = true;
     fwupd.enable = true;
   };
 

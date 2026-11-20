@@ -20,6 +20,9 @@ in
       };
       defaultNetwork.settings.dns_enabled = true;
     };
+    containers = {
+      ociSeccompBpfHook.enable = true;
+    };
   };
   users.users.${user}.extraGroups = [ "podman" ];
 }

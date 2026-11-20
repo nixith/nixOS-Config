@@ -13,12 +13,12 @@ in
   networking.nftables.enable = true;
 
   boot = {
-    extraModulePackages = with config.boot.kernelPackages; [
-      v4l2loopback # OBS virtual camera
-    ];
-    extraModprobeConfig = ''
-      options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
-    '';
+    # extraModulePackages = with config.boot.kernelPackages; [
+    #   v4l2loopback # OBS virtual camera
+    # ];
+    # extraModprobeConfig = ''
+    #   options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+    # '';
     kernelModules = [ "nfs" ];
     supportedFilesystems = {
       nfs = true;
@@ -30,6 +30,7 @@ in
     };
   };
   services.rpcbind.enable = true;
+  services.bootvine.enable = true;
 
   programs.nix-ld = {
     enable = true;
@@ -55,6 +56,7 @@ in
     libva-utils
     brillo
     nfs-utils
+    system-config-printer # for noctalia printer settings
     # nix-ld
     (lib.hiPrio (
       writeShellScriptBin "python3" ''LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH exec -a $0 ${python3}/bin/python3 "$@"''
@@ -283,33 +285,33 @@ in
     LidSwitchIgnoreInhibited = false; # I want inhibitors to work
     HoldoffTimeoutSec = "5s"; # 30s is absurd for this
   };
-  services.systemd-lock-handler.enable = true;
+  # services.systemd-lock-handler.enable = true;
   # Ideally this works with the above
-  systemd.user.services.gtklock = {
-    description = "${pkgs.gtklock.meta.description}";
-    documentation = [ "man:gtklock(1)" ];
-
-    # If gtklock exits cleanly, unlock the session:
-    onSuccess = [ "unlock.target" ];
-
-    # When lock.target is stopped, stops this too:
-    partOf = [ "lock.target" ];
-
-    # Delay lock.target until this service is ready:
-    before = [ "lock.target" ];
-    wantedBy = [ "lock.target" ];
-
-    serviceConfig = {
-      # systemd will consider this service started when gtklock forks...
-      Type = "forking";
-
-      # ... and gtklock will fork only after it has locked the screen.
-      ExecStart = "${lib.getExe pkgs.gtklock} -d";
-
-      # If gtklock crashes, always restart it immediately:
-      Restart = "on-failure";
-      RestartSec = 0;
-    };
-  };
+  # systemd.user.services.gtklock = {
+  #   description = "${pkgs.gtklock.meta.description}";
+  #   documentation = [ "man:gtklock(1)" ];
+  #
+  #   # If gtklock exits cleanly, unlock the session:
+  #   onSuccess = [ "unlock.target" ];
+  #
+  #   # When lock.target is stopped, stops this too:
+  #   partOf = [ "lock.target" ];
+  #
+  #   # Delay lock.target until this service is ready:
+  #   before = [ "lock.target" ];
+  #   wantedBy = [ "lock.target" ];
+  #
+  #   serviceConfig = {
+  #     # systemd will consider this service started when gtklock forks...
+  #     Type = "forking";
+  #
+  #     # ... and gtklock will fork only after it has locked the screen.
+  #     ExecStart = "${lib.getExe pkgs.gtklock} -d";
+  #
+  #     # If gtklock crashes, always restart it immediately:
+  #     Restart = "on-failure";
+  #     RestartSec = 0;
+  #   };
+  # };
 
 }

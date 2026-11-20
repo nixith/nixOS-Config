@@ -63,7 +63,7 @@ in
     };
     enableRedistributableFirmware = true;
   };
-
+  hardware.framework.enableKmod = false;
   nixith.run0.enable = true;
   boot.binfmt = {
     emulatedSystems = [ "aarch64-linux" ];

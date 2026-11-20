@@ -33,7 +33,7 @@ in
     #   security.pam.services.swaylock = { };
     #
     # };
-    nixith.kanshi.enable = true;
+    nixith.kanshi.enable = false;
     nixith.waybar.enable = false;
     nixith.fuzzel.enable = false;
     nixith.swayosd.enable = false;
@@ -49,7 +49,7 @@ in
         oo7-portal
       ];
     };
-    services.kanshi.systemdTarget = "niri.service";
+    services.kanshi.systemdTarget = lib.mkIf config.nixith.kanshi.enable "niri.service";
     home.packages = with pkgs; [
       nautilus
       goofcord
@@ -67,14 +67,14 @@ in
       in
       lib.recursiveUpdate {
         includes = [
-          {
-            path = "extra.kdl";
-            optional = true;
-          }
-          {
-            path = "noctalia.kdl";
-            optional = true;
-          }
+          # {
+          #   path = "extra.kdl";
+          #   optional = true;
+          # }
+          # {
+          #   path = "noctalia.kdl";
+          #   optional = true;
+          # }
         ];
         prefer-no-csd = true;
         environment = {
